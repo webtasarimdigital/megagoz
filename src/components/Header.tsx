@@ -45,7 +45,7 @@ export default function Header() {
           isScrolled ? "h-0 opacity-0 overflow-hidden" : "h-[45px] opacity-100 flex"
         }`}
       >
-        <div className="container mx-auto px-4 max-w-6xl flex items-center justify-between h-full">
+        <div className="w-full flex items-center justify-center h-full px-4 gap-8 md:gap-16">
           {/* Left quick links */}
           <div className="hidden lg:flex items-center gap-3">
             <a href="#" className="hover:text-gray-200 transition-colors">Kurumsal</a>
@@ -60,7 +60,7 @@ export default function Header() {
           </div>
 
           {/* Right contact & settings */}
-          <div className="flex items-center gap-4 shrink-0 font-bold ml-auto lg:ml-0">
+          <div className="flex items-center gap-4 shrink-0 font-bold">
             <a href="tel:4440000" className="text-[15px] hover:text-gray-200">
               444 0 481
             </a>
@@ -83,9 +83,9 @@ export default function Header() {
 
       {/* Main White Nav Bar */}
       <div className={`bg-white transition-all duration-300 ${isScrolled ? "shadow-md py-4" : "py-6 border-b-2 border-gray-100"}`}>
-        <div className="container mx-auto px-4 max-w-6xl flex items-center justify-between">
+        <div className="w-full flex items-center justify-center px-4 gap-8 lg:gap-14 xl:gap-20">
           
-          {/* Logo VeniVidi look-alike */}
+          {/* Logo */}
           <Link href="/" className="flex items-center shrink-0">
             <span className="text-[36px] md:text-[42px] font-black tracking-tighter text-[#1f6388]">
               mega<span className="text-[#e85025]">göz</span>
@@ -93,7 +93,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Menu */}
-          <nav className="hidden lg:flex items-center gap-7 ml-auto mr-10 relative left-4">
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navLinks.map((link) => (
               link.href.startsWith("/#") ? (
                 <a 
@@ -120,7 +120,7 @@ export default function Header() {
             <input 
               type="text" 
               placeholder="Arama"
-              className="border-b-[3px] border-[#2c88ac] py-1 pl-1 pr-6 focus:outline-none text-[16px] font-medium w-40 transition-all focus:w-48 text-[#2c88ac] bg-transparent placeholder:text-[#2c88ac]" 
+              className="border-b-[3px] border-[#2c88ac] py-1 pl-1 pr-6 focus:outline-none text-[16px] font-medium w-32 transition-all focus:w-48 text-[#2c88ac] bg-transparent placeholder:text-[#2c88ac]" 
             />
             <Search className="absolute right-0 bottom-1.5 text-[#2c88ac] w-4 h-4 cursor-pointer" strokeWidth={2.5}/>
           </div>
