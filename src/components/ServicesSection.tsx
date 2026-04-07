@@ -90,7 +90,7 @@ export default function ServicesSection() {
                       transition={{ type: "spring", stiffness: 400, damping: 30 }}
                       className="origin-left"
                     >
-                      <h3 className={`text-3xl md:text-4xl lg:text-4xl font-black transition-colors duration-500 uppercase tracking-tighter ${isActive ? "text-[#ecbb3f]" : "text-gray-600 hover:text-gray-400"}`}>
+                      <h3 className={`text-3xl md:text-4xl lg:text-4xl font-black leading-[1.1] transition-colors duration-500 uppercase tracking-tighter ${isActive ? "text-[#ecbb3f]" : "text-gray-600 hover:text-gray-400"}`}>
                         {service.title}
                       </h3>
                     </motion.div>

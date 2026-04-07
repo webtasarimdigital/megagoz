@@ -170,7 +170,7 @@ export default function HeroSlider() {
               exit={{ x: 100, opacity: 0 }}
               transition={{ duration: 0.3 }}
               onClick={() => setIsPopupOpen(true)}
-              className="absolute right-0 -translate-y-1/2 w-[85px] h-[190px] flex flex-col shadow-[-5px_0_20px_rgba(0,0,0,0.15)] overflow-hidden hover:scale-105 origin-right rounded-l-xl z-40"
+              className="absolute right-0 top-1/2 -translate-y-1/2 w-[85px] h-[190px] flex flex-col shadow-[-5px_0_20px_rgba(0,0,0,0.15)] overflow-hidden hover:scale-105 origin-right rounded-l-xl z-40"
             >
               <div className="bg-[#1f313f] flex-1 w-full flex flex-col items-center justify-center border-b border-white/10">
                 <div className="relative w-12 h-12 flex items-center justify-center">
@@ -277,57 +277,66 @@ export default function HeroSlider() {
         </div>
       </div> {/* CLOSES the overflow-hidden slider track */}
 
-      {/* Horizontal Quick Appointment Form (Overlaps Bottom Edge) */}
-      <div className="relative z-40 w-full px-4 md:px-8 max-w-[1250px] mx-auto -mt-[80px] md:-mt-[100px] mb-16">
-        <div className="bg-white rounded-[12px] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.3)] p-6 md:p-8">
+      {/* Quick Appointment Form (Overlaps Bottom Edge) */}
+      <div className="relative z-40 w-full px-4 md:px-8 max-w-[1000px] mx-auto -mt-[60px] md:-mt-[90px] mb-16">
+        <div className="bg-white rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.2)] p-8 md:p-10">
            {/* Header */}
-           <div className="mb-6 relative">
-              <h3 className="text-xl md:text-[22px] font-black tracking-tight text-[#1f313f] flex gap-1.5 items-center">
+           <div className="mb-6">
+              <h3 className="text-xl md:text-[22px] font-black tracking-tight text-[#1f313f] flex gap-1.5 items-center uppercase">
                  HIZLI RANDEVU <span className="text-[#ecbb3f]">FORMU</span>
               </h3>
-              <div className="h-[2.5px] w-[60px] bg-[#ecbb3f] mt-1.5 rounded-full" />
            </div>
 
-           {/* Classic Grid Form */}
-           <form className="flex flex-col font-sans">
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 items-end">
-                 
+           {/* Form Layout from Screenshot 2 */}
+           <form className="flex flex-col font-sans gap-6">
+              {/* Row 1: Two Inputs */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                  {/* Name Input */}
                  <div className="relative">
-                    <label className="text-[14px] font-bold text-[#1f313f] mb-2 block">Adınız Soyadınız</label>
                     <input 
                       type="text" 
                       placeholder="Adınız Soyadınız" 
-                      className="w-full h-[54px] border border-gray-200 rounded-[6px] px-4 text-[15px] font-medium text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#ecbb3f] focus:ring-1 focus:ring-[#ecbb3f]/30 transition-all bg-white" 
+                      className="w-full h-[54px] border border-gray-200 rounded-lg px-4 text-[15px] font-medium text-gray-800 placeholder-gray-500 focus:outline-none focus:border-gray-400 transition-all bg-white" 
                     />
                  </div>
                  
                  {/* Phone Input with Flag */}
                  <div className="relative">
-                    <label className="text-[14px] font-bold text-[#1f313f] mb-2 block">Telefon Numaranız</label>
-                    <div className="flex items-center h-[54px] border border-gray-200 rounded-[6px] focus-within:border-[#ecbb3f] focus-within:ring-1 focus-within:ring-[#ecbb3f]/30 transition-all bg-white overflow-hidden">
-                       <div className="pl-4 pr-2 flex items-center justify-center border-r border-gray-200 cursor-pointer hover:bg-gray-50 transition h-full rounded-l-[6px]">
-                          <img src="/tr.svg" alt="TR" className="w-[20px] h-[14px] object-cover rounded-[2px]" />
-                          <ChevronDown size={14} className="text-gray-500 ml-1.5" />
+                    <div className="flex items-center h-[54px] border border-gray-200 rounded-lg focus-within:border-gray-400 transition-all bg-white overflow-hidden text-[15px] font-medium text-gray-800">
+                       <div className="pl-4 pr-2 flex items-center justify-center border-r border-gray-200 bg-white h-full">
+                          <img src="/tr.svg" alt="TR" className="w-[18px] h-[13px] object-cover rounded-[2px]" />
+                          <ChevronDown className="text-gray-400 ml-1.5 w-4 h-4" />
+                          <span className="text-gray-600 text-[14px] ml-2">+90</span>
                        </div>
                        <input 
                          type="tel" 
-                         placeholder="Örn: 0555 555 55 55" 
-                         className="w-full h-full px-4 text-[15px] font-medium text-gray-800 placeholder-gray-400 outline-none bg-transparent" 
+                         placeholder="Telefon" 
+                         className="w-full h-full px-4 text-[15px] font-medium text-gray-800 placeholder-gray-500 outline-none bg-transparent" 
                        />
                     </div>
                  </div>
+              </div>
 
-                 {/* Submit Button */}
-                 <div>
-                    <button 
-                      type="button" 
-                      className="w-full h-[54px] bg-[#ecbb3f] hover:bg-[#d6a529] text-white font-black tracking-widest rounded-[6px] shadow-md shadow-[#ecbb3f]/20 transition-all text-[16px] uppercase"
-                    >
-                       GÖNDER
-                    </button>
-                 </div>
+              {/* Row 2: Checkbox */}
+              <div className="flex items-center gap-3">
+                 <input 
+                   type="checkbox" 
+                   id="kvkk"
+                   className="w-4 h-4 border-gray-300 rounded text-[#ecbb3f] focus:ring-[#ecbb3f]"
+                 />
+                 <label htmlFor="kvkk" className="text-sm font-semibold text-[#1f313f]">
+                   <span className="text-[#ecbb3f] cursor-pointer hover:underline">KVKK metnini</span> okudum, kabul ediyorum.
+                 </label>
+              </div>
 
+              {/* Row 3: Submit Button */}
+              <div>
+                 <button 
+                   type="button" 
+                   className="w-full md:w-auto px-14 h-[50px] bg-[#ecbb3f] hover:bg-[#d6a529] text-white font-bold tracking-widest rounded-lg shadow-lg shadow-[#ecbb3f]/20 transition-all text-sm uppercase"
+                 >
+                    Gönder
+                 </button>
               </div>
            </form>
         </div>
