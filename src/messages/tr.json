@@ -1,0 +1,29 @@
+{
+  "Navigation": {
+    "home": "Ana Sayfa",
+    "about": "Hakkımızda",
+    "services": "Hizmetlerimiz",
+    "blog": "Blog",
+    "contact": "İletişim",
+    "appointment": "Randevu Al"
+  },
+  "Hero": {
+    "title": "Göz Sağlığınız İçin\nEn İyisi",
+    "subtitle": "Uzman kadromuz ve son teknoloji sistemlerimizle daha net bir dünya için yanınızdayız.",
+    "cta": "Hemen Randevu Al"
+  },
+  "About": {
+    "badge": "Hakkımızda",
+    "title": "Megagöz ile Net Görün",
+    "description": "Megagöz Sağlığı Merkezi olarak, alanında uzman doktorlarımız ve modern teknolojimizle göz sağlığınızı en üst düzeyde korumayı ve iyileştirmeyi hedefliyoruz.",
+    "button": "Daha Fazla Bilgi"
+  },
+  "Services": {
+    "title": "Hizmetlerimiz",
+    "items": {
+      "cataract": "Katarakt Cerrahisi",
+      "laser": "Lazer Tedavisi",
+      "retina": "Retina Hastalıkları"
+    }
+  }
+}

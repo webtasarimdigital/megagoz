@@ -1,0 +1,29 @@
+{
+  "Navigation": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "blog": "Blog",
+    "contact": "Contact",
+    "appointment": "Book Appointment"
+  },
+  "Hero": {
+    "title": "The Best for Your\nEye Health",
+    "subtitle": "We are here for a clearer world with our expert staff and state-of-the-art systems.",
+    "cta": "Book Now"
+  },
+  "About": {
+    "badge": "About Us",
+    "title": "See Clearly with Megagöz",
+    "description": "As Megagöz Eye Health Center, we aim to protect and improve your eye health at the highest level with our expert doctors and modern technology.",
+    "button": "Learn More"
+  },
+  "Services": {
+    "title": "Our Services",
+    "items": {
+      "cataract": "Cataract Surgery",
+      "laser": "Laser Treatment",
+      "retina": "Retinal Diseases"
+    }
+  }
+}
