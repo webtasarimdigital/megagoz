@@ -19,11 +19,34 @@
     "button": "Learn More"
   },
   "Services": {
-    "title": "Our Services",
+    "badge": "Our Departments",
+    "title": "Services We Provide",
+    "description": "We offer comprehensive solutions for your eye health with state-of-the-art technologies and our experienced expert staff.",
     "items": {
-      "cataract": "Cataract Surgery",
-      "laser": "Laser Treatment",
-      "retina": "Retinal Diseases"
+      "cataract": {
+        "title": "Cataract Surgery",
+        "description": "Achieve clear vision with Phacoemulsification and smart lens (intraocular lens) applications."
+      },
+      "laser": {
+        "title": "Laser Treatment",
+        "description": "Say goodbye to glasses in myopia, hypermetropia, and astigmatism with No-Touch, LASIK, and PRK methods."
+      },
+      "retina": {
+        "title": "Retinal Diseases",
+        "description": "Early diagnosis and modern treatment methods for diabetic retinopathy, macular degeneration, and retinal tears."
+      },
+      "glaucoma": {
+        "title": "Glaucoma",
+        "description": "Regular follow-up and control of insidiously progressive glaucoma with medication or surgery."
+      },
+      "pediatric": {
+        "title": "Pediatric Eye Care",
+        "description": "Expert evaluation of childhood strabismus, lazy eye (amblyopia), and other eye problems."
+      },
+      "cornea": {
+        "title": "Corneal Diseases",
+        "description": "Advanced treatments for keratoconus (Cross-linking), corneal transplantation, and dry eye syndrome."
+      }
     }
   }
 }

@@ -19,11 +19,34 @@
     "button": "Daha Fazla Bilgi"
   },
   "Services": {
-    "title": "Hizmetlerimiz",
+    "badge": "Uzmanlık Alanlarımız",
+    "title": "Sunmuş Olduğumuz Hizmetler",
+    "description": "En gelişmiş teknolojiler ve deneyimli uzman kadromuz ile göz sağlığınız için geniş kapsamlı çözümler sunuyoruz.",
     "items": {
-      "cataract": "Katarakt Cerrahisi",
-      "laser": "Lazer Tedavisi",
-      "retina": "Retina Hastalıkları"
+      "cataract": {
+        "title": "Katarakt Cerrahisi",
+        "description": "Fako yöntemi ve akıllı lens (göz içi mercek) uygulamaları ile net bir görüşe kavuşun."
+      },
+      "laser": {
+        "title": "Lazer Tedavisi",
+        "description": "Miyop, hipermetrop ve astigmatta No-Touch, LASIK ve PRK yöntemleriyle gözlüklere veda edin."
+      },
+      "retina": {
+        "title": "Retina Hastalıkları",
+        "description": "Diyabetik retinopati, sarı nokta hastalığı ve retina yırtıklarında erken teşhis ve modern tedavi yöntemleri."
+      },
+      "glaucoma": {
+        "title": "Glokom (Göz Tansiyonu)",
+        "description": "Sinsi ilerleyen glokom hastalığının düzenli takibi ve ilaç/cerrahi ile kontrol altına alınması."
+      },
+      "pediatric": {
+        "title": "Çocuk Göz Sağlığı",
+        "description": "Çocukluk çağındaki şaşılık, göz tembelliği ve diğer göz sorunlarının uzman değerlendirmesi."
+      },
+      "cornea": {
+        "title": "Kornea Hastalıkları",
+        "description": "Keratokonüs tedavisi (Cross-linking), kornea nakli ve göz kuruluğu için ileri düzey tedaviler."
+      }
     }
   }
 }

@@ -2,6 +2,7 @@ import {useTranslations} from 'next-intl';
 import Header from '@/components/Header';
 import HeroSlider from '@/components/HeroSlider';
 import AboutSection from '@/components/AboutSection';
+import ServicesSection from '@/components/ServicesSection';
 import Footer from '@/components/Footer';
 
 export default function HomePage() {
@@ -12,7 +13,7 @@ export default function HomePage() {
       <Header />
       <HeroSlider />
       <AboutSection />
-      {/* Blog and Services will follow */}
+      <ServicesSection />
       <Footer />
     </main>
   );
