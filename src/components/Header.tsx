@@ -80,30 +80,24 @@ export default function Header() {
       </div>
 
       {/* Main White Nav Bar */}
-      <div className={`bg-white transition-shadow duration-300 ${isScrolled ? "shadow-md" : "border-b border-gray-100"}`}>
-        <div className="container mx-auto px-4 max-w-7xl flex items-center justify-between h-[80px]">
+      <div className={`bg-white transition-all duration-300 ${isScrolled ? "shadow-md py-3" : "py-5 border-b border-gray-100"}`}>
+        <div className="container mx-auto px-4 max-w-7xl flex items-center justify-between">
           
-          {/* Logo */}
+          {/* Logo (Text instead of broken image) */}
           <Link href="/" className="flex items-center shrink-0">
-            <div className={`relative transition-all duration-300 w-48 h-12`}>
-              <Image 
-                src="/logo.png" 
-                alt="Megagöz Logo" 
-                fill 
-                className="object-contain object-left"
-                priority
-              />
-            </div>
+            <span className="text-3xl font-black tracking-tighter text-[#00609C]">
+              MEGA<span className="text-[#06b6d4]">GÖZ</span>
+            </span>
           </Link>
 
           {/* Desktop Menu */}
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 ml-8">
+          <nav className="hidden lg:flex items-center gap-8 ml-auto mr-8">
             {navLinks.map((link) => (
               link.href.startsWith("/#") ? (
                 <a 
                   key={link.name} 
                   href={link.href}
-                  className="text-[14px] font-bold text-[#333] hover:text-[#00609C] uppercase tracking-wide transition-colors"
+                  className="text-[13px] font-bold text-gray-700 hover:text-[#00609C] uppercase tracking-widest transition-colors"
                 >
                   {link.name}
                 </a>
@@ -111,7 +105,7 @@ export default function Header() {
                 <Link 
                   key={link.name} 
                   href={link.href as any}
-                  className="text-[14px] font-bold text-[#333] hover:text-[#00609C] uppercase tracking-wide transition-colors"
+                  className="text-[13px] font-bold text-gray-700 hover:text-[#00609C] uppercase tracking-widest transition-colors"
                 >
                   {link.name}
                 </Link>
@@ -120,21 +114,21 @@ export default function Header() {
           </nav>
 
           {/* Search Box */}
-          <div className="hidden xl:flex items-center ml-auto relative">
+          <div className="hidden xl:flex items-center relative">
             <input 
               type="text" 
-              placeholder="Arama"
-              className="border-b border-gray-300 py-1 pl-2 pr-8 focus:outline-none focus:border-[#00609C] text-sm w-40 transition-all focus:w-48 text-gray-700" 
+              placeholder="Arama..."
+              className="border-b-2 border-gray-200 py-1 pl-2 pr-8 focus:outline-none focus:border-[#00609C] text-sm w-32 transition-all focus:w-48 text-gray-700 bg-transparent placeholder:text-gray-400" 
             />
-            <Search className="absolute right-0 text-[#00609C] w-5 h-5" />
+            <Search className="absolute right-0 text-gray-400 w-4 h-4 cursor-pointer hover:text-[#00609C]" />
           </div>
 
           {/* Mobile Menu Toggle */}
           <button 
-            className="lg:hidden text-[#00609C]"
+            className="lg:hidden text-[#00609C] ml-auto hover:text-[#06b6d4] transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            {mobileMenuOpen ? <X size={32} /> : <Menu size={32} />}
+            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </div>
