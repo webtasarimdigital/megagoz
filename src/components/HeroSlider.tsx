@@ -269,62 +269,56 @@ export default function HeroSlider() {
 
       {/* Horizontal Quick Appointment Form (Overlaps Bottom Edge) */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-40 w-full px-4 max-w-[1100px]">
-        <div className="bg-white rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.4)] p-8 md:p-10 border border-white/50 backdrop-blur-sm">
-           
+        <div className="bg-white rounded-[12px] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.3)] p-6 md:p-8">
            {/* Header */}
-           <div className="mb-8 flex flex-col items-center justify-center text-center">
-              <h3 className="text-[20px] md:text-[26px] font-black tracking-tight text-[#1f313f] flex items-center gap-2">
-                 HIZLI RANDEVU <span className="text-[#ecbb3f] bg-[#ecbb3f]/10 px-3 py-1 rounded-md">FORMU</span>
+           <div className="mb-6 relative">
+              <h3 className="text-xl md:text-[22px] font-black tracking-tight text-[#1f313f] flex gap-1.5 items-center">
+                 HIZLI RANDEVU <span className="text-[#ecbb3f]">FORMU</span>
               </h3>
-              <p className="text-gray-500 text-sm mt-2 font-medium tracking-wide">Sizi en kısa sürede arayalım, randevunuzu birlikte planlayalım.</p>
+              <div className="h-[2.5px] w-[60px] bg-[#ecbb3f] mt-1.5 rounded-full" />
            </div>
 
-           {/* Premium Minimalist Form Grid */}
-           <form className="flex flex-col md:flex-row gap-5 font-sans w-full">
-              
-              {/* Name Input */}
-              <div className="relative flex-1 group">
-                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                    <svg className="w-5 h-5 text-gray-400 group-focus-within:text-[#ecbb3f] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                    </svg>
+           {/* Classic Grid Form */}
+           <form className="flex flex-col font-sans">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 items-end">
+                 
+                 {/* Name Input */}
+                 <div className="relative">
+                    <label className="text-[13px] font-bold text-gray-600 mb-2 block">Adınız Soyadınız</label>
+                    <input 
+                      type="text" 
+                      placeholder="Adınız Soyadınız" 
+                      className="w-full h-[52px] border border-gray-200 rounded-[6px] px-4 text-[14px] font-medium text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#ecbb3f] focus:ring-1 focus:ring-[#ecbb3f]/30 transition-all bg-gray-50/30" 
+                    />
                  </div>
-                 <input 
-                   type="text" 
-                   placeholder="Adınız Soyadınız" 
-                   className="w-full bg-gray-50/50 border border-gray-200 rounded-xl py-4 pl-12 pr-4 text-[15px] font-bold text-gray-800 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-[#ecbb3f] focus:ring-4 focus:ring-[#ecbb3f]/10 transition-all" 
-                 />
-              </div>
-              
-              {/* Phone Input with Flag */}
-              <div className="relative flex-1 flex items-center bg-gray-50/50 border border-gray-200 rounded-xl focus-within:bg-white focus-within:border-[#ecbb3f] focus-within:ring-4 focus-within:ring-[#ecbb3f]/10 transition-all group">
-                 <div className="pl-4 pr-3 flex items-center justify-center border-r border-gray-200/80 cursor-pointer hover:bg-gray-100 transition h-full rounded-l-xl">
-                    <img src="/tr.svg" alt="TR" className="w-[22px] h-[16px] object-cover rounded-[2px] shadow-sm" />
-                    <ChevronDown size={14} className="text-gray-400 ml-1.5 group-focus-within:text-[#ecbb3f]" />
+                 
+                 {/* Phone Input with Flag */}
+                 <div className="relative">
+                    <label className="text-[13px] font-bold text-gray-600 mb-2 block">Telefon Numaranız</label>
+                    <div className="flex items-center h-[52px] border border-gray-200 rounded-[6px] focus-within:border-[#ecbb3f] focus-within:ring-1 focus-within:ring-[#ecbb3f]/30 transition-all bg-gray-50/30">
+                       <div className="pl-3 pr-2 flex items-center justify-center border-r border-gray-200 cursor-pointer hover:bg-gray-100 transition h-full rounded-l-[6px]">
+                          <img src="/tr.svg" alt="TR" className="w-[18px] h-[13px] object-cover rounded-[2px]" />
+                          <ChevronDown size={14} className="text-gray-500 ml-1.5" />
+                       </div>
+                       <input 
+                         type="tel" 
+                         placeholder="Örn: 0555 555 55 55" 
+                         className="w-full h-full px-3 text-[14px] font-medium text-gray-800 placeholder-gray-400 outline-none bg-transparent" 
+                       />
+                    </div>
                  </div>
-                 <input 
-                   type="tel" 
-                   placeholder="Telefon Numaranız" 
-                   className="w-full py-4 px-4 text-[15px] font-bold text-gray-800 placeholder-gray-400 outline-none bg-transparent" 
-                 />
-                 <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
-                    <svg className="w-5 h-5 text-gray-400 group-focus-within:text-[#ecbb3f] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                    </svg>
-                 </div>
-              </div>
 
-              {/* Submit Button */}
-              <button 
-                type="button" 
-                className="w-full md:w-[280px] bg-[#ecbb3f] hover:bg-[#d6a529] text-white font-black tracking-widest py-4 px-8 rounded-xl shadow-[0_10px_25px_-5px_rgba(236,187,63,0.5)] hover:shadow-[0_15px_35px_-5px_rgba(236,187,63,0.6)] transform hover:-translate-y-0.5 transition-all text-[15px] uppercase flex items-center justify-center gap-2"
-              >
-                 Gönder
-                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                 </svg>
-              </button>
-              
+                 {/* Submit Button */}
+                 <div>
+                    <button 
+                      type="button" 
+                      className="w-full h-[52px] bg-[#ecbb3f] hover:bg-[#d6a529] text-white font-black tracking-widest rounded-[6px] shadow-md shadow-[#ecbb3f]/20 transition-all text-[15px] uppercase"
+                    >
+                       GÖnder
+                    </button>
+                 </div>
+
+              </div>
            </form>
         </div>
       </div>
