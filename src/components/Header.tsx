@@ -66,15 +66,27 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <Link 
-                key={link.name} 
-                href={link.href}
-                className={`text-sm font-medium hover:text-cyan-vibrant transition-colors ${
-                  isScrolled ? "text-slate-700" : "text-white/90"
-                }`}
-              >
-                {link.name}
-              </Link>
+              link.href.startsWith("/#") ? (
+                <a 
+                  key={link.name} 
+                  href={link.href}
+                  className={`text-sm font-medium hover:text-cyan-vibrant transition-colors ${
+                    isScrolled ? "text-slate-700" : "text-white/90"
+                  }`}
+                >
+                  {link.name}
+                </a>
+              ) : (
+                <Link 
+                  key={link.name} 
+                  href={link.href as any}
+                  className={`text-sm font-medium hover:text-cyan-vibrant transition-colors ${
+                    isScrolled ? "text-slate-700" : "text-white/90"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              )
             ))}
           </nav>
 
@@ -122,14 +134,25 @@ export default function Header() {
           >
             <div className="flex flex-col px-6 py-6 space-y-4">
               {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-white/90 text-lg font-medium hover:text-cyan-vibrant"
-                >
-                  {link.name}
-                </Link>
+                link.href.startsWith("/#") ? (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-white/90 text-lg font-medium hover:text-cyan-vibrant"
+                  >
+                    {link.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={link.name}
+                    href={link.href as any}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-white/90 text-lg font-medium hover:text-cyan-vibrant"
+                  >
+                    {link.name}
+                  </Link>
+                )
               ))}
               <hr className="border-white/10 my-2" />
               <div className="flex items-center justify-between pt-2">
