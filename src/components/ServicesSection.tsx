@@ -1,91 +1,168 @@
-'use client';
+"use client";
 
-import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
-import { Eye, Zap, Activity, Droplets, Baby, Crosshair } from 'lucide-react';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
-const serviceIcons: Record<string, React.ReactNode> = {
-  cataract: <Eye className="w-8 h-8 text-white" />,
-  laser: <Zap className="w-8 h-8 text-white" />,
-  retina: <Activity className="w-8 h-8 text-white" />,
-  glaucoma: <Droplets className="w-8 h-8 text-white" />,
-  pediatric: <Baby className="w-8 h-8 text-white" />,
-  cornea: <Crosshair className="w-8 h-8 text-white" />
-};
+const SERVICES = [
+  { id: 0, title: "Katarakt", image: "/images/megagoz-katarakt-tedavisi.webp", desc: "Zamanla matlaşan göz merceğinin temizlenmesi ve şeffaf lens ile değiştirilmesi." },
+  { id: 1, title: "Lazer Tedavisi", image: "/images/slide1.png", desc: "Miyop, hipermetrop ve astigmatizmanın saniyeler içinde kalıcı olarak düzeltilmesi." },
+  { id: 2, title: "Kontak Lens", image: "/images/megagoz-kontak-lens.webp", desc: "Kişiye özel lens uyumu ve göz sağlığına en uygun lens seçimi." },
+  { id: 3, title: "Göz Nörolojisi", image: "/images/megagoz-goz-norolojisi.webp", desc: "Görme sinirleri ve beyinle ilgili oftalmolojik görme kayıplarının tedavisi." },
+  { id: 4, title: "Kornea Hastalıkları", image: "/images/slide2.png", desc: "Korneanın yapısını bozan keratokonus ve benzeri hastalıkların tanı ve tedavisi." },
+  { id: 5, title: "Glokom Tedavisi", image: "/images/megagoz-tedavi-oncesi.webp", desc: "Göz tansiyonuna bağlı sinir hasarlarının erken teşhisi ve tedavisi." },
+  { id: 6, title: "Şaşılık Tedavisi", image: "/images/slide3.png", desc: "Gözlerin paralel bakışının bozulduğu durumların cerrahi veya medikal tedavisi." },
+  { id: 7, title: "Üveit Tedavisi", image: "/images/megagoz-tedavi-sonrası.webp", desc: "Gözün içindeki damar tabakasının iltihaplanmasının ileri tetkiklerle tedavisi." },
+  { id: 8, title: "Göz Kapağı Estetiği", image: "/images/slide4.png", desc: "Düşük veya torbalanmış göz kapaklarının blefaroplasti ile estetik düzeltimesi." },
+  { id: 9, title: "Çocuk Göz Sağlığı", image: "/images/megagoz-cocuk-goz-tedavisi.webp", desc: "Çocukluk çağında gelişen görme kusurları ve tembelliklerin erken tedavisi." },
+];
 
 export default function ServicesSection() {
-  const t = useTranslations('Services');
-
-  const services = [
-    { id: 'cataract', icon: serviceIcons.cataract },
-    { id: 'laser', icon: serviceIcons.laser },
-    { id: 'retina', icon: serviceIcons.retina },
-    { id: 'glaucoma', icon: serviceIcons.glaucoma },
-    { id: 'pediatric', icon: serviceIcons.pediatric },
-    { id: 'cornea', icon: serviceIcons.cornea },
-  ];
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section className="py-24 bg-gray-50 relative overflow-hidden" id="services">
-      {/* Background purely aesthetic elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--color-primary-cyan)]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-[var(--color-primary-blue)]/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+    <section className="relative bg-[#0a111a] py-32 w-full overflow-hidden">
+      {/* Background Ambience */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#1f313f]/40 to-transparent pointer-events-none" />
+      <div className="absolute right-0 top-0 w-1/2 h-full bg-[#ecbb3f]/5 blur-[150px] rounded-full pointer-events-none" />
 
-      <div className="container mx-auto px-4 md:px-8 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <motion.div
+      <div className="container mx-auto px-6 max-w-[1400px] relative z-10">
+        
+        {/* Section Header */}
+        <div className="mb-16 md:mb-24 flex flex-col items-center md:items-start text-center md:text-left">
+          <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="inline-block px-4 py-1.5 mb-4 rounded-full bg-blue-100/50 text-[var(--color-primary-blue)] font-medium text-sm"
+            className="inline-flex items-center gap-3 mb-4"
           >
-            {t('badge')}
+             <div className="h-[2px] w-12 bg-[#ecbb3f]" />
+             <span className="text-[#ecbb3f] font-black tracking-widest uppercase text-sm">HİZMETLERİMİZ</span>
           </motion.div>
-          <motion.h2
+          <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl md:text-5xl font-bold text-gray-900 mb-6"
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight"
           >
-            {t('title')}
+            Sizin İçin Fark <br/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-gray-600">Yaratan Tedaviler</span>
           </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg text-gray-600"
-          >
-            {t('description')}
-          </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 * index }}
-              className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group border border-gray-100"
-            >
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[var(--color-primary-blue)] to-[var(--color-primary-cyan)] flex items-center justify-center mb-6 shadow-lg shadow-blue-500/20 group-hover:scale-110 transition-transform duration-300">
-                {service.icon}
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-[var(--color-primary-blue)] transition-colors">
-                {t(`items.${service.id}.title`)}
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                {t(`items.${service.id}.description`)}
-              </p>
-              <div className="mt-6 flex items-center text-[var(--color-primary-blue)] font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <span className="mr-2">&rarr;</span>
-              </div>
-            </motion.div>
-          ))}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 relative">
+          
+          {/* Left Side - Interactive List */}
+          <div className="lg:col-span-5 relative z-20">
+            <div className="space-y-1 py-4 border-l-2 border-white/10 pl-6 md:pl-10 relative">
+              
+              {/* Highlight Bar Indicator */}
+              <motion.div 
+                className="absolute left-[-2px] w-[2px] bg-[#ecbb3f] z-10"
+                initial={false}
+                animate={{
+                  top: `${(activeIndex * 10) + (activeIndex * 2)}%`, // Approximation for tracking
+                  height: "10%"
+                }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                style={{
+                  top: `calc(${activeIndex * (100 / SERVICES.length)}%)`,
+                  height: `calc(100% / ${SERVICES.length})`
+                }}
+              />
+
+              {SERVICES.map((service, index) => {
+                const isActive = activeIndex === index;
+                
+                return (
+                  <div 
+                    key={service.id}
+                    onMouseEnter={() => setActiveIndex(index)}
+                    className="group cursor-pointer py-5 relative overflow-hidden"
+                  >
+                    <motion.div
+                      animate={{ 
+                        x: isActive ? 20 : 0, 
+                        scale: isActive ? 1.05 : 1 
+                      }}
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                      className="origin-left"
+                    >
+                      <h3 className={`text-3xl md:text-4xl lg:text-4xl font-black transition-colors duration-500 uppercase tracking-tighter ${isActive ? "text-[#ecbb3f]" : "text-gray-600 hover:text-gray-400"}`}>
+                        {service.title}
+                      </h3>
+                    </motion.div>
+                    
+                    <AnimatePresence>
+                      {isActive && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                          animate={{ opacity: 1, height: "auto", marginTop: "12px" }}
+                          exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden"
+                        >
+                          <p className="text-gray-400 text-sm md:text-base font-medium leading-relaxed pr-8 ml-5">
+                            {service.desc}
+                          </p>
+                          <div className="ml-5 mt-4">
+                            <span className="inline-flex items-center gap-2 text-[#ecbb3f] font-bold text-xs uppercase tracking-widest hover:text-white transition-colors cursor-pointer">
+                              Detaylı Bilgi <ArrowRight size={14} />
+                            </span>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Right Side - Dynamic Image Reveal (Sticky) */}
+          <div className="lg:col-span-7 relative hidden lg:block">
+            <div className="sticky top-32 w-full h-[700px] rounded-[30px] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.5)] border border-white/10 group">
+              
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeIndex}
+                  initial={{ opacity: 0, scale: 1.1 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute inset-0 w-full h-full"
+                >
+                  <Image 
+                    src={SERVICES[activeIndex].image}
+                    alt={SERVICES[activeIndex].title}
+                    fill
+                    className="object-cover transition-transform duration-[10s] ease-linear hover:scale-110"
+                    priority
+                  />
+                  {/* Luxury Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a111a]/80 via-transparent to-transparent" />
+                  
+                  {/* Image Title Badge */}
+                  <motion.div 
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3, duration: 0.5 }}
+                    className="absolute bottom-10 left-10"
+                  >
+                     <div className="bg-[#1f313f]/90 backdrop-blur-md px-6 py-3 rounded-xl border border-white/10 shadow-2xl inline-flex flex-col">
+                        <span className="text-[#ecbb3f] text-xs font-bold tracking-[0.2em] uppercase mb-1">Megagöz Tedavi</span>
+                        <span className="text-white text-2xl font-black">{SERVICES[activeIndex].title}</span>
+                     </div>
+                  </motion.div>
+                </motion.div>
+              </AnimatePresence>
+              
+            </div>
+          </div>
+          
+          {/* Mobile Image Fallback - Appears below items on small screens inherently via layout mapping but actually let's just make it a global hidden or render it differently. The user already has it in the modal expanding! */}
         </div>
       </div>
     </section>

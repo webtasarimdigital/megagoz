@@ -59,65 +59,65 @@ export default function HeroSlider() {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: 50, opacity: 0 }}
               transition={{ type: "tween", duration: 0.3 }}
-              className="absolute right-4 lg:right-6 -translate-y-1/2 z-50 w-[320px] md:w-[350px]"
+              className="absolute right-4 lg:right-6 -translate-y-1/2 z-50 w-[360px] md:w-[420px]"
             >
-              <div className="bg-white shadow-[0_15px_50px_rgba(0,0,0,0.2)] rounded-[10px] flex flex-col overflow-hidden relative">
+              <div className="bg-white shadow-[0_20px_60px_rgba(0,0,0,0.25)] rounded-2xl flex flex-col overflow-hidden relative">
                 
                 {/* Header */}
-                <div className="bg-[#1f313f] text-white px-5 py-4 flex items-center justify-between">
-                  <div className="flex items-center gap-2.5">
-                    <Calendar size={18} className="text-[#ecbb3f]" />
-                    <h3 className="font-bold text-[16px] tracking-wide whitespace-nowrap">Hızlı Randevu</h3>
+                <div className="bg-[#1f313f] text-white px-6 py-5 flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <Calendar size={22} className="text-[#ecbb3f]" />
+                    <h3 className="font-bold text-[18px] tracking-wide whitespace-nowrap">Hızlı Randevu</h3>
                   </div>
                   <button 
                     onClick={() => setIsPopupOpen(false)} 
-                    className="text-gray-300 hover:text-white transition-colors cursor-pointer"
+                    className="text-gray-300 hover:text-white transition-colors cursor-pointer p-1"
                   >
-                    <X size={20} strokeWidth={2.5} />
+                    <X size={24} strokeWidth={2.5} />
                   </button>
                 </div>
                 
                 {/* Body */}
-                <div className="p-6 bg-white">
-                  <p className="text-gray-500 text-[13.5px] font-medium mb-5 leading-relaxed">
+                <div className="p-7 bg-white">
+                  <p className="text-gray-500 text-[14px] font-medium mb-6 leading-relaxed">
                     Lütfen bilgilerinizi bırakın, uzman ekibimiz sizi en kısa sürede arasın.
                   </p>
 
-                  <form className="space-y-3.5 font-sans">
+                  <form className="space-y-4 font-sans">
                     
                     {/* Name field */}
                     <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                        <User size={18} className="text-gray-400" strokeWidth={2} />
+                      <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                        <User size={20} className="text-gray-400" strokeWidth={2} />
                       </div>
                       <input 
                         type="text" 
                         placeholder="Adınız Soyadınız"
-                        className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-1 focus:ring-[#ecbb3f]/30 focus:outline-none text-gray-800 h-[44px] pl-[38px] pr-4 rounded-[6px] transition-all text-[14px] font-medium placeholder-gray-400" 
+                        className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-2 focus:ring-[#ecbb3f]/20 focus:outline-none text-gray-800 h-[50px] pl-12 pr-4 rounded-lg transition-all text-[15px] font-medium placeholder-gray-400" 
                       />
                     </div>
 
                     {/* Phone field */}
                     <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                        <Phone size={18} className="text-gray-400" strokeWidth={2} />
+                      <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                        <Phone size={20} className="text-gray-400" strokeWidth={2} />
                       </div>
                       <input 
                         type="tel" 
                         placeholder="Telefon Numaranız"
-                        className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-1 focus:ring-[#ecbb3f]/30 focus:outline-none text-gray-800 h-[44px] pl-[38px] pr-4 rounded-[6px] transition-all text-[14px] font-medium placeholder-gray-400" 
+                        className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-2 focus:ring-[#ecbb3f]/20 focus:outline-none text-gray-800 h-[50px] pl-12 pr-4 rounded-lg transition-all text-[15px] font-medium placeholder-gray-400" 
                       />
                     </div>
 
                     {/* Email field */}
                     <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                        <Mail size={18} className="text-gray-400" strokeWidth={2} />
+                      <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+                        <Mail size={20} className="text-gray-400" strokeWidth={2} />
                       </div>
                       <input 
                         type="email" 
                         placeholder="E-posta Adresiniz"
-                        className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-1 focus:ring-[#ecbb3f]/30 focus:outline-none text-gray-800 h-[44px] pl-[38px] pr-4 rounded-[6px] transition-all text-[14px] font-medium placeholder-gray-400" 
+                        className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-2 focus:ring-[#ecbb3f]/20 focus:outline-none text-gray-800 h-[50px] pl-12 pr-4 rounded-lg transition-all text-[15px] font-medium placeholder-gray-400" 
                       />
                     </div>
 
@@ -125,7 +125,7 @@ export default function HeroSlider() {
                     <div className="relative">
                       <select 
                         defaultValue=""
-                        className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-1 focus:ring-[#ecbb3f]/30 focus:outline-none text-gray-600 h-[44px] pl-4 pr-10 rounded-[6px] transition-all text-[14px] font-medium appearance-none"
+                        className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-2 focus:ring-[#ecbb3f]/20 focus:outline-none text-gray-600 h-[50px] pl-5 pr-10 rounded-lg transition-all text-[15px] font-medium appearance-none"
                       >
                         <option value="" disabled>Konu Seçiniz</option>
                         <option value="1">Lazer Tedavisi</option>
@@ -133,8 +133,8 @@ export default function HeroSlider() {
                         <option value="3">Akıllı Lens</option>
                         <option value="4">Genel Muayene</option>
                       </select>
-                      <div className="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none">
-                        <ChevronDown size={18} className="text-gray-800" strokeWidth={2.5} />
+                      <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                        <ChevronDown size={20} className="text-gray-800" strokeWidth={2.5} />
                       </div>
                     </div>
 
@@ -143,13 +143,13 @@ export default function HeroSlider() {
                       <textarea 
                         placeholder="Mesajınız / Notunuz"
                         rows={3}
-                        className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-1 focus:ring-[#ecbb3f]/30 focus:outline-none text-gray-800 py-3 px-4 rounded-[6px] transition-all text-[14px] font-medium placeholder-gray-400 resize-none" 
+                        className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-2 focus:ring-[#ecbb3f]/20 focus:outline-none text-gray-800 py-3.5 px-5 rounded-lg transition-all text-[15px] font-medium placeholder-gray-400 resize-none" 
                       />
                     </div>
 
                     {/* Submit */}
-                    <div className="pt-2">
-                       <button type="button" className="w-full bg-[#ecbb3f] hover:bg-[#d99816] text-white transition-colors font-bold text-[15px] h-[46px] rounded-[6px] uppercase tracking-wide">
+                    <div className="pt-3">
+                       <button type="button" className="w-full bg-[#ecbb3f] hover:bg-[#d99816] text-white transition-colors font-bold text-[16px] h-[52px] rounded-lg uppercase tracking-wider">
                          GÖNDER
                        </button>
                     </div>
@@ -277,11 +277,8 @@ export default function HeroSlider() {
         </div>
       </div> {/* CLOSES the overflow-hidden slider track */}
 
-      {/* Spacer for Form Overlap */}
-      <div className="h-[90px] md:h-[130px] w-full pointer-events-none" />
-
       {/* Horizontal Quick Appointment Form (Overlaps Bottom Edge) */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-40 w-full px-4 max-w-[1100px]">
+      <div className="relative z-40 w-full px-4 md:px-8 max-w-[1250px] mx-auto -mt-[80px] md:-mt-[100px] mb-16">
         <div className="bg-white rounded-[12px] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.3)] p-6 md:p-8">
            {/* Header */}
            <div className="mb-6 relative">
@@ -297,26 +294,26 @@ export default function HeroSlider() {
                  
                  {/* Name Input */}
                  <div className="relative">
-                    <label className="text-[13px] font-bold text-gray-600 mb-2 block">Adınız Soyadınız</label>
+                    <label className="text-[14px] font-bold text-[#1f313f] mb-2 block">Adınız Soyadınız</label>
                     <input 
                       type="text" 
                       placeholder="Adınız Soyadınız" 
-                      className="w-full h-[52px] border border-gray-200 rounded-[6px] px-4 text-[14px] font-medium text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#ecbb3f] focus:ring-1 focus:ring-[#ecbb3f]/30 transition-all bg-gray-50/30" 
+                      className="w-full h-[54px] border border-gray-200 rounded-[6px] px-4 text-[15px] font-medium text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#ecbb3f] focus:ring-1 focus:ring-[#ecbb3f]/30 transition-all bg-white" 
                     />
                  </div>
                  
                  {/* Phone Input with Flag */}
                  <div className="relative">
-                    <label className="text-[13px] font-bold text-gray-600 mb-2 block">Telefon Numaranız</label>
-                    <div className="flex items-center h-[52px] border border-gray-200 rounded-[6px] focus-within:border-[#ecbb3f] focus-within:ring-1 focus-within:ring-[#ecbb3f]/30 transition-all bg-gray-50/30">
-                       <div className="pl-3 pr-2 flex items-center justify-center border-r border-gray-200 cursor-pointer hover:bg-gray-100 transition h-full rounded-l-[6px]">
-                          <img src="/tr.svg" alt="TR" className="w-[18px] h-[13px] object-cover rounded-[2px]" />
+                    <label className="text-[14px] font-bold text-[#1f313f] mb-2 block">Telefon Numaranız</label>
+                    <div className="flex items-center h-[54px] border border-gray-200 rounded-[6px] focus-within:border-[#ecbb3f] focus-within:ring-1 focus-within:ring-[#ecbb3f]/30 transition-all bg-white overflow-hidden">
+                       <div className="pl-4 pr-2 flex items-center justify-center border-r border-gray-200 cursor-pointer hover:bg-gray-50 transition h-full rounded-l-[6px]">
+                          <img src="/tr.svg" alt="TR" className="w-[20px] h-[14px] object-cover rounded-[2px]" />
                           <ChevronDown size={14} className="text-gray-500 ml-1.5" />
                        </div>
                        <input 
                          type="tel" 
                          placeholder="Örn: 0555 555 55 55" 
-                         className="w-full h-full px-3 text-[14px] font-medium text-gray-800 placeholder-gray-400 outline-none bg-transparent" 
+                         className="w-full h-full px-4 text-[15px] font-medium text-gray-800 placeholder-gray-400 outline-none bg-transparent" 
                        />
                     </div>
                  </div>
@@ -325,9 +322,9 @@ export default function HeroSlider() {
                  <div>
                     <button 
                       type="button" 
-                      className="w-full h-[52px] bg-[#ecbb3f] hover:bg-[#d6a529] text-white font-black tracking-widest rounded-[6px] shadow-md shadow-[#ecbb3f]/20 transition-all text-[15px] uppercase"
+                      className="w-full h-[54px] bg-[#ecbb3f] hover:bg-[#d6a529] text-white font-black tracking-widest rounded-[6px] shadow-md shadow-[#ecbb3f]/20 transition-all text-[16px] uppercase"
                     >
-                       GÖnder
+                       GÖNDER
                     </button>
                  </div>
 

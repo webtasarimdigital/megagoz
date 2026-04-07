@@ -97,20 +97,24 @@ export default function Header() {
             <div className="relative flex items-center ml-2" ref={langMenuRef}>
               <button 
                 onClick={() => setIsLangMenuOpen(!isLangMenuOpen)} 
-                className="flex items-center gap-2 bg-white hover:bg-gray-50 transition-colors px-2.5 py-1.5 rounded shadow-sm border-[1.5px] border-gray-200"
+                className="flex items-center gap-2.5 bg-transparent hover:opacity-80 transition-opacity p-1 rounded"
               >
                 {locale === "tr" ? (
                   <>
-                    <img src="/tr.svg" alt="TR" className="w-[20px] h-[14px] object-cover shrink-0 mix-blend-multiply opacity-90 rounded-[2px]" />
-                    <span className="font-black text-[#dcae3d] text-[12px] tracking-wide mt-0.5">TÜRKÇE</span>
+                    <div className="w-[24px] h-[16px] rounded-[2px] overflow-hidden shrink-0 shadow-sm border border-white/20">
+                       <img src="/tr.svg" alt="TR" className="w-full h-full object-cover transform scale-[1.2]" />
+                    </div>
+                    <span className="font-bold text-white text-[14px] tracking-wider uppercase mt-0.5">TÜRKÇE</span>
                   </>
                 ) : (
                   <>
-                    <img src="/en.svg" alt="EN" className="w-[20px] h-[14px] object-cover shrink-0 mix-blend-multiply opacity-90 rounded-[2px]" />
-                    <span className="font-black text-[#dcae3d] text-[12px] tracking-wide mt-0.5">ENGLISH</span>
+                    <div className="w-[24px] h-[16px] rounded-[2px] overflow-hidden shrink-0 shadow-sm border border-white/20">
+                       <img src="/en.svg" alt="EN" className="w-full h-full object-cover transform scale-[1.2]" />
+                    </div>
+                    <span className="font-bold text-white text-[14px] tracking-wider uppercase mt-0.5">ENGLISH</span>
                   </>
                 )}
-                <ChevronDown size={14} className="text-[#dcae3d] mt-0.5" />
+                <ChevronDown size={14} className="text-[#ecbb3f] mt-0.5" />
               </button>
 
               <AnimatePresence>
@@ -120,22 +124,26 @@ export default function Header() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-[calc(100%+8px)] right-0 bg-white rounded shadow-xl border border-gray-200 min-w-[120px] z-50 overflow-hidden"
+                    className="absolute top-[calc(100%+14px)] right-0 bg-white rounded-b-md shadow-[0_15px_40px_rgba(0,0,0,0.15)] border-t-[3px] border-t-[#ecbb3f] min-w-[200px] z-50 overflow-hidden"
                   >
                     <button 
                       onClick={() => { switchLocale("tr"); setIsLangMenuOpen(false); }}
-                      className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-50 transition-colors"
+                      className="flex items-center gap-4 w-full px-5 py-4 hover:bg-gray-50 transition-colors"
                     >
-                      <img src="/tr.svg" alt="TR" className="w-[20px] h-[14px] object-cover mix-blend-multiply opacity-90 rounded-[1px]" />
-                       <span className="font-bold text-[#333] tracking-wide text-[13px]">Türkçe</span>
+                      <div className="w-[24px] h-[16px] rounded-[2px] overflow-hidden shrink-0 shadow-sm border border-gray-200">
+                         <img src="/tr.svg" alt="TR" className="w-full h-full object-cover transform scale-[1.2]" />
+                      </div>
+                       <span className={`font-bold tracking-widest text-[14px] uppercase ${locale === "tr" ? "text-[#cda669]" : "text-[#333]"}`}>TÜRKÇE</span>
                     </button>
-                    <div className="h-[1px] w-full bg-gray-100 px-2" />
+                    <div className="h-[1px] w-full bg-gray-100" />
                     <button 
                       onClick={() => { switchLocale("en"); setIsLangMenuOpen(false); }}
-                      className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-50 transition-colors"
+                      className="flex items-center gap-4 w-full px-5 py-4 hover:bg-gray-50 transition-colors"
                     >
-                      <img src="/en.svg" alt="EN" className="w-[20px] h-[14px] object-cover mix-blend-multiply opacity-90 rounded-[1px]" />
-                       <span className="font-bold text-[#333] tracking-wide text-[13px]">English</span>
+                      <div className="w-[24px] h-[16px] rounded-[2px] overflow-hidden shrink-0 shadow-sm border border-gray-200">
+                         <img src="/en.svg" alt="EN" className="w-full h-full object-cover transform scale-[1.2]" />
+                      </div>
+                       <span className={`font-bold tracking-widest text-[14px] uppercase ${locale === "en" ? "text-[#cda669]" : "text-[#333]"}`}>ENGLISH</span>
                     </button>
                   </motion.div>
                 )}
@@ -150,7 +158,7 @@ export default function Header() {
         <div className="w-full flex items-center justify-center px-4 md:px-8 gap-8 lg:gap-10 xl:gap-20">
           
           {/* Logo */}
-          <Link href="/" className="flex flex-col justify-center items-center shrink-0 w-[180px] md:w-[260px] lg:w-[320px] h-[55px] md:h-[70px] lg:h-[80px] relative overflow-hidden">
+          <Link href="/" className="flex flex-col justify-center items-center shrink-0 w-[160px] md:w-[234px] lg:w-[288px] h-[50px] md:h-[63px] lg:h-[72px] relative overflow-hidden">
             <img 
               src="/logo.png" 
               alt="Megagöz Tıp Merkezi" 
