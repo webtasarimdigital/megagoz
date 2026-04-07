@@ -54,90 +54,90 @@ export default function HeroSlider() {
           {isPopupOpen && (
             <motion.div
               initial={{ width: 0, opacity: 0 }}
-              animate={{ width: "340px", opacity: 1 }}
+              animate={{ width: "360px", opacity: 1 }}
               exit={{ width: 0, opacity: 0 }}
               transition={{ type: "tween", duration: 0.3 }}
-              className="bg-[#e85025] overflow-y-auto max-h-[90vh] shadow-[-10px_0_30px_rgba(0,0,0,0.2)] rounded-l-md"
+              className="bg-white overflow-y-auto max-h-[90vh] shadow-[0_10px_40px_rgba(0,0,0,0.15)] rounded-l-xl z-50 border-l border-gray-100"
             >
-              <div className="p-6 text-white w-[340px]">
+              <div className="p-7 w-[360px]">
                 <button 
                   onClick={() => setIsPopupOpen(false)} 
-                  className="absolute top-4 right-4 text-white hover:text-white/70 transition-colors"
+                  className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors bg-gray-50 rounded-full p-2"
                 >
-                  <X size={28} />
+                  <X size={20} />
                 </button>
                 
                 <form className="mt-8 space-y-6 font-sans">
                   
                   {/* Name field */}
                   <div className="space-y-1">
-                    <label className="text-[13px] font-bold uppercase tracking-wider text-white">ADINIZ SOYADINIZ</label>
+                    <label className="text-[12px] font-bold uppercase tracking-wider text-gray-500">ADINIZ SOYADINIZ</label>
                     <input 
                       type="text" 
-                      className="w-full bg-transparent border-b-2 border-white/80 focus:border-white focus:outline-none focus:ring-0 text-white placeholder-white py-1 transition-colors font-medium rounded-none pb-2 text-base" 
+                      className="w-full bg-transparent border-b-2 border-gray-200 focus:border-[#F2AC1E] focus:outline-none focus:ring-0 text-gray-800 placeholder-transparent py-1 transition-colors font-medium rounded-none pb-2 text-base" 
                     />
                   </div>
 
                   {/* Phone field */}
                   <div className="space-y-1">
-                    <label className="text-[13px] font-bold uppercase tracking-wider text-white">TELEFONUNUZ</label>
-                    <div className="flex items-end border-b-2 border-white/80 focus-within:border-white py-1 pb-2">
-                      <div className="flex items-center gap-1 pr-3">
+                    <label className="text-[12px] font-bold uppercase tracking-wider text-gray-500">TELEFONUNUZ</label>
+                    <div className="flex items-end border-b-2 border-gray-200 focus-within:border-[#F2AC1E] py-1 pb-2 transition-colors">
+                      <div className="flex items-center gap-1 pr-3 border-r border-gray-300 mr-2">
                         {/* Fake TR flag */}
                         <div className="w-5 h-3.5 bg-red-600 flex items-center justify-center overflow-hidden relative">
                            <div className="text-white text-[8px] absolute">★</div>
                         </div>
-                        <ChevronDown size={14} className="text-white/80" />
+                        <ChevronDown size={14} className="text-gray-500" />
                       </div>
                       <input 
                         type="tel" 
                         defaultValue="05"
-                        className="w-full bg-transparent focus:outline-none focus:ring-0 text-white placeholder-white transition-colors font-medium rounded-none text-base" 
+                        className="w-full bg-transparent focus:outline-none focus:ring-0 text-gray-800 placeholder-transparent transition-colors font-medium rounded-none text-base" 
                       />
                     </div>
                   </div>
 
                   {/* Center Dropdown */}
                   <div className="space-y-1">
-                    <label className="text-[13px] font-bold uppercase tracking-wider text-white">MERKEZ</label>
-                    <div className="relative border-b-2 border-white/80 pb-2 flex items-center justify-between cursor-pointer group">
-                      <span className="text-white font-medium text-base">MERKEZİ SEÇİNİZ</span>
-                      <ChevronDown size={18} className="text-white group-hover:text-white/80" />
+                    <label className="text-[12px] font-bold uppercase tracking-wider text-gray-500">MERKEZ</label>
+                    <div className="relative border-b-2 border-gray-200 pb-2 flex items-center justify-between cursor-pointer group hover:border-[#F2AC1E] transition-colors">
+                      <span className="text-gray-800 font-medium text-[15px]">MERKEZİ SEÇİNİZ</span>
+                      <ChevronDown size={18} className="text-[#F2AC1E]" />
                     </div>
                   </div>
 
                   {/* Doctor Dropdown */}
                   <div className="space-y-1">
-                    <label className="text-[13px] font-bold uppercase tracking-wider text-white">HEKİM</label>
-                    <div className="relative border-b-2 border-white/80 pb-2 flex items-center justify-between cursor-pointer group mt-2">
-                      <span className="text-white/0 font-medium text-base">.</span> {/* empty space holder */}
-                      <ChevronDown size={18} className="text-white group-hover:text-white/80" />
+                    <label className="text-[12px] font-bold uppercase tracking-wider text-gray-500">HEKİM</label>
+                    <div className="relative border-b-2 border-gray-200 pb-2 flex items-center justify-between cursor-pointer group hover:border-[#F2AC1E] transition-colors mt-2">
+                      <span className="text-gray-400 font-medium text-[15px]">Seçiniz</span> 
+                      <ChevronDown size={18} className="text-[#F2AC1E]" />
                     </div>
                   </div>
 
                   {/* Date & Time */}
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-1">
-                      <label className="text-[13px] font-bold uppercase tracking-wider text-white">GÜN</label>
-                      <div className="relative border-b-2 border-white/80 pb-2 pt-2">
-                         <span className="text-white/0">.</span>
+                      <label className="text-[12px] font-bold uppercase tracking-wider text-gray-500">GÜN</label>
+                      <div className="relative border-b-2 border-gray-200 pb-2 pt-2 hover:border-[#F2AC1E] transition-colors cursor-pointer">
+                         <span className="text-gray-400 text-[15px]">Seçiniz</span>
                       </div>
                     </div>
                     <div className="space-y-1">
-                      <label className="text-[13px] font-bold uppercase tracking-wider text-white">SAAT</label>
-                      <div className="relative border-b-2 border-white/80 pb-2 flex items-center justify-between cursor-pointer group pt-2">
-                        <span className="text-white font-medium text-base">SAAT SEÇİNİZ</span>
-                        <ChevronDown size={18} className="text-white" />
+                      <label className="text-[12px] font-bold uppercase tracking-wider text-gray-500">SAAT</label>
+                      <div className="relative border-b-2 border-gray-200 pb-2 flex items-center justify-between cursor-pointer hover:border-[#F2AC1E] transition-colors pt-2">
+                        <span className="text-gray-800 font-medium text-[15px]">SAAT SEÇİNİZ</span>
+                        <ChevronDown size={18} className="text-[#F2AC1E]" />
                       </div>
                     </div>
                   </div>
 
                   {/* KVKK */}
                   <div className="flex items-start gap-3 pt-4">
-                    <div className="min-w-5 w-5 h-5 border-2 border-white flex items-center justify-center mt-1 bg-transparent cursor-pointer">
+                    <div className="min-w-5 w-5 h-5 border-2 border-gray-300 flex items-center justify-center mt-0.5 bg-transparent cursor-pointer rounded-sm hover:border-[#F2AC1E]">
                     </div>
-                    <p className="text-[12px] leading-tight text-white font-medium">
-                      <a href="#" className="font-bold underline underline-offset-2">KVKK</a> hakkında bilgilendirme metnini okudum, kabul ediyorum.
+                    <p className="text-[12px] leading-tight text-gray-600 font-medium">
+                      <a href="#" className="font-bold underline underline-offset-2 text-[#F2AC1E]">KVKK</a> hakkında bilgilendirme metnini okudum, kabul ediyorum.
                     </p>
                   </div>
 
@@ -148,16 +148,15 @@ export default function HeroSlider() {
                       <span className="text-[#2b2b2b] text-[14px] font-medium font-sans">Ben robot değilim</span>
                     </div>
                     <div className="flex flex-col items-center">
-                       <span className="text-[20px] leading-none mb-1 text-blue-600">♻</span>
+                       <span className="text-[20px] leading-none mb-1 text-green-600">♻</span>
                        <span className="text-[8px] text-[#555]">reCAPTCHA</span>
                     </div>
                   </div>
-                  <p className="text-[11px] text-white/90">Lütfen "Ben robot değilim" olarak işaretleyiniz.</p>
+                  <p className="text-[11px] text-gray-500">Lütfen "Ben robot değilim" olarak işaretleyiniz.</p>
 
                   {/* Submit */}
-                  <button type="button" className="w-full bg-[#af6650] text-[#e3bbaf] hover:bg-[#8e4f3a] transition-colors font-bold text-[16px] py-4 rounded font-sans flex items-center justify-between px-6 mt-6">
+                  <button type="button" className="w-full bg-[#F2AC1E] text-white hover:bg-[#d99816] transition-colors font-black text-[16px] py-4 rounded font-sans flex items-center justify-center mt-6 shadow-lg shadow-[#F2AC1E]/30 tracking-wide">
                     GÖNDER
-                    <ChevronRight size={20} className="text-[#e3bbaf]" />
                   </button>
 
                 </form>
@@ -179,7 +178,7 @@ export default function HeroSlider() {
                  <span className="absolute -bottom-1 -right-1 bg-[#1f6388] px-1"><ChevronRight size={12}/></span>
               </div>
             </div>
-            <div className="bg-[#e85025] text-white font-black text-[13px] py-4 w-full flex items-center justify-center text-center leading-5 tracking-wide">
+            <div className="bg-[#F2AC1E] text-white font-black text-[13px] py-4 w-full flex items-center justify-center text-center leading-5 tracking-wide">
               TIKLA<br/>RANDEVU<br/>AL
             </div>
           </button>

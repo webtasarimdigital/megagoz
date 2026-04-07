@@ -61,8 +61,8 @@ export default function Header() {
 
           {/* Right contact & settings */}
           <div className="flex items-center gap-4 shrink-0 font-bold">
-            <a href="tel:4440000" className="text-[15px] hover:text-gray-200">
-              444 0 481
+            <a href="tel:4440320" className="text-[15px] hover:text-gray-200">
+              444 0 320
             </a>
             <span className="text-white/60">|</span>
             {/* Social Icons mini */}
@@ -167,9 +167,9 @@ export default function Header() {
                 )
               ))}
               <div className="pt-2">
-                <a href="tel:4440000" className="flex items-center gap-2 text-[#00609C] font-bold">
+                <a href="tel:4440320" className="flex items-center gap-2 text-[#00609C] font-bold">
                   <Phone size={18} />
-                  444 0 000 Merkezi Çağrı
+                  444 0 320 Merkezi Çağrı
                 </a>
               </div>
             </div>

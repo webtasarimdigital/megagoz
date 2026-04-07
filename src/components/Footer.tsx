@@ -69,11 +69,13 @@ export default function Footer() {
             <ul className="space-y-4 text-sm px-0 list-none">
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-cyan-vibrant shrink-0 mt-1" />
-                <span>Modern Tıp Merkezi Cad.<br/>No: 123 Şişli, İstanbul</span>
+                <a href="https://share.google/zC0UTV7bTbwJn46pu" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                  Merkez Mahallesi,<br/>Megagöz Göz Sağlığı Merkezi
+                </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-cyan-vibrant shrink-0" />
-                <a href="tel:+90" className="hover:text-white transition-colors">+90 (212) 555 00 00</a>
+                <a href="tel:4440320" className="hover:text-white transition-colors">444 0 320</a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-cyan-vibrant shrink-0" />

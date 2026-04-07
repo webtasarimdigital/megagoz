@@ -4,6 +4,7 @@ import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import type { Metadata } from "next";
 import "../globals.css"; // Note the relative path adjust since it's now in [locale]
+import FloatingActions from "@/components/FloatingActions";
 
 export const metadata: Metadata = {
   title: "Megagöz | Göz Sağlığı Merkezi",
@@ -33,6 +34,7 @@ export default async function LocaleLayout({
       <body>
         <NextIntlClientProvider messages={messages}>
           {children}
+          <FloatingActions />
         </NextIntlClientProvider>
       </body>
     </html>
