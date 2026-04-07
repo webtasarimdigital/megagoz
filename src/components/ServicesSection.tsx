@@ -48,7 +48,7 @@ export default function ServicesSection() {
             className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight"
           >
             Sizin İçin Fark <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-gray-600">Yaratan Tedaviler</span>
+            <span className="text-[#ecbb3f]">Yaratan Tedaviler</span>
           </motion.h2>
         </div>
 

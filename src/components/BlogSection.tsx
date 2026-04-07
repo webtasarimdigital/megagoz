@@ -67,7 +67,7 @@ export default function BlogSection() {
                <span className="text-[#ecbb3f] font-bold tracking-widest uppercase text-sm">GÜNCEL BLOG</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-black text-[#1f313f] tracking-tight">
-              Sağlık <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-[#1f313f]">Rehberi</span>
+              Sağlık <span className="text-[#1f313f]">Rehberi</span>
             </h2>
           </motion.div>
 

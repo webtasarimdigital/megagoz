@@ -58,9 +58,9 @@ export default function FAQSection() {
                <span className="text-[#ecbb3f] font-bold tracking-widest uppercase text-sm">MERAK EDİLENLER</span>
             </div>
             
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#1f313f] leading-[1.1] mb-6">
-              Sıkça Sorulan <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1f313f] to-gray-400">Sorular.</span>
+            <h2 className="text-4xl lg:text-5xl font-black text-[#1f313f] tracking-tight">
+              Sıkça Sorulan <br className="hidden lg:block"/>
+              <span className="text-[#ecbb3f]">Sorular.</span>
             </h2>
             
             <p className="text-gray-500 font-medium text-lg mb-10 leading-relaxed max-w-lg">

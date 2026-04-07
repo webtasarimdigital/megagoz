@@ -57,22 +57,39 @@ export default function BlogPage() {
     <main className="min-h-screen flex flex-col bg-[#F8FAFC]">
       <Header />
       
-      {/* Page Header Area */}
-      <div className="w-full bg-[#1f313f] pt-40 pb-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[#ecbb3f]/5 blur-[100px] pointer-events-none" />
-        <div className="container mx-auto px-6 max-w-[1300px] relative z-10 text-center">
-          <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">
+      {/* Hero Header Area (Megaeste overlap style) */}
+      <div className="relative w-full h-[500px] md:h-[600px] flex items-center justify-center pt-20">
+        <Image 
+          src="/images/slide3.png" 
+          alt="Blog Background" 
+          fill 
+          priority
+          className="object-cover object-center" 
+        />
+        <div className="absolute inset-0 bg-[#1f313f]/85 z-0" />
+        
+        <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 max-w-3xl pb-16">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="h-[1px] w-8 md:w-12 bg-[#ecbb3f]" />
+            <span className="text-[#ecbb3f] font-bold tracking-[0.2em] uppercase text-sm md:text-base">
+              MEGAGÖZ BLOG
+            </span>
+            <div className="h-[1px] w-8 md:w-12 bg-[#ecbb3f]" />
+          </div>
+          
+          <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight mb-6">
             {t("title")}
           </h1>
-          <p className="text-gray-300 max-w-2xl mx-auto text-lg">
+          
+          <p className="text-gray-300 md:text-lg font-medium leading-relaxed max-w-2xl px-4">
             {t("subtitle")}
           </p>
         </div>
       </div>
 
-      {/* Main Blog Grid */}
-      <div className="container mx-auto px-6 max-w-[1300px] py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      {/* Main Blog Grid (Overlapping) */}
+      <div className="container mx-auto px-4 sm:px-6 max-w-[1300px] relative z-20 -mt-24 md:-mt-32 pb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           {blogPosts.map((post) => (
             <a href="#" key={post.id} className="group flex flex-col bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
               

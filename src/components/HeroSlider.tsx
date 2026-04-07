@@ -48,7 +48,7 @@ export default function HeroSlider() {
   return (
     <div className="relative w-full bg-[#F8FAFC]">
       {/* Sticky Appointment Widget */}
-      <div className="fixed right-0 top-1/2 -translate-y-1/2 z-[100]">
+      <div className="fixed right-0 top-[60%] -translate-y-1/2 z-[100]">
         
         {/* Flyout Panel (Megaeste Style Popup) */}
         <AnimatePresence>
@@ -252,7 +252,7 @@ export default function HeroSlider() {
         </AnimatePresence>
 
         {/* Vertical Numbering Pagination (Left Side) */}
-        <div className="absolute left-4 md:left-8 lg:left-[5%] xl:left-[8%] top-1/2 -translate-y-1/2 z-20 flex flex-col gap-5">
+        <div className="absolute left-4 md:left-8 lg:left-[5%] xl:left-[8%] top-[60%] -translate-y-1/2 z-20 flex flex-col gap-5">
           {slides.map((_, idx) => (
             <button
               key={idx}

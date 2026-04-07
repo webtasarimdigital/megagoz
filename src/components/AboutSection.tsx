@@ -74,10 +74,10 @@ export default function AboutSection() {
                <span className="text-[#ecbb3f] font-bold tracking-widest uppercase text-sm">Hakkımızda</span>
             </div>
             
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#1f313f] leading-[1.1] mb-6 tracking-tight">
+            <h2 className="text-4xl lg:text-5xl font-black text-[#1f313f] tracking-tight leading-[1.1] mb-6">
               Göz Sağlığınız İçin <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1f313f] to-[#004e8e]">Dünya Standartlarında</span><br />
-              Teknoloji.
+              <span className="text-[#ecbb3f]">Dünya Standartlarında</span><br />
+              Sağlık ve Bakım.
             </h2>
             
             <p className="text-lg text-gray-500 mb-8 leading-relaxed font-medium">
