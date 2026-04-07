@@ -10,7 +10,7 @@ export default function HomePage() {
     <main className="min-h-screen flex flex-col bg-white">
       <Header />
       <HeroSlider />
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 }

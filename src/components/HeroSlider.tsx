@@ -48,7 +48,9 @@ export default function HeroSlider() {
   return (
     <div className="relative w-full bg-[#F8FAFC]">
       {/* Sticky Appointment Widget */}
-      <div className="fixed right-0 top-1/2 -translate-y-1/2 z-[100] flex">
+      {/* Sticky Appointment Widget */}
+      <div className="fixed right-0 top-1/2 z-[100]">
+        
         {/* Flyout Panel */}
         <AnimatePresence>
           {isPopupOpen && (
@@ -57,17 +59,18 @@ export default function HeroSlider() {
               animate={{ width: "420px", opacity: 1 }}
               exit={{ width: 0, opacity: 0 }}
               transition={{ type: "tween", duration: 0.3 }}
-              className="bg-white overflow-y-auto overflow-x-hidden max-h-[90vh] shadow-[-10px_0_40px_rgba(0,0,0,0.15)] rounded-l-2xl z-50"
+              className="absolute right-0 -translate-y-1/2 bg-white overflow-y-auto overflow-x-hidden max-h-[90vh] shadow-[-15px_0_50px_rgba(0,0,0,0.2)] rounded-l-2xl z-50 origin-right"
             >
               <div className="p-8 w-[420px] relative">
                 <button 
                   onClick={() => setIsPopupOpen(false)} 
-                  className="absolute top-5 right-5 text-gray-400 hover:text-[#ecbb3f] transition-colors bg-gray-100 rounded-full p-2"
+                  className="absolute top-5 right-5 text-gray-400 hover:text-[#ecbb3f] transition-all bg-gray-50 hover:bg-white border border-transparent hover:border-[#ecbb3f]/30 shadow-sm rounded-full p-2"
                 >
                   <X size={20} />
                 </button>
                 
-                <h3 className="text-xl font-black text-[#1f313f] mb-6 pr-8">Hızlı Randevu Oluştur</h3>
+                <h3 className="text-xl font-black text-[#1f313f] mb-2 pr-8">Hızlı Randevu Oluştur</h3>
+                <p className="text-gray-500 text-[13px] font-medium mb-6">Bilgilerinizi bırakın, hemen arayalım.</p>
 
                 <form className="space-y-4 font-sans">
                   
@@ -76,89 +79,68 @@ export default function HeroSlider() {
                     <label className="text-[13px] font-bold text-gray-600 mb-1.5 block">Adınız Soyadınız</label>
                     <input 
                       type="text" 
-                      placeholder="Adınız Soyadınız"
-                      className="w-full bg-gray-50 border border-gray-200 focus:border-[#ecbb3f] focus:bg-white focus:outline-none text-gray-800 py-3 px-4 rounded-lg transition-all text-[14px] font-medium placeholder-gray-400" 
+                      placeholder="Örn: Ahmet Yılmaz"
+                      className="w-full bg-gray-50/50 border border-gray-200 focus:border-[#ecbb3f] focus:bg-white focus:ring-4 focus:ring-[#ecbb3f]/10 focus:outline-none text-gray-800 py-3.5 px-4 rounded-xl transition-all text-[14px] font-medium placeholder-gray-400" 
                     />
                   </div>
 
                   {/* Phone field */}
                   <div>
                     <label className="text-[13px] font-bold text-gray-600 mb-1.5 block">Telefonunuz</label>
-                    <div className="flex bg-gray-50 border border-gray-200 rounded-lg overflow-hidden focus-within:border-[#ecbb3f] focus-within:bg-white transition-all">
-                      <div className="flex items-center gap-2 px-3 border-r border-gray-200 bg-gray-50">
-                        <div className="w-5 h-3.5 bg-red-600 flex items-center justify-center overflow-hidden relative rounded-sm">
-                           <div className="text-white text-[8px] absolute">★</div>
-                        </div>
-                        <ChevronDown size={14} className="text-gray-500" />
+                    <div className="flex bg-gray-50/50 border border-gray-200 rounded-xl overflow-hidden focus-within:border-[#ecbb3f] focus-within:bg-white focus-within:ring-4 focus-within:ring-[#ecbb3f]/10 transition-all">
+                      <div className="flex items-center gap-2 pl-4 pr-3 border-r border-gray-200/80">
+                         <img src="/tr.svg" alt="TR" className="w-[18px] h-[13px] object-cover rounded-[2px] shadow-sm flex-shrink-0" />
+                         <ChevronDown size={14} className="text-gray-400" />
                       </div>
                       <input 
                         type="tel" 
-                        defaultValue="05"
-                        className="w-full bg-transparent focus:outline-none text-gray-800 py-3 px-3 text-[14px] font-medium" 
+                        placeholder="Telefon Numaranız"
+                        className="w-full bg-transparent focus:outline-none text-gray-800 py-3.5 px-3 text-[14px] font-medium placeholder-gray-400" 
                       />
                     </div>
                   </div>
 
                   {/* Center Dropdown */}
                   <div>
-                    <label className="text-[13px] font-bold text-gray-600 mb-1.5 block">Merkez</label>
-                    <div className="relative bg-gray-50 border border-gray-200 rounded-lg flex items-center justify-between cursor-pointer hover:border-[#ecbb3f] hover:bg-white transition-all py-3 px-4">
-                      <span className="text-gray-500 font-medium text-[14px]">Merkezi Seçiniz</span>
-                      <ChevronDown size={18} className="text-[#ecbb3f]" />
+                    <label className="text-[13px] font-bold text-gray-600 mb-1.5 block">Şube</label>
+                    <div className="relative bg-gray-50/50 border border-gray-200 rounded-xl flex items-center justify-between cursor-pointer hover:border-[#ecbb3f] hover:bg-white transition-all py-3.5 px-4">
+                      <span className="text-gray-500 font-medium text-[14px]">Şube Seçiniz</span>
+                      <ChevronDown size={16} className="text-[#ecbb3f]" />
                     </div>
                   </div>
 
                   {/* Doctor Dropdown */}
                   <div>
-                    <label className="text-[13px] font-bold text-gray-600 mb-1.5 block">Hekim</label>
-                    <div className="relative bg-gray-50 border border-gray-200 rounded-lg flex items-center justify-between cursor-pointer hover:border-[#ecbb3f] hover:bg-white transition-all py-3 px-4">
-                      <span className="text-gray-400 font-medium text-[14px]">Seçiniz</span> 
-                      <ChevronDown size={18} className="text-[#ecbb3f]" />
+                    <label className="text-[13px] font-bold text-gray-600 mb-1.5 block">Hekim (İsteğe Bağlı)</label>
+                    <div className="relative bg-gray-50/50 border border-gray-200 rounded-xl flex items-center justify-between cursor-pointer hover:border-[#ecbb3f] hover:bg-white transition-all py-3.5 px-4">
+                      <span className="text-gray-400 font-medium text-[14px]">Hekim Seçiniz</span> 
+                      <ChevronDown size={16} className="text-[#ecbb3f]" />
                     </div>
                   </div>
 
                   {/* Date & Time */}
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-2 gap-4">
                     <div>
                       <label className="text-[13px] font-bold text-gray-600 mb-1.5 block">Gün</label>
-                      <div className="relative bg-gray-50 border border-gray-200 rounded-lg py-3 px-4 hover:border-[#ecbb3f] hover:bg-white transition-all cursor-pointer">
+                      <div className="relative bg-gray-50/50 border border-gray-200 rounded-xl py-3.5 px-4 hover:border-[#ecbb3f] hover:bg-white transition-all cursor-pointer">
                          <span className="text-gray-400 text-[14px] font-medium">Seçiniz</span>
                       </div>
                     </div>
                     <div>
                       <label className="text-[13px] font-bold text-gray-600 mb-1.5 block">Saat</label>
-                      <div className="relative bg-gray-50 border border-gray-200 rounded-lg py-3 px-4 flex items-center justify-between cursor-pointer hover:border-[#ecbb3f] hover:bg-white transition-all">
-                        <span className="text-gray-500 font-medium text-[14px]">Saat Seçiniz</span>
-                        <ChevronDown size={18} className="text-[#ecbb3f]" />
+                      <div className="relative bg-gray-50/50 border border-gray-200 rounded-xl py-3.5 px-4 flex items-center justify-between cursor-pointer hover:border-[#ecbb3f] hover:bg-white transition-all">
+                        <span className="text-gray-500 font-medium text-[14px]">Seçiniz</span>
+                        <ChevronDown size={16} className="text-[#ecbb3f]" />
                       </div>
                     </div>
                   </div>
 
-                  {/* KVKK */}
-                  <div className="flex items-start gap-3 pt-2">
-                    <div className="min-w-5 w-5 h-5 border-2 border-gray-300 flex items-center justify-center mt-0.5 bg-white cursor-pointer rounded hover:border-[#ecbb3f] transition-colors">
-                    </div>
-                    <p className="text-[12px] leading-snug text-gray-600 font-medium">
-                      <a href="#" className="font-bold underline underline-offset-2 text-[#ecbb3f]">KVKK</a> hakkında bilgilendirme metnini okudum, kabul ediyorum.
-                    </p>
-                  </div>
-
-                  {/* Recaptcha Dummy */}
-                  <div className="bg-gray-50 border border-gray-200 rounded-lg py-2.5 px-4 flex items-center justify-between mt-1 shadow-sm">
-                    <div className="flex items-center gap-3">
-                      <div className="w-7 h-7 border-[2px] border-gray-300 bg-white rounded-sm" />
-                      <span className="text-gray-700 text-[14px] font-medium font-sans">Ben robot değilim</span>
-                    </div>
-                    <div className="flex flex-col items-center">
-                       <span className="text-[20px] leading-none mb-1 text-green-600">♻</span>
-                       <span className="text-[9px] text-gray-500 font-bold tracking-wider">reCAPTCHA</span>
-                    </div>
-                  </div>
-
                   {/* Submit */}
-                  <button type="button" className="w-full bg-[#ecbb3f] text-white hover:bg-[#d99816] transition-colors font-black text-[16px] py-4 rounded-lg font-sans flex items-center justify-center mt-4 shadow-lg shadow-[#ecbb3f]/30 tracking-wide">
-                    RANDEVU OLUŞTUR
-                  </button>
+                  <div className="pt-2">
+                     <button type="button" className="w-full bg-[#ecbb3f] text-white hover:bg-[#d99816] transition-all transform hover:-translate-y-0.5 font-black text-[15px] py-4 rounded-xl font-sans flex items-center justify-center shadow-[0_10px_25px_-5px_rgba(236,187,63,0.5)] hover:shadow-[0_15px_35px_-5px_rgba(236,187,63,0.6)] tracking-widest uppercase">
+                       Randevu Oluştur
+                     </button>
+                  </div>
 
                 </form>
               </div>
@@ -167,25 +149,31 @@ export default function HeroSlider() {
         </AnimatePresence>
 
         {/* Floating Side Button */}
-        {!isPopupOpen && (
-          <button 
-            onClick={() => setIsPopupOpen(true)}
-            className="w-[85px] h-[190px] flex flex-col shadow-[-5px_0_20px_rgba(0,0,0,0.15)] overflow-hidden transition-transform duration-300 hover:scale-105 origin-right rounded-l-md"
-          >
-            <div className="bg-[#1f313f] flex-1 w-full flex flex-col items-center justify-center border-b border-white/10">
-              <div className="relative w-12 h-12 flex items-center justify-center">
-                <svg className="absolute inset-0 w-full h-full text-white/80" viewBox="0 0 100 100">
-                  <path d="M50 15 A35 35 0 1 1 80 80" fill="none" stroke="currentColor" strokeWidth="6" strokeDasharray="10, 8" strokeLinecap="round" />
-                  <path d="M70 70 L80 80 L70 90" fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <span className="text-white font-black text-[16px] tracking-tighter mt-1 pr-1">24<span className="text-[11px]">/7</span></span>
+        <AnimatePresence>
+          {!isPopupOpen && (
+            <motion.button 
+              initial={{ x: 100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: 100, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={() => setIsPopupOpen(true)}
+              className="absolute right-0 -translate-y-1/2 w-[85px] h-[190px] flex flex-col shadow-[-5px_0_20px_rgba(0,0,0,0.15)] overflow-hidden hover:scale-105 origin-right rounded-l-xl z-40"
+            >
+              <div className="bg-[#1f313f] flex-1 w-full flex flex-col items-center justify-center border-b border-white/10">
+                <div className="relative w-12 h-12 flex items-center justify-center">
+                  <svg className="absolute inset-0 w-full h-full text-white/80" viewBox="0 0 100 100">
+                    <path d="M50 15 A35 35 0 1 1 80 80" fill="none" stroke="currentColor" strokeWidth="6" strokeDasharray="10, 8" strokeLinecap="round" />
+                    <path d="M70 70 L80 80 L70 90" fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  <span className="text-white font-black text-[16px] tracking-tighter mt-1 pr-1">24<span className="text-[11px]">/7</span></span>
+                </div>
               </div>
-            </div>
-            <div className="bg-[#ecbb3f] flex-1 w-full flex items-center justify-center text-center text-white font-black text-[13px] leading-tight tracking-wide">
-              <div>TIKLA<br/>RANDEVU<br/>AL</div>
-            </div>
-          </button>
-        )}
+              <div className="bg-[#ecbb3f] flex-1 w-full flex items-center justify-center text-center text-white font-black text-[13px] leading-tight tracking-wider">
+                <div>TIKLA<br/>RANDEVU<br/>AL</div>
+              </div>
+            </motion.button>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Hero Slider Area */}
@@ -281,71 +269,62 @@ export default function HeroSlider() {
 
       {/* Horizontal Quick Appointment Form (Overlaps Bottom Edge) */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-40 w-full px-4 max-w-[1100px]">
-        <div className="bg-white rounded-[12px] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.3)] p-6 md:p-8 md:pb-6">
+        <div className="bg-white rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.4)] p-8 md:p-10 border border-white/50 backdrop-blur-sm">
+           
            {/* Header */}
-           <div className="mb-6 relative">
-              <h3 className="text-xl md:text-[22px] font-black tracking-tight text-[#1f313f] flex gap-1.5 items-center">
-                 HIZLI RANDEVU <span className="text-[#ecbb3f]">FORMU</span>
+           <div className="mb-8 flex flex-col items-center justify-center text-center">
+              <h3 className="text-[20px] md:text-[26px] font-black tracking-tight text-[#1f313f] flex items-center gap-2">
+                 HIZLI RANDEVU <span className="text-[#ecbb3f] bg-[#ecbb3f]/10 px-3 py-1 rounded-md">FORMU</span>
               </h3>
-              <div className="h-[2.5px] w-[60px] bg-[#ecbb3f] mt-1.5 rounded-full" />
+              <p className="text-gray-500 text-sm mt-2 font-medium tracking-wide">Sizi en kısa sürede arayalım, randevunuzu birlikte planlayalım.</p>
            </div>
 
-           {/* Form Grid */}
-           <form className="flex flex-col gap-6 font-sans">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-                 {/* Name Input */}
-                 <div className="relative">
-                    <input 
-                      type="text" 
-                      placeholder="Adınız Soyadınız" 
-                      className="w-full border border-gray-200 rounded-[6px] py-3.5 px-4 text-[13.5px] font-bold text-gray-800 placeholder-gray-500 focus:outline-none focus:border-[#ecbb3f] focus:ring-1 focus:ring-[#ecbb3f]/30 transition-all bg-white" 
-                    />
+           {/* Premium Minimalist Form Grid */}
+           <form className="flex flex-col md:flex-row gap-5 font-sans w-full">
+              
+              {/* Name Input */}
+              <div className="relative flex-1 group">
+                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <svg className="w-5 h-5 text-gray-400 group-focus-within:text-[#ecbb3f] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
                  </div>
-                 
-                 {/* Phone Input with Flag */}
-                 <div className="relative flex items-center border border-gray-200 rounded-[6px] focus-within:border-[#ecbb3f] focus-within:ring-1 focus-within:ring-[#ecbb3f]/30 transition-all bg-white">
-                    <div className="pl-3 pr-2 flex items-center justify-center border-r border-gray-200 cursor-pointer hover:bg-gray-50 transition h-full rounded-l-[6px]">
-                       <img src="/tr.svg" alt="TR" className="w-[18px] h-[13px] object-cover rounded-[2px]" />
-                       <ChevronDown size={14} className="text-gray-500 ml-1" />
-                    </div>
-                    <input 
-                      type="tel" 
-                      placeholder="Telefon" 
-                      className="w-full py-3.5 px-3 text-[13.5px] font-bold text-gray-800 placeholder-gray-500 outline-none bg-transparent" 
-                    />
+                 <input 
+                   type="text" 
+                   placeholder="Adınız Soyadınız" 
+                   className="w-full bg-gray-50/50 border border-gray-200 rounded-xl py-4 pl-12 pr-4 text-[15px] font-bold text-gray-800 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-[#ecbb3f] focus:ring-4 focus:ring-[#ecbb3f]/10 transition-all" 
+                 />
+              </div>
+              
+              {/* Phone Input with Flag */}
+              <div className="relative flex-1 flex items-center bg-gray-50/50 border border-gray-200 rounded-xl focus-within:bg-white focus-within:border-[#ecbb3f] focus-within:ring-4 focus-within:ring-[#ecbb3f]/10 transition-all group">
+                 <div className="pl-4 pr-3 flex items-center justify-center border-r border-gray-200/80 cursor-pointer hover:bg-gray-100 transition h-full rounded-l-xl">
+                    <img src="/tr.svg" alt="TR" className="w-[22px] h-[16px] object-cover rounded-[2px] shadow-sm" />
+                    <ChevronDown size={14} className="text-gray-400 ml-1.5 group-focus-within:text-[#ecbb3f]" />
                  </div>
-
-                 {/* ReCaptcha dummy */}
-                 <div className="border border-gray-200 rounded-[6px] bg-[#fafafa] py-2 px-3 flex items-center justify-between shadow-sm">
-                    <div className="flex items-center gap-3">
-                       <div className="w-[24px] h-[24px] border-[2px] border-gray-300 rounded-[3px] bg-white cursor-pointer hover:border-gray-400 transition-colors" />
-                       <span className="text-[13px] text-gray-600 font-medium">Ben robot değilim</span>
-                    </div>
-                    <div className="flex flex-col items-center">
-                       <svg className="w-8 h-8 text-blue-500 mb-0.5 opacity-90" viewBox="0 0 24 24" fill="currentColor">
-                         <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
-                       </svg>
-                       <span className="text-[8px] text-gray-400 font-bold tracking-widest mt-[-2px]">reCAPTCHA</span>
-                    </div>
+                 <input 
+                   type="tel" 
+                   placeholder="Telefon Numaranız" 
+                   className="w-full py-4 px-4 text-[15px] font-bold text-gray-800 placeholder-gray-400 outline-none bg-transparent" 
+                 />
+                 <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
+                    <svg className="w-5 h-5 text-gray-400 group-focus-within:text-[#ecbb3f] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                    </svg>
                  </div>
               </div>
 
-              {/* Bottom Row */}
-              <div className="flex flex-col sm:flex-row items-center justify-between mt-1">
-                 <label className="flex items-center gap-2.5 cursor-pointer group mb-4 sm:mb-0">
-                    <div className="w-[14px] h-[14px] border border-gray-300 bg-gray-50 rounded-[2px] group-hover:border-[#ecbb3f] transition-all flex items-center justify-center"></div>
-                    <span className="text-[13px] text-gray-500 font-medium whitespace-nowrap">
-                       <a href="#" className="text-[#ecbb3f] font-bold hover:underline">KVKK</a> metnini okudum, kabul ediyorum.
-                    </span>
-                 </label>
-                 
-                 <button 
-                   type="button" 
-                   className="w-full sm:w-auto bg-[#ecbb3f] hover:bg-[#d6a529] text-white font-bold tracking-wider py-3.5 px-16 rounded-[4px] shadow-lg shadow-[#ecbb3f]/30 transition-all text-[15px]"
-                 >
-                    Gönder
-                 </button>
-              </div>
+              {/* Submit Button */}
+              <button 
+                type="button" 
+                className="w-full md:w-[280px] bg-[#ecbb3f] hover:bg-[#d6a529] text-white font-black tracking-widest py-4 px-8 rounded-xl shadow-[0_10px_25px_-5px_rgba(236,187,63,0.5)] hover:shadow-[0_15px_35px_-5px_rgba(236,187,63,0.6)] transform hover:-translate-y-0.5 transition-all text-[15px] uppercase flex items-center justify-center gap-2"
+              >
+                 Gönder
+                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                 </svg>
+              </button>
+              
            </form>
         </div>
       </div>

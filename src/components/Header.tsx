@@ -151,7 +151,11 @@ export default function Header() {
           
           {/* Logo */}
           <Link href="/" className="flex items-center shrink-0">
-            <img src="/logo.png" alt="Megagöz Tıp Merkezi" className="h-[60px] md:h-[75px] lg:h-[90px] xl:h-[100px] w-auto object-contain drop-shadow-sm" />
+            <img 
+              src="/logo.png" 
+              alt="Megagöz Tıp Merkezi" 
+              className="w-[180px] md:w-[250px] lg:w-[320px] h-auto object-contain" 
+            />
           </Link>
 
           {/* Desktop Menu */}
