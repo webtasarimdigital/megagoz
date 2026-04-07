@@ -16,7 +16,7 @@ export default function FloatingActions() {
 
       {/* Instagram Button */}
       <a 
-        href="https://instagram.com" 
+        href="https://instagram.com/megagoz" 
         target="_blank"
         rel="noopener noreferrer"
         className="w-14 h-14 bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform"

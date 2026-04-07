@@ -1,0 +1,123 @@
+{
+  "aboutUs": {
+    "title": "Hakkımızda",
+    "description": "MEGAESTE, estetik cerrahi, medikal estetik ve saç ekimi alanlarında uluslararası standartlarda sağlık hizmeti sunmak amacıyla kurulmuş, teknolojiyi ve estetiği bir araya getiren modern bir sağlık merkezidir.",
+    "mission": "Kurulduğu günden bu yana, estetik ve güzellikte güvenilir, kaliteli ve ulaşılabilir çözümler sunma vizyonuyla hareket eden MEGAESTE, İstanbul’daki merkeziyle hem yurt içinden hem de yurt dışından gelen hastalarına üstün hizmet vermektedir.",
+    "vision": "Yenilikçi medikal teknolojileri, deneyimli uzman hekim kadrosu ve hasta memnuniyetine odaklı profesyonel ekibiyle MEGAESTE, estetik ve plastik cerrahi alanında çağdaş ve güvenilir bir referans merkezi haline gelmiştir.",
+    "approach": "Her hasta için kişiselleştirilmiş tedavi yaklaşımlarıyla, uluslararası kalite standartlarında sağlık hizmeti sunmaktadır.",
+    "bookTitle": "Güzelliğinize Doğru İlk Adımı Atın",
+    "bookDesc": "Uzman hekimlerimizden ücretsiz ön değerlendirme almak için formu doldurun."
+  },
+  "header": {
+    "getAppointment": "Randevu Al",
+    "feedbackAndSuggestions": "Görüş ve Önerileriniz",
+    "ourDoctors": "Doktorlarımız",
+    "contactUs": "Bize Ulaşın",
+    "nav": {
+      "corporate": "Kurumsal",
+      "hairTransplant": {
+        "title": "Saç Ekimi",
+        "items": [
+          "DHI Saç Ekimi",
+          "Safir Saç Ekimi",
+          "Saç Mezoterapisi"
+        ]
+      },
+      "plasticSurgery": {
+        "title": "Plastik Cerrahi",
+        "items": [
+          "Burun Estetiği",
+          "Göz Kapağı Estetiği",
+          "Meme Estetiği"
+        ]
+      },
+      "medicalAesthetics": {
+        "title": "Medikal Estetik",
+        "items": [
+          "Medikal Cilt Bakımı",
+          "Yüz Mezoterapi"
+        ]
+      },
+      "epilation": {
+        "title": "Epilasyon",
+        "items": [
+          "Lazer Epilasyon",
+          "İğneli Lazer Epilasyonu"
+        ]
+      },
+      "blog": {
+        "title": "Blog",
+        "items": []
+      }
+    }
+  },
+  "about": {
+    "title": "HAKKIMIZDA",
+    "subtitle": "Sağlığınız ve Güzelliğiniz İçin Uzman Dokunuşu",
+    "description": "Megaeste olarak, uzman kadromuz ve en son teknoloji cihazlarımızla sağlık ve medikal estetik alanlarında profesyonel hizmet sunuyoruz. Yenilikçi yaklaşımlarımız ve hasta memnuniyeti odaklı vizyonumuzla güzelliğinize değer katmak için her zaman yanınızdayız.",
+    "button": "Daha Fazla Bilgi"
+  },
+  "services": {
+    "title": "HİZMETLERİMİZ",
+    "subtitle": "Size Özel Gelişmiş Tedavi Yöntemleri"
+  },
+  "seo": {
+    "title": "Megaeste | Saç Ekimi, Plastik Cerrahi ve Medikal Estetik Merkezi",
+    "description": "Megaeste olarak uzman kadromuz ve en son teknoloji cihazlarımızla sağlık, saç ekimi ve medikal estetik alanlarında profesyonel hizmet sunuyoruz."
+  },
+  "mobileNav": {
+    "contact": "İletişim",
+    "whatsapp": "Whatsapp"
+  },
+  "hero": [
+    {
+      "id": 1,
+      "desktopImg": "/images/megaeste-hero.jfif",
+      "mobileImg": "/images/megaeste-hero.jfif",
+      "badge": "MEGAESTE KLİNİK",
+      "titleLine1": "UZMAN HEKİMLERİMİZ",
+      "titleLine2": "EŞLİĞİNDE",
+      "titleHighlight1": "MEGAESTE'DE",
+      "titleLine3": "SAĞLIKLI",
+      "titleHighlight2": "YARINLARA",
+      "titleLine4": "ADIM ATIN",
+      "desc": "Megaeste, deneyimli plastik cerrah ve medikal estetik kadrosuyla sağlığınız ve güzelliğiniz için uluslararası standartlarda yanınızda.",
+      "contactBtn": "İLETİŞİM",
+      "aboutBtn": "HAKKIMIZDA"
+    },
+    {
+      "id": 2,
+      "desktopImg": "/images/megaeste-hero2.jfif",
+      "mobileImg": "/images/megaeste-hero2.jfif",
+      "badge": "ESTETİK VE CERRAHİ",
+      "titleLine1": "KİŞİYE ÖZEL",
+      "titleLine2": "PLANLANAN",
+      "titleHighlight1": "GÜVENİLİR",
+      "titleLine3": "SAĞLIK",
+      "titleHighlight2": "HİZMETİYLE",
+      "titleLine4": "BULUŞUN",
+      "desc": "Modern teknoloji ve kişiselleştirilmiş tedavi yöntemleriyle kendinizi rahat ve güvende hissedeceğiniz klinik ortamı.",
+      "contactBtn": "İLETİŞİM",
+      "aboutBtn": "HAKKIMIZDA"
+    }
+  ],
+  "footer": {
+    "description": "Megaeste olarak, uzman kadromuz ve en son teknoloji cihazlarımızla sağlık ve medikal estetik alanlarında profesyonel hizmet sunuyoruz.",
+    "corporate": "Kurumsal",
+    "corporateLinks": ["Ana Sayfa", "Hakkımızda", "Hekimlerimiz", "Blog"],
+    "services": "Hizmetlerimiz",
+    "contact": "İletişim",
+    "address": "İstiklal Mah. Gamsız Sk. No:3 Ümraniye/İstanbul",
+    "phone": "0533 481 40 98",
+    "email": "info@megaeste.com",
+    "workingHoursTitle": "Çalışma Saatleri",
+    "workingHours": "Pazartesi - Cumartesi: 09:00 - 19:00",
+    "copyright": "© 2026 MegaEste Estetik ve Plastik Cerrahi. Tüm Hakları Saklıdır."
+  },
+  "notFound": {
+    "title": "404",
+    "subtitle": "Sayfa Bulunamadı",
+    "message": "Aradığınız sayfa mevcut değil, adı değişmiş veya geçici olarak hizmet dışı olabilir.",
+    "button": "Ana Sayfaya Dön"
+  }
+}

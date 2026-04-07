@@ -54,37 +54,39 @@ export default function HeroSlider() {
           {isPopupOpen && (
             <motion.div
               initial={{ width: 0, opacity: 0 }}
-              animate={{ width: "360px", opacity: 1 }}
+              animate={{ width: "420px", opacity: 1 }}
               exit={{ width: 0, opacity: 0 }}
               transition={{ type: "tween", duration: 0.3 }}
-              className="bg-white overflow-y-auto max-h-[90vh] shadow-[0_10px_40px_rgba(0,0,0,0.15)] rounded-l-xl z-50 border-l border-gray-100"
+              className="bg-white overflow-y-auto overflow-x-hidden max-h-[90vh] shadow-[-10px_0_40px_rgba(0,0,0,0.15)] rounded-l-2xl z-50"
             >
-              <div className="p-7 w-[360px]">
+              <div className="p-8 w-[420px] relative">
                 <button 
                   onClick={() => setIsPopupOpen(false)} 
-                  className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors bg-gray-50 rounded-full p-2"
+                  className="absolute top-5 right-5 text-gray-400 hover:text-[#F2AC1E] transition-colors bg-gray-100 rounded-full p-2"
                 >
                   <X size={20} />
                 </button>
                 
-                <form className="mt-8 space-y-6 font-sans">
+                <h3 className="text-xl font-black text-[#1f6388] mb-6 pr-8">Hızlı Randevu Oluştur</h3>
+
+                <form className="space-y-4 font-sans">
                   
                   {/* Name field */}
-                  <div className="space-y-1">
-                    <label className="text-[12px] font-bold uppercase tracking-wider text-gray-500">ADINIZ SOYADINIZ</label>
+                  <div>
+                    <label className="text-[13px] font-bold text-gray-600 mb-1.5 block">Adınız Soyadınız</label>
                     <input 
                       type="text" 
-                      className="w-full bg-transparent border-b-2 border-gray-200 focus:border-[#F2AC1E] focus:outline-none focus:ring-0 text-gray-800 placeholder-transparent py-1 transition-colors font-medium rounded-none pb-2 text-base" 
+                      placeholder="Adınız Soyadınız"
+                      className="w-full bg-gray-50 border border-gray-200 focus:border-[#F2AC1E] focus:bg-white focus:outline-none text-gray-800 py-3 px-4 rounded-lg transition-all text-[14px] font-medium placeholder-gray-400" 
                     />
                   </div>
 
                   {/* Phone field */}
-                  <div className="space-y-1">
-                    <label className="text-[12px] font-bold uppercase tracking-wider text-gray-500">TELEFONUNUZ</label>
-                    <div className="flex items-end border-b-2 border-gray-200 focus-within:border-[#F2AC1E] py-1 pb-2 transition-colors">
-                      <div className="flex items-center gap-1 pr-3 border-r border-gray-300 mr-2">
-                        {/* Fake TR flag */}
-                        <div className="w-5 h-3.5 bg-red-600 flex items-center justify-center overflow-hidden relative">
+                  <div>
+                    <label className="text-[13px] font-bold text-gray-600 mb-1.5 block">Telefonunuz</label>
+                    <div className="flex bg-gray-50 border border-gray-200 rounded-lg overflow-hidden focus-within:border-[#F2AC1E] focus-within:bg-white transition-all">
+                      <div className="flex items-center gap-2 px-3 border-r border-gray-200 bg-gray-50">
+                        <div className="w-5 h-3.5 bg-red-600 flex items-center justify-center overflow-hidden relative rounded-sm">
                            <div className="text-white text-[8px] absolute">★</div>
                         </div>
                         <ChevronDown size={14} className="text-gray-500" />
@@ -92,71 +94,70 @@ export default function HeroSlider() {
                       <input 
                         type="tel" 
                         defaultValue="05"
-                        className="w-full bg-transparent focus:outline-none focus:ring-0 text-gray-800 placeholder-transparent transition-colors font-medium rounded-none text-base" 
+                        className="w-full bg-transparent focus:outline-none text-gray-800 py-3 px-3 text-[14px] font-medium" 
                       />
                     </div>
                   </div>
 
                   {/* Center Dropdown */}
-                  <div className="space-y-1">
-                    <label className="text-[12px] font-bold uppercase tracking-wider text-gray-500">MERKEZ</label>
-                    <div className="relative border-b-2 border-gray-200 pb-2 flex items-center justify-between cursor-pointer group hover:border-[#F2AC1E] transition-colors">
-                      <span className="text-gray-800 font-medium text-[15px]">MERKEZİ SEÇİNİZ</span>
+                  <div>
+                    <label className="text-[13px] font-bold text-gray-600 mb-1.5 block">Merkez</label>
+                    <div className="relative bg-gray-50 border border-gray-200 rounded-lg flex items-center justify-between cursor-pointer hover:border-[#F2AC1E] hover:bg-white transition-all py-3 px-4">
+                      <span className="text-gray-500 font-medium text-[14px]">Merkezi Seçiniz</span>
                       <ChevronDown size={18} className="text-[#F2AC1E]" />
                     </div>
                   </div>
 
                   {/* Doctor Dropdown */}
-                  <div className="space-y-1">
-                    <label className="text-[12px] font-bold uppercase tracking-wider text-gray-500">HEKİM</label>
-                    <div className="relative border-b-2 border-gray-200 pb-2 flex items-center justify-between cursor-pointer group hover:border-[#F2AC1E] transition-colors mt-2">
-                      <span className="text-gray-400 font-medium text-[15px]">Seçiniz</span> 
+                  <div>
+                    <label className="text-[13px] font-bold text-gray-600 mb-1.5 block">Hekim</label>
+                    <div className="relative bg-gray-50 border border-gray-200 rounded-lg flex items-center justify-between cursor-pointer hover:border-[#F2AC1E] hover:bg-white transition-all py-3 px-4">
+                      <span className="text-gray-400 font-medium text-[14px]">Seçiniz</span> 
                       <ChevronDown size={18} className="text-[#F2AC1E]" />
                     </div>
                   </div>
 
                   {/* Date & Time */}
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-1">
-                      <label className="text-[12px] font-bold uppercase tracking-wider text-gray-500">GÜN</label>
-                      <div className="relative border-b-2 border-gray-200 pb-2 pt-2 hover:border-[#F2AC1E] transition-colors cursor-pointer">
-                         <span className="text-gray-400 text-[15px]">Seçiniz</span>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="text-[13px] font-bold text-gray-600 mb-1.5 block">Gün</label>
+                      <div className="relative bg-gray-50 border border-gray-200 rounded-lg py-3 px-4 hover:border-[#F2AC1E] hover:bg-white transition-all cursor-pointer">
+                         <span className="text-gray-400 text-[14px] font-medium">Seçiniz</span>
                       </div>
                     </div>
-                    <div className="space-y-1">
-                      <label className="text-[12px] font-bold uppercase tracking-wider text-gray-500">SAAT</label>
-                      <div className="relative border-b-2 border-gray-200 pb-2 flex items-center justify-between cursor-pointer hover:border-[#F2AC1E] transition-colors pt-2">
-                        <span className="text-gray-800 font-medium text-[15px]">SAAT SEÇİNİZ</span>
+                    <div>
+                      <label className="text-[13px] font-bold text-gray-600 mb-1.5 block">Saat</label>
+                      <div className="relative bg-gray-50 border border-gray-200 rounded-lg py-3 px-4 flex items-center justify-between cursor-pointer hover:border-[#F2AC1E] hover:bg-white transition-all">
+                        <span className="text-gray-500 font-medium text-[14px]">Saat Seçiniz</span>
                         <ChevronDown size={18} className="text-[#F2AC1E]" />
                       </div>
                     </div>
                   </div>
 
                   {/* KVKK */}
-                  <div className="flex items-start gap-3 pt-4">
-                    <div className="min-w-5 w-5 h-5 border-2 border-gray-300 flex items-center justify-center mt-0.5 bg-transparent cursor-pointer rounded-sm hover:border-[#F2AC1E]">
+                  <div className="flex items-start gap-3 pt-2">
+                    <div className="min-w-5 w-5 h-5 border-2 border-gray-300 flex items-center justify-center mt-0.5 bg-white cursor-pointer rounded hover:border-[#F2AC1E] transition-colors">
                     </div>
-                    <p className="text-[12px] leading-tight text-gray-600 font-medium">
+                    <p className="text-[12px] leading-snug text-gray-600 font-medium">
                       <a href="#" className="font-bold underline underline-offset-2 text-[#F2AC1E]">KVKK</a> hakkında bilgilendirme metnini okudum, kabul ediyorum.
                     </p>
                   </div>
 
                   {/* Recaptcha Dummy */}
-                  <div className="bg-[#f9f9f9] border border-[#d3d3d3] rounded-[3px] p-2 flex items-center justify-between mt-2 shadow-sm">
+                  <div className="bg-gray-50 border border-gray-200 rounded-lg py-2.5 px-4 flex items-center justify-between mt-1 shadow-sm">
                     <div className="flex items-center gap-3">
-                      <div className="w-7 h-7 border-[2px] border-[#c1c1c1] bg-white rounded-[2px]" />
-                      <span className="text-[#2b2b2b] text-[14px] font-medium font-sans">Ben robot değilim</span>
+                      <div className="w-7 h-7 border-[2px] border-gray-300 bg-white rounded-sm" />
+                      <span className="text-gray-700 text-[14px] font-medium font-sans">Ben robot değilim</span>
                     </div>
                     <div className="flex flex-col items-center">
                        <span className="text-[20px] leading-none mb-1 text-green-600">♻</span>
-                       <span className="text-[8px] text-[#555]">reCAPTCHA</span>
+                       <span className="text-[9px] text-gray-500 font-bold tracking-wider">reCAPTCHA</span>
                     </div>
                   </div>
-                  <p className="text-[11px] text-gray-500">Lütfen "Ben robot değilim" olarak işaretleyiniz.</p>
 
                   {/* Submit */}
-                  <button type="button" className="w-full bg-[#F2AC1E] text-white hover:bg-[#d99816] transition-colors font-black text-[16px] py-4 rounded font-sans flex items-center justify-center mt-6 shadow-lg shadow-[#F2AC1E]/30 tracking-wide">
-                    GÖNDER
+                  <button type="button" className="w-full bg-[#F2AC1E] text-white hover:bg-[#d99816] transition-colors font-black text-[16px] py-4 rounded-lg font-sans flex items-center justify-center mt-4 shadow-lg shadow-[#F2AC1E]/30 tracking-wide">
+                    RANDEVU OLUŞTUR
                   </button>
 
                 </form>
@@ -186,7 +187,19 @@ export default function HeroSlider() {
       </div>
 
       {/* Hero Slider Area */}
-      <div className="relative w-full h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+      <motion.div 
+        className="relative w-full h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden cursor-grab active:cursor-grabbing"
+        drag="x"
+        dragConstraints={{ left: 0, right: 0 }}
+        dragElastic={0.05}
+        onDragEnd={(e, { offset }) => {
+          if (offset.x < -50) {
+            setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+          } else if (offset.x > 50) {
+            setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+          }
+        }}
+      >
         
         {/* Background Images */}
         <AnimatePresence initial={false}>
@@ -234,12 +247,15 @@ export default function HeroSlider() {
           </motion.div>
         </div>
 
-        {/* Verification Vertical Numbering Pagination */}
-        <div className="absolute right-6 md:right-[5%] top-1/2 -translate-y-1/2 z-20 flex flex-col gap-5">
+        {/* Vertical Numbering Pagination (Left Side) */}
+        <div className="absolute left-4 md:left-8 lg:left-[5%] xl:left-[8%] top-1/2 -translate-y-1/2 z-20 flex flex-col gap-5">
           {slides.map((_, idx) => (
             <button
               key={idx}
-              onClick={() => setCurrent(idx)}
+              onClick={(e) => {
+                e.stopPropagation(); // Prevent triggering drag end
+                setCurrent(idx);
+              }}
               className={`transition-all duration-300 relative text-[18px] font-black items-center justify-center flex w-12 h-12 rounded ${
                 current === idx 
                   ? "text-[#2c88ac]" 
@@ -254,7 +270,7 @@ export default function HeroSlider() {
             </button>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* Floating Appointment & Institution Boxes (Negative Margin to overlap) */}
       <div className="relative z-30 container mx-auto px-4 max-w-6xl -mt-24 mb-16">

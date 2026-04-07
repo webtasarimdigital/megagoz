@@ -1,0 +1,123 @@
+{
+  "aboutUs": {
+    "title": "About Us",
+    "description": "MEGAESTE is a modern healthcare center that brings together technology and aesthetics, established to provide international standard healthcare services in the fields of aesthetic surgery, medical aesthetics, and hair transplantation.",
+    "mission": "Acting with the vision of providing reliable, high-quality, and accessible solutions in aesthetics and beauty since its establishment, MEGAESTE provides superior service to patients coming from both domestic and abroad with its center in Istanbul.",
+    "vision": "With its innovative medical technologies, experienced specialist medical staff, and patient satisfaction-oriented professional team, MEGAESTE has become a contemporary and reliable reference center in the field of aesthetic and plastic surgery.",
+    "approach": "It provides healthcare services at international quality standards with personalized treatment approaches for each patient.",
+    "bookTitle": "Take the First Step Towards Your Beauty",
+    "bookDesc": "Fill out the form to get a free preliminary evaluation from our specialist doctors."
+  },
+  "header": {
+    "getAppointment": "Get Appointment",
+    "feedbackAndSuggestions": "Feedback & Suggestions",
+    "ourDoctors": "Our Doctors",
+    "contactUs": "Contact Us",
+    "nav": {
+      "corporate": "Corporate",
+      "hairTransplant": {
+        "title": "Hair Transplant",
+        "items": [
+          "DHI Hair Transplant",
+          "Sapphire Hair Transplant",
+          "Hair Mesotherapy"
+        ]
+      },
+      "plasticSurgery": {
+        "title": "Plastic Surgery",
+        "items": [
+          "Rhinoplasty",
+          "Eyelid Surgery",
+          "Breast Aesthetics"
+        ]
+      },
+      "medicalAesthetics": {
+        "title": "Medical Aesthetics",
+        "items": [
+          "Medical Skincare",
+          "Facial Mesotherapy"
+        ]
+      },
+      "epilation": {
+        "title": "Epilation",
+        "items": [
+          "Laser Hair Removal",
+          "Needle Epilation"
+        ]
+      },
+      "blog": {
+        "title": "Blog",
+        "items": []
+      }
+    }
+  },
+  "about": {
+    "title": "ABOUT US",
+    "subtitle": "An Expert Touch for Your Health and Beauty",
+    "description": "At Megaeste, we offer professional services in health and medical aesthetics with our expert staff and state-of-the-art equipment. We are always by your side to add value to your beauty with our innovative approaches and patient satisfaction-oriented vision.",
+    "button": "More Information"
+  },
+  "services": {
+    "title": "OUR SERVICES",
+    "subtitle": "Advanced Treatment Methods Custom to You"
+  },
+  "seo": {
+    "title": "Megaeste | Hair Transplant, Plastic Surgery & Medical Aesthetics Center",
+    "description": "At Megaeste, we offer professional services in health, hair transplantation, and medical aesthetics with our expert staff and state-of-the-art equipment."
+  },
+  "mobileNav": {
+    "contact": "Contact",
+    "whatsapp": "Whatsapp"
+  },
+  "hero": [
+    {
+      "id": 1,
+      "desktopImg": "/images/megaeste-hero.jfif",
+      "mobileImg": "/images/megaeste-hero.jfif",
+      "badge": "MEGAESTE CLINIC",
+      "titleLine1": "YOUR HEALTH",
+      "titleLine2": "AND BEAUTY",
+      "titleHighlight1": "IS SAFE",
+      "titleLine3": "WITH OUR",
+      "titleHighlight2": "EXPERT",
+      "titleLine4": "TEAM",
+      "desc": "Megaeste stands by your side with our experienced plastic surgeon and medical aesthetics team for your health and beauty at international standards.",
+      "contactBtn": "CONTACT",
+      "aboutBtn": "ABOUT US"
+    },
+    {
+      "id": 2,
+      "desktopImg": "/images/megaeste-hero2.jfif",
+      "mobileImg": "/images/megaeste-hero2.jfif",
+      "badge": "AESTHETICS AND SURGERY",
+      "titleLine1": "MEET WITH",
+      "titleLine2": "RELIABLE",
+      "titleHighlight1": "PERSONALIZED",
+      "titleLine3": "HEALTH",
+      "titleHighlight2": "SERVICES",
+      "titleLine4": "",
+      "desc": "A clinical environment where you will feel comfortable and safe with modern technology and personalized treatment methods.",
+      "contactBtn": "CONTACT",
+      "aboutBtn": "ABOUT US"
+    }
+  ],
+  "footer": {
+    "description": "At Megaeste, we offer professional services in health and medical aesthetics with our expert staff and state-of-the-art equipment.",
+    "corporate": "Corporate",
+    "corporateLinks": ["Home", "About Us", "Our Doctors", "Blog"],
+    "services": "Our Services",
+    "contact": "Contact",
+    "address": "Istiklal Mah. Gamsiz Sk. No:3 Umraniye/Istanbul",
+    "phone": "0533 481 40 98",
+    "email": "info@megaeste.com",
+    "workingHoursTitle": "Working Hours",
+    "workingHours": "Monday - Saturday: 09:00 - 19:00",
+    "copyright": "© 2026 MegaEste Aesthetic and Plastic Surgery. All Rights Reserved."
+  },
+  "notFound": {
+    "title": "404",
+    "subtitle": "Page Not Found",
+    "message": "The page you are looking for does not exist, might have been renamed or is temporarily unavailable.",
+    "button": "Return to Home"
+  }
+}
