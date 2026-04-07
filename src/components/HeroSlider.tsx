@@ -170,82 +170,86 @@ export default function HeroSlider() {
         {!isPopupOpen && (
           <button 
             onClick={() => setIsPopupOpen(true)}
-            className="w-[85px] flex flex-col shadow-[-5px_0_20px_rgba(0,0,0,0.15)] overflow-hidden transition-all duration-300 hover:scale-105 origin-right rounded-l-lg"
+            className="w-[85px] h-[190px] flex flex-col shadow-[-5px_0_20px_rgba(0,0,0,0.15)] overflow-hidden transition-all duration-300 hover:scale-105 origin-right rounded-l-[14px]"
           >
-            <div className="bg-[#1f6388] h-20 w-full flex flex-col items-center justify-center">
-              {/* 24/7 Icon look-alike */}
-              <div className="relative text-white border-2 border-dashed border-white/60 w-12 h-12 rounded-full flex items-center justify-center">
-                 <span className="text-[16px] font-black leading-none mt-1">24<span className="text-[12px]">/7</span></span>
-                 <span className="absolute -bottom-1 -right-1 bg-[#1f6388] px-1"><ChevronRight size={12}/></span>
+            <div className="bg-[#1f6388] flex-1 w-full flex flex-col items-center justify-center">
+              <div className="relative w-12 h-12 flex items-center justify-center">
+                <svg className="absolute inset-0 w-full h-full text-white/80" viewBox="0 0 100 100">
+                  <path d="M50 15 A35 35 0 1 1 80 80" fill="none" stroke="currentColor" strokeWidth="6" strokeDasharray="10, 8" strokeLinecap="round" />
+                  <path d="M70 70 L80 80 L70 90" fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <span className="text-white font-black text-[16px] tracking-tighter mt-1 pr-1">24<span className="text-[11px]">/7</span></span>
               </div>
             </div>
-            <div className="bg-[#F2AC1E] text-white font-black text-[13px] py-4 w-full flex items-center justify-center text-center leading-5 tracking-wide">
-              TIKLA<br/>RANDEVU<br/>AL
+            <div className="bg-[#F2AC1E] flex-1 w-full flex items-center justify-center text-center text-white font-black text-[13px] leading-tight tracking-wide">
+              <div>TIKLA<br/>RANDEVU<br/>AL</div>
             </div>
           </button>
         )}
       </div>
 
       {/* Hero Slider Area */}
-      <motion.div 
-        className="relative w-full h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden cursor-grab active:cursor-grabbing"
-        drag="x"
-        dragConstraints={{ left: 0, right: 0 }}
-        dragElastic={0.05}
-        onDragEnd={(e, { offset }) => {
-          if (offset.x < -50) {
-            setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-          } else if (offset.x > 50) {
-            setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-          }
-        }}
-      >
+      <div className="relative w-full h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
         
-        {/* Background Images */}
-        <AnimatePresence initial={false}>
+        <AnimatePresence initial={false} mode="sync">
           <motion.div
             key={current}
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.2 }}
-            className="absolute inset-0"
+            initial={{ opacity: 0, x: 200 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -200 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="absolute inset-0 flex items-center justify-center cursor-grab active:cursor-grabbing"
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.8}
+            onDragEnd={(e, { offset }) => {
+              if (offset.x < -100) {
+                setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+              } else if (offset.x > 100) {
+                setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+              }
+            }}
           >
+            {/* Background Images */}
             <div 
-              className="absolute inset-0 bg-cover bg-center"
+              className="absolute inset-0 bg-cover bg-center -z-20 pointer-events-none"
               style={{ backgroundImage: `url(${slides[current].image})` }}
             />
             {/* Elegant Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#00305a]/90 via-[#004e8e]/70 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#00305a]/90 via-[#004e8e]/70 to-transparent -z-10 pointer-events-none" />
+
+            {/* Text Content */}
+            <div className="relative w-full container mx-auto px-4 max-w-6xl pb-24 md:pb-32 pointer-events-none">
+              <div className="max-w-2xl">
+                <div className="inline-block px-4 py-1.5 rounded-full bg-[#06b6d4]/20 border border-[#06b6d4]/30 text-[#06b6d4] font-bold text-sm tracking-widest mb-6 uppercase backdrop-blur-sm shadow-lg pointer-events-auto">
+                  Megagöz Lazer Teknolojisi
+                </div>
+                <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-white leading-tight mb-4 tracking-tight drop-shadow-xl pointer-events-auto cursor-text">
+                  {slides[current].title}
+                </h1>
+                <h2 className="text-xl md:text-3xl font-light text-gray-200 tracking-wide drop-shadow-md pointer-events-auto cursor-text">
+                  {slides[current].subtitle}
+                </h2>
+                
+                {/* Slide Navigation Buttons */}
+                <div className="flex gap-4 mt-8 pointer-events-auto">
+                   <button 
+                     onClick={(e) => { e.stopPropagation(); setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1)); }}
+                     className="bg-[#2c88ac] hover:bg-[#1f6388] transition p-3 rounded-full text-white shadow"
+                   >
+                     <ChevronRight className="rotate-180" size={20}/>
+                   </button>
+                   <button 
+                     onClick={(e) => { e.stopPropagation(); setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1)); }}
+                     className="bg-[#2c88ac] hover:bg-[#1f6388] transition p-3 rounded-full text-white shadow"
+                   >
+                     <ChevronRight size={20}/>
+                   </button>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </AnimatePresence>
-
-        {/* Text Content */}
-        <div className="relative z-10 container mx-auto px-4 max-w-6xl pb-24 md:pb-32">
-          <motion.div
-            key={`content-${current}`}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="max-w-2xl"
-          >
-            <div className="inline-block px-4 py-1.5 rounded-full bg-[#06b6d4]/20 border border-[#06b6d4]/30 text-[#06b6d4] font-bold text-sm tracking-widest mb-6 uppercase backdrop-blur-sm shadow-lg">
-              Megagöz Lazer Teknolojisi
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-white leading-tight mb-4 tracking-tight drop-shadow-xl">
-              {slides[current].title}
-            </h1>
-            <h2 className="text-xl md:text-3xl font-light text-gray-200 tracking-wide drop-shadow-md">
-              {slides[current].subtitle}
-            </h2>
-            
-            {/* Slide Navigation Buttons (Optional, for easy testing) */}
-            <div className="flex gap-4 mt-8">
-               <button className="bg-[#2c88ac] hover:bg-[#1f6388] transition p-3 rounded-full text-white shadow"><ChevronRight className="rotate-180" size={20}/></button>
-               <button className="bg-[#2c88ac] hover:bg-[#1f6388] transition p-3 rounded-full text-white shadow"><ChevronRight size={20}/></button>
-            </div>
-          </motion.div>
-        </div>
 
         {/* Vertical Numbering Pagination (Left Side) */}
         <div className="absolute left-4 md:left-8 lg:left-[5%] xl:left-[8%] top-1/2 -translate-y-1/2 z-20 flex flex-col gap-5">
@@ -270,84 +274,79 @@ export default function HeroSlider() {
             </button>
           ))}
         </div>
-      </motion.div>
+      </div>
 
-      {/* Floating Appointment & Institution Boxes (Negative Margin to overlap) */}
-      <div className="relative z-30 container mx-auto px-4 max-w-6xl -mt-24 mb-16">
-        <div className="flex flex-col lg:flex-row shadow-2xl rounded-2xl overflow-hidden bg-white group">
-          
-          {/* Quick Appointment Box */}
-          <div className="bg-[#1f6388] lg:w-3/5 p-8 md:p-10 text-white relative h-full">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none" />
-            
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-12 h-12 bg-[#2c88ac] rounded-xl flex items-center justify-center border border-white/10 shadow-inner">
-                <Calendar size={24} className="text-white" />
-              </div>
-              <div>
-                <h3 className="text-2xl md:text-3xl font-black tracking-tight drop-shadow-sm">Hızlı Randevu Al</h3>
-                <p className="text-cyan-200 text-sm font-medium">Uzman doktorlarımızdan hemen randevu oluşturun.</p>
-              </div>
-            </div>
-            
-            <form className="space-y-6 relative z-10 w-full">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-[#93c5d8]">Adınız Soyadınız</label>
-                  <input 
-                    type="text" 
-                    className="w-full bg-transparent border-b-2 border-white/30 focus:border-cyan-400 focus:outline-none focus:ring-0 text-white placeholder-white/40 text-lg py-2 transition-colors font-medium rounded-none" 
-                    placeholder="Adınız Soyadınız" 
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-[#93c5d8]">Telefonunuz</label>
-                  <input 
-                    type="tel" 
-                    className="w-full bg-transparent border-b-2 border-white/30 focus:border-cyan-400 focus:outline-none focus:ring-0 text-white placeholder-white/40 text-lg py-2 transition-colors font-medium rounded-none" 
-                    placeholder="0(5__) ___ __ __" 
-                  />
-                </div>
-              </div>
-              
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-6">
-                <label className="flex items-center gap-3 cursor-pointer group/check">
-                  <div className="w-5 h-5 rounded border-2 border-white/50 flex items-center justify-center group-hover/check:border-cyan-400 transition-colors">
-                     <CheckCircle2 className="w-3 h-3 text-transparent group-hover/check:text-cyan-400 transition-colors" />
-                  </div>
-                  <span className="text-sm font-bold text-white/90">Ben robot değilim</span>
-                </label>
-                
-                <button type="button" className="bg-[#e85025] hover:bg-[#c2401c] text-white font-black py-4 px-10 rounded shadow-lg transition-colors flex items-center justify-center gap-2 w-full sm:w-auto tracking-wide">
-                  GÖNDER
-                  <ChevronRight size={18} strokeWidth={3} />
-                </button>
-              </div>
-            </form>
-          </div>
+      {/* Horizontal Quick Appointment Form (Overlaps Slider) */}
+      <div className="relative z-30 container mx-auto px-4 max-w-5xl -mt-24 mb-16">
+        <div className="bg-white rounded-lg shadow-[0_15px_40px_rgba(0,0,0,0.12)] p-6 md:p-8">
+           {/* Header */}
+           <div className="mb-6 relative">
+              <h3 className="text-xl md:text-2xl font-black text-[#1f6388] flex gap-1.5 items-center">
+                 HIZLI RANDEVU <span className="text-[#e85025]">FORMU</span>
+              </h3>
+              <div className="h-[3px] w-12 bg-[#e85025] mt-1 rounded-full" />
+           </div>
 
-          {/* Institutions Box */}
-          <div className="bg-[#2c88ac] lg:w-2/5 p-8 md:p-10 text-white relative overflow-hidden flex flex-col justify-center">
-            {/* Decorative background circle */}
-            <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-white/10 rounded-full blur-2xl pointer-events-none" />
-            
-            <div className="flex items-center gap-4 mb-6 relative z-10">
-              <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/20 shadow-inner">
-                <Handshake size={24} className="text-white" />
-              </div>
-              <h3 className="text-2xl md:text-3xl font-black tracking-tight drop-shadow-sm">Anlaşmalı Kurumlarımız</h3>
-            </div>
-            
-            <p className="text-white/90 text-[15px] md:text-[17px] leading-relaxed mb-8 relative z-10 font-medium">
-              SGK, Özel Sağlık Sigortaları ve Bankalar. Anlaşmalı olduğumuz tüm kurumların listesine buradan ulaşabilirsiniz.
-            </p>
-            
-            <button className="relative z-10 bg-transparent border-2 border-white text-white font-black px-6 py-4 rounded hover:bg-white hover:text-[#2c88ac] transition-colors flex items-center justify-center gap-2 w-fit tracking-wide shadow-md">
-              LİSTEYİ İNCELE
-              <ChevronRight size={18} strokeWidth={3} />
-            </button>
-          </div>
+           {/* Form Grid */}
+           <form className="flex flex-col gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                 {/* Name Input */}
+                 <div className="relative">
+                    <input 
+                      type="text" 
+                      placeholder="Adınız Soyadınız" 
+                      className="w-full border border-gray-300 rounded py-3.5 px-4 text-[14px] font-bold text-gray-800 placeholder-black focus:outline-none focus:border-[#e85025] transition-colors bg-white hover:border-gray-400" 
+                    />
+                 </div>
+                 
+                 {/* Phone Input with Flag */}
+                 <div className="relative flex items-center border border-gray-300 rounded hover:border-gray-400 focus-within:border-[#e85025] transition-colors bg-white">
+                    <input 
+                      type="tel" 
+                      placeholder="Telefon" 
+                      className="w-full py-3.5 px-4 text-[14px] font-bold text-gray-800 placeholder-black outline-none bg-transparent rounded-l" 
+                    />
+                    <div className="pr-3 pl-2 flex items-center gap-1.5 cursor-pointer border-l border-gray-100 ml-1">
+                       <img src="/tr.svg" alt="TR" className="w-[18px] h-[13px] object-cover rounded-sm border border-gray-200" />
+                       <ChevronDown size={14} className="text-gray-500" />
+                    </div>
+                 </div>
 
+                 {/* ReCaptcha dummy */}
+                 <div className="border border-gray-300 rounded bg-gray-50/50 hover:border-gray-400 transition-colors py-2 px-3 flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                       <div className="w-6 h-6 border-2 border-gray-300 rounded-sm bg-white cursor-pointer hover:border-gray-400 transition-colors" />
+                       <span className="text-[13px] text-gray-700 font-medium">Ben robot değilim</span>
+                    </div>
+                    <div className="flex flex-col items-center">
+                       {/* reCAPTCHA style recycling logo trick */}
+                       <svg className="w-7 h-7 text-blue-600 mb-0.5" viewBox="0 0 24 24" fill="currentColor">
+                         <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+                       </svg>
+                       <span className="text-[7px] text-gray-500 font-bold tracking-widest mt-[-2px]">reCAPTCHA</span>
+                    </div>
+                 </div>
+              </div>
+
+              {/* Bottom Row */}
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-5 mt-2">
+                 <label className="flex items-center gap-3 cursor-pointer group">
+                    <div className="w-4 h-4 border-2 border-gray-200 bg-gray-50 rounded-sm group-hover:border-gray-400 transition-colors flex items-center justify-center">
+                       {/* Optional check icon */}
+                    </div>
+                    <span className="text-[13px] text-gray-600 font-medium">
+                       <a href="#" className="text-[#e85025] hover:underline">KVKK</a> metnini okudum, kabul ediyorum
+                    </span>
+                 </label>
+                 
+                 <button 
+                   type="button" 
+                   className="w-full sm:w-auto bg-[#e85025] hover:bg-[#c2401c] text-white font-bold tracking-wide py-3 px-10 rounded shadow-md transition-colors text-[15px]"
+                 >
+                    Gönder
+                 </button>
+              </div>
+           </form>
         </div>
       </div>
     </div>

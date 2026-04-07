@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
-import { Menu, X, Phone, MapPin } from "lucide-react";
+import { Menu, X, Phone, MapPin, ChevronDown } from "lucide-react";
 import Image from "next/image";
 
 export default function Header() {
@@ -24,9 +24,21 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const switchLocale = () => {
-    const nextLocale = locale === "tr" ? "en" : "tr";
-    router.replace(pathname, { locale: nextLocale });
+  const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
+  const langMenuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (langMenuRef.current && !langMenuRef.current.contains(event.target as Node)) {
+        setIsLangMenuOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const switchLocale = (newLocale: "tr" | "en") => {
+    router.replace(pathname, { locale: newLocale });
   };
 
   const navLinks = [
@@ -50,14 +62,6 @@ export default function Header() {
         <div className="w-full flex items-center justify-center h-full px-4 gap-8 md:gap-16">
           {/* Left quick links */}
           <div className="hidden lg:flex items-center gap-3">
-            <a href="https://share.google/zC0UTV7bTbwJn46pu" target="_blank" rel="noopener noreferrer" className="hover:text-gray-200 transition-colors flex items-center gap-1.5">
-              <MapPin size={14} /> Konum
-            </a>
-            <span className="text-white/60">|</span>
-            <a href="mailto:info@megagoz.com" className="hover:text-gray-200 transition-colors">
-              info@megagoz.com
-            </a>
-            <span className="text-white/60">|</span>
             <a href="#" className="hover:text-gray-200 transition-colors">Akıllı Lensler</a>
             <span className="text-white/60">|</span>
             <a href="#" className="hover:text-gray-200 transition-colors">Göz Lazer Ameliyatı</a>
@@ -67,8 +71,16 @@ export default function Header() {
 
           {/* Right contact & settings */}
           <div className="flex items-center gap-4 shrink-0 font-bold">
-            <a href="tel:4440320" className="text-[15px] hover:text-gray-200">
-              444 0 320
+            <a href="https://share.google/zC0UTV7bTbwJn46pu" target="_blank" rel="noopener noreferrer" className="hover:text-gray-200 transition-colors flex items-center gap-1.5 hidden lg:flex">
+              <MapPin size={14} /> Konum
+            </a>
+            <span className="text-white/60 hidden lg:inline">|</span>
+            <a href="mailto:info@megagoz.com" className="hover:text-gray-200 transition-colors hidden md:flex font-medium">
+              info@megagoz.com
+            </a>
+            <span className="text-white/60 hidden md:inline">|</span>
+            <a href="tel:4440320" className="text-[15px] hover:text-gray-200 flex items-center gap-1.5">
+              <Phone size={14} /> 444 0 320
             </a>
             <span className="text-white/60">|</span>
             {/* Social Icons mini */}
@@ -82,22 +94,53 @@ export default function Header() {
             </div>
             <span className="text-white/60">|</span>
             {/* Language Selector */}
-            <button 
-              onClick={switchLocale} 
-              className="flex items-center gap-2 hover:bg-white/10 transition-colors text-[13px] border border-white/20 rounded-full px-3 py-1 ml-1"
-            >
-              {locale === "tr" ? (
-                <>
-                  <img src="/en.svg" alt="EN" className="w-4 h-3 rounded-sm object-cover shadow-sm" />
-                  <span>EN</span>
-                </>
-              ) : (
-                <>
-                  <img src="/tr.svg" alt="TR" className="w-4 h-3 rounded-sm object-cover shadow-sm" />
-                  <span>TR</span>
-                </>
-              )}
-            </button>
+            <div className="relative" ref={langMenuRef}>
+              <button 
+                onClick={() => setIsLangMenuOpen(!isLangMenuOpen)} 
+                className="flex items-center gap-2 hover:bg-white/10 transition-colors border-[1.5px] border-white/40 hover:border-white rounded bg-white/5 px-2.5 py-1 ml-1"
+              >
+                {locale === "tr" ? (
+                  <>
+                    <img src="/tr.svg" alt="TR" className="w-[18px] h-[13px] object-cover shadow-sm" />
+                    <span className="font-bold text-[#F2AC1E] tracking-wider text-[11px] mt-0.5">TÜRKÇE</span>
+                  </>
+                ) : (
+                  <>
+                    <img src="/en.svg" alt="EN" className="w-[18px] h-[13px] object-cover shadow-sm" />
+                    <span className="font-bold text-[#F2AC1E] tracking-wider text-[11px] mt-0.5">ENGLISH</span>
+                  </>
+                )}
+                <ChevronDown size={14} className="text-[#F2AC1E] ml-0.5 pt-0.5" />
+              </button>
+
+              <AnimatePresence>
+                {isLangMenuOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-[calc(100%+8px)] right-0 bg-white rounded shadow-xl border border-gray-200 min-w-[130px] z-50 overflow-hidden"
+                  >
+                    <button 
+                      onClick={() => { switchLocale("tr"); setIsLangMenuOpen(false); }}
+                      className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-50 transition-colors"
+                    >
+                      <img src="/tr.svg" alt="TR" className="w-[18px] h-[13px] object-cover border border-gray-100" />
+                       <span className="font-bold text-[#C29F64] tracking-wide text-[12px]">TÜRKÇE</span>
+                    </button>
+                    <div className="h-[1px] w-full bg-gray-100 px-2" />
+                    <button 
+                      onClick={() => { switchLocale("en"); setIsLangMenuOpen(false); }}
+                      className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-50 transition-colors"
+                    >
+                      <img src="/en.svg" alt="EN" className="w-[18px] h-[13px] object-cover border border-gray-100" />
+                       <span className="font-bold text-[#454d52] tracking-wide text-[12px]">ENGLISH</span>
+                    </button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
         </div>
       </div>
