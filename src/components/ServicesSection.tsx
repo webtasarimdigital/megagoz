@@ -123,7 +123,7 @@ export default function ServicesSection() {
 
           {/* Right Side - Dynamic Image Reveal (Sticky) */}
           <div className="lg:col-span-7 relative hidden lg:block">
-            <div className="sticky top-32 w-full h-[700px] rounded-[30px] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.5)] border border-white/10 group">
+            <div className="sticky top-24 w-full aspect-[4/5] max-h-[calc(100vh-120px)] rounded-[30px] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.5)] border border-white/10 group">
               
               <AnimatePresence mode="wait">
                 <motion.div

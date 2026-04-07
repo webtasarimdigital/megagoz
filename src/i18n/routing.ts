@@ -13,6 +13,10 @@ export const routing = defineRouting({
     '/iletisim': {
       tr: '/iletisim',
       en: '/contact'
+    },
+    '/blog': {
+      tr: '/blog',
+      en: '/blog'
     }
   }
 });

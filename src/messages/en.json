@@ -48,5 +48,27 @@
         "description": "Advanced treatments for keratoconus (Cross-linking), corneal transplantation, and dry eye syndrome."
       }
     }
+  },
+  "Contact": {
+    "title": "Contact Us",
+    "subtitle": "You can fill out the form below to contact us or reach us via our phone number.",
+    "info": {
+      "phone": "Phone",
+      "email": "Email",
+      "address": "Address"
+    },
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "subject": "Subject",
+      "message": "Your Message",
+      "submit": "Send Message"
+    }
+  },
+  "Blog": {
+    "title": "Articles from Our Experts",
+    "subtitle": "The latest information, articles, and tips about your eye health.",
+    "read_more": "Read More"
   }
 }

@@ -48,5 +48,27 @@
         "description": "Keratokonüs tedavisi (Cross-linking), kornea nakli ve göz kuruluğu için ileri düzey tedaviler."
       }
     }
+  },
+  "Contact": {
+    "title": "İletişime Geçin",
+    "subtitle": "Bizimle iletişime geçmek için aşağıdaki formu doldurabilir veya telefon numaramızdan ulaşabilirsiniz.",
+    "info": {
+      "phone": "Telefon",
+      "email": "E-Posta",
+      "address": "Adres"
+    },
+    "form": {
+      "name": "Adınız Soyadınız",
+      "email": "E-Posta Adresiniz",
+      "phone": "Telefon Numaranız",
+      "subject": "Konu",
+      "message": "Mesajınız",
+      "submit": "Gönder"
+    }
+  },
+  "Blog": {
+    "title": "Uzmanlarımızdan Yazılar",
+    "subtitle": "Göz sağlığınız hakkında en güncel bilgiler, makaleler ve ipuçları.",
+    "read_more": "Daha Fazla Oku"
   }
 }

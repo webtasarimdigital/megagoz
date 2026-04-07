@@ -77,13 +77,13 @@ export default function BlogSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <a 
+            <Link 
               href="/blog" 
               className="group flex items-center gap-2 bg-transparent text-[#1f313f] font-bold tracking-wide uppercase text-sm border-b-2 border-[#ecbb3f] pb-1 hover:text-[#ecbb3f] transition-colors"
             >
               Tüm Blogları Gör
               <ArrowRight size={18} className="transform group-hover:translate-x-2 transition-transform duration-300 text-[#ecbb3f]" />
-            </a>
+            </Link>
           </motion.div>
         </div>
 
@@ -97,7 +97,7 @@ export default function BlogSection() {
         >
           {BLOG_POSTS.map((post) => (
             <motion.div key={post.id} variants={cardVariants}>
-              <a href="#" className="group block bg-white rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_40px_rgba(31,49,63,0.12)] transition-all duration-500 transform hover:-translate-y-2">
+              <div className="group relative block bg-white rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_40px_rgba(31,49,63,0.12)] transition-all duration-500 transform hover:-translate-y-2">
                 
                 {/* Image Container */}
                 <div className="relative w-full h-[240px] overflow-hidden">
@@ -121,19 +121,21 @@ export default function BlogSection() {
                   </div>
                   
                   <h3 className="text-[20px] font-black text-[#1f313f] leading-snug mb-3 line-clamp-2 group-hover:text-[#ecbb3f] transition-colors">
-                    {post.title}
+                    <Link href="/blog" className="before:absolute before:inset-0">
+                      {post.title}
+                    </Link>
                   </h3>
                   
                   <p className="text-gray-500 font-medium text-sm leading-relaxed mb-6 line-clamp-3">
                     {post.excerpt}
                   </p>
                   
-                  <div className="flex items-center gap-2 text-[#1f313f] font-bold text-sm group-hover:text-[#ecbb3f] transition-colors">
-                    Devamını Oku <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
+                  <div className="flex items-center gap-2 text-[#ecbb3f] font-bold text-sm tracking-wider uppercase mt-auto">
+                    Detaylı Bilgi
+                    <ArrowRight size={16} className="transition-transform group-hover:translate-x-2" />
                   </div>
                 </div>
-
-              </a>
+              </div>
             </motion.div>
           ))}
         </motion.div>

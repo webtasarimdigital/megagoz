@@ -24,7 +24,7 @@ export default function Footer() {
                 src="/logo.png" 
                 alt="Megagöz Logo" 
                 fill 
-                className="object-contain brightness-0 invert" 
+                className="object-contain" 
               />
             </Link>
             <p className="text-[13px] leading-relaxed text-gray-300 font-medium">

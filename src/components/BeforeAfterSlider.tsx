@@ -114,10 +114,10 @@ export default function BeforeAfterSlider() {
           onMouseDown={onMouseDown}
           onTouchStart={onTouchStart}
         >
-          {/* AFTER Image (Background/Base Image) */}
+          {/* AFTER Image (Always behind, represents the clear vision) */}
           <div className="absolute inset-0 w-full h-full">
             <Image 
-              src="/images/megagoz-tedavi-sonrası.webp" 
+              src="/images/megagoz-tedavi-sonrasi.webp" 
               alt="Tedavi Sonrası Net Görüş"
               fill
               className="object-cover pointer-events-none"

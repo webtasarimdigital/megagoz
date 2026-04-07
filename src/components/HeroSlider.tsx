@@ -48,8 +48,7 @@ export default function HeroSlider() {
   return (
     <div className="relative w-full bg-[#F8FAFC]">
       {/* Sticky Appointment Widget */}
-      {/* Sticky Appointment Widget */}
-      <div className="fixed right-0 top-1/2 z-[100]">
+      <div className="fixed right-0 top-1/2 -translate-y-1/2 z-[100]">
         
         {/* Flyout Panel (Megaeste Style Popup) */}
         <AnimatePresence>
@@ -278,7 +277,7 @@ export default function HeroSlider() {
       </div> {/* CLOSES the overflow-hidden slider track */}
 
       {/* Quick Appointment Form (Overlaps Bottom Edge) */}
-      <div className="relative z-40 w-full px-4 md:px-8 max-w-[1000px] mx-auto -mt-[60px] md:-mt-[90px] mb-16">
+      <div className="relative z-40 w-full px-4 md:px-8 max-w-[1150px] mx-auto -mt-[60px] md:-mt-[90px] mb-16">
         <div className="bg-white rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.2)] p-8 md:p-10">
            {/* Header */}
            <div className="mb-6">
