@@ -146,12 +146,12 @@ export default function Header() {
       </div>
 
       {/* Main White Nav Bar */}
-      <div className={`bg-white transition-all duration-300 ${isScrolled ? "shadow-md py-4" : "py-6 border-b-2 border-gray-100"}`}>
-        <div className="w-full flex items-center justify-center px-4 gap-8 lg:gap-14 xl:gap-20">
+      <div className={`bg-white transition-all duration-300 ${isScrolled ? "shadow-md py-4" : "py-7 lg:py-9 border-b-2 border-gray-100"}`}>
+        <div className="w-full flex items-center justify-center px-4 md:px-8 gap-8 lg:gap-10 xl:gap-20">
           
           {/* Logo */}
           <Link href="/" className="flex items-center shrink-0">
-            <img src="/logo.png" alt="Megagöz Tıp Merkezi" className="h-[45px] md:h-[52px] w-auto object-contain drop-shadow-sm" />
+            <img src="/logo.png" alt="Megagöz Tıp Merkezi" className="h-[60px] md:h-[75px] lg:h-[90px] xl:h-[100px] w-auto object-contain drop-shadow-sm" />
           </Link>
 
           {/* Desktop Menu */}

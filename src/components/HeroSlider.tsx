@@ -5,29 +5,29 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Calendar, Handshake, ChevronRight, CheckCircle2, Clock, X, ChevronDown } from "lucide-react";
 
-// Expanded to 4 slides for vertical pagination showcase
+// Futuristic, medical AI-generated slides based on user visual references
 const slides = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2680&auto=format&fit=crop",
+    image: "/images/slide1.png",
     title: "HEPSİ TEK ÇATI ALTINDA",
     subtitle: "KİŞİYE ÖZEL PLANLAMA"
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?q=80&w=2670&auto=format&fit=crop",
+    image: "/images/slide2.png",
     title: "GÖZ SAĞLIĞINIZ EMİN ELLERDE",
     subtitle: "EN YENİ TEKNOLOJİLERLE"
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=2670&auto=format&fit=crop",
+    image: "/images/slide3.png",
     title: "AKILLI LENS TEKNOLOJİSİ",
     subtitle: "YAKIN VE UZAK NET GÖRÜŞ"
   },
   {
     id: 4,
-    image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=2670&auto=format&fit=crop",
+    image: "/images/slide4.png",
     title: "LAZER GÖZ AMELİYATI",
     subtitle: "GÖZLÜKLERİNİZDEN KURTULUN"
   }
@@ -274,78 +274,79 @@ export default function HeroSlider() {
             </button>
           ))}
         </div>
+      </div> {/* CLOSES the overflow-hidden slider track */}
 
-        {/* Horizontal Quick Appointment Form (Docked INSIDE Slider) */}
-        <div className="absolute bottom-6 left-0 right-0 z-30 container mx-auto px-4 max-w-[1150px]">
-          <div className="bg-white rounded-lg shadow-[0_15px_40px_rgba(0,0,0,0.15)] p-6 md:p-8">
-             {/* Header */}
-             <div className="mb-6 relative">
-                <h3 className="text-xl md:text-[24px] font-black tracking-tight text-[#1f313f] flex gap-1.5 items-center">
-                   HIZLI RANDEVU <span className="text-[#ecbb3f]">FORMU</span>
-                </h3>
-                <div className="h-[3px] w-[50px] bg-[#ecbb3f] mt-1.5 rounded-full" />
-             </div>
+      {/* Spacer for Form Overlap */}
+      <div className="h-[90px] md:h-[130px] w-full pointer-events-none" />
 
-             {/* Form Grid */}
-             <form className="flex flex-col gap-6">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-                   {/* Name Input */}
-                   <div className="relative">
-                      <input 
-                        type="text" 
-                        placeholder="Adınız Soyadınız" 
-                        className="w-full border border-gray-300 rounded py-3.5 px-4 text-[14px] font-bold text-gray-800 placeholder-black focus:outline-none focus:border-[#ecbb3f] transition-colors bg-white hover:border-gray-400" 
-                      />
-                   </div>
-                   
-                   {/* Phone Input with Flag */}
-                   <div className="relative flex items-center border border-gray-300 rounded hover:border-gray-400 focus-within:border-[#ecbb3f] transition-colors bg-white">
-                      <input 
-                        type="tel" 
-                        placeholder="Telefon" 
-                        className="w-full py-3.5 px-4 text-[14px] font-bold text-gray-800 placeholder-black outline-none bg-transparent rounded-l" 
-                      />
-                      <div className="pr-3 pl-2 flex items-center gap-1.5 cursor-pointer border-l border-gray-200 ml-1">
-                         <img src="/tr.svg" alt="TR" className="w-[20px] h-[14px] object-cover rounded-sm border border-gray-200 shadow-sm" />
-                         <ChevronDown size={14} className="text-gray-500" />
-                      </div>
-                   </div>
+      {/* Horizontal Quick Appointment Form (Overlaps Bottom Edge) */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-40 w-full px-4 max-w-[1100px]">
+        <div className="bg-white rounded-[12px] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.3)] p-6 md:p-8 md:pb-6">
+           {/* Header */}
+           <div className="mb-6 relative">
+              <h3 className="text-xl md:text-[22px] font-black tracking-tight text-[#1f313f] flex gap-1.5 items-center">
+                 HIZLI RANDEVU <span className="text-[#ecbb3f]">FORMU</span>
+              </h3>
+              <div className="h-[2.5px] w-[60px] bg-[#ecbb3f] mt-1.5 rounded-full" />
+           </div>
 
-                   {/* ReCaptcha dummy */}
-                   <div className="border border-gray-300 rounded bg-[#fdfdfd] hover:border-gray-400 transition-colors py-2 px-3 flex items-center justify-between shadow-sm">
-                      <div className="flex items-center gap-3">
-                         <div className="w-[26px] h-[26px] border-[2px] border-gray-300 rounded-sm bg-white cursor-pointer hover:border-gray-400 transition-colors" />
-                         <span className="text-[13.5px] text-gray-700 font-medium">Ben robot değilim</span>
-                      </div>
-                      <div className="flex flex-col items-center">
-                         <svg className="w-8 h-8 text-blue-600 mb-0.5" viewBox="0 0 24 24" fill="currentColor">
-                           <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
-                         </svg>
-                         <span className="text-[8px] text-gray-500 font-bold tracking-widest mt-[-4px]">reCAPTCHA</span>
-                      </div>
-                   </div>
-                </div>
+           {/* Form Grid */}
+           <form className="flex flex-col gap-6 font-sans">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                 {/* Name Input */}
+                 <div className="relative">
+                    <input 
+                      type="text" 
+                      placeholder="Adınız Soyadınız" 
+                      className="w-full border border-gray-200 rounded-[6px] py-3.5 px-4 text-[13.5px] font-bold text-gray-800 placeholder-gray-500 focus:outline-none focus:border-[#ecbb3f] focus:ring-1 focus:ring-[#ecbb3f]/30 transition-all bg-white" 
+                    />
+                 </div>
+                 
+                 {/* Phone Input with Flag */}
+                 <div className="relative flex items-center border border-gray-200 rounded-[6px] focus-within:border-[#ecbb3f] focus-within:ring-1 focus-within:ring-[#ecbb3f]/30 transition-all bg-white">
+                    <div className="pl-3 pr-2 flex items-center justify-center border-r border-gray-200 cursor-pointer hover:bg-gray-50 transition h-full rounded-l-[6px]">
+                       <img src="/tr.svg" alt="TR" className="w-[18px] h-[13px] object-cover rounded-[2px]" />
+                       <ChevronDown size={14} className="text-gray-500 ml-1" />
+                    </div>
+                    <input 
+                      type="tel" 
+                      placeholder="Telefon" 
+                      className="w-full py-3.5 px-3 text-[13.5px] font-bold text-gray-800 placeholder-gray-500 outline-none bg-transparent" 
+                    />
+                 </div>
 
-                {/* Bottom Row */}
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-5 mt-2">
-                   <label className="flex items-center gap-3 cursor-pointer group">
-                      <div className="w-[15px] h-[15px] border border-gray-400 bg-gray-50 rounded-[2px] group-hover:border-[#ecbb3f] transition-colors flex items-center justify-center">
-                         {/* Optional check icon */}
-                      </div>
-                      <span className="text-[13.5px] text-[#444] font-medium tracking-wide">
-                         <a href="#" className="text-[#ecbb3f] hover:underline">KVKK</a> metnini okudum, kabul ediyorum
-                      </span>
-                   </label>
-                   
-                   <button 
-                     type="button" 
-                     className="w-full sm:w-auto bg-[#ecbb3f] hover:bg-[#e04c2c] text-white font-bold tracking-wider py-4 px-12 rounded-[4px] shadow-md transition-colors text-[15px]"
-                   >
-                      Gönder
-                   </button>
-                </div>
-             </form>
-          </div>
+                 {/* ReCaptcha dummy */}
+                 <div className="border border-gray-200 rounded-[6px] bg-[#fafafa] py-2 px-3 flex items-center justify-between shadow-sm">
+                    <div className="flex items-center gap-3">
+                       <div className="w-[24px] h-[24px] border-[2px] border-gray-300 rounded-[3px] bg-white cursor-pointer hover:border-gray-400 transition-colors" />
+                       <span className="text-[13px] text-gray-600 font-medium">Ben robot değilim</span>
+                    </div>
+                    <div className="flex flex-col items-center">
+                       <svg className="w-8 h-8 text-blue-500 mb-0.5 opacity-90" viewBox="0 0 24 24" fill="currentColor">
+                         <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+                       </svg>
+                       <span className="text-[8px] text-gray-400 font-bold tracking-widest mt-[-2px]">reCAPTCHA</span>
+                    </div>
+                 </div>
+              </div>
+
+              {/* Bottom Row */}
+              <div className="flex flex-col sm:flex-row items-center justify-between mt-1">
+                 <label className="flex items-center gap-2.5 cursor-pointer group mb-4 sm:mb-0">
+                    <div className="w-[14px] h-[14px] border border-gray-300 bg-gray-50 rounded-[2px] group-hover:border-[#ecbb3f] transition-all flex items-center justify-center"></div>
+                    <span className="text-[13px] text-gray-500 font-medium whitespace-nowrap">
+                       <a href="#" className="text-[#ecbb3f] font-bold hover:underline">KVKK</a> metnini okudum, kabul ediyorum.
+                    </span>
+                 </label>
+                 
+                 <button 
+                   type="button" 
+                   className="w-full sm:w-auto bg-[#ecbb3f] hover:bg-[#d6a529] text-white font-bold tracking-wider py-3.5 px-16 rounded-[4px] shadow-lg shadow-[#ecbb3f]/30 transition-all text-[15px]"
+                 >
+                    Gönder
+                 </button>
+              </div>
+           </form>
         </div>
       </div>
     </div>
