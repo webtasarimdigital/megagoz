@@ -62,12 +62,12 @@ export default function HeroSlider() {
               <div className="p-8 w-[420px] relative">
                 <button 
                   onClick={() => setIsPopupOpen(false)} 
-                  className="absolute top-5 right-5 text-gray-400 hover:text-[#F2AC1E] transition-colors bg-gray-100 rounded-full p-2"
+                  className="absolute top-5 right-5 text-gray-400 hover:text-[#ecbb3f] transition-colors bg-gray-100 rounded-full p-2"
                 >
                   <X size={20} />
                 </button>
                 
-                <h3 className="text-xl font-black text-[#1f6388] mb-6 pr-8">Hızlı Randevu Oluştur</h3>
+                <h3 className="text-xl font-black text-[#1f313f] mb-6 pr-8">Hızlı Randevu Oluştur</h3>
 
                 <form className="space-y-4 font-sans">
                   
@@ -77,14 +77,14 @@ export default function HeroSlider() {
                     <input 
                       type="text" 
                       placeholder="Adınız Soyadınız"
-                      className="w-full bg-gray-50 border border-gray-200 focus:border-[#F2AC1E] focus:bg-white focus:outline-none text-gray-800 py-3 px-4 rounded-lg transition-all text-[14px] font-medium placeholder-gray-400" 
+                      className="w-full bg-gray-50 border border-gray-200 focus:border-[#ecbb3f] focus:bg-white focus:outline-none text-gray-800 py-3 px-4 rounded-lg transition-all text-[14px] font-medium placeholder-gray-400" 
                     />
                   </div>
 
                   {/* Phone field */}
                   <div>
                     <label className="text-[13px] font-bold text-gray-600 mb-1.5 block">Telefonunuz</label>
-                    <div className="flex bg-gray-50 border border-gray-200 rounded-lg overflow-hidden focus-within:border-[#F2AC1E] focus-within:bg-white transition-all">
+                    <div className="flex bg-gray-50 border border-gray-200 rounded-lg overflow-hidden focus-within:border-[#ecbb3f] focus-within:bg-white transition-all">
                       <div className="flex items-center gap-2 px-3 border-r border-gray-200 bg-gray-50">
                         <div className="w-5 h-3.5 bg-red-600 flex items-center justify-center overflow-hidden relative rounded-sm">
                            <div className="text-white text-[8px] absolute">★</div>
@@ -102,18 +102,18 @@ export default function HeroSlider() {
                   {/* Center Dropdown */}
                   <div>
                     <label className="text-[13px] font-bold text-gray-600 mb-1.5 block">Merkez</label>
-                    <div className="relative bg-gray-50 border border-gray-200 rounded-lg flex items-center justify-between cursor-pointer hover:border-[#F2AC1E] hover:bg-white transition-all py-3 px-4">
+                    <div className="relative bg-gray-50 border border-gray-200 rounded-lg flex items-center justify-between cursor-pointer hover:border-[#ecbb3f] hover:bg-white transition-all py-3 px-4">
                       <span className="text-gray-500 font-medium text-[14px]">Merkezi Seçiniz</span>
-                      <ChevronDown size={18} className="text-[#F2AC1E]" />
+                      <ChevronDown size={18} className="text-[#ecbb3f]" />
                     </div>
                   </div>
 
                   {/* Doctor Dropdown */}
                   <div>
                     <label className="text-[13px] font-bold text-gray-600 mb-1.5 block">Hekim</label>
-                    <div className="relative bg-gray-50 border border-gray-200 rounded-lg flex items-center justify-between cursor-pointer hover:border-[#F2AC1E] hover:bg-white transition-all py-3 px-4">
+                    <div className="relative bg-gray-50 border border-gray-200 rounded-lg flex items-center justify-between cursor-pointer hover:border-[#ecbb3f] hover:bg-white transition-all py-3 px-4">
                       <span className="text-gray-400 font-medium text-[14px]">Seçiniz</span> 
-                      <ChevronDown size={18} className="text-[#F2AC1E]" />
+                      <ChevronDown size={18} className="text-[#ecbb3f]" />
                     </div>
                   </div>
 
@@ -121,25 +121,25 @@ export default function HeroSlider() {
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className="text-[13px] font-bold text-gray-600 mb-1.5 block">Gün</label>
-                      <div className="relative bg-gray-50 border border-gray-200 rounded-lg py-3 px-4 hover:border-[#F2AC1E] hover:bg-white transition-all cursor-pointer">
+                      <div className="relative bg-gray-50 border border-gray-200 rounded-lg py-3 px-4 hover:border-[#ecbb3f] hover:bg-white transition-all cursor-pointer">
                          <span className="text-gray-400 text-[14px] font-medium">Seçiniz</span>
                       </div>
                     </div>
                     <div>
                       <label className="text-[13px] font-bold text-gray-600 mb-1.5 block">Saat</label>
-                      <div className="relative bg-gray-50 border border-gray-200 rounded-lg py-3 px-4 flex items-center justify-between cursor-pointer hover:border-[#F2AC1E] hover:bg-white transition-all">
+                      <div className="relative bg-gray-50 border border-gray-200 rounded-lg py-3 px-4 flex items-center justify-between cursor-pointer hover:border-[#ecbb3f] hover:bg-white transition-all">
                         <span className="text-gray-500 font-medium text-[14px]">Saat Seçiniz</span>
-                        <ChevronDown size={18} className="text-[#F2AC1E]" />
+                        <ChevronDown size={18} className="text-[#ecbb3f]" />
                       </div>
                     </div>
                   </div>
 
                   {/* KVKK */}
                   <div className="flex items-start gap-3 pt-2">
-                    <div className="min-w-5 w-5 h-5 border-2 border-gray-300 flex items-center justify-center mt-0.5 bg-white cursor-pointer rounded hover:border-[#F2AC1E] transition-colors">
+                    <div className="min-w-5 w-5 h-5 border-2 border-gray-300 flex items-center justify-center mt-0.5 bg-white cursor-pointer rounded hover:border-[#ecbb3f] transition-colors">
                     </div>
                     <p className="text-[12px] leading-snug text-gray-600 font-medium">
-                      <a href="#" className="font-bold underline underline-offset-2 text-[#F2AC1E]">KVKK</a> hakkında bilgilendirme metnini okudum, kabul ediyorum.
+                      <a href="#" className="font-bold underline underline-offset-2 text-[#ecbb3f]">KVKK</a> hakkında bilgilendirme metnini okudum, kabul ediyorum.
                     </p>
                   </div>
 
@@ -156,7 +156,7 @@ export default function HeroSlider() {
                   </div>
 
                   {/* Submit */}
-                  <button type="button" className="w-full bg-[#F2AC1E] text-white hover:bg-[#d99816] transition-colors font-black text-[16px] py-4 rounded-lg font-sans flex items-center justify-center mt-4 shadow-lg shadow-[#F2AC1E]/30 tracking-wide">
+                  <button type="button" className="w-full bg-[#ecbb3f] text-white hover:bg-[#d99816] transition-colors font-black text-[16px] py-4 rounded-lg font-sans flex items-center justify-center mt-4 shadow-lg shadow-[#ecbb3f]/30 tracking-wide">
                     RANDEVU OLUŞTUR
                   </button>
 
@@ -170,9 +170,9 @@ export default function HeroSlider() {
         {!isPopupOpen && (
           <button 
             onClick={() => setIsPopupOpen(true)}
-            className="w-[85px] h-[190px] flex flex-col shadow-[-5px_0_20px_rgba(0,0,0,0.15)] overflow-hidden transition-all duration-300 hover:scale-105 origin-right rounded-l-[14px]"
+            className="w-[85px] h-[190px] flex flex-col shadow-[-5px_0_20px_rgba(0,0,0,0.15)] overflow-hidden transition-transform duration-300 hover:scale-105 origin-right rounded-l-md"
           >
-            <div className="bg-[#1f6388] flex-1 w-full flex flex-col items-center justify-center">
+            <div className="bg-[#1f313f] flex-1 w-full flex flex-col items-center justify-center border-b border-white/10">
               <div className="relative w-12 h-12 flex items-center justify-center">
                 <svg className="absolute inset-0 w-full h-full text-white/80" viewBox="0 0 100 100">
                   <path d="M50 15 A35 35 0 1 1 80 80" fill="none" stroke="currentColor" strokeWidth="6" strokeDasharray="10, 8" strokeLinecap="round" />
@@ -181,7 +181,7 @@ export default function HeroSlider() {
                 <span className="text-white font-black text-[16px] tracking-tighter mt-1 pr-1">24<span className="text-[11px]">/7</span></span>
               </div>
             </div>
-            <div className="bg-[#F2AC1E] flex-1 w-full flex items-center justify-center text-center text-white font-black text-[13px] leading-tight tracking-wide">
+            <div className="bg-[#ecbb3f] flex-1 w-full flex items-center justify-center text-center text-white font-black text-[13px] leading-tight tracking-wide">
               <div>TIKLA<br/>RANDEVU<br/>AL</div>
             </div>
           </button>
@@ -212,14 +212,14 @@ export default function HeroSlider() {
           >
             {/* Background Images */}
             <div 
-              className="absolute inset-0 bg-cover bg-center -z-20 pointer-events-none"
+              className="absolute inset-0 bg-cover bg-center pointer-events-none"
               style={{ backgroundImage: `url(${slides[current].image})` }}
             />
             {/* Elegant Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#00305a]/90 via-[#004e8e]/70 to-transparent -z-10 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#00305a]/90 via-[#004e8e]/70 to-transparent pointer-events-none" />
 
             {/* Text Content */}
-            <div className="relative w-full container mx-auto px-4 max-w-6xl pb-24 md:pb-32 pointer-events-none">
+            <div className="relative z-10 w-full container mx-auto px-4 max-w-6xl pb-24 md:pb-32 pointer-events-none">
               <div className="max-w-2xl">
                 <div className="inline-block px-4 py-1.5 rounded-full bg-[#06b6d4]/20 border border-[#06b6d4]/30 text-[#06b6d4] font-bold text-sm tracking-widest mb-6 uppercase backdrop-blur-sm shadow-lg pointer-events-auto">
                   Megagöz Lazer Teknolojisi
@@ -235,13 +235,13 @@ export default function HeroSlider() {
                 <div className="flex gap-4 mt-8 pointer-events-auto">
                    <button 
                      onClick={(e) => { e.stopPropagation(); setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1)); }}
-                     className="bg-[#2c88ac] hover:bg-[#1f6388] transition p-3 rounded-full text-white shadow"
+                     className="bg-[#1f313f] hover:bg-[#1f313f] transition p-3 rounded-full text-white shadow"
                    >
                      <ChevronRight className="rotate-180" size={20}/>
                    </button>
                    <button 
                      onClick={(e) => { e.stopPropagation(); setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1)); }}
-                     className="bg-[#2c88ac] hover:bg-[#1f6388] transition p-3 rounded-full text-white shadow"
+                     className="bg-[#1f313f] hover:bg-[#1f313f] transition p-3 rounded-full text-white shadow"
                    >
                      <ChevronRight size={20}/>
                    </button>
@@ -262,91 +262,90 @@ export default function HeroSlider() {
               }}
               className={`transition-all duration-300 relative text-[18px] font-black items-center justify-center flex w-12 h-12 rounded ${
                 current === idx 
-                  ? "text-[#2c88ac]" 
+                  ? "text-[#ecbb3f]" 
                   : "text-white hover:text-cyan-200"
               }`}
               aria-label={`Go to slide ${idx + 1}`}
             >
               {current === idx && (
-                <div className="absolute inset-0 border-[2px] border-[#2c88ac] bg-white opacity-100 flex items-center justify-center -z-10 shadow-lg" />
+                <div className="absolute inset-0 border-[2px] border-[#ecbb3f] bg-white opacity-100 flex items-center justify-center -z-10 shadow-lg" />
               )}
               {String(idx + 1).padStart(2, "0")}
             </button>
           ))}
         </div>
-      </div>
 
-      {/* Horizontal Quick Appointment Form (Overlaps Slider) */}
-      <div className="relative z-30 container mx-auto px-4 max-w-5xl -mt-24 mb-16">
-        <div className="bg-white rounded-lg shadow-[0_15px_40px_rgba(0,0,0,0.12)] p-6 md:p-8">
-           {/* Header */}
-           <div className="mb-6 relative">
-              <h3 className="text-xl md:text-2xl font-black text-[#1f6388] flex gap-1.5 items-center">
-                 HIZLI RANDEVU <span className="text-[#e85025]">FORMU</span>
-              </h3>
-              <div className="h-[3px] w-12 bg-[#e85025] mt-1 rounded-full" />
-           </div>
+        {/* Horizontal Quick Appointment Form (Docked INSIDE Slider) */}
+        <div className="absolute bottom-6 left-0 right-0 z-30 container mx-auto px-4 max-w-[1150px]">
+          <div className="bg-white rounded-lg shadow-[0_15px_40px_rgba(0,0,0,0.15)] p-6 md:p-8">
+             {/* Header */}
+             <div className="mb-6 relative">
+                <h3 className="text-xl md:text-[24px] font-black tracking-tight text-[#1f313f] flex gap-1.5 items-center">
+                   HIZLI RANDEVU <span className="text-[#ecbb3f]">FORMU</span>
+                </h3>
+                <div className="h-[3px] w-[50px] bg-[#ecbb3f] mt-1.5 rounded-full" />
+             </div>
 
-           {/* Form Grid */}
-           <form className="flex flex-col gap-6">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-                 {/* Name Input */}
-                 <div className="relative">
-                    <input 
-                      type="text" 
-                      placeholder="Adınız Soyadınız" 
-                      className="w-full border border-gray-300 rounded py-3.5 px-4 text-[14px] font-bold text-gray-800 placeholder-black focus:outline-none focus:border-[#e85025] transition-colors bg-white hover:border-gray-400" 
-                    />
-                 </div>
-                 
-                 {/* Phone Input with Flag */}
-                 <div className="relative flex items-center border border-gray-300 rounded hover:border-gray-400 focus-within:border-[#e85025] transition-colors bg-white">
-                    <input 
-                      type="tel" 
-                      placeholder="Telefon" 
-                      className="w-full py-3.5 px-4 text-[14px] font-bold text-gray-800 placeholder-black outline-none bg-transparent rounded-l" 
-                    />
-                    <div className="pr-3 pl-2 flex items-center gap-1.5 cursor-pointer border-l border-gray-100 ml-1">
-                       <img src="/tr.svg" alt="TR" className="w-[18px] h-[13px] object-cover rounded-sm border border-gray-200" />
-                       <ChevronDown size={14} className="text-gray-500" />
-                    </div>
-                 </div>
+             {/* Form Grid */}
+             <form className="flex flex-col gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                   {/* Name Input */}
+                   <div className="relative">
+                      <input 
+                        type="text" 
+                        placeholder="Adınız Soyadınız" 
+                        className="w-full border border-gray-300 rounded py-3.5 px-4 text-[14px] font-bold text-gray-800 placeholder-black focus:outline-none focus:border-[#ecbb3f] transition-colors bg-white hover:border-gray-400" 
+                      />
+                   </div>
+                   
+                   {/* Phone Input with Flag */}
+                   <div className="relative flex items-center border border-gray-300 rounded hover:border-gray-400 focus-within:border-[#ecbb3f] transition-colors bg-white">
+                      <input 
+                        type="tel" 
+                        placeholder="Telefon" 
+                        className="w-full py-3.5 px-4 text-[14px] font-bold text-gray-800 placeholder-black outline-none bg-transparent rounded-l" 
+                      />
+                      <div className="pr-3 pl-2 flex items-center gap-1.5 cursor-pointer border-l border-gray-200 ml-1">
+                         <img src="/tr.svg" alt="TR" className="w-[20px] h-[14px] object-cover rounded-sm border border-gray-200 shadow-sm" />
+                         <ChevronDown size={14} className="text-gray-500" />
+                      </div>
+                   </div>
 
-                 {/* ReCaptcha dummy */}
-                 <div className="border border-gray-300 rounded bg-gray-50/50 hover:border-gray-400 transition-colors py-2 px-3 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                       <div className="w-6 h-6 border-2 border-gray-300 rounded-sm bg-white cursor-pointer hover:border-gray-400 transition-colors" />
-                       <span className="text-[13px] text-gray-700 font-medium">Ben robot değilim</span>
-                    </div>
-                    <div className="flex flex-col items-center">
-                       {/* reCAPTCHA style recycling logo trick */}
-                       <svg className="w-7 h-7 text-blue-600 mb-0.5" viewBox="0 0 24 24" fill="currentColor">
-                         <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
-                       </svg>
-                       <span className="text-[7px] text-gray-500 font-bold tracking-widest mt-[-2px]">reCAPTCHA</span>
-                    </div>
-                 </div>
-              </div>
+                   {/* ReCaptcha dummy */}
+                   <div className="border border-gray-300 rounded bg-[#fdfdfd] hover:border-gray-400 transition-colors py-2 px-3 flex items-center justify-between shadow-sm">
+                      <div className="flex items-center gap-3">
+                         <div className="w-[26px] h-[26px] border-[2px] border-gray-300 rounded-sm bg-white cursor-pointer hover:border-gray-400 transition-colors" />
+                         <span className="text-[13.5px] text-gray-700 font-medium">Ben robot değilim</span>
+                      </div>
+                      <div className="flex flex-col items-center">
+                         <svg className="w-8 h-8 text-blue-600 mb-0.5" viewBox="0 0 24 24" fill="currentColor">
+                           <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+                         </svg>
+                         <span className="text-[8px] text-gray-500 font-bold tracking-widest mt-[-4px]">reCAPTCHA</span>
+                      </div>
+                   </div>
+                </div>
 
-              {/* Bottom Row */}
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-5 mt-2">
-                 <label className="flex items-center gap-3 cursor-pointer group">
-                    <div className="w-4 h-4 border-2 border-gray-200 bg-gray-50 rounded-sm group-hover:border-gray-400 transition-colors flex items-center justify-center">
-                       {/* Optional check icon */}
-                    </div>
-                    <span className="text-[13px] text-gray-600 font-medium">
-                       <a href="#" className="text-[#e85025] hover:underline">KVKK</a> metnini okudum, kabul ediyorum
-                    </span>
-                 </label>
-                 
-                 <button 
-                   type="button" 
-                   className="w-full sm:w-auto bg-[#e85025] hover:bg-[#c2401c] text-white font-bold tracking-wide py-3 px-10 rounded shadow-md transition-colors text-[15px]"
-                 >
-                    Gönder
-                 </button>
-              </div>
-           </form>
+                {/* Bottom Row */}
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-5 mt-2">
+                   <label className="flex items-center gap-3 cursor-pointer group">
+                      <div className="w-[15px] h-[15px] border border-gray-400 bg-gray-50 rounded-[2px] group-hover:border-[#ecbb3f] transition-colors flex items-center justify-center">
+                         {/* Optional check icon */}
+                      </div>
+                      <span className="text-[13.5px] text-[#444] font-medium tracking-wide">
+                         <a href="#" className="text-[#ecbb3f] hover:underline">KVKK</a> metnini okudum, kabul ediyorum
+                      </span>
+                   </label>
+                   
+                   <button 
+                     type="button" 
+                     className="w-full sm:w-auto bg-[#ecbb3f] hover:bg-[#e04c2c] text-white font-bold tracking-wider py-4 px-12 rounded-[4px] shadow-md transition-colors text-[15px]"
+                   >
+                      Gönder
+                   </button>
+                </div>
+             </form>
+          </div>
         </div>
       </div>
     </div>

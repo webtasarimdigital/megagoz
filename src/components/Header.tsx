@@ -55,7 +55,7 @@ export default function Header() {
     <header className="w-full fixed top-0 left-0 right-0 z-50 flex flex-col font-sans">
       {/* Top Blue Bar - Disappears on scroll */}
       <div 
-        className={`bg-[#2c88ac] text-white text-[14px] font-semibold tracking-wide transition-all duration-300 origin-top ${
+        className={`bg-[#1f313f] text-white text-[14px] font-semibold tracking-wide transition-all duration-300 origin-top ${
           isScrolled ? "h-0 opacity-0 overflow-hidden" : "h-[45px] opacity-100 flex"
         }`}
       >
@@ -94,23 +94,23 @@ export default function Header() {
             </div>
             <span className="text-white/60">|</span>
             {/* Language Selector */}
-            <div className="relative" ref={langMenuRef}>
+            <div className="relative flex items-center pl-1 border-l border-white/30 ml-1" ref={langMenuRef}>
               <button 
                 onClick={() => setIsLangMenuOpen(!isLangMenuOpen)} 
-                className="flex items-center gap-2 hover:bg-white/10 transition-colors border-[1.5px] border-white/40 hover:border-white rounded bg-white/5 px-2.5 py-1 ml-1"
+                className="flex items-center gap-1.5 hover:opacity-80 transition-opacity pl-2"
               >
                 {locale === "tr" ? (
                   <>
-                    <img src="/tr.svg" alt="TR" className="w-[18px] h-[13px] object-cover shadow-sm" />
-                    <span className="font-bold text-[#F2AC1E] tracking-wider text-[11px] mt-0.5">TÜRKÇE</span>
+                    <img src="/tr.svg" alt="TR" className="w-5 h-3.5 object-cover rounded-[1px] shadow-sm" />
+                    <span className="font-bold text-[13px] tracking-wide mt-0.5">TR</span>
                   </>
                 ) : (
                   <>
-                    <img src="/en.svg" alt="EN" className="w-[18px] h-[13px] object-cover shadow-sm" />
-                    <span className="font-bold text-[#F2AC1E] tracking-wider text-[11px] mt-0.5">ENGLISH</span>
+                    <img src="/en.svg" alt="EN" className="w-5 h-3.5 object-cover rounded-[1px] shadow-sm" />
+                    <span className="font-bold text-[13px] tracking-wide mt-0.5">EN</span>
                   </>
                 )}
-                <ChevronDown size={14} className="text-[#F2AC1E] ml-0.5 pt-0.5" />
+                <ChevronDown size={14} className="mt-0.5" />
               </button>
 
               <AnimatePresence>
@@ -120,22 +120,22 @@ export default function Header() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-[calc(100%+8px)] right-0 bg-white rounded shadow-xl border border-gray-200 min-w-[130px] z-50 overflow-hidden"
+                    className="absolute top-[calc(100%+8px)] right-0 bg-white rounded shadow-xl border border-gray-200 min-w-[120px] z-50 overflow-hidden"
                   >
                     <button 
                       onClick={() => { switchLocale("tr"); setIsLangMenuOpen(false); }}
                       className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-50 transition-colors"
                     >
-                      <img src="/tr.svg" alt="TR" className="w-[18px] h-[13px] object-cover border border-gray-100" />
-                       <span className="font-bold text-[#C29F64] tracking-wide text-[12px]">TÜRKÇE</span>
+                      <img src="/tr.svg" alt="TR" className="w-5 h-3.5 object-cover border border-gray-100 rounded-[1px]" />
+                       <span className="font-bold text-[#333] tracking-wide text-[13px]">Türkçe</span>
                     </button>
                     <div className="h-[1px] w-full bg-gray-100 px-2" />
                     <button 
                       onClick={() => { switchLocale("en"); setIsLangMenuOpen(false); }}
                       className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-50 transition-colors"
                     >
-                      <img src="/en.svg" alt="EN" className="w-[18px] h-[13px] object-cover border border-gray-100" />
-                       <span className="font-bold text-[#454d52] tracking-wide text-[12px]">ENGLISH</span>
+                      <img src="/en.svg" alt="EN" className="w-5 h-3.5 object-cover border border-gray-100 rounded-[1px]" />
+                       <span className="font-bold text-[#333] tracking-wide text-[13px]">English</span>
                     </button>
                   </motion.div>
                 )}
@@ -151,9 +151,7 @@ export default function Header() {
           
           {/* Logo */}
           <Link href="/" className="flex items-center shrink-0">
-            <span className="text-[36px] md:text-[42px] font-black tracking-tighter text-[#1f6388]">
-              mega<span className="text-[#e85025]">göz</span>
-            </span>
+            <img src="/logo.png" alt="Megagöz Tıp Merkezi" className="h-[45px] md:h-[52px] w-auto object-contain drop-shadow-sm" />
           </Link>
 
           {/* Desktop Menu */}
@@ -163,7 +161,7 @@ export default function Header() {
                 <a 
                   key={link.name} 
                   href={link.href}
-                  className="text-[15px] font-bold text-[#454d52] hover:text-[#2c88ac] transition-colors whitespace-nowrap tracking-wide"
+                  className="text-[15px] font-bold text-[#454d52] hover:text-[#ecbb3f] transition-colors whitespace-nowrap tracking-wide"
                 >
                   {link.name}
                 </a>
@@ -171,7 +169,7 @@ export default function Header() {
                 <Link 
                   key={link.name} 
                   href={link.href as any}
-                  className="text-[15px] font-bold text-[#454d52] hover:text-[#2c88ac] transition-colors whitespace-nowrap tracking-wide"
+                  className="text-[15px] font-bold text-[#454d52] hover:text-[#ecbb3f] transition-colors whitespace-nowrap tracking-wide"
                 >
                   {link.name}
                 </Link>
@@ -183,7 +181,7 @@ export default function Header() {
 
           {/* Mobile Menu Toggle */}
           <button 
-            className="lg:hidden text-[#1f6388] ml-auto"
+            className="lg:hidden text-[#1f313f] ml-auto"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X size={32} /> : <Menu size={32} />}

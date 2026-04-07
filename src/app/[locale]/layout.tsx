@@ -9,6 +9,9 @@ import FloatingActions from "@/components/FloatingActions";
 export const metadata: Metadata = {
   title: "Megagöz | Göz Sağlığı Merkezi",
   description: "Megagöz, en iyi göz sağlığı hizmetlerini sunar.",
+  icons: {
+    icon: "/favicon-megagoz.jpg",
+  },
 };
 
 export default async function LocaleLayout({
