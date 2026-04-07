@@ -56,7 +56,7 @@ export default function Header() {
       {/* Top Blue Bar - Disappears on scroll */}
       <div 
         className={`bg-[#1f313f] text-white text-[14px] font-semibold tracking-wide transition-all duration-300 origin-top ${
-          isScrolled ? "h-0 opacity-0 overflow-hidden" : "h-[45px] opacity-100 flex"
+          isScrolled ? "h-0 opacity-0 overflow-hidden" : "h-[50px] md:h-[55px] opacity-100 flex"
         }`}
       >
         <div className="w-full flex items-center justify-center h-full px-4 gap-8 md:gap-16">
@@ -94,23 +94,23 @@ export default function Header() {
             </div>
             <span className="text-white/60">|</span>
             {/* Language Selector */}
-            <div className="relative flex items-center pl-1 border-l border-white/30 ml-1" ref={langMenuRef}>
+            <div className="relative flex items-center ml-2" ref={langMenuRef}>
               <button 
                 onClick={() => setIsLangMenuOpen(!isLangMenuOpen)} 
-                className="flex items-center gap-1.5 hover:opacity-80 transition-opacity pl-2"
+                className="flex items-center gap-2 bg-white hover:bg-gray-50 transition-colors px-2.5 py-1.5 rounded shadow-sm border-[1.5px] border-gray-200"
               >
                 {locale === "tr" ? (
                   <>
-                    <img src="/tr.svg" alt="TR" className="w-5 h-3.5 object-cover rounded-[1px] shadow-sm" />
-                    <span className="font-bold text-[13px] tracking-wide mt-0.5">TR</span>
+                    <img src="/tr.svg" alt="TR" className="w-[20px] h-[14px] rounded-[2px] object-cover shrink-0" />
+                    <span className="font-black text-[#dcae3d] text-[12px] tracking-wide mt-0.5">TÜRKÇE</span>
                   </>
                 ) : (
                   <>
-                    <img src="/en.svg" alt="EN" className="w-5 h-3.5 object-cover rounded-[1px] shadow-sm" />
-                    <span className="font-bold text-[13px] tracking-wide mt-0.5">EN</span>
+                    <img src="/en.svg" alt="EN" className="w-[20px] h-[14px] rounded-[2px] object-cover shrink-0" />
+                    <span className="font-black text-[#dcae3d] text-[12px] tracking-wide mt-0.5">ENGLISH</span>
                   </>
                 )}
-                <ChevronDown size={14} className="mt-0.5" />
+                <ChevronDown size={14} className="text-[#dcae3d] mt-0.5" />
               </button>
 
               <AnimatePresence>
@@ -146,15 +146,15 @@ export default function Header() {
       </div>
 
       {/* Main White Nav Bar */}
-      <div className={`bg-white transition-all duration-300 ${isScrolled ? "shadow-md py-4" : "py-7 lg:py-9 border-b-2 border-gray-100"}`}>
+      <div className={`bg-white transition-all duration-300 ${isScrolled ? "shadow-md py-4" : "py-4 lg:py-6 border-b-2 border-gray-100"}`}>
         <div className="w-full flex items-center justify-center px-4 md:px-8 gap-8 lg:gap-10 xl:gap-20">
           
           {/* Logo */}
-          <Link href="/" className="flex items-center shrink-0">
+          <Link href="/" className="flex flex-col justify-center items-center shrink-0 relative w-[180px] md:w-[250px] lg:w-[320px] h-[55px] md:h-[70px] lg:h-[80px] overflow-hidden">
             <img 
               src="/logo.png" 
               alt="Megagöz Tıp Merkezi" 
-              className="w-[180px] md:w-[250px] lg:w-[320px] h-auto object-contain" 
+              className="absolute inset-0 w-[100%] h-[100%] object-cover object-center transform scale-[1.35] md:scale-[1.45]" 
             />
           </Link>
 
