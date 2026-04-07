@@ -101,16 +101,12 @@ export default function Header() {
               >
                 {locale === "tr" ? (
                   <>
-                    <div className="w-[20px] h-[14px] rounded-[2px] overflow-hidden shrink-0 border border-gray-200/50">
-                       <img src="/tr.svg" alt="TR" className="w-full h-full object-cover transform scale-[1.15]" />
-                    </div>
+                    <img src="/tr.svg" alt="TR" className="w-[20px] h-[14px] object-cover shrink-0 mix-blend-multiply opacity-90 rounded-[2px]" />
                     <span className="font-black text-[#dcae3d] text-[12px] tracking-wide mt-0.5">TÜRKÇE</span>
                   </>
                 ) : (
                   <>
-                    <div className="w-[20px] h-[14px] rounded-[2px] overflow-hidden shrink-0 border border-gray-200/50">
-                       <img src="/en.svg" alt="EN" className="w-full h-full object-cover transform scale-[1.15]" />
-                    </div>
+                    <img src="/en.svg" alt="EN" className="w-[20px] h-[14px] object-cover shrink-0 mix-blend-multiply opacity-90 rounded-[2px]" />
                     <span className="font-black text-[#dcae3d] text-[12px] tracking-wide mt-0.5">ENGLISH</span>
                   </>
                 )}
@@ -130,9 +126,7 @@ export default function Header() {
                       onClick={() => { switchLocale("tr"); setIsLangMenuOpen(false); }}
                       className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-50 transition-colors"
                     >
-                      <div className="w-5 h-3.5 rounded-[1px] overflow-hidden shrink-0 border border-gray-200/50">
-                         <img src="/tr.svg" alt="TR" className="w-full h-full object-cover transform scale-[1.15]" />
-                      </div>
+                      <img src="/tr.svg" alt="TR" className="w-[20px] h-[14px] object-cover mix-blend-multiply opacity-90 rounded-[1px]" />
                        <span className="font-bold text-[#333] tracking-wide text-[13px]">Türkçe</span>
                     </button>
                     <div className="h-[1px] w-full bg-gray-100 px-2" />
@@ -140,9 +134,7 @@ export default function Header() {
                       onClick={() => { switchLocale("en"); setIsLangMenuOpen(false); }}
                       className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-50 transition-colors"
                     >
-                      <div className="w-5 h-3.5 rounded-[1px] overflow-hidden shrink-0 border border-gray-200/50">
-                         <img src="/en.svg" alt="EN" className="w-full h-full object-cover transform scale-[1.15]" />
-                      </div>
+                      <img src="/en.svg" alt="EN" className="w-[20px] h-[14px] object-cover mix-blend-multiply opacity-90 rounded-[1px]" />
                        <span className="font-bold text-[#333] tracking-wide text-[13px]">English</span>
                     </button>
                   </motion.div>
@@ -158,11 +150,11 @@ export default function Header() {
         <div className="w-full flex items-center justify-center px-4 md:px-8 gap-8 lg:gap-10 xl:gap-20">
           
           {/* Logo */}
-          <Link href="/" className="flex items-center justify-start shrink-0">
+          <Link href="/" className="flex flex-col justify-center items-center shrink-0 w-[180px] md:w-[260px] lg:w-[320px] h-[55px] md:h-[70px] lg:h-[80px] relative overflow-hidden">
             <img 
               src="/logo.png" 
               alt="Megagöz Tıp Merkezi" 
-              className="h-[55px] md:h-[75px] lg:h-[85px] w-auto max-w-[200px] md:max-w-[280px] lg:max-w-[320px] object-contain" 
+              className="absolute inset-0 w-full h-full object-cover object-center" 
             />
           </Link>
 

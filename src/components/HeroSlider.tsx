@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { Calendar, Handshake, ChevronRight, CheckCircle2, Clock, X, ChevronDown } from "lucide-react";
+import { Calendar, Handshake, ChevronRight, CheckCircle2, Clock, X, ChevronDown, User, Phone, Mail } from "lucide-react";
 
 // Futuristic, medical AI-generated slides based on user visual references
 const slides = [
@@ -51,98 +51,111 @@ export default function HeroSlider() {
       {/* Sticky Appointment Widget */}
       <div className="fixed right-0 top-1/2 z-[100]">
         
-        {/* Flyout Panel */}
+        {/* Flyout Panel (Megaeste Style Popup) */}
         <AnimatePresence>
           {isPopupOpen && (
             <motion.div
-              initial={{ width: 0, opacity: 0 }}
-              animate={{ width: "420px", opacity: 1 }}
-              exit={{ width: 0, opacity: 0 }}
+              initial={{ x: 50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: 50, opacity: 0 }}
               transition={{ type: "tween", duration: 0.3 }}
-              className="absolute right-0 -translate-y-1/2 bg-white overflow-y-auto overflow-x-hidden max-h-[90vh] shadow-[-15px_0_50px_rgba(0,0,0,0.2)] rounded-l-2xl z-50 origin-right"
+              className="absolute right-4 lg:right-6 -translate-y-1/2 z-50 w-[320px] md:w-[350px]"
             >
-              <div className="p-8 w-[420px] relative">
-                <button 
-                  onClick={() => setIsPopupOpen(false)} 
-                  className="absolute top-5 right-5 text-gray-400 hover:text-[#ecbb3f] transition-all bg-gray-50 hover:bg-white border border-transparent hover:border-[#ecbb3f]/30 shadow-sm rounded-full p-2"
-                >
-                  <X size={20} />
-                </button>
+              <div className="bg-white shadow-[0_15px_50px_rgba(0,0,0,0.2)] rounded-[10px] flex flex-col overflow-hidden relative">
                 
-                <h3 className="text-xl font-black text-[#1f313f] mb-2 pr-8">Hızlı Randevu Oluştur</h3>
-                <p className="text-gray-500 text-[13px] font-medium mb-6">Bilgilerinizi bırakın, hemen arayalım.</p>
-
-                <form className="space-y-4 font-sans">
-                  
-                  {/* Name field */}
-                  <div>
-                    <label className="text-[13px] font-bold text-gray-600 mb-1.5 block">Adınız Soyadınız</label>
-                    <input 
-                      type="text" 
-                      placeholder="Örn: Ahmet Yılmaz"
-                      className="w-full bg-gray-50/50 border border-gray-200 focus:border-[#ecbb3f] focus:bg-white focus:ring-4 focus:ring-[#ecbb3f]/10 focus:outline-none text-gray-800 py-3.5 px-4 rounded-xl transition-all text-[14px] font-medium placeholder-gray-400" 
-                    />
+                {/* Header */}
+                <div className="bg-[#1f313f] text-white px-5 py-4 flex items-center justify-between">
+                  <div className="flex items-center gap-2.5">
+                    <Calendar size={18} className="text-[#ecbb3f]" />
+                    <h3 className="font-bold text-[16px] tracking-wide whitespace-nowrap">Hızlı Randevu</h3>
                   </div>
+                  <button 
+                    onClick={() => setIsPopupOpen(false)} 
+                    className="text-gray-300 hover:text-white transition-colors cursor-pointer"
+                  >
+                    <X size={20} strokeWidth={2.5} />
+                  </button>
+                </div>
+                
+                {/* Body */}
+                <div className="p-6 bg-white">
+                  <p className="text-gray-500 text-[13.5px] font-medium mb-5 leading-relaxed">
+                    Lütfen bilgilerinizi bırakın, uzman ekibimiz sizi en kısa sürede arasın.
+                  </p>
 
-                  {/* Phone field */}
-                  <div>
-                    <label className="text-[13px] font-bold text-gray-600 mb-1.5 block">Telefonunuz</label>
-                    <div className="flex bg-gray-50/50 border border-gray-200 rounded-xl overflow-hidden focus-within:border-[#ecbb3f] focus-within:bg-white focus-within:ring-4 focus-within:ring-[#ecbb3f]/10 transition-all">
-                      <div className="flex items-center gap-2 pl-4 pr-3 border-r border-gray-200/80">
-                         <img src="/tr.svg" alt="TR" className="w-[18px] h-[13px] object-cover rounded-[2px] shadow-sm flex-shrink-0" />
-                         <ChevronDown size={14} className="text-gray-400" />
+                  <form className="space-y-3.5 font-sans">
+                    
+                    {/* Name field */}
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                        <User size={18} className="text-gray-400" strokeWidth={2} />
+                      </div>
+                      <input 
+                        type="text" 
+                        placeholder="Adınız Soyadınız"
+                        className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-1 focus:ring-[#ecbb3f]/30 focus:outline-none text-gray-800 h-[44px] pl-[38px] pr-4 rounded-[6px] transition-all text-[14px] font-medium placeholder-gray-400" 
+                      />
+                    </div>
+
+                    {/* Phone field */}
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                        <Phone size={18} className="text-gray-400" strokeWidth={2} />
                       </div>
                       <input 
                         type="tel" 
                         placeholder="Telefon Numaranız"
-                        className="w-full bg-transparent focus:outline-none text-gray-800 py-3.5 px-3 text-[14px] font-medium placeholder-gray-400" 
+                        className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-1 focus:ring-[#ecbb3f]/30 focus:outline-none text-gray-800 h-[44px] pl-[38px] pr-4 rounded-[6px] transition-all text-[14px] font-medium placeholder-gray-400" 
                       />
                     </div>
-                  </div>
 
-                  {/* Center Dropdown */}
-                  <div>
-                    <label className="text-[13px] font-bold text-gray-600 mb-1.5 block">Şube</label>
-                    <div className="relative bg-gray-50/50 border border-gray-200 rounded-xl flex items-center justify-between cursor-pointer hover:border-[#ecbb3f] hover:bg-white transition-all py-3.5 px-4">
-                      <span className="text-gray-500 font-medium text-[14px]">Şube Seçiniz</span>
-                      <ChevronDown size={16} className="text-[#ecbb3f]" />
+                    {/* Email field */}
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                        <Mail size={18} className="text-gray-400" strokeWidth={2} />
+                      </div>
+                      <input 
+                        type="email" 
+                        placeholder="E-posta Adresiniz"
+                        className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-1 focus:ring-[#ecbb3f]/30 focus:outline-none text-gray-800 h-[44px] pl-[38px] pr-4 rounded-[6px] transition-all text-[14px] font-medium placeholder-gray-400" 
+                      />
                     </div>
-                  </div>
 
-                  {/* Doctor Dropdown */}
-                  <div>
-                    <label className="text-[13px] font-bold text-gray-600 mb-1.5 block">Hekim (İsteğe Bağlı)</label>
-                    <div className="relative bg-gray-50/50 border border-gray-200 rounded-xl flex items-center justify-between cursor-pointer hover:border-[#ecbb3f] hover:bg-white transition-all py-3.5 px-4">
-                      <span className="text-gray-400 font-medium text-[14px]">Hekim Seçiniz</span> 
-                      <ChevronDown size={16} className="text-[#ecbb3f]" />
-                    </div>
-                  </div>
-
-                  {/* Date & Time */}
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="text-[13px] font-bold text-gray-600 mb-1.5 block">Gün</label>
-                      <div className="relative bg-gray-50/50 border border-gray-200 rounded-xl py-3.5 px-4 hover:border-[#ecbb3f] hover:bg-white transition-all cursor-pointer">
-                         <span className="text-gray-400 text-[14px] font-medium">Seçiniz</span>
+                    {/* Subject/Topic Dropdown */}
+                    <div className="relative">
+                      <select 
+                        defaultValue=""
+                        className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-1 focus:ring-[#ecbb3f]/30 focus:outline-none text-gray-600 h-[44px] pl-4 pr-10 rounded-[6px] transition-all text-[14px] font-medium appearance-none"
+                      >
+                        <option value="" disabled>Konu Seçiniz</option>
+                        <option value="1">Lazer Tedavisi</option>
+                        <option value="2">Katarakt</option>
+                        <option value="3">Akıllı Lens</option>
+                        <option value="4">Genel Muayene</option>
+                      </select>
+                      <div className="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none">
+                        <ChevronDown size={18} className="text-gray-800" strokeWidth={2.5} />
                       </div>
                     </div>
+
+                    {/* Message Area */}
                     <div>
-                      <label className="text-[13px] font-bold text-gray-600 mb-1.5 block">Saat</label>
-                      <div className="relative bg-gray-50/50 border border-gray-200 rounded-xl py-3.5 px-4 flex items-center justify-between cursor-pointer hover:border-[#ecbb3f] hover:bg-white transition-all">
-                        <span className="text-gray-500 font-medium text-[14px]">Seçiniz</span>
-                        <ChevronDown size={16} className="text-[#ecbb3f]" />
-                      </div>
+                      <textarea 
+                        placeholder="Mesajınız / Notunuz"
+                        rows={3}
+                        className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-1 focus:ring-[#ecbb3f]/30 focus:outline-none text-gray-800 py-3 px-4 rounded-[6px] transition-all text-[14px] font-medium placeholder-gray-400 resize-none" 
+                      />
                     </div>
-                  </div>
 
-                  {/* Submit */}
-                  <div className="pt-2">
-                     <button type="button" className="w-full bg-[#ecbb3f] text-white hover:bg-[#d99816] transition-all transform hover:-translate-y-0.5 font-black text-[15px] py-4 rounded-xl font-sans flex items-center justify-center shadow-[0_10px_25px_-5px_rgba(236,187,63,0.5)] hover:shadow-[0_15px_35px_-5px_rgba(236,187,63,0.6)] tracking-widest uppercase">
-                       Randevu Oluştur
-                     </button>
-                  </div>
+                    {/* Submit */}
+                    <div className="pt-2">
+                       <button type="button" className="w-full bg-[#ecbb3f] hover:bg-[#d99816] text-white transition-colors font-bold text-[15px] h-[46px] rounded-[6px] uppercase tracking-wide">
+                         GÖNDER
+                       </button>
+                    </div>
 
-                </form>
+                  </form>
+                </div>
               </div>
             </motion.div>
           )}
