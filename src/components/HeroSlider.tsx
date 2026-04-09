@@ -37,6 +37,8 @@ export default function HeroSlider() {
   const t = useTranslations("Hero");
   const [current, setCurrent] = useState(0);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isKvkkChecked, setIsKvkkChecked] = useState(false);
+  const [isKvkkModalOpen, setIsKvkkModalOpen] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -48,7 +50,7 @@ export default function HeroSlider() {
   return (
     <div className="relative w-full bg-[#F8FAFC]">
       {/* Sticky Appointment Widget */}
-      <div className="fixed right-0 top-[60%] -translate-y-1/2 z-[100]">
+      <div className="fixed right-0 top-[40%] lg:top-[45%] -translate-y-1/2 z-[100]">
         
         {/* Flyout Panel (Megaeste Style Popup) */}
         <AnimatePresence>
@@ -63,7 +65,7 @@ export default function HeroSlider() {
               <div className="bg-white shadow-[0_20px_60px_rgba(0,0,0,0.25)] rounded-2xl flex flex-col overflow-hidden relative">
                 
                 {/* Header */}
-                <div className="bg-[#1f313f] text-white px-6 py-5 flex items-center justify-between">
+                <div className="bg-[#162f5d] text-white px-6 py-5 flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <Calendar size={22} className="text-[#ecbb3f]" />
                     <h3 className="font-bold text-[18px] tracking-wide whitespace-nowrap">Hızlı Randevu</h3>
@@ -92,7 +94,7 @@ export default function HeroSlider() {
                       <input 
                         type="text" 
                         placeholder="Adınız Soyadınız"
-                        className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-2 focus:ring-[#ecbb3f]/20 focus:outline-none text-gray-800 h-[50px] pl-12 pr-4 rounded-lg transition-all text-[15px] font-medium placeholder-gray-400" 
+                        className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-2 focus:ring-[#ecbb3f]/20 focus:outline-none text-[#162f5d] h-[50px] pl-12 pr-4 rounded-lg transition-all text-[15px] font-medium placeholder-gray-400" 
                       />
                     </div>
 
@@ -104,7 +106,7 @@ export default function HeroSlider() {
                       <input 
                         type="tel" 
                         placeholder="Telefon Numaranız"
-                        className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-2 focus:ring-[#ecbb3f]/20 focus:outline-none text-gray-800 h-[50px] pl-12 pr-4 rounded-lg transition-all text-[15px] font-medium placeholder-gray-400" 
+                        className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-2 focus:ring-[#ecbb3f]/20 focus:outline-none text-[#162f5d] h-[50px] pl-12 pr-4 rounded-lg transition-all text-[15px] font-medium placeholder-gray-400" 
                       />
                     </div>
 
@@ -116,7 +118,7 @@ export default function HeroSlider() {
                       <input 
                         type="email" 
                         placeholder="E-posta Adresiniz"
-                        className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-2 focus:ring-[#ecbb3f]/20 focus:outline-none text-gray-800 h-[50px] pl-12 pr-4 rounded-lg transition-all text-[15px] font-medium placeholder-gray-400" 
+                        className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-2 focus:ring-[#ecbb3f]/20 focus:outline-none text-[#162f5d] h-[50px] pl-12 pr-4 rounded-lg transition-all text-[15px] font-medium placeholder-gray-400" 
                       />
                     </div>
 
@@ -133,7 +135,7 @@ export default function HeroSlider() {
                         <option value="4">Genel Muayene</option>
                       </select>
                       <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
-                        <ChevronDown size={20} className="text-gray-800" strokeWidth={2.5} />
+                        <ChevronDown size={20} className="text-[#162f5d]" strokeWidth={2.5} />
                       </div>
                     </div>
 
@@ -142,8 +144,25 @@ export default function HeroSlider() {
                       <textarea 
                         placeholder="Mesajınız / Notunuz"
                         rows={3}
-                        className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-2 focus:ring-[#ecbb3f]/20 focus:outline-none text-gray-800 py-3.5 px-5 rounded-lg transition-all text-[15px] font-medium placeholder-gray-400 resize-none" 
+                        className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-2 focus:ring-[#ecbb3f]/20 focus:outline-none text-[#162f5d] py-3.5 px-5 rounded-lg transition-all text-[15px] font-medium placeholder-gray-400 resize-none" 
                       />
+                    </div>
+
+                    {/* KVKK Area */}
+                    <div className="flex items-start gap-3 mt-4 mb-2">
+                      <div 
+                        className={`w-5 h-5 rounded border flex items-center justify-center shrink-0 cursor-pointer transition-colors mt-0.5 ${isKvkkChecked ? 'bg-[#ecbb3f] border-[#ecbb3f]' : 'bg-white border-gray-300'}`}
+                         onClick={() => setIsKvkkChecked(!isKvkkChecked)}
+                      >
+                         {isKvkkChecked && <svg className="w-3.5 h-3.5 text-[#162f5d]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>}
+                      </div>
+                      <p className="text-[13px] text-gray-500 leading-snug">
+                        Randevu talebim için{' '}
+                        <button type="button" onClick={() => setIsKvkkModalOpen(true)} className="text-[#ecbb3f] font-bold underline hover:text-[#cda669]">
+                          KVKK Metnini
+                        </button>
+                        {' '}okudum, kabul ediyorum.
+                      </p>
                     </div>
 
                     {/* Submit */}
@@ -171,7 +190,7 @@ export default function HeroSlider() {
               onClick={() => setIsPopupOpen(true)}
               className="absolute right-0 top-1/2 -translate-y-1/2 w-[85px] h-[190px] flex flex-col shadow-[-5px_0_20px_rgba(0,0,0,0.15)] overflow-hidden hover:scale-105 origin-right rounded-l-xl z-40"
             >
-              <div className="bg-[#1f313f] flex-1 w-full flex flex-col items-center justify-center border-b border-white/10">
+              <div className="bg-[#162f5d] flex-1 w-full flex flex-col items-center justify-center border-b border-white/10">
                 <div className="relative w-12 h-12 flex items-center justify-center">
                   <svg className="absolute inset-0 w-full h-full text-white/80" viewBox="0 0 100 100">
                     <path d="M50 15 A35 35 0 1 1 80 80" fill="none" stroke="currentColor" strokeWidth="6" strokeDasharray="10, 8" strokeLinecap="round" />
@@ -189,15 +208,15 @@ export default function HeroSlider() {
       </div>
 
       {/* Hero Slider Area */}
-      <div className="relative w-full h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+      <div className="relative w-full h-[55vh] min-h-[450px] md:h-[75vh] md:min-h-[600px] lg:h-[85vh] lg:min-h-[700px] xl:h-[90vh] xl:min-h-[750px] flex items-center justify-center overflow-hidden">
         
         <AnimatePresence initial={false} mode="sync">
           <motion.div
             key={current}
-            initial={{ opacity: 0, x: 200 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -200 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
             className="absolute inset-0 flex items-center justify-center cursor-grab active:cursor-grabbing"
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
@@ -216,7 +235,7 @@ export default function HeroSlider() {
               style={{ backgroundImage: `url(${slides[current].image})` }}
             />
             {/* Elegant Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#00305a]/90 via-[#004e8e]/70 to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#162f5d]/70 via-[#162f5d]/30 to-transparent pointer-events-none" />
 
             {/* Text Content */}
             <div className="relative z-10 w-full container mx-auto px-4 max-w-6xl pb-24 md:pb-32 pointer-events-none">
@@ -235,13 +254,13 @@ export default function HeroSlider() {
                 <div className="flex gap-4 mt-8 pointer-events-auto">
                    <button 
                      onClick={(e) => { e.stopPropagation(); setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1)); }}
-                     className="bg-[#1f313f] hover:bg-[#1f313f] transition p-3 rounded-full text-white shadow"
+                     className="bg-[#162f5d] hover:bg-[#162f5d] transition p-3 rounded-full text-white shadow"
                    >
                      <ChevronRight className="rotate-180" size={20}/>
                    </button>
                    <button 
                      onClick={(e) => { e.stopPropagation(); setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1)); }}
-                     className="bg-[#1f313f] hover:bg-[#1f313f] transition p-3 rounded-full text-white shadow"
+                     className="bg-[#162f5d] hover:bg-[#162f5d] transition p-3 rounded-full text-white shadow"
                    >
                      <ChevronRight size={20}/>
                    </button>
@@ -252,7 +271,7 @@ export default function HeroSlider() {
         </AnimatePresence>
 
         {/* Vertical Numbering Pagination (Left Side) */}
-        <div className="absolute left-4 md:left-8 lg:left-[5%] xl:left-[8%] top-[60%] -translate-y-1/2 z-20 flex flex-col gap-5">
+        <div className="absolute left-4 md:left-8 lg:left-[5%] xl:left-[8%] top-[60%] -translate-y-1/2 z-20 hidden md:flex flex-col gap-5">
           {slides.map((_, idx) => (
             <button
               key={idx}
@@ -277,11 +296,11 @@ export default function HeroSlider() {
       </div> {/* CLOSES the overflow-hidden slider track */}
 
       {/* Quick Appointment Form (Overlaps Bottom Edge) */}
-      <div className="relative z-40 w-full px-4 md:px-8 max-w-[1150px] mx-auto -mt-[60px] md:-mt-[90px] mb-16">
+      <div className="relative z-40 w-full px-4 md:px-8 max-w-[1250px] mx-auto -mt-[60px] md:-mt-[90px] mb-16">
         <div className="bg-white rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.2)] p-8 md:p-10">
            {/* Header */}
            <div className="mb-6">
-              <h3 className="text-xl md:text-[22px] font-black tracking-tight text-[#1f313f] flex gap-1.5 items-center uppercase">
+              <h3 className="text-xl md:text-[22px] font-black tracking-tight text-[#162f5d] flex gap-1.5 items-center uppercase">
                  HIZLI RANDEVU <span className="text-[#ecbb3f]">FORMU</span>
               </h3>
            </div>
@@ -295,13 +314,13 @@ export default function HeroSlider() {
                     <input 
                       type="text" 
                       placeholder="Adınız Soyadınız" 
-                      className="w-full h-[54px] border border-gray-200 rounded-lg px-4 text-[15px] font-medium text-gray-800 placeholder-gray-500 focus:outline-none focus:border-gray-400 transition-all bg-white" 
+                      className="w-full h-[54px] border border-gray-200 rounded-lg px-4 text-[15px] font-medium text-[#162f5d] placeholder-gray-500 focus:outline-none focus:border-gray-400 transition-all bg-white" 
                     />
                  </div>
                  
                  {/* Phone Input with Flag */}
                  <div className="relative">
-                    <div className="flex items-center h-[54px] border border-gray-200 rounded-lg focus-within:border-gray-400 transition-all bg-white overflow-hidden text-[15px] font-medium text-gray-800">
+                    <div className="flex items-center h-[54px] border border-gray-200 rounded-lg focus-within:border-gray-400 transition-all bg-white overflow-hidden text-[15px] font-medium text-[#162f5d]">
                        <div className="pl-4 pr-2 flex items-center justify-center border-r border-gray-200 bg-white h-full">
                           <img src="/tr.svg" alt="TR" className="w-[18px] h-[13px] object-cover rounded-[2px]" />
                           <ChevronDown className="text-gray-400 ml-1.5 w-4 h-4" />
@@ -310,29 +329,29 @@ export default function HeroSlider() {
                        <input 
                          type="tel" 
                          placeholder="Telefon" 
-                         className="w-full h-full px-4 text-[15px] font-medium text-gray-800 placeholder-gray-500 outline-none bg-transparent" 
+                         className="w-full h-full px-4 text-[15px] font-medium text-[#162f5d] placeholder-gray-500 outline-none bg-transparent" 
                        />
                     </div>
                  </div>
               </div>
 
-              {/* Row 2: Checkbox */}
-              <div className="flex items-center gap-3">
-                 <input 
-                   type="checkbox" 
-                   id="kvkk"
-                   className="w-4 h-4 border-gray-300 rounded text-[#ecbb3f] focus:ring-[#ecbb3f]"
-                 />
-                 <label htmlFor="kvkk" className="text-sm font-semibold text-[#1f313f]">
-                   <span className="text-[#ecbb3f] cursor-pointer hover:underline">KVKK metnini</span> okudum, kabul ediyorum.
-                 </label>
-              </div>
+              {/* Row 2: Checkbox & Submit */}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pt-2">
+                 <div className="flex items-center gap-3">
+                    <div 
+                      className={`w-4 h-4 rounded border flex items-center justify-center shrink-0 cursor-pointer transition-colors ${isKvkkChecked ? 'bg-[#ecbb3f] border-[#ecbb3f]' : 'bg-white border-gray-300'}`}
+                      onClick={() => setIsKvkkChecked(!isKvkkChecked)}
+                    >
+                      {isKvkkChecked && <svg className="w-3 h-3 text-[#162f5d]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>}
+                    </div>
+                    <label className="text-sm font-semibold text-[#162f5d]">
+                      <button type="button" onClick={() => setIsKvkkModalOpen(true)} className="text-[#ecbb3f] hover:underline">KVKK metnini</button> okudum, kabul ediyorum.
+                    </label>
+                 </div>
 
-              {/* Row 3: Submit Button */}
-              <div>
                  <button 
                    type="button" 
-                   className="w-full md:w-auto px-14 h-[50px] bg-[#ecbb3f] hover:bg-[#d6a529] text-white font-bold tracking-widest rounded-lg shadow-lg shadow-[#ecbb3f]/20 transition-all text-sm uppercase"
+                   className="w-full sm:w-auto px-16 h-[50px] bg-[#ecbb3f] hover:bg-[#d6a529] text-white font-bold tracking-widest rounded-lg shadow-lg shadow-[#ecbb3f]/20 transition-all text-sm uppercase shrink-0"
                  >
                     Gönder
                  </button>
@@ -340,6 +359,56 @@ export default function HeroSlider() {
            </form>
         </div>
       </div>
+      {/* KVKK Modal Overlay */}
+      <AnimatePresence>
+        {isKvkkModalOpen && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-[#162f5d]/80 backdrop-blur-sm"
+          >
+             <motion.div 
+               initial={{ scale: 0.95, y: 20 }}
+               animate={{ scale: 1, y: 0 }}
+               exit={{ scale: 0.95, y: 20 }}
+               className="bg-white rounded-3xl w-full max-w-2xl max-h-[85vh] flex flex-col shadow-2xl overflow-hidden"
+             >
+                <div className="p-6 md:p-8 flex items-center justify-between border-b border-gray-100 bg-gray-50 shrink-0">
+                   <h3 className="text-xl font-black text-[#162f5d]">KVKK Aydınlatma Metni</h3>
+                   <button onClick={() => setIsKvkkModalOpen(false)} className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 text-gray-500 hover:bg-[#ecbb3f] hover:text-white transition-colors">
+                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                   </button>
+                </div>
+                <div className="p-6 md:p-8 overflow-y-auto text-gray-600 text-sm leading-relaxed space-y-4">
+                   <p><strong>MEGAGÖZ</strong> olarak kişisel verilerinizin gizliliğine ve güvenliğine büyük önem vermekteyiz. 6698 Sayılı Kişisel Verilerin Korunması Kanunu (KVKK) uyarınca kişisel verileriniz aşağıdaki şartlar dahilinde işlenmektedir.</p>
+                   <p>Talep etmiş olduğunuz "Hızlı Randevu" işleminin tamamlanabilmesi amacıyla ad, soyad, telefon numarası ve e-posta kayıtlarınız Megagöz sistemlerine şifrelenmiş olarak kaydedilecek ve tarafınıza geri dönüş sağlanması amacıyla çağrı merkezi ekibimiz tarafından işlenecektir.</p>
+                   <p>Verileriniz, hukuki yükümlülükler dışında hiçbir üçüncü taraf reklam veya pazarlama kurumuyla paylaşılmamaktadır. Detaylı KVKK Aydınlatma metnini kurumsal sekmelerimizden bulabilirsiniz.</p>
+                </div>
+                <div className="p-6 md:p-8 border-t border-gray-100 flex justify-end gap-3 bg-gray-50 shrink-0 mt-auto">
+                   <button 
+                     type="button"
+                     onClick={() => setIsKvkkModalOpen(false)}
+                     className="px-6 py-3 rounded-xl font-bold text-gray-500 hover:bg-gray-200 transition-colors text-sm"
+                   >
+                     İptal Et
+                   </button>
+                   <button 
+                     type="button"
+                     onClick={() => {
+                        setIsKvkkChecked(true);
+                        setIsKvkkModalOpen(false);
+                     }}
+                     className="px-8 py-3 rounded-xl font-bold text-[#162f5d] bg-[#ecbb3f] hover:bg-[#d99816] transition-colors shadow-lg text-sm"
+                   >
+                     Okudum, Kabul Ediyorum
+                   </button>
+                </div>
+             </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
     </div>
   );
 }

@@ -58,7 +58,7 @@ export default function FAQSection() {
                <span className="text-[#ecbb3f] font-bold tracking-widest uppercase text-sm">MERAK EDİLENLER</span>
             </div>
             
-            <h2 className="text-4xl lg:text-5xl font-black text-[#1f313f] tracking-tight">
+            <h2 className="text-4xl lg:text-5xl font-black text-[#162f5d] tracking-tight">
               Sıkça Sorulan <br className="hidden lg:block"/>
               <span className="text-[#ecbb3f]">Sorular.</span>
             </h2>
@@ -74,7 +74,7 @@ export default function FAQSection() {
                   fill
                   className="object-cover"
                />
-               <div className="absolute inset-0 bg-gradient-to-t from-[#1f313f]/60 to-transparent" />
+               <div className="absolute inset-0 bg-gradient-to-t from-[#162f5d]/60 to-transparent" />
             </div>
 
             {/* Decorative element */}
@@ -96,7 +96,7 @@ export default function FAQSection() {
                   onClick={() => toggleAccordion(faq.id)}
                   className="w-full text-left py-6 flex items-center justify-between focus:outline-none group"
                 >
-                  <h3 className={`text-lg md:text-xl font-bold pr-8 transition-colors duration-300 ${openId === faq.id ? 'text-[#ecbb3f]' : 'text-[#1f313f] group-hover:text-[#ecbb3f]'}`}>
+                  <h3 className={`text-lg md:text-xl font-bold pr-8 transition-colors duration-300 ${openId === faq.id ? 'text-[#ecbb3f]' : 'text-[#162f5d] group-hover:text-[#ecbb3f]'}`}>
                     {faq.question}
                   </h3>
                   

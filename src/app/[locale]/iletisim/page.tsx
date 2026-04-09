@@ -20,7 +20,7 @@ export default function ContactPage() {
           priority
           className="object-cover object-center" 
         />
-        <div className="absolute inset-0 bg-[#1f313f]/85 z-0" /> {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-[#162f5d]/85 z-0" /> {/* Dark Overlay */}
         
         <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 max-w-3xl pb-16">
           <div className="flex items-center gap-4 mb-4">
@@ -48,12 +48,12 @@ export default function ContactPage() {
           {/* Left Side - Form Container */}
           <div className="lg:col-span-8">
             <div className="bg-white rounded-t-3xl rounded-b-3xl md:rounded-t-[40px] md:rounded-b-[40px] shadow-[0_20px_60px_rgba(31,49,63,0.1)] p-8 md:p-12 border border-gray-100 flex flex-col h-full">
-              <h3 className="text-2xl md:text-3xl font-black text-[#1f313f] mb-8">Bize Yazın</h3>
+              <h3 className="text-2xl md:text-3xl font-black text-[#162f5d] mb-8">Bize Yazın</h3>
               
               <form className="flex flex-col gap-6 w-full flex-1">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="flex flex-col gap-2">
-                    <label className="text-sm font-bold text-[#1f313f]">{t("form.name")}</label>
+                    <label className="text-sm font-bold text-[#162f5d]">{t("form.name")}</label>
                     <input 
                       type="text" 
                       className="w-full h-12 px-4 border border-gray-200 rounded-lg focus:outline-none focus:border-[#ecbb3f] transition-colors"
@@ -61,7 +61,7 @@ export default function ContactPage() {
                     />
                   </div>
                   <div className="flex flex-col gap-2">
-                    <label className="text-sm font-bold text-[#1f313f]">{t("form.phone")}</label>
+                    <label className="text-sm font-bold text-[#162f5d]">{t("form.phone")}</label>
                     <input 
                       type="tel" 
                       className="w-full h-12 px-4 border border-gray-200 rounded-lg focus:outline-none focus:border-[#ecbb3f] transition-colors"
@@ -72,7 +72,7 @@ export default function ContactPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="flex flex-col gap-2">
-                    <label className="text-sm font-bold text-[#1f313f]">{t("form.email")}</label>
+                    <label className="text-sm font-bold text-[#162f5d]">{t("form.email")}</label>
                     <input 
                       type="email" 
                       className="w-full h-12 px-4 border border-gray-200 rounded-lg focus:outline-none focus:border-[#ecbb3f] transition-colors"
@@ -80,7 +80,7 @@ export default function ContactPage() {
                     />
                   </div>
                   <div className="flex flex-col gap-2">
-                    <label className="text-sm font-bold text-[#1f313f]">{t("form.subject")}</label>
+                    <label className="text-sm font-bold text-[#162f5d]">{t("form.subject")}</label>
                     <input 
                       type="text" 
                       className="w-full h-12 px-4 border border-gray-200 rounded-lg focus:outline-none focus:border-[#ecbb3f] transition-colors"
@@ -90,7 +90,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex flex-col gap-2 flex-1">
-                  <label className="text-sm font-bold text-[#1f313f]">{t("form.message")}</label>
+                  <label className="text-sm font-bold text-[#162f5d]">{t("form.message")}</label>
                   <textarea 
                     className="w-full h-full min-h-[140px] p-4 border border-gray-200 rounded-lg focus:outline-none focus:border-[#ecbb3f] transition-colors resize-none"
                     placeholder={t("form.message")}
@@ -117,7 +117,7 @@ export default function ContactPage() {
                   <Mail strokeWidth={2} size={22} />
                 </div>
                 <div>
-                  <h3 className="text-[#1f313f] font-bold text-[15px] mb-1">{t("info.email")}</h3>
+                  <h3 className="text-[#162f5d] font-bold text-[15px] mb-1">{t("info.email")}</h3>
                   <p className="text-gray-500 text-[13px] leading-relaxed mb-1">
                     Soru ve görüşleriniz için bize yazın.
                   </p>
@@ -132,7 +132,7 @@ export default function ContactPage() {
                   <Phone strokeWidth={2} size={22} />
                 </div>
                 <div>
-                  <h3 className="text-[#1f313f] font-bold text-[15px] mb-1">{t("info.phone")}</h3>
+                  <h3 className="text-[#162f5d] font-bold text-[15px] mb-1">{t("info.phone")}</h3>
                   <p className="text-gray-500 text-[13px] leading-relaxed mb-1">
                     Çağrı merkezimizden destek alın.
                   </p>
@@ -147,7 +147,7 @@ export default function ContactPage() {
                   <MapPin strokeWidth={2} size={22} />
                 </div>
                 <div>
-                  <h3 className="text-[#1f313f] font-bold text-[15px] mb-1">{t("info.address")}</h3>
+                  <h3 className="text-[#162f5d] font-bold text-[15px] mb-1">{t("info.address")}</h3>
                   <p className="text-gray-500 text-[13px] leading-relaxed mb-1">
                     İhtisas Sokak. No:3 Ümraniye / İstanbul
                   </p>

@@ -33,6 +33,22 @@ export const routing = defineRouting({
     '/tedaviler/[category]/[slug]': {
       tr: '/tedaviler/[category]/[slug]',
       en: '/treatments/[category]/[slug]'
+    },
+    '/anlasmali-kurumlar': {
+      tr: '/anlasmali-kurumlar',
+      en: '/partner-institutions'
+    },
+    '/galeri': {
+      tr: '/galeri',
+      en: '/gallery'
+    },
+    '/doktorlar': {
+      tr: '/doktorlar',
+      en: '/doctors'
+    },
+    '/kvkk': {
+      tr: '/kvkk',
+      en: '/kvkk'
     }
   }
 });

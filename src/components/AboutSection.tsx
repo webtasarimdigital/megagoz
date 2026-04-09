@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { Link } from "@/i18n/navigation";
 
 export default function AboutSection() {
   return (
@@ -54,7 +55,7 @@ export default function AboutSection() {
               whileInView={{ scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.6, type: "spring" }}
-              className="absolute bottom-10 -right-8 bg-[#1f313f] text-white p-6 rounded-2xl shadow-xl flex flex-col items-center justify-center border-b-4 border-[#ecbb3f] z-20"
+              className="absolute bottom-10 -right-8 bg-[#162f5d] text-white p-6 rounded-2xl shadow-xl flex flex-col items-center justify-center border-b-4 border-[#ecbb3f] z-20"
             >
               <span className="text-4xl font-black text-[#ecbb3f] mb-1">20+</span>
               <span className="text-sm font-medium tracking-wider uppercase text-gray-300">Yıllık Tecrübe</span>
@@ -74,22 +75,27 @@ export default function AboutSection() {
                <span className="text-[#ecbb3f] font-bold tracking-widest uppercase text-sm">Hakkımızda</span>
             </div>
             
-            <h2 className="text-4xl lg:text-5xl font-black text-[#1f313f] tracking-tight leading-[1.1] mb-6">
+            <h2 className="text-4xl lg:text-5xl font-black text-[#162f5d] tracking-tight leading-[1.1] mb-6">
               Göz Sağlığınız İçin <br />
               <span className="text-[#ecbb3f]">Dünya Standartlarında</span><br />
               Sağlık ve Bakım.
             </h2>
             
-            <p className="text-lg text-gray-500 mb-8 leading-relaxed font-medium">
-              Megagöz Tıp Merkezi olarak, uzman hekim kadromuz ve en son teknoloji cihazlarımızla göz sağlığı alanında profesyonel, güvenilir ve kişiye özel tedavi çözümleri sunuyoruz. Daha net bir dünya için yanınızdayız.
-            </p>
+            <div className="text-base text-gray-500 mb-8 leading-relaxed font-medium space-y-4">
+              <p>
+                MEGAGÖZ, göz hastalıklarının teşhis ve tedavisinde uluslararası standartlarda sağlık hizmeti sunmak amacıyla kurulmuş, teknolojiyi ve tıbbı bir araya getiren modern bir göz sağlığı merkezidir. Kurulduğu günden bu yana, göz sağlığında güvenilir, kaliteli ve ulaşılabilir çözümler sunma vizyonuyla hareket eden MEGAGÖZ, İstanbul’daki merkeziyle hem yurt içinden hem de yurt dışından gelen hastalarına üstün hizmet vermektedir.
+              </p>
+              <p>
+                Yenilikçi medikal teknolojileri, deneyimli uzman hekim kadrosu ve hasta memnuniyetine odaklı profesyonel ekibiyle MEGAGÖZ, göz sağlığı alanında çağdaş ve güvenilir bir referans merkezi haline gelmiştir. Her hasta için kişiselleştirilmiş tedavi yaklaşımlarıyla, uluslararası kalite standartlarında sağlık hizmeti sunmaktadır.
+              </p>
+            </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
               {[
-                "Uzman Hekim Kadrosu", 
-                "İleri Teknoloji Cihazlar", 
-                "Kişiselleştirilmiş Tedavi", 
-                "Hasta Memnuniyeti"
+                "Uzman Kadro, Güvenilir Tecrübe", 
+                "Yenilikçi Teknoloji, Hassas Tanı", 
+                "Hasta Odaklı Yaklaşım", 
+                "Modern, Konforlu ve Erişilebilir"
               ].map((feature, idx) => (
                 <div key={idx} className="flex items-center gap-3">
                   <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#ecbb3f]/20 flex items-center justify-center">
@@ -100,10 +106,10 @@ export default function AboutSection() {
               ))}
             </div>
 
-            <button className="self-start group flex items-center gap-3 bg-[#1f313f] hover:bg-[#ecbb3f] transition-all duration-300 transform hover:-translate-y-1 text-white font-bold py-4 px-8 rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.1)] uppercase tracking-wide text-sm">
+            <Link href="/hakkimizda" className="self-start group flex items-center gap-3 bg-[#162f5d] hover:bg-[#ecbb3f] transition-all duration-300 transform hover:-translate-y-1 text-white font-bold py-4 px-8 rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.1)] uppercase tracking-wide text-sm">
               Daha Fazla Bilgi
               <ArrowRight size={18} className="transform group-hover:translate-x-1 transition-transform" />
-            </button>
+            </Link>
           </motion.div>
 
         </div>

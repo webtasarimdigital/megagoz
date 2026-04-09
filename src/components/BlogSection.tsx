@@ -66,8 +66,8 @@ export default function BlogSection() {
                <div className="h-[2px] w-12 bg-[#ecbb3f]" />
                <span className="text-[#ecbb3f] font-bold tracking-widest uppercase text-sm">GÜNCEL BLOG</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-[#1f313f] tracking-tight">
-              Sağlık <span className="text-[#1f313f]">Rehberi</span>
+            <h2 className="text-4xl md:text-5xl font-black text-[#162f5d] tracking-tight">
+              Son Blog <span className="text-[#ecbb3f]">Yazılarımız</span>
             </h2>
           </motion.div>
 
@@ -79,7 +79,7 @@ export default function BlogSection() {
           >
             <Link 
               href="/blog" 
-              className="group flex items-center gap-2 bg-transparent text-[#1f313f] font-bold tracking-wide uppercase text-sm border-b-2 border-[#ecbb3f] pb-1 hover:text-[#ecbb3f] transition-colors"
+              className="group flex items-center gap-2 bg-transparent text-[#162f5d] font-bold tracking-wide uppercase text-sm border-b-2 border-[#ecbb3f] pb-1 hover:text-[#ecbb3f] transition-colors"
             >
               Tüm Blogları Gör
               <ArrowRight size={18} className="transform group-hover:translate-x-2 transition-transform duration-300 text-[#ecbb3f]" />
@@ -108,7 +108,7 @@ export default function BlogSection() {
                     className="object-cover transition-transform duration-[2s] ease-out group-hover:scale-110"
                   />
                   {/* Category Badge overlay */}
-                  <div className="absolute top-4 left-4 bg-[#1f313f]/90 backdrop-blur-sm text-[#ecbb3f] font-bold text-xs uppercase px-3 py-1.5 rounded-lg">
+                  <div className="absolute top-4 left-4 bg-[#162f5d]/90 backdrop-blur-sm text-[#ecbb3f] font-bold text-xs uppercase px-3 py-1.5 rounded-lg">
                     {post.category}
                   </div>
                 </div>
@@ -120,7 +120,7 @@ export default function BlogSection() {
                     <span className="font-medium">{post.date}</span>
                   </div>
                   
-                  <h3 className="text-[20px] font-black text-[#1f313f] leading-snug mb-3 line-clamp-2 group-hover:text-[#ecbb3f] transition-colors">
+                  <h3 className="text-[20px] font-black text-[#162f5d] leading-snug mb-3 line-clamp-2 group-hover:text-[#ecbb3f] transition-colors">
                     <Link href="/blog" className="before:absolute before:inset-0">
                       {post.title}
                     </Link>

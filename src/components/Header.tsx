@@ -22,6 +22,16 @@ export default function Header() {
   const [megaMenuHovered, setMegaMenuHovered] = useState(false);
   const [mobileTreatmentsOpen, setMobileTreatmentsOpen] = useState(false);
   const [mobileActiveCategory, setMobileActiveCategory] = useState<string | null>(null);
+  const [kurumsalHovered, setKurumsalHovered] = useState(false);
+  const [mobileKurumsalOpen, setMobileKurumsalOpen] = useState(false);
+
+  const kurumsalDropdownLinks = [
+    { name: "Hakkımızda", href: "/hakkimizda" },
+    { name: "Anlaşmalı Kurumlar", href: "/anlasmali-kurumlar" },
+    { name: "MegaGöz Galeri", href: "/galeri" },
+    { name: "İş Başvurusu", href: "/#is-basvurusu" },
+    { name: "KVKK", href: "/kvkk" }
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,8 +68,7 @@ export default function Header() {
     { name: "ANA SAYFA", href: "/" },
     { name: "KURUMSAL", href: "/hakkimizda" },
     { name: "TEDAVİLER", href: "/#hizmetler" },
-    { name: "DOKTORLARIMIZ", href: "/#doktorlar" },
-    { name: "MERKEZLERİMİZ", href: "/#merkezler" },
+    { name: "DOKTORLARIMIZ", href: "/doktorlar" },
     { name: "BLOG", href: "/#blog" },
     { name: "İLETİŞİM", href: "/iletisim" },
   ];
@@ -68,8 +77,8 @@ export default function Header() {
     <header className="w-full fixed top-0 left-0 right-0 z-50 flex flex-col font-sans">
       {/* Top Blue Bar - Disappears on scroll */}
       <div 
-        className={`bg-[#1f313f] text-white text-[14px] font-semibold tracking-wide transition-all duration-300 origin-top ${
-          isScrolled ? "h-0 opacity-0 overflow-hidden" : "h-[50px] md:h-[55px] opacity-100 flex"
+        className={`bg-gradient-to-r from-[#162f5d] via-[#102347] to-[#162f5d] text-white text-[14px] font-semibold tracking-wide transition-all duration-300 origin-top ${
+          isScrolled ? "h-0 opacity-0 overflow-hidden" : "hidden lg:flex h-[55px] opacity-100"
         }`}
       >
         <div className="w-full flex items-center justify-center h-full px-4 gap-8 md:gap-16">
@@ -166,22 +175,78 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Main White Nav Bar */}
-      <div className={`bg-white transition-all duration-300 ${isScrolled ? "shadow-md py-4" : "py-4 lg:py-6 border-b-2 border-gray-100"}`}>
+      {/* Main Dark Nav Bar */}
+      <div className={`bg-gradient-to-r from-[#162f5d] via-[#11244a] to-[#162f5d] transition-all duration-300 ${isScrolled ? "shadow-md shadow-[#162f5d]/20 py-4" : "py-4 lg:py-6 border-b-2 border-white/5"}`}>
         <div className="w-full flex items-center justify-center px-4 md:px-8 gap-8 lg:gap-10 xl:gap-20">
           
           {/* Logo */}
-          <Link href="/" className="flex flex-col justify-center items-center shrink-0 w-[160px] md:w-[234px] lg:w-[288px] h-[50px] md:h-[63px] lg:h-[72px] relative overflow-hidden">
-            <img 
-              src="/logo.png" 
-              alt="Megagöz Tıp Merkezi" 
-              className="absolute inset-0 w-full h-full object-cover object-center" 
-            />
+          <Link href="/" className="flex flex-col justify-center items-center shrink-0 w-[160px] md:w-[234px] lg:w-[288px] h-[50px] md:h-[63px] lg:h-[72px] relative overflow-hidden group">
+             {/* Logo filter trick: invert makes black->white & whiteBg->black. mix-blend-screen makes the blackBg disappear! Result: pure white logo. */}
+             <div className="absolute inset-0 flex items-center justify-center">
+                <img 
+                  src="/logo.png" 
+                  alt="Megagöz Tıp Merkezi" 
+                  className="w-full h-full object-contain filter invert mix-blend-screen brightness-200" 
+                />
+             </div>
           </Link>
 
           {/* Desktop Menu */}
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navLinks.map((link) => {
+              if (link.name === "KURUMSAL") {
+                return (
+                  <div 
+                    key={link.name} 
+                    className="relative group h-full flex items-center"
+                    onMouseEnter={() => setKurumsalHovered(true)}
+                    onMouseLeave={() => setKurumsalHovered(false)}
+                  >
+                    <Link 
+                      href={link.href as any}
+                      className="text-[15px] font-bold text-white/90 group-hover:text-[#ecbb3f] transition-colors whitespace-nowrap tracking-wide py-4 flex items-center gap-1"
+                    >
+                      {link.name} <ChevronDown size={14} className="mt-0.5 group-hover:rotate-180 transition-transform duration-300" />
+                    </Link>
+
+                    {/* Kurumsal Dropdown */}
+                    <AnimatePresence>
+                      {kurumsalHovered && (
+                        <motion.div 
+                          initial={{ opacity: 0, y: 15 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute top-[80%] left-0 min-w-[260px] bg-white rounded-xl shadow-[0_20px_60px_rgba(0,0,0,0.15)] border border-gray-100 flex flex-col overflow-hidden z-50 py-2 cursor-default"
+                        >
+                          {kurumsalDropdownLinks.map((sublink, idx) => (
+                            sublink.href.startsWith("/#") ? (
+                              <a 
+                                key={idx}
+                                href={sublink.href}
+                                className="px-5 py-3 text-sm font-bold text-[#454d52] hover:bg-gray-50 hover:text-[#ecbb3f] transition-colors border-b last:border-b-0 border-gray-50"
+                                onClick={() => setKurumsalHovered(false)}
+                              >
+                                {sublink.name}
+                              </a>
+                            ) : (
+                              <Link 
+                                key={idx}
+                                href={sublink.href as any}
+                                className="px-5 py-3 text-sm font-bold text-[#454d52] hover:bg-gray-50 hover:text-[#ecbb3f] transition-colors border-b last:border-b-0 border-gray-50"
+                                onClick={() => setKurumsalHovered(false)}
+                              >
+                                {sublink.name}
+                              </Link>
+                            )
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              }
+
               if (link.name === "TEDAVİLER") {
                 return (
                   <div 
@@ -192,7 +257,7 @@ export default function Header() {
                   >
                     <Link 
                       href="/tedaviler"
-                      className="text-[15px] font-bold text-[#454d52] group-hover:text-[#ecbb3f] transition-colors whitespace-nowrap tracking-wide py-4 flex items-center gap-1"
+                      className="text-[15px] font-bold text-white/90 group-hover:text-[#ecbb3f] transition-colors whitespace-nowrap tracking-wide py-4 flex items-center gap-1"
                     >
                       {link.name} <ChevronDown size={14} className="mt-0.5 group-hover:rotate-180 transition-transform duration-300" />
                     </Link>
@@ -224,7 +289,7 @@ export default function Header() {
                           {/* Right Column: Items */}
                           <div className="w-2/3 bg-white p-8">
                              <div className="flex justify-between items-center mb-6 border-b border-gray-100 pb-3">
-                               <h3 className="font-bold text-lg text-[#1f313f]">
+                               <h3 className="font-bold text-lg text-[#162f5d]">
                                  {TREATMENTS_DATA.find(c => c.id === activeMegaCategory)?.title[locale as "tr"|"en"]}
                                </h3>
                                <Link href={{ pathname: '/tedaviler/[category]', params: { category: activeMegaCategory } }} className="text-[#ecbb3f] text-xs font-bold uppercase tracking-wider hover:text-[#cda669]">
@@ -255,7 +320,7 @@ export default function Header() {
                 <a 
                   key={link.name} 
                   href={link.href}
-                  className="text-[15px] font-bold text-[#454d52] hover:text-[#ecbb3f] transition-colors whitespace-nowrap tracking-wide"
+                  className="text-[15px] font-bold text-white/90 hover:text-[#ecbb3f] transition-colors whitespace-nowrap tracking-wide py-4"
                 >
                   {link.name}
                 </a>
@@ -263,7 +328,7 @@ export default function Header() {
                 <Link 
                   key={link.name} 
                   href={link.href as any}
-                  className="text-[15px] font-bold text-[#454d52] hover:text-[#ecbb3f] transition-colors whitespace-nowrap tracking-wide"
+                  className="text-[15px] font-bold text-white/90 hover:text-[#ecbb3f] transition-colors whitespace-nowrap tracking-wide py-4"
                 >
                   {link.name}
                 </Link>
@@ -275,7 +340,7 @@ export default function Header() {
 
           {/* Mobile Menu Toggle */}
           <button 
-            className="lg:hidden text-[#1f313f] ml-auto"
+            className="lg:hidden text-white ml-auto"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X size={32} /> : <Menu size={32} />}
@@ -294,6 +359,52 @@ export default function Header() {
           >
             <div className="flex flex-col px-4 py-4 space-y-4">
               {navLinks.map((link) => {
+                if (link.name === "KURUMSAL") {
+                  return (
+                    <div key={link.name} className="flex flex-col border-b border-gray-100 pb-2 mb-2">
+                       <button 
+                         onClick={() => setMobileKurumsalOpen(!mobileKurumsalOpen)}
+                         className="flex items-center justify-between text-[#333] font-bold uppercase text-sm w-full outline-none"
+                       >
+                         {link.name}
+                         <ChevronDown size={16} className={`transition-transform duration-300 ${mobileKurumsalOpen ? "rotate-180 text-[#ecbb3f]" : ""}`} />
+                       </button>
+                       <AnimatePresence>
+                         {mobileKurumsalOpen && (
+                           <motion.div 
+                             initial={{ height: 0, opacity: 0 }}
+                             animate={{ height: "auto", opacity: 1 }}
+                             exit={{ height: 0, opacity: 0 }}
+                             className="flex flex-col pl-4 pt-4 space-y-4 overflow-hidden"
+                           >
+                             {kurumsalDropdownLinks.map((sublink, idx) => (
+                               sublink.href.startsWith("/#") ? (
+                                 <a 
+                                   key={idx}
+                                   href={sublink.href} 
+                                   onClick={() => setMobileMenuOpen(false)} 
+                                   className="text-sm font-bold text-gray-500 hover:text-[#ecbb3f]"
+                                 >
+                                   {sublink.name}
+                                 </a>
+                               ) : (
+                                 <Link 
+                                   key={idx}
+                                   href={sublink.href as any} 
+                                   onClick={() => setMobileMenuOpen(false)} 
+                                   className="text-sm font-bold text-gray-500 hover:text-[#ecbb3f]"
+                                 >
+                                   {sublink.name}
+                                 </Link>
+                               )
+                             ))}
+                           </motion.div>
+                         )}
+                       </AnimatePresence>
+                    </div>
+                  );
+                }
+
                 if (link.name === "TEDAVİLER") {
                   return (
                     <div key={link.name} className="flex flex-col border-b border-gray-100 pb-2">

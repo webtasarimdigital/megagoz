@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, PhoneCall, MessageCircle } from "lucide-react";
 import Image from "next/image";
 
 export default function Footer() {
@@ -12,20 +12,58 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-[#1f313f] pt-16 pb-6 mt-10">
+    <footer className="bg-[#162f5d] pt-12 md:pt-16 pb-6 mt-16 md:mt-24">
       <div className="container mx-auto px-6 max-w-[1300px]">
+        
+        {/* Pre-Footer Contact Bar */}
+        <div className="bg-[#15232d] rounded-[24px] shadow-2xl flex flex-col lg:flex-row border border-[#ecbb3f]/30 overflow-hidden -mt-24 md:-mt-32 mb-16 relative z-10 divide-y lg:divide-y-0 lg:divide-x divide-[#ecbb3f]/10">
+           
+           {/* Item 1 */}
+           <a href="tel:05334814098" className="flex-1 p-6 lg:p-8 flex items-center justify-center lg:justify-start gap-5 hover:bg-[#ecbb3f]/5 transition-colors group">
+             <div className="w-14 h-14 rounded-full bg-[#ecbb3f]/10 flex items-center justify-center shrink-0 border border-[#ecbb3f]/20 group-hover:bg-[#ecbb3f] group-hover:border-[#ecbb3f] transition-all duration-300">
+               <PhoneCall size={26} className="text-[#ecbb3f] group-hover:text-[#15232d] transition-colors" />
+             </div>
+             <div>
+                <h4 className="text-white font-bold text-[17px] mb-1 group-hover:text-[#ecbb3f] transition-colors">Bizimle İletişime Geçin</h4>
+                <p className="text-gray-400 font-medium text-[14px]">0533 481 40 98</p>
+             </div>
+           </a>
+
+           {/* Item 2 */}
+           <a href="https://wa.me/905334814098" target="_blank" rel="noopener noreferrer" className="flex-1 p-6 lg:p-8 flex items-center justify-center lg:justify-start gap-5 hover:bg-[#ecbb3f]/5 transition-colors group">
+             <div className="w-14 h-14 rounded-full bg-[#ecbb3f]/10 flex items-center justify-center shrink-0 border border-[#ecbb3f]/20 group-hover:bg-[#ecbb3f] group-hover:border-[#ecbb3f] transition-all duration-300">
+               <MessageCircle size={26} className="text-[#ecbb3f] group-hover:text-[#15232d] transition-colors" />
+             </div>
+             <div>
+                <h4 className="text-white font-bold text-[17px] mb-1 group-hover:text-[#ecbb3f] transition-colors">WhatsApp</h4>
+                <p className="text-gray-400 font-medium text-[14px]">Mesajlaşmak için tıklayın</p>
+             </div>
+           </a>
+
+           {/* Item 3 */}
+           <Link href="/iletisim" className="flex-1 p-6 lg:p-8 flex items-center justify-center lg:justify-start gap-5 hover:bg-[#ecbb3f]/5 transition-colors group">
+             <div className="w-14 h-14 rounded-full bg-[#ecbb3f]/10 flex items-center justify-center shrink-0 border border-[#ecbb3f]/20 group-hover:bg-[#ecbb3f] group-hover:border-[#ecbb3f] transition-all duration-300">
+               <MapPin size={26} className="text-[#ecbb3f] group-hover:text-[#15232d] transition-colors" />
+             </div>
+             <div>
+                <h4 className="text-white font-bold text-[17px] mb-1 group-hover:text-[#ecbb3f] transition-colors">Bize Ulaşın</h4>
+                <p className="text-gray-400 font-medium text-[14px]">Konumumuz için tıklayın</p>
+             </div>
+           </Link>
+
+        </div>
+
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-6 mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-x-6 gap-y-10 mb-16">
           
-          {/* Column 1: Brand & Intro (col-span-3) */}
-          <div className="lg:col-span-3 space-y-7">
-            <Link href="/" className="inline-block relative h-16 w-56 mb-2">
-              <Image 
-                src="/logo.png" 
-                alt="Megagöz Logo" 
-                fill 
-                className="object-contain" 
-              />
+          {/* Column 1: Brand & Intro */}
+          <div className="col-span-2 md:col-span-3 lg:col-span-3 order-1 lg:order-none space-y-7">
+            <Link href="/" className="inline-block relative h-[60px] w-[240px] mb-4 overflow-hidden rounded-sm">
+               <img 
+                 src="/logo.png" 
+                 alt="Megagöz Logo" 
+                 className="absolute inset-0 w-full h-full object-cover object-center" 
+               />
             </Link>
             <p className="text-[13px] leading-relaxed text-gray-300 font-medium">
               MEGAGÖZ, göz hastalıklarının teşhis ve tedavisinde uluslararası standartlarda sağlık hizmeti sunmak amacıyla kurulmuş, teknolojiyi ve tıbbı bir araya getiren modern bir göz sağlığı merkezidir.
@@ -34,7 +72,7 @@ export default function Footer() {
             <div className="space-y-3 pt-2">
               <div className="flex items-center gap-3">
                 <Phone size={16} className="text-[#ecbb3f]" />
-                <span className="text-[14px] text-gray-300 font-bold">0555 555 55 55</span>
+                <span className="text-[14px] text-gray-300 font-bold">444 0 320</span>
               </div>
               <div className="flex items-center gap-3">
                 <Mail size={16} className="text-[#ecbb3f]" />
@@ -54,8 +92,8 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2: Kurumsal (col-span-2) */}
-          <div className="lg:col-span-2">
+          {/* Column 2: Kurumsal */}
+          <div className="col-span-1 md:col-span-1 lg:col-span-2 order-2 lg:order-none">
             <h4 className="text-white font-black tracking-widest uppercase text-[15px] mb-3 mt-4 lg:mt-0">KURUMSAL</h4>
             <div className="w-[30px] h-[2px] bg-[#ecbb3f] mb-6" />
             <ul className="space-y-3.5 list-none">
@@ -81,8 +119,8 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Hizmetlerimiz (col-span-4) - Two Columns */}
-          <div className="lg:col-span-4">
+          {/* Column 3: Hizmetlerimiz - Moved to bottom on mobile, side-by-side on tablet/desktop */}
+          <div className="col-span-2 md:col-span-1 lg:col-span-4 order-4 md:order-3 lg:order-none">
             <h4 className="text-white font-black tracking-widest uppercase text-[15px] mb-3 mt-4 lg:mt-0">HİZMETLERİMİZ</h4>
             <div className="w-[30px] h-[2px] bg-[#ecbb3f] mb-6" />
             
@@ -97,8 +135,8 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 4: İletişim (col-span-3) */}
-          <div className="lg:col-span-3">
+          {/* Column 4: İletişim - Side-by-side with Kurumsal on mobile */}
+          <div className="col-span-1 md:col-span-1 lg:col-span-3 order-3 md:order-4 lg:order-none">
             <h4 className="text-white font-black tracking-widest uppercase text-[15px] mb-3 mt-4 lg:mt-0">İLETİŞİM</h4>
             <div className="w-[30px] h-[2px] bg-[#ecbb3f] mb-6" />
             

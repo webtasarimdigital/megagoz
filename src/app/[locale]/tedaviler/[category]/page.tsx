@@ -1,4 +1,5 @@
 import { useLocale } from "next-intl";
+import { use } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "@/i18n/navigation";
@@ -7,9 +8,10 @@ import Image from "next/image";
 import { TREATMENTS_DATA } from "@/data/treatments";
 import { notFound } from "next/navigation";
 
-export default function CategoryPage({ params }: { params: { locale: string; category: string } }) {
+export default function CategoryPage({ params }: { params: Promise<{ locale: string; category: string }> }) {
+  const resolvedParams = use(params);
   const locale = useLocale() as "tr" | "en";
-  const categoryData = TREATMENTS_DATA.find((c) => c.id === params.category);
+  const categoryData = TREATMENTS_DATA.find((c) => c.id === resolvedParams.category);
 
   if (!categoryData) {
     notFound();
@@ -70,7 +72,7 @@ export default function CategoryPage({ params }: { params: { locale: string; cat
                   fill 
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1f313f] via-[#1f313f]/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#162f5d] via-[#162f5d]/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
                 
                 {/* Float tag */}
                 <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">
@@ -79,7 +81,7 @@ export default function CategoryPage({ params }: { params: { locale: string; cat
               </div>
 
               <div className="p-8 flex flex-col flex-1 bg-white relative z-10 transition-transform duration-500">
-                <h3 className="text-2xl font-black text-[#1f313f] mb-4 leading-snug group-hover:text-[#ecbb3f] transition-colors">
+                <h3 className="text-2xl font-black text-[#162f5d] mb-4 leading-snug group-hover:text-[#ecbb3f] transition-colors">
                   {item.title[locale]}
                 </h3>
                 
@@ -91,7 +93,7 @@ export default function CategoryPage({ params }: { params: { locale: string; cat
                    <span className="text-[#ecbb3f] font-bold text-sm tracking-widest uppercase">
                      {locale === 'tr' ? 'Detaylı Bilgi' : 'Discover More'}
                    </span>
-                   <div className="w-10 h-10 rounded-full bg-[#f4f7f9] text-[#1f313f] flex items-center justify-center group-hover:bg-[#ecbb3f] group-hover:text-white transition-all duration-300 transform group-hover:rotate-45">
+                   <div className="w-10 h-10 rounded-full bg-[#f4f7f9] text-[#162f5d] flex items-center justify-center group-hover:bg-[#ecbb3f] group-hover:text-white transition-all duration-300 transform group-hover:rotate-45">
                      <ArrowRight size={18} />
                    </div>
                 </div>

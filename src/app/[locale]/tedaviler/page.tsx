@@ -52,7 +52,7 @@ export default function TreatmentsPage() {
             <Link 
               href={{ pathname: '/tedaviler/[category]', params: { category: category.id } }}
               key={category.id} 
-              className="group relative bg-[#1f313f] rounded-[24px] overflow-hidden shadow-xl border border-white/5 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center justify-center text-center p-10 h-64"
+              className="group relative bg-[#162f5d] rounded-[24px] overflow-hidden shadow-xl border border-white/5 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center justify-center text-center p-10 h-64"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               
@@ -62,7 +62,7 @@ export default function TreatmentsPage() {
                  <h2 className="text-2xl font-black text-white mb-2 group-hover:text-[#ecbb3f] transition-colors">{category.title[locale]}</h2>
                  <p className="text-gray-400 text-sm font-medium uppercase tracking-widest">{category.items.length} {locale === 'tr' ? 'İşlem' : 'Procedures'}</p>
                  
-                 <div className="mt-6 w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white group-hover:bg-[#ecbb3f] group-hover:text-[#1f313f] group-hover:border-[#ecbb3f] transition-all duration-300">
+                 <div className="mt-6 w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white group-hover:bg-[#ecbb3f] group-hover:text-[#162f5d] group-hover:border-[#ecbb3f] transition-all duration-300">
                     <ArrowRight size={20} className="transform group-hover:translate-x-1 transition-transform" />
                  </div>
               </div>

@@ -104,7 +104,7 @@ export default function BeforeAfterSlider() {
              <span className="text-[#ecbb3f] font-bold tracking-widest uppercase text-sm">TEDAVİLERİMİZ</span>
              <div className="h-[2px] w-12 bg-[#ecbb3f]" />
           </div>
-          <h2 className="text-3xl md:text-5xl font-black text-[#1f313f]">Öncesi ve Sonrası</h2>
+          <h2 className="text-3xl md:text-5xl font-black text-[#162f5d]">Hayat Görmeye Değer</h2>
           <p className="mt-4 text-gray-500 max-w-2xl mx-auto">Megagöz İle Daha Net Bir Dünyaya Bakın</p>
         </div>
 
@@ -123,10 +123,6 @@ export default function BeforeAfterSlider() {
               className="object-cover pointer-events-none"
               priority
             />
-            {/* Label Base (After) */}
-            <div className="absolute top-6 right-6 bg-[#1f313f]/80 backdrop-blur text-white px-4 py-2 rounded-lg font-bold text-sm z-0">
-              Sonrası
-            </div>
           </div>
 
           {/* BEFORE Image (Overlay Image - Masked with clip-path) */}
@@ -140,10 +136,6 @@ export default function BeforeAfterSlider() {
               fill
               className="object-cover pointer-events-none"
             />
-            {/* Label Overlay (Before) */}
-            <div className="absolute top-6 left-6 bg-[#ecbb3f]/90 backdrop-blur text-white px-4 py-2 rounded-lg font-bold text-sm">
-              Öncesi
-            </div>
           </div>
 
           {/* The Slider Handle */}
@@ -155,8 +147,8 @@ export default function BeforeAfterSlider() {
             <div 
               className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 md:w-14 md:h-14 bg-white rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(0,0,0,0.3)] transition-transform ${isDragging ? 'scale-90 bg-gray-50' : 'scale-100'} ${!hasInteracted ? 'animate-pulse' : ''}`}
             >
-              <ChevronLeft className="text-[#1f313f] ml-1" size={24} />
-              <ChevronRight className="text-[#1f313f] mr-1" size={24} />
+              <ChevronLeft className="text-[#162f5d] ml-1" size={24} />
+              <ChevronRight className="text-[#162f5d] mr-1" size={24} />
             </div>
           </div>
           

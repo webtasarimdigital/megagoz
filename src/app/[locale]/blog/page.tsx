@@ -15,23 +15,23 @@ export default function BlogPage() {
       slug: "lazer-goz-ameliyati-nedir",
       excerpt: "Miyop, hipermetrop ve astigmatizmanın saniyeler içinde tedavi edildiği modern lazer operasyonları hakkında tüm detaylar.",
       date: "14 Nisan 2026",
-      image: "/images/slide1.png"
+      image: "/images/blog_laser_eye.png"
     },
     {
       id: 2,
       title: "Göz Rengi Değiştirmek Mümkün Mü?",
       slug: "goz-rengi-degistirme",
-      excerpt: "Keratopigmentasyon ve iris implantasyonu gibi yöntemlerle göz rengi değişimi tıp dünyasında nasıl uygulanıyor?",
+      excerpt: "Keratopigmentasyon ve lazer gibi yöntemlerle göz rengi değişimi tıp dünyasında nasıl uygulanıyor?",
       date: "10 Nisan 2026",
       image: "/images/megagoz-katarakt-tedavisi.webp"
     },
     {
       id: 3,
-      title: "Çocuklarda Göz Sağlığının Önemi",
+      title: "Çocuklarda Göz Sağlığının Önemi ve Miyopi Salgını",
       slug: "cocuklarda-goz-sagligi",
-      excerpt: "Göz tembelliği ve şaşılık gibi problemlerin erken teşhisi, çocuğunuzun gelecekteki görüş kalitesini belirler.",
+      excerpt: "Göz tembelliği ve şaşılık gibi problemlerin erken teşhisi, çocuğunuzun gelecekteki eğitim hayatını ve görüş kalitesini belirler.",
       date: "05 Nisan 2026",
-      image: "/images/megagoz-cocuk-goz-tedavisi.webp"
+      image: "/images/blog_child_eye.png"
     },
     {
       id: 4,
@@ -53,9 +53,9 @@ export default function BlogPage() {
       id: 6,
       title: "Akıllı Lens (Göz İçi Mercek) Kimlere Uygulanır?",
       slug: "akilli-lens-tedavisi",
-      excerpt: "Yakın, uzağı ve orta mesafeyi bir arada görmek isteyen hastalar için trifokal mercek cerrahisinin avantajları.",
+      excerpt: "Yakından uzağa tüm mesafelerde pırıl pırıl bir görüş sağlayan trifokal (akıllı) mercek cerrahisinin avantajları ve uygunluk şartları.",
       date: "15 Mart 2026",
-      image: "/images/slide3.png"
+      image: "/images/blog_smart_lens.png"
     }
   ];
 
@@ -72,7 +72,7 @@ export default function BlogPage() {
           priority
           className="object-cover object-center" 
         />
-        <div className="absolute inset-0 bg-[#1f313f]/85 z-0" />
+        <div className="absolute inset-0 bg-[#162f5d]/85 z-0" />
         
         <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 max-w-3xl pb-16">
           <div className="flex items-center gap-4 mb-4">
@@ -114,7 +114,7 @@ export default function BlogPage() {
                    <span>{post.date}</span>
                 </div>
                 
-                <h3 className="text-xl font-bold text-[#1f313f] mb-3 leading-snug group-hover:text-[#ecbb3f] transition-colors">
+                <h3 className="text-xl font-bold text-[#162f5d] mb-3 leading-snug group-hover:text-[#ecbb3f] transition-colors">
                   {post.title}
                 </h3>
                 
