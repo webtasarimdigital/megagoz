@@ -12,11 +12,12 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-[#162f5d] pt-12 md:pt-16 pb-6 mt-16 md:mt-24">
-      <div className="container mx-auto px-6 max-w-[1300px]">
-        
-        {/* Pre-Footer Contact Bar */}
-        <div className="bg-[#15232d] rounded-[24px] shadow-2xl flex flex-col lg:flex-row border border-[#ecbb3f]/30 overflow-hidden -mt-24 md:-mt-32 mb-16 relative z-10 divide-y lg:divide-y-0 lg:divide-x divide-[#ecbb3f]/10">
+    <footer className="bg-[#152d59] mt-16 md:mt-24">
+      
+      {/* Full-Width Pre-Footer Contact Bar */}
+      <div className="w-full bg-[#15232d] border-t border-b border-[#ecbb3f]/10">
+        <div className="container mx-auto px-6 max-w-[1300px]">
+          <div className="flex flex-col lg:flex-row divide-y lg:divide-y-0 lg:divide-x divide-[#ecbb3f]/10">
            
            {/* Item 1 */}
            <a href="tel:05334814098" className="flex-1 p-6 lg:p-8 flex items-center justify-center lg:justify-start gap-5 hover:bg-[#ecbb3f]/5 transition-colors group">
@@ -51,8 +52,11 @@ export default function Footer() {
              </div>
            </Link>
 
+          </div>
         </div>
+      </div>
 
+      <div className="container mx-auto px-6 max-w-[1300px] pt-12 md:pt-16 pb-6">
         {/* Main Footer Content */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-x-6 gap-y-10 mb-16">
           

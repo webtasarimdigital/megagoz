@@ -1,4 +1,6 @@
 import { ShieldCheck, Building2, Landmark, HeartHandshake } from "lucide-react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default function PartnerInstitutionsPage() {
   const partners = [
@@ -11,7 +13,9 @@ export default function PartnerInstitutionsPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] pb-24 pt-32 md:pt-40">
+    <main>
+      <Header />
+      <div className="min-h-screen bg-[#F8FAFC] pb-24 pt-32 md:pt-40">
       
       {/* Hero Section */}
       <div className="container mx-auto px-6 max-w-[1200px] mb-16 text-center">
@@ -65,5 +69,7 @@ export default function PartnerInstitutionsPage() {
       </div>
 
     </div>
+      <Footer />
+    </main>
   );
 }

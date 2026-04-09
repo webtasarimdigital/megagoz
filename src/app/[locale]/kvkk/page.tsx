@@ -1,10 +1,14 @@
 import { useTranslations } from "next-intl";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default function KVKKPage() {
   const t = useTranslations("Navigation");
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] pb-24 pt-32 md:pt-40">
+    <main>
+      <Header />
+      <div className="min-h-screen bg-[#F8FAFC] pb-24 pt-32 md:pt-40">
       <div className="absolute top-0 left-0 w-full h-[50vh] bg-[#162f5d] rounded-b-[50px] md:rounded-b-[100px] z-0" />
       
       <div className="container mx-auto px-6 max-w-[1000px] relative z-10">
@@ -106,5 +110,7 @@ export default function KVKKPage() {
         </div>
       </div>
     </div>
+      <Footer />
+    </main>
   );
 }

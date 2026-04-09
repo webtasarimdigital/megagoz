@@ -1,12 +1,16 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { CheckCircle2, Eye, Shield, HeartHandshake, Award } from "lucide-react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default function AboutPage() {
   const t = useTranslations("Navigation");
 
   return (
-    <div className="min-h-screen bg-white pb-24 pt-32 md:pt-40">
+    <main>
+      <Header />
+      <div className="min-h-screen bg-white pb-24 pt-32 md:pt-40">
       
       {/* Page Header (Hero style) */}
       <div className="container mx-auto px-6 max-w-[1300px] mb-20 md:mb-32">
@@ -120,5 +124,7 @@ export default function AboutPage() {
       </div>
       
     </div>
+      <Footer />
+    </main>
   );
 }

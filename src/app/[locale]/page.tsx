@@ -3,12 +3,12 @@ import Header from '@/components/Header';
 import HeroSlider from '@/components/HeroSlider';
 import AboutSection from '@/components/AboutSection';
 import ServicesSection from '@/components/ServicesSection';
+import AppointmentFormSection from '@/components/AppointmentFormSection';
 import BeforeAfterSlider from '@/components/BeforeAfterSlider';
 import BlogSection from '@/components/BlogSection';
 import Footer from '@/components/Footer';
 
 // A/B Test Premium Components
-import PremiumAbout from '@/components/PremiumAbout';
 import TechnologySection from '@/components/TechnologySection';
 import PremiumStats from '@/components/PremiumStats';
 import WhyChooseUsSection from '@/components/WhyChooseUsSection';
@@ -21,17 +21,15 @@ export default function HomePage() {
     <main className="min-h-screen flex flex-col bg-white">
       <Header />
       <HeroSlider />
-      {/* NEW: Asymmetric Magazine Style About (A/B Test) */}
-      <PremiumAbout />
-
-      {/* OLD: Normal About (For Comparison) */}
+      {/* About Section */}
       <AboutSection />
 
-      {/* NEW: Dark Mode Laser Tech Showcase (A/B Test) */}
-      <TechnologySection />
 
       {/* OLD: Normal Services */}
       <ServicesSection />
+
+      {/* Appointment Form Right Below Services */}
+      <AppointmentFormSection />
 
       {/* Neden Megagöz Tabs */}
       <WhyChooseUsSection />
@@ -41,6 +39,8 @@ export default function HomePage() {
 
       {/* BEFORE / AFTER */}
       <BeforeAfterSlider />
+
+      <TechnologySection />
 
       <BlogSection />
       <FAQSection />

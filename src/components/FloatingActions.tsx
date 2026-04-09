@@ -8,61 +8,44 @@ export default function FloatingActions() {
   const [isWidgetClosed, setIsWidgetClosed] = useState(false);
   return (
     <>
-      {/* DESKTOP (Web) NEW SIDE WIDGET - Hidden on Mobile */}
-      <div className="hidden md:block">
-        <div 
-          className={`fixed right-0 top-1/2 -translate-y-1/2 z-[100] transition-all duration-500 ease-in-out flex items-center ${
-            isWidgetClosed ? "translate-x-full" : "translate-x-0"
-          }`}
+      {/* DESKTOP (Web) VERSION - Hidden on Mobile */}
+      <div className="fixed bottom-6 right-6 z-[100] flex-col gap-3 hidden md:flex">
+        {/* Instagram Button */}
+        <a 
+          href="https://instagram.com/megagoz" 
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-14 h-14 bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
+          aria-label="Instagram"
         >
-          {/* Main Expanded Widget */}
-          <div className="w-[110px] md:w-[130px] flex flex-col shadow-[-10px_0_30px_rgba(0,0,0,0.15)] rounded-l-2xl overflow-hidden group">
-            
-            {/* Top Dark Section */}
-            <div className="bg-[#162f5d] h-[110px] relative flex flex-col items-center justify-center border-b border-white/10 relative">
-               <button 
-                 onClick={() => setIsWidgetClosed(true)}
-                 className="absolute top-2 right-2 text-white/40 hover:text-white transition-colors bg-white/5 hover:bg-white/10 rounded-full p-1"
-                 aria-label="Kapat"
-               >
-                 <X size={14} />
-               </button>
-               <div className="relative text-white mt-2">
-                 <HeadphonesIcon size={42} strokeWidth={1} className="opacity-80" />
-                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-1">
-                   <span className="text-[14px] font-black italic tracking-tighter">24/7</span>
-                 </div>
-               </div>
-            </div>
+          <svg fill="currentColor" viewBox="0 0 24 24" className="w-8 h-8">
+              <path d="M12 2.162c3.204 0 3.584.012 4.849.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.332.014 7.052.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+          </svg>
+        </a>
 
-            {/* Bottom Yellow Section */}
-            <Link 
-              href="/iletisim"
-              className="bg-[#ecbb3f] hover:bg-[#d99816] transition-colors py-5 px-3 flex flex-col items-center justify-center text-center group-hover:pb-6 ease-out duration-300"
-            >
-               <span className="text-white font-black text-[15px] leading-[1.1] tracking-wide uppercase drop-shadow-sm">
-                 Tıkla<br/>Randevu<br/>Al
-               </span>
-            </Link>
-          </div>
-        </div>
-
-        {/* Collapsed Tag (Appears when widget is closed) */}
-        <div 
-          className={`fixed right-0 top-1/2 -translate-y-1/2 z-[90] transition-all duration-500 delay-100 ${
-             isWidgetClosed ? "translate-x-0" : "translate-x-full"
-          }`}
+        {/* WhatsApp Button */}
+        <a 
+          href="https://wa.me/905334814098" 
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
+          aria-label="WhatsApp"
         >
-           <button 
-             onClick={() => setIsWidgetClosed(false)}
-             className="bg-[#162f5d] hover:bg-[#ecbb3f] text-white p-2 rounded-l-lg shadow-[-5px_0_15px_rgba(0,0,0,0.1)] transition-colors border border-r-0 border-white/10 flex flex-col items-center gap-2"
-           >
-             <ChevronLeft size={20} />
-             <div style={{ writingMode: 'vertical-rl' }} className="text-[12px] font-bold tracking-widest uppercase rotate-180 mb-2">
-               Randevu
-             </div>
-           </button>
-        </div>
+          <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
+          </svg>
+        </a>
+
+        {/* Location Button */}
+        <a 
+          href="https://maps.app.goo.gl/YourGoogleMapsLink" 
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-14 h-14 bg-[#4285F4] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
+          aria-label="Konum"
+        >
+          <MapPin fill="white" className="text-[#4285F4]" size={28} />
+        </a>
       </div>
 
       {/* MOBILE VERSION - Fixed Bottom Bar */}
@@ -86,7 +69,7 @@ export default function FloatingActions() {
 
         {/* ARA */}
         <a href="tel:05334814098" className="flex flex-col items-center gap-1 min-w-[70px]">
-          <div className="w-10 h-10 rounded-[10px] bg-[#10b981] flex items-center justify-center text-white shadow-sm transform scale-110 -translate-y-2">
+          <div className="w-10 h-10 rounded-[10px] bg-[#10b981] flex items-center justify-center text-white shadow-sm">
             <Phone size={22} strokeWidth={2.5} />
           </div>
           <span className="text-[10px] font-bold text-[#162f5d] tracking-wide">ARA</span>

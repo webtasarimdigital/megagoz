@@ -1,12 +1,16 @@
 import { useTranslations } from "next-intl";
 import { User, Award, ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default function DoctorsPage() {
   const t = useTranslations("Navigation");
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] pb-24 pt-32 md:pt-40">
+    <main>
+      <Header />
+      <div className="min-h-screen bg-[#F8FAFC] pb-24 pt-32 md:pt-40">
       
       {/* Header */}
       <div className="container mx-auto px-6 max-w-[1300px] mb-16 text-center">
@@ -60,5 +64,7 @@ export default function DoctorsPage() {
       </div>
 
     </div>
+      <Footer />
+    </main>
   );
 }

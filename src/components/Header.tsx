@@ -67,9 +67,9 @@ export default function Header() {
   const navLinks = [
     { name: "ANA SAYFA", href: "/" },
     { name: "KURUMSAL", href: "/hakkimizda" },
-    { name: "TEDAVİLER", href: "/#hizmetler" },
+    { name: "TEDAVİLER", href: "/tedaviler" },
     { name: "DOKTORLARIMIZ", href: "/doktorlar" },
-    { name: "BLOG", href: "/#blog" },
+    { name: "BLOG", href: "/blog" },
     { name: "İLETİŞİM", href: "/iletisim" },
   ];
 
@@ -77,7 +77,7 @@ export default function Header() {
     <header className="w-full fixed top-0 left-0 right-0 z-50 flex flex-col font-sans">
       {/* Top Blue Bar - Disappears on scroll */}
       <div 
-        className={`bg-gradient-to-r from-[#162f5d] via-[#102347] to-[#162f5d] text-white text-[14px] font-semibold tracking-wide transition-all duration-300 origin-top ${
+        className={`bg-gradient-to-r from-[#0d1d3a] via-[#081224] to-[#0d1d3a] text-white text-[14px] font-semibold tracking-wide transition-all duration-300 origin-top ${
           isScrolled ? "h-0 opacity-0 overflow-hidden" : "hidden lg:flex h-[55px] opacity-100"
         }`}
       >
@@ -176,7 +176,7 @@ export default function Header() {
       </div>
 
       {/* Main Dark Nav Bar */}
-      <div className={`bg-gradient-to-r from-[#162f5d] via-[#11244a] to-[#162f5d] transition-all duration-300 ${isScrolled ? "shadow-md shadow-[#162f5d]/20 py-4" : "py-4 lg:py-6 border-b-2 border-white/5"}`}>
+      <div className={`transition-all duration-300 ${isScrolled ? "shadow-md shadow-gray-200 py-2 lg:py-4" : "py-4 lg:py-6 border-b-2 border-transparent"} bg-gradient-to-r from-[#0d1d3a] via-[#081224] to-[#0d1d3a] lg:bg-none lg:bg-white`}>
         <div className="w-full flex items-center justify-center px-4 md:px-8 gap-8 lg:gap-10 xl:gap-20">
           
           {/* Logo */}
@@ -186,7 +186,7 @@ export default function Header() {
                 <img 
                   src="/logo.png" 
                   alt="Megagöz Tıp Merkezi" 
-                  className="w-full h-full object-contain filter invert mix-blend-screen brightness-200" 
+                  className="w-full h-full object-contain filter invert mix-blend-screen brightness-200 lg:invert-0 lg:mix-blend-normal lg:brightness-100" 
                 />
              </div>
           </Link>
@@ -204,7 +204,7 @@ export default function Header() {
                   >
                     <Link 
                       href={link.href as any}
-                      className="text-[15px] font-bold text-white/90 group-hover:text-[#ecbb3f] transition-colors whitespace-nowrap tracking-wide py-4 flex items-center gap-1"
+                      className="text-[15px] font-bold text-[#162f5d] group-hover:text-[#ecbb3f] transition-colors whitespace-nowrap tracking-wide py-4 flex items-center gap-1"
                     >
                       {link.name} <ChevronDown size={14} className="mt-0.5 group-hover:rotate-180 transition-transform duration-300" />
                     </Link>
@@ -257,7 +257,7 @@ export default function Header() {
                   >
                     <Link 
                       href="/tedaviler"
-                      className="text-[15px] font-bold text-white/90 group-hover:text-[#ecbb3f] transition-colors whitespace-nowrap tracking-wide py-4 flex items-center gap-1"
+                      className="text-[15px] font-bold text-[#162f5d] group-hover:text-[#ecbb3f] transition-colors whitespace-nowrap tracking-wide py-4 flex items-center gap-1"
                     >
                       {link.name} <ChevronDown size={14} className="mt-0.5 group-hover:rotate-180 transition-transform duration-300" />
                     </Link>
@@ -320,7 +320,7 @@ export default function Header() {
                 <a 
                   key={link.name} 
                   href={link.href}
-                  className="text-[15px] font-bold text-white/90 hover:text-[#ecbb3f] transition-colors whitespace-nowrap tracking-wide py-4"
+                  className="text-[15px] font-bold text-[#162f5d] hover:text-[#ecbb3f] transition-colors whitespace-nowrap tracking-wide py-4"
                 >
                   {link.name}
                 </a>
@@ -328,7 +328,7 @@ export default function Header() {
                 <Link 
                   key={link.name} 
                   href={link.href as any}
-                  className="text-[15px] font-bold text-white/90 hover:text-[#ecbb3f] transition-colors whitespace-nowrap tracking-wide py-4"
+                  className="text-[15px] font-bold text-[#162f5d] hover:text-[#ecbb3f] transition-colors whitespace-nowrap tracking-wide py-4"
                 >
                   {link.name}
                 </Link>
