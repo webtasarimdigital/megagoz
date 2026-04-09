@@ -8,8 +8,8 @@ import "../globals.css"; // Note the relative path adjust since it's now in [loc
 import FloatingActions from "@/components/FloatingActions";
 
 export const metadata: Metadata = {
-  title: "Megagöz | Göz Sağlığı Merkezi",
-  description: "Megagöz, en iyi göz sağlığı hizmetlerini sunar.",
+  title: "Megagöz | Göz Sağlığı Merkezi, Ümraniye - İstanbul",
+  description: "İstanbul Ümraniye'deki güvenilir adresiniz Megagöz. Gelişmiş teknoloji lazer tedavileri, katarakt ve akıllı lens ameliyatları için tam donanımlı polikliniğimizde uzman hekim kadromuzla yanınızdayız.",
   icons: {
     icon: "/favicon-megagoz.jpg",
   },
@@ -45,6 +45,40 @@ export default async function LocaleLayout({
             })(window,document,'script','dataLayer','GTM-WCNQLB6Z');
           `}
         </Script>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "MedicalClinic",
+              "name": "Megagöz Göz Sağlığı Merkezi",
+              "url": "https://www.megagoz.com",
+              "logo": "https://www.megagoz.com/logo.png",
+              "image": "https://www.megagoz.com/logo.png",
+              "description": "İstanbul Ümraniye'deki güvenilir adresiniz Megagöz. Gelişmiş teknoloji lazer tedavileri, katarakt ve akıllı lens ameliyatları için uzman hekim kadromuzla yanınızdayız.",
+              "telephone": "4440320",
+              "email": "info@megagoz.com",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "İhtisas Sokak. No:3",
+                "addressLocality": "Ümraniye",
+                "addressRegion": "İstanbul",
+                "addressCountry": "TR"
+              },
+              "openingHoursSpecification": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                "opens": "08:30",
+                "closes": "18:30"
+              },
+              "medicalSpecialty": [
+                "Optometry",
+                "PlasticSurgery",
+                "Surgical"
+              ]
+            })
+          }}
+        />
       </head>
       <body>
         <noscript>
