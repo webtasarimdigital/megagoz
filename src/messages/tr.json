@@ -70,5 +70,11 @@
     "title": "Uzmanlarımızdan Yazılar",
     "subtitle": "Göz sağlığınız hakkında en güncel bilgiler, makaleler ve ipuçları.",
     "read_more": "Daha Fazla Oku"
+  },
+  "BlogInner": {
+    "back_to_blog": "Blog'a Dön",
+    "share": "Paylaş",
+    "related_posts": "İlgili Makaleler",
+    "written_by": "Yazar: Megagöz Editör Ekibi"
   }
 }

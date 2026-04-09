@@ -6,6 +6,9 @@ import { useTranslations, useLocale } from "next-intl";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { Menu, X, Phone, MapPin, ChevronDown } from "lucide-react";
 import Image from "next/image";
+import { useParams } from "next/navigation";
+import { TREATMENTS_DATA } from "@/data/treatments";
+import { ChevronRight } from "lucide-react";
 
 export default function Header() {
   const t = useTranslations("Navigation");
@@ -15,6 +18,10 @@ export default function Header() {
   
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeMegaCategory, setActiveMegaCategory] = useState(TREATMENTS_DATA[0].id);
+  const [megaMenuHovered, setMegaMenuHovered] = useState(false);
+  const [mobileTreatmentsOpen, setMobileTreatmentsOpen] = useState(false);
+  const [mobileActiveCategory, setMobileActiveCategory] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,8 +44,14 @@ export default function Header() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const params = useParams();
+
   const switchLocale = (newLocale: "tr" | "en") => {
-    router.replace(pathname, { locale: newLocale });
+    router.replace(
+      // @ts-expect-error -- Generic dynamic path support
+      { pathname, params }, 
+      { locale: newLocale }
+    );
   };
 
   const navLinks = [
@@ -168,8 +181,77 @@ export default function Header() {
 
           {/* Desktop Menu */}
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
-            {navLinks.map((link) => (
-              link.href.startsWith("/#") ? (
+            {navLinks.map((link) => {
+              if (link.name === "TEDAVİLER") {
+                return (
+                  <div 
+                    key={link.name} 
+                    className="relative group h-full flex items-center"
+                    onMouseEnter={() => setMegaMenuHovered(true)}
+                    onMouseLeave={() => setMegaMenuHovered(false)}
+                  >
+                    <Link 
+                      href="/tedaviler"
+                      className="text-[15px] font-bold text-[#454d52] group-hover:text-[#ecbb3f] transition-colors whitespace-nowrap tracking-wide py-4 flex items-center gap-1"
+                    >
+                      {link.name} <ChevronDown size={14} className="mt-0.5 group-hover:rotate-180 transition-transform duration-300" />
+                    </Link>
+
+                    {/* Mega Menu Dropdown */}
+                    <AnimatePresence>
+                      {megaMenuHovered && (
+                        <motion.div 
+                          initial={{ opacity: 0, y: 15 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute top-full left-1/2 -translate-x-1/2 w-[800px] bg-white rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.15)] border border-gray-100 flex overflow-hidden z-50 cursor-default"
+                        >
+                          {/* Left Column: Categories */}
+                          <div className="w-1/3 bg-gray-50/80 border-r border-gray-100 py-4 flex flex-col">
+                            {TREATMENTS_DATA.map(category => (
+                               <div 
+                                 key={category.id}
+                                 onMouseEnter={() => setActiveMegaCategory(category.id)}
+                                 className={`px-6 py-3 cursor-pointer flex items-center justify-between transition-colors ${activeMegaCategory === category.id ? "bg-white text-[#ecbb3f] font-bold" : "text-[#454d52] font-semibold hover:bg-gray-100"}`}
+                               >
+                                  <span className="text-sm">{category.title[locale as "tr"|"en"]}</span>
+                                  {activeMegaCategory === category.id && <ChevronRight size={16} />}
+                               </div>
+                            ))}
+                          </div>
+
+                          {/* Right Column: Items */}
+                          <div className="w-2/3 bg-white p-8">
+                             <div className="flex justify-between items-center mb-6 border-b border-gray-100 pb-3">
+                               <h3 className="font-bold text-lg text-[#1f313f]">
+                                 {TREATMENTS_DATA.find(c => c.id === activeMegaCategory)?.title[locale as "tr"|"en"]}
+                               </h3>
+                               <Link href={{ pathname: '/tedaviler/[category]', params: { category: activeMegaCategory } }} className="text-[#ecbb3f] text-xs font-bold uppercase tracking-wider hover:text-[#cda669]">
+                                  {locale === 'tr' ? 'Tümünü Gör' : 'View All'}
+                               </Link>
+                             </div>
+                             
+                             <div className="grid grid-cols-2 gap-x-6 gap-y-4">
+                               {TREATMENTS_DATA.find(c => c.id === activeMegaCategory)?.items.map(item => (
+                                 <Link 
+                                    key={item.slug}
+                                    href={{ pathname: '/tedaviler/[category]/[slug]', params: { category: activeMegaCategory, slug: item.slug } }}
+                                    className="text-sm text-gray-500 font-medium hover:text-[#ecbb3f] transition-colors leading-snug line-clamp-2"
+                                 >
+                                    {item.title[locale as "tr"|"en"]}
+                                 </Link>
+                               ))}
+                             </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              }
+
+              return link.href.startsWith("/#") ? (
                 <a 
                   key={link.name} 
                   href={link.href}
@@ -185,8 +267,8 @@ export default function Header() {
                 >
                   {link.name}
                 </Link>
-              )
-            ))}
+              );
+            })}
           </nav>
 
           {/* Search Box Removed per request */}
@@ -211,8 +293,71 @@ export default function Header() {
             className="lg:hidden bg-white border-b border-gray-200 overflow-hidden"
           >
             <div className="flex flex-col px-4 py-4 space-y-4">
-              {navLinks.map((link) => (
-                link.href.startsWith("/#") ? (
+              {navLinks.map((link) => {
+                if (link.name === "TEDAVİLER") {
+                  return (
+                    <div key={link.name} className="flex flex-col border-b border-gray-100 pb-2">
+                       <button 
+                         onClick={() => setMobileTreatmentsOpen(!mobileTreatmentsOpen)}
+                         className="flex items-center justify-between text-[#333] font-bold uppercase text-sm w-full outline-none"
+                       >
+                         {link.name}
+                         <ChevronDown size={16} className={`transition-transform duration-300 ${mobileTreatmentsOpen ? "rotate-180 text-[#ecbb3f]" : ""}`} />
+                       </button>
+                       <AnimatePresence>
+                         {mobileTreatmentsOpen && (
+                           <motion.div 
+                             initial={{ height: 0, opacity: 0 }}
+                             animate={{ height: "auto", opacity: 1 }}
+                             exit={{ height: 0, opacity: 0 }}
+                             className="flex flex-col pl-4 pt-3 space-y-3 overflow-hidden"
+                           >
+                             <Link href="/tedaviler" onClick={() => setMobileMenuOpen(false)} className="text-[#ecbb3f] font-bold text-xs uppercase tracking-wider mb-2">
+                               {locale === 'tr' ? 'Tüm Tedaviler' : 'All Treatments'}
+                             </Link>
+                             {TREATMENTS_DATA.map(category => (
+                               <div key={category.id} className="flex flex-col">
+                                 <button
+                                   onClick={() => setMobileActiveCategory(mobileActiveCategory === category.id ? null : category.id)}
+                                   className="flex items-center justify-between text-sm font-semibold text-[#454d52] py-1"
+                                 >
+                                   {category.title[locale as "tr"|"en"]}
+                                   <ChevronDown size={14} className={`transition-transform ${mobileActiveCategory === category.id ? "rotate-180 text-[#ecbb3f]" : ""}`} />
+                                 </button>
+                                 <AnimatePresence>
+                                   {mobileActiveCategory === category.id && (
+                                     <motion.div
+                                       initial={{ height: 0, opacity: 0 }}
+                                       animate={{ height: "auto", opacity: 1 }}
+                                       exit={{ height: 0, opacity: 0 }}
+                                       className="flex flex-col pl-3 pt-2 space-y-2 overflow-hidden border-l-2 border-gray-100 mt-1 mb-2"
+                                     >
+                                        <Link href={{ pathname: '/tedaviler/[category]', params: { category: category.id } }} onClick={() => setMobileMenuOpen(false)} className="text-xs text-gray-500 hover:text-[#ecbb3f] py-1 font-medium italic mb-1">
+                                           {locale === 'tr' ? 'Bu bölümü gör' : 'View this section'}
+                                        </Link>
+                                        {category.items.map(item => (
+                                          <Link
+                                            key={item.slug}
+                                            href={{ pathname: '/tedaviler/[category]/[slug]', params: { category: category.id, slug: item.slug } }}
+                                            onClick={() => setMobileMenuOpen(false)}
+                                            className="text-xs text-gray-500 hover:text-[#ecbb3f] py-1"
+                                          >
+                                            {item.title[locale as "tr"|"en"]}
+                                          </Link>
+                                        ))}
+                                     </motion.div>
+                                   )}
+                                 </AnimatePresence>
+                               </div>
+                             ))}
+                           </motion.div>
+                         )}
+                       </AnimatePresence>
+                    </div>
+                  );
+                }
+
+                return link.href.startsWith("/#") ? (
                   <a
                     key={link.name}
                     href={link.href}
@@ -230,8 +375,8 @@ export default function Header() {
                   >
                     {link.name}
                   </Link>
-                )
-              ))}
+                );
+              })}
               <div className="pt-2">
                 <a href="tel:4440320" className="flex items-center gap-2 text-[#00609C] font-bold">
                   <Phone size={18} />

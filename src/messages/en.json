@@ -70,5 +70,11 @@
     "title": "Articles from Our Experts",
     "subtitle": "The latest information, articles, and tips about your eye health.",
     "read_more": "Read More"
+  },
+  "BlogInner": {
+    "back_to_blog": "Back to Blog",
+    "share": "Share",
+    "related_posts": "Related Articles",
+    "written_by": "Written by Megagöz Editorial Team"
   }
 }

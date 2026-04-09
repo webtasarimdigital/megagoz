@@ -52,11 +52,12 @@ export default function ServicesSection() {
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 relative">
+        {/* Desktop View */}
+        <div className="hidden lg:grid grid-cols-12 gap-20 relative">
           
           {/* Left Side - Interactive List */}
-          <div className="lg:col-span-5 relative z-20">
-            <div className="space-y-1 py-4 border-l-2 border-white/10 pl-6 md:pl-10 relative">
+          <div className="col-span-5 relative z-20">
+            <div className="space-y-1 py-4 border-l-2 border-white/10 pl-10 relative">
               
               {/* Highlight Bar Indicator */}
               <motion.div 
@@ -90,7 +91,7 @@ export default function ServicesSection() {
                       transition={{ type: "spring", stiffness: 400, damping: 30 }}
                       className="origin-left"
                     >
-                      <h3 className={`text-3xl md:text-4xl lg:text-4xl font-black leading-[1.1] transition-colors duration-500 uppercase tracking-tighter ${isActive ? "text-[#ecbb3f]" : "text-gray-600 hover:text-gray-400"}`}>
+                      <h3 className={`text-4xl font-black leading-[1.1] transition-colors duration-500 uppercase tracking-tighter ${isActive ? "text-[#ecbb3f]" : "text-gray-600 hover:text-gray-400"}`}>
                         {service.title}
                       </h3>
                     </motion.div>
@@ -104,7 +105,7 @@ export default function ServicesSection() {
                           transition={{ duration: 0.3 }}
                           className="overflow-hidden"
                         >
-                          <p className="text-gray-400 text-sm md:text-base font-medium leading-relaxed pr-8 ml-5">
+                          <p className="text-gray-400 text-base font-medium leading-relaxed pr-8 ml-5">
                             {service.desc}
                           </p>
                           <div className="ml-5 mt-4">
@@ -122,7 +123,7 @@ export default function ServicesSection() {
           </div>
 
           {/* Right Side - Dynamic Image Reveal (Sticky) */}
-          <div className="lg:col-span-7 relative hidden lg:block">
+          <div className="col-span-7 relative">
             <div className="sticky top-24 w-full aspect-[4/5] max-h-[calc(100vh-120px)] rounded-[30px] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.5)] border border-white/10 group">
               
               <AnimatePresence mode="wait">
@@ -161,8 +162,47 @@ export default function ServicesSection() {
               
             </div>
           </div>
-          
-          {/* Mobile Image Fallback - Appears below items on small screens inherently via layout mapping but actually let's just make it a global hidden or render it differently. The user already has it in the modal expanding! */}
+        </div>
+
+        {/* Mobile View - Horizontal Snap Cards */}
+        <div className="block lg:hidden w-full relative mt-8">
+           <div className="flex overflow-x-auto snap-x snap-mandatory gap-5 pb-8 pt-4 px-2 -mx-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+             {SERVICES.map((service) => (
+               <div key={service.id} className="min-w-[85vw] snap-center shrink-0">
+                  <div className="group relative w-full aspect-[3/4] sm:aspect-[4/5] rounded-[32px] overflow-hidden bg-[#1f313f] shadow-[0_20px_40px_rgba(0,0,0,0.5)] border border-white/10">
+                    <Image 
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a111a] via-[#0a111a]/60 to-transparent" />
+                    
+                    <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8 flex flex-col justify-end">
+                      <div className="mb-2 text-[#ecbb3f] font-bold text-[10px] sm:text-xs tracking-[0.2em] uppercase">Megagöz Tedavi</div>
+                      <h3 className="text-2xl sm:text-3xl font-black text-white mb-3 tracking-tight">{service.title}</h3>
+                      <p className="text-gray-300 text-xs sm:text-sm leading-relaxed mb-6 line-clamp-3">
+                        {service.desc}
+                      </p>
+                      
+                      <button className="flex items-center justify-between w-full p-1 pl-6 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-[#ecbb3f] hover:text-[#0a111a] transition-all duration-300 group/btn">
+                        <span className="font-bold uppercase tracking-wider text-[10px] sm:text-xs">Detaylı Bilgi</span>
+                        <div className="w-10 h-10 rounded-full bg-white text-[#0a111a] flex items-center justify-center transition-transform duration-300 group-hover/btn:-rotate-45">
+                          <ArrowRight size={16} />
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+               </div>
+             ))}
+           </div>
+           
+           {/* Swipe Hint */}
+           <div className="flex justify-center items-center gap-2 mt-2 text-gray-500 text-xs uppercase tracking-widest font-bold">
+              <ArrowRight size={12} className="animate-pulse rotate-180" />
+              <span>Kaydırarak İnceleyin</span>
+              <ArrowRight size={12} className="animate-pulse" />
+           </div>
         </div>
       </div>
     </section>

@@ -17,6 +17,22 @@ export const routing = defineRouting({
     '/blog': {
       tr: '/blog',
       en: '/blog'
+    },
+    '/blog/[slug]': {
+      tr: '/blog/[slug]',
+      en: '/blog/[slug]'
+    },
+    '/tedaviler': {
+      tr: '/tedaviler',
+      en: '/treatments'
+    },
+    '/tedaviler/[category]': {
+      tr: '/tedaviler/[category]',
+      en: '/treatments/[category]'
+    },
+    '/tedaviler/[category]/[slug]': {
+      tr: '/tedaviler/[category]/[slug]',
+      en: '/treatments/[category]/[slug]'
     }
   }
 });

@@ -12,6 +12,7 @@ export default function BlogPage() {
     {
       id: 1,
       title: "Lazer Göz Ameliyatı (Göz Çizdirme) Nedir?",
+      slug: "lazer-goz-ameliyati-nedir",
       excerpt: "Miyop, hipermetrop ve astigmatizmanın saniyeler içinde tedavi edildiği modern lazer operasyonları hakkında tüm detaylar.",
       date: "14 Nisan 2026",
       image: "/images/slide1.png"
@@ -19,6 +20,7 @@ export default function BlogPage() {
     {
       id: 2,
       title: "Göz Rengi Değiştirmek Mümkün Mü?",
+      slug: "goz-rengi-degistirme",
       excerpt: "Keratopigmentasyon ve iris implantasyonu gibi yöntemlerle göz rengi değişimi tıp dünyasında nasıl uygulanıyor?",
       date: "10 Nisan 2026",
       image: "/images/megagoz-katarakt-tedavisi.webp"
@@ -26,6 +28,7 @@ export default function BlogPage() {
     {
       id: 3,
       title: "Çocuklarda Göz Sağlığının Önemi",
+      slug: "cocuklarda-goz-sagligi",
       excerpt: "Göz tembelliği ve şaşılık gibi problemlerin erken teşhisi, çocuğunuzun gelecekteki görüş kalitesini belirler.",
       date: "05 Nisan 2026",
       image: "/images/megagoz-cocuk-goz-tedavisi.webp"
@@ -33,6 +36,7 @@ export default function BlogPage() {
     {
       id: 4,
       title: "Katarakt Belirtileri ve Modern Tedavisi",
+      slug: "katarakt-belirtileri-ve-tedavisi",
       excerpt: "Yaşa bağlı görme kayıplarının en sık nedeni olan kataraktın dikişsiz fako cerrahisi ile çok kısa sürede tedavisi.",
       date: "28 Mart 2026",
       image: "/images/megagoz-tedavi-sonrasi.webp"
@@ -40,6 +44,7 @@ export default function BlogPage() {
     {
       id: 5,
       title: "Kuru Göz Sendromu Nasıl Geçer?",
+      slug: "kuru-goz-sendromu",
       excerpt: "Bilgisayar başında uzun saatler harcayanların kabusu kuru göz için alınabilecek pratik önlemler ve damla tedavileri.",
       date: "20 Mart 2026",
       image: "/images/slide2.png"
@@ -47,6 +52,7 @@ export default function BlogPage() {
     {
       id: 6,
       title: "Akıllı Lens (Göz İçi Mercek) Kimlere Uygulanır?",
+      slug: "akilli-lens-tedavisi",
       excerpt: "Yakın, uzağı ve orta mesafeyi bir arada görmek isteyen hastalar için trifokal mercek cerrahisinin avantajları.",
       date: "15 Mart 2026",
       image: "/images/slide3.png"
@@ -91,7 +97,7 @@ export default function BlogPage() {
       <div className="container mx-auto px-4 sm:px-6 max-w-[1300px] relative z-20 -mt-24 md:-mt-32 pb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           {blogPosts.map((post) => (
-            <a href="#" key={post.id} className="group flex flex-col bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+            <Link href={{ pathname: '/blog/[slug]', params: { slug: post.slug } }} key={post.id} className="group flex flex-col bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
               
               <div className="relative h-64 w-full overflow-hidden">
                 <Image 
@@ -121,7 +127,7 @@ export default function BlogPage() {
                   <ArrowRight size={16} className="transition-transform group-hover:translate-x-2" />
                 </div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>
