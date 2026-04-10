@@ -7,8 +7,8 @@ import { ArrowLeft, Calendar, User, Share2, ArrowRight } from "lucide-react";
 import { notFound } from "next/navigation";
 
 // Mock veri tabanı simülasyonu
-const getBlogPostBySlug = (slug: string) => {
-  const posts = [
+const getBlogPostBySlug = (slug: string, locale: string) => {
+  const posts_tr = [
     {
       id: 1,
       title: "Lazer Göz Ameliyatı (Göz Çizdirme) Nedir?",
@@ -117,7 +117,118 @@ const getBlogPostBySlug = (slug: string) => {
       image: "/images/blog_smart_lens.png"
     }
   ];
-  return posts.find(p => p.slug === slug);
+
+  const posts_en = [
+    {
+       id: 1,
+       title: "What is Laser Eye Surgery?",
+       slug: "what-is-laser-eye-surgery",
+       excerpt: "All the details about modern laser operations treating myopia, hypermetropia, and astigmatism in seconds.",
+       content: `
+         <p>Laser eye surgery, widely known as "eye scratching" among the public and refractive surgery in the medical world, is a highly safe and technological procedure applied to permanently correct refractive errors such as myopia, hypermetropia, and astigmatism.</p>
+         <br/>
+         <h3>How is Laser Eye Surgery Applied?</h3>
+         <p>Thanks to developing medical technology, laser procedures are now completed in seconds using entirely painless and bladeless methods. These treatments, which are based on reshaping the cornea (the transparent layer at the very front of the eye), are specifically chosen according to the patient's eye structure, corneal thickness, and eye prescription. The most commonly used techniques are:</p>
+         <ul>
+           <li><strong>No-Touch:</strong> Based on the principle of reshaping the cornea remotely with laser beams without any device contact touching the eye. It is very safe for patients with thin corneas.</li>
+           <li><strong>Femto-LASIK:</strong> Also known as bladeless laser. The flap creation process is entirely computer-controlled with a femtosecond laser, and then the refractive error is corrected with an excimer laser. The healing process is limited to a few hours.</li>
+           <li><strong>SMILE Laser:</strong> With the lens extraction technique, a lens-shaped piece of tissue is separated from the cornea with a laser and removed through a tiny incision without creating a flap. Ideal for athletes and occupational groups at risk of impact.</li>
+         </ul>
+         <br/>
+         <h3>What are the Advantages? Why Should I Have Laser?</h3>
+         <ul>
+           <li><strong>Quick Recovery:</strong> A significant clearing in vision begins immediately after the procedure. In LASIK and SMILE techniques, patients can return to their daily lives the very next day.</li>
+           <li><strong>Painless Process:</strong> Since it is performed using only anesthetic eye drops, no pain, ache, or needle sensation is experienced.</li>
+           <li><strong>Permanent Solution:</strong> Offers the opportunity to get rid of glasses and contact lens dependence for a lifetime. It eliminates infection risks that may arise from contact lens use.</li>
+           <li><strong>Long-Term Economic Contribution:</strong> Considering the lifetime costs spent on changing eyeglass lenses, frames, and lens solutions every year, laser treatment is a one-time and much more logical investment.</li>
+         </ul>
+         <br/>
+         <p>After a detailed eye scan to be performed by our expert physicians with 3D topography devices, whether your eye is suitable for laser surgery is definitively determined. You can book a detailed appointment at our clinic to get rid of your glasses, engage in sports freely, swim, and see the world clearly when you wake up in the morning.</p>
+       `,
+       date: "April 14, 2026",
+       image: "/images/blog_laser_eye.png"
+    },
+    {
+      id: 2,
+      title: "Is It Possible to Change Eye Color?",
+      slug: "eye-color-change",
+      excerpt: "How eye color change with methods like keratopigmentation and lasers is strictly applied in the medical world.",
+      content: "<p>Eye color aesthetics is one of the most curious topics in the medical world recently. At our clinic, the most innovative methods prioritizing patient safety are carefully evaluated.</p><br/><h3>Applied Technologies</h3><p>Each method, such as keratopigmentation (injecting bio-compatible biological color pigment by opening microscopic channels in the cornea) and wiping melanin pigment with laser, has its own advantages and risks. For example, in keratopigmentation surgery, a tunnel is opened into the cornea with a femtosecond laser, and dye in the selected color is given into this tunnel.</p><br/><p>These procedures must absolutely be performed by experienced corneal surgeons, under sterile operating room conditions, and after a highly detailed topography and intraocular pressure examination. Not every patient's eye anatomy may be suitable for aesthetic surgery.</p>",
+      date: "April 10, 2026",
+      image: "/images/megagoz-katarakt-tedavisi.webp"
+    },
+    {
+      id: 3,
+      title: "Importance of Eye Health in Children",
+      slug: "eye-health-in-children",
+      excerpt: "Early diagnosis of problems like lazy eye and strabismus determines your child's future educational life.",
+      content: `
+        <p>Vision development in childhood is largely completed between the ages of 0-7. The brain learns to see at these ages. Minor refractive errors (hypermetropia, myopia, astigmatism) or focusing problems that cannot be detected during this critical period can lead to permanent <strong>lazy eye (amblyopia)</strong>. Lazy eye is a serious syndrome that becomes almost impossible to treat after the age of 10.</p>
+        <br/>
+        <h3>Tablet and Phone Addiction: The Digital Myopia Epidemic</h3>
+        <p>Today, the fact that children spend a large majority of their time looking very closely at tablet, phone, and computer screens triggers pseudo-myopia, termed the "Myopia Epidemic" in the medical world. Spasms of intraocular muscles caused by constantly focusing near convert into permanent myopia diseases in advanced ages.</p>
+        <br/>
+        <h3>Don't Forget the 20-20-20 Rule</h3>
+        <p>To limit the time children spend looking at screens and rest their eyes, the 20-20-20 rule is golden: Every 20 minutes, for 20 seconds, focusing on an object 20 feet (about 6 meters) away relaxes the eye muscles.</p>
+        <br/>
+        <h3>When Should an Examination Be Done?</h3>
+        <ul>
+          <li>Immediately after birth (ROP examination especially for premature babies)</li>
+          <li>First comprehensive screening at age 1</li>
+          <li>Visual acuity examination at ages 3 and 5</li>
+          <li>Just before starting primary school</li>
+        </ul>
+        <p>Even if there are no complaints, regular examination of children by an expert pediatric ophthalmologist is one of the most fundamental duties of parents.</p>
+      `,
+      date: "April 05, 2026",
+      image: "/images/blog_child_eye.png"
+    },
+    {
+      id: 4,
+      title: "Cataract Symptoms and Modern Treatment",
+      slug: "cataract-symptoms-and-treatment",
+      excerpt: "The most frequent cause of age-related vision loss, treated in a very short time with seamless phaco surgery.",
+      content: "<p>Cataract is the condition where the natural lens inside the eye, which allows us to see, loses its transparency over time, creating a feeling of looking through frosted glass. Although aging is the most common cause, trauma, intense ultraviolet light, and diabetic disorders can also accelerate the process.</p><br/><p>There is no temporary treatment for cataract with medication or glasses; the only and definitive solution is surgery. With the high-tech PHACO (Phacoemulsification) method applied in our clinic, a needle-free, seamless, and painless surgery is offered. The operation takes an average of 10 minutes. Thanks to the <strong>premium intraocular lenses</strong> placed inside the patient's eyes, not only is the cataract cured, but other refractive errors such as astigmatism and myopia can also be reduced to zero.</p>",
+      date: "March 28, 2026",
+      image: "/images/megagoz-tedavi-sonrasi.webp"
+    },
+    {
+      id: 5,
+      title: "How to Cure Dry Eye Syndrome?",
+      slug: "how-to-cure-dry-eye",
+      excerpt: "Practical measures and drop treatments that can be taken for dry eye, the persistent nightmare of heavy computer users.",
+      content: "<p>Dry eye disease manifests itself with stinging, burning, a feeling of sand in the eye, and sudden blurring as a result of insufficient tear production or the deterioration of its content to the point where it cannot prevent evaporation.</p><br/><p>Especially air-conditioned environments, office workers, and those who spend their hours focusing in front of screens are under great risk. Artificial tear drops provide temporary relief, but in our clinic, your tear quality and the working capacity of your Meibomian glands are measured with special diagnostic devices. Radical solutions are provided by applying the newest medical protocols such as <strong>IPL Laser Treatment</strong> or punctal plugs aimed at unblocking obstructed ducts.</p>",
+      date: "March 20, 2026",
+      image: "/images/slide2.png"
+    },
+    {
+      id: 6,
+      title: "Who Is Eligible for Smart Lenses?",
+      slug: "who-is-eligible-for-smart-lenses",
+      excerpt: "Advantages and eligibility conditions of trifocal (smart) intraocular lens surgery providing sparkling vision at all distances.",
+      content: `
+        <p>Trifocal Lenses, publicly known as Smart Lenses, are typically artificial technological lenses placed in lieu of the opaque eye lens during cataract surgery. Today, they are applied not only to cataract patients but also to individuals over the age of 40 experiencing high myopia, hypermetropia, and presbyopia (age-related inability to see near) under the name of "Clear Lens Exchange".</p>
+        <br/>
+        <h3>Opening the Doors to a Glasses-Free Life</h3>
+        <p>The greatest feature of smart lenses is that they provide focus not just at a single focal point, but simultaneously far (while driving, at the cinema), intermediate (while using a computer, working in the kitchen), and near (while reading a book, looking at a phone). Through this, the patient can easily complete over 90% of the tasks in their daily life without any glasses support.</p>
+        <br/>
+        <h3>Who Is It Not Suitable For?</h3>
+        <p>A smart lens is not a suitable treatment for every eye. Different monofocal or EDOF (extended depth of focus) lens alternatives should be evaluated in our patients under the following conditions:</p>
+        <ul>
+          <li>Those with advanced macular degeneration.</li>
+          <li>Those experiencing glaucoma (eye pressure) and associated optic nerve damage.</li>
+          <li>Keratoconus patients possessing a very irregular and asymmetric corneal structure.</li>
+          <li>Occupational groups such as long-haul truck drivers who constantly work in dark environments and at night (against the possibility of light reflections).</li>
+        </ul>
+        <br/>
+        <p>Prior to this operation, which will radically transform your quality of life from top to bottom, your eye topography, endothelial cell count, and optical biometrics are scrutinized in detail with the world's most advanced measurement devices in our clinic. Our expert surgeons will recommend the most flawless lens type for your eye structure.</p>
+      `,
+      date: "March 15, 2026",
+      image: "/images/blog_smart_lens.png"
+    }
+  ];
+
+  return locale === "en" ? posts_en.find(p => p.slug === slug) : posts_tr.find(p => p.slug === slug);
 };
 
 import { use } from "react";
@@ -125,7 +236,7 @@ import { use } from "react";
 export default function BlogDetailPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const resolvedParams = use(params);
   const t = useTranslations("BlogInner");
-  const post = getBlogPostBySlug(resolvedParams.slug);
+  const post = getBlogPostBySlug(resolvedParams.slug, resolvedParams.locale);
 
   if (!post) {
     notFound();
@@ -213,10 +324,14 @@ export default function BlogDetailPage({ params }: { params: Promise<{ locale: s
                <div className="w-20 h-20 mx-auto bg-white/10 rounded-full flex items-center justify-center mb-6">
                  <User size={32} className="text-[#ecbb3f]" />
                </div>
-               <h3 className="text-xl font-bold text-white mb-2">{t("written_by").replace('Yazar: ', '')}</h3>
-               <p className="text-gray-400 text-sm mb-6">Uzman doktorlarımız tarafından hazırlanan tıbbi içeriklerimiz, size en doğru sağlık bilgilerini sunmak için özenle derlenmektedir.</p>
+               <h3 className="text-xl font-bold text-white mb-2">{resolvedParams.locale === "en" ? "MegaGöz Medical Team" : "MegaGöz Medikal Kadrosu"}</h3>
+               <p className="text-gray-400 text-sm mb-6">
+                 {resolvedParams.locale === "en" 
+                   ? "Our medical content prepared by our expert doctors is carefully compiled to offer you the most accurate health information." 
+                   : "Uzman doktorlarımız tarafından hazırlanan tıbbi içeriklerimiz, size en doğru sağlık bilgilerini sunmak için özenle derlenmektedir."}
+               </p>
                <Link href="/iletisim" className="inline-flex w-full items-center justify-center gap-2 bg-[#ecbb3f] text-[#162f5d] font-bold py-3 px-6 rounded-full hover:bg-white transition-colors text-sm uppercase tracking-wider">
-                  Bize Ulaşın <ArrowRight size={16} />
+                  {resolvedParams.locale === "en" ? "CONTACT US" : "BİZE ULAŞIN"} <ArrowRight size={16} />
                </Link>
             </div>
          </div>

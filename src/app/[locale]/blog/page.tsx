@@ -62,7 +62,7 @@ export default function BlogPage() {
     {
       id: 1,
       title: "What is Laser Eye Surgery?",
-      slug: "lazer-goz-ameliyati-nedir",
+      slug: "what-is-laser-eye-surgery",
       excerpt: "All the details about modern laser operations treating myopia, hypermetropia, and astigmatism in seconds.",
       date: "April 14, 2026",
       image: "/images/blog_laser_eye.png"
@@ -70,7 +70,7 @@ export default function BlogPage() {
     {
       id: 2,
       title: "Is It Possible to Change Eye Color?",
-      slug: "goz-rengi-degistirme",
+      slug: "eye-color-change",
       excerpt: "How eye color change with methods like keratopigmentation and lasers is strictly applied in the medical world.",
       date: "April 10, 2026",
       image: "/images/megagoz-katarakt-tedavisi.webp"
@@ -78,7 +78,7 @@ export default function BlogPage() {
     {
       id: 3,
       title: "Importance of Eye Health in Children",
-      slug: "cocuklarda-goz-sagligi",
+      slug: "eye-health-in-children",
       excerpt: "Early diagnosis of problems like lazy eye and strabismus determines your child's future educational life.",
       date: "April 05, 2026",
       image: "/images/blog_child_eye.png"
@@ -86,7 +86,7 @@ export default function BlogPage() {
     {
       id: 4,
       title: "Cataract Symptoms and Modern Treatment",
-      slug: "katarakt-belirtileri-ve-tedavisi",
+      slug: "cataract-symptoms-and-treatment",
       excerpt: "The most frequent cause of age-related vision loss, treated in a very short time with seamless phaco surgery.",
       date: "March 28, 2026",
       image: "/images/megagoz-tedavi-sonrasi.webp"
@@ -94,7 +94,7 @@ export default function BlogPage() {
     {
       id: 5,
       title: "How to Cure Dry Eye Syndrome?",
-      slug: "kuru-goz-sendromu",
+      slug: "how-to-cure-dry-eye",
       excerpt: "Practical measures and drop treatments that can be taken for dry eye, the persistent nightmare of heavy computer users.",
       date: "March 20, 2026",
       image: "/images/slide2.png"
@@ -102,7 +102,7 @@ export default function BlogPage() {
     {
       id: 6,
       title: "Who Is Eligible for Smart Lenses?",
-      slug: "akilli-lens-tedavisi",
+      slug: "who-is-eligible-for-smart-lenses",
       excerpt: "Advantages and eligibility conditions of trifocal (smart) intraocular lens surgery providing sparkling vision at all distances.",
       date: "March 15, 2026",
       image: "/images/blog_smart_lens.png"

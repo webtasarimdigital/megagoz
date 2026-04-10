@@ -46,6 +46,10 @@ export const routing = defineRouting({
       tr: '/doktorlar',
       en: '/doctors'
     },
+    '/doktorlar/[slug]': {
+      tr: '/doktorlar/[slug]',
+      en: '/doctors/[slug]'
+    },
     '/kvkk': {
       tr: '/kvkk',
       en: '/kvkk'

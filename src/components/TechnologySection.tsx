@@ -4,16 +4,19 @@ import { motion } from "framer-motion";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { Cpu, Zap, Activity, ScanFace } from "lucide-react";
+import { useLocale } from "next-intl";
 
 export default function TechnologySection() {
+  const locale = useLocale();
+
   const leftTechs = [
-    { icon: <Zap size={28} />, title: "FemtoSaniye Lazer", desc: "Bıçaksız, %100 hassas ve saniyeler süren lazer ameliyat teknolojisi. Göze dokunulmadan uygulanır." },
-    { icon: <Cpu size={28} />, title: "Akıllı Lens İmplantasyonu", desc: "Katarakt tedavilerinde, uzak-yakın ve ara mesafe netliği sağlayan gelişmiş trifokal lensler." },
+    { icon: <Zap size={28} />, title: locale === 'en' ? 'Femtosecond Laser' : 'FemtoSaniye Lazer', desc: locale === 'en' ? 'Bladeless, 100% precise and fast laser surgery technology. Applied without touching the eye.' : 'Bıçaksız, %100 hassas ve saniyeler süren lazer ameliyat teknolojisi. Göze dokunulmadan uygulanır.' },
+    { icon: <Cpu size={28} />, title: locale === 'en' ? 'Smart Lens Implantation' : 'Akıllı Lens İmplantasyonu', desc: locale === 'en' ? 'Advanced trifocal lenses providing clear vision at far, intermediate, and near distances in cataract treatments.' : 'Katarakt tedavilerinde, uzak-yakın ve ara mesafe netliği sağlayan gelişmiş trifokal lensler.' },
   ];
 
   const rightTechs = [
-    { icon: <ScanFace size={28} />, title: "3D Görme Analizi", desc: "Kornea yapınızı üç boyutlu çıkaran topografi cihazları ile kişiselleştirilmiş cerrahi harita." },
-    { icon: <Activity size={28} />, title: "Göz Nörolojisi Altyapısı", desc: "Beyin ve görme sinirleri arasındaki iletim hızını ölçen yüksek teknoloji VEP / ERG testleri." },
+    { icon: <ScanFace size={28} />, title: locale === 'en' ? '3D Vision Analysis' : '3D Görme Analizi', desc: locale === 'en' ? 'Personalized surgical map with topography devices that extract the 3D structure of your cornea.' : 'Kornea yapınızı üç boyutlu çıkaran topografi cihazları ile kişiselleştirilmiş cerrahi harita.' },
+    { icon: <Activity size={28} />, title: locale === 'en' ? 'Eye Neurology Infrastructure' : 'Göz Nörolojisi Altyapısı', desc: locale === 'en' ? 'High-tech VEP / ERG tests measuring the transmission speed between the brain and optic nerves.' : 'Beyin ve görme sinirleri arasındaki iletim hızını ölçen yüksek teknoloji VEP / ERG testleri.' },
   ];
 
   return (
@@ -29,7 +32,9 @@ export default function TechnologySection() {
              className="inline-flex items-center gap-4 mb-4"
            >
               <div className="h-[2px] w-12 bg-[#ecbb3f]" />
-              <span className="text-[#ecbb3f] font-black tracking-[0.2em] uppercase text-sm">İLERİ TIP TEKNOLOJİSİ</span>
+              <span className="text-[#ecbb3f] font-black tracking-[0.2em] uppercase text-sm">
+                {locale === 'en' ? 'ADVANCED MEDICAL TECHNOLOGY' : 'İLERİ TIP TEKNOLOJİSİ'}
+              </span>
               <div className="h-[2px] w-12 bg-[#ecbb3f]" />
            </motion.div>
            
@@ -40,8 +45,8 @@ export default function TechnologySection() {
              transition={{ delay: 0.1 }}
              className="text-4xl md:text-5xl lg:text-6xl font-black text-[#162f5d] tracking-tight leading-[1.1]"
            >
-             Geleceğin <br className="hidden md:block" />
-             <span className="text-[#ecbb3f]">Lazer Parkuru.</span>
+             {locale === 'en' ? 'The Laser Park' : 'Geleceğin'} <br className="hidden md:block" />
+             <span className="text-[#ecbb3f]">{locale === 'en' ? 'of the Future.' : 'Lazer Parkuru.'}</span>
            </motion.h2>
            
            <motion.p 
@@ -51,7 +56,9 @@ export default function TechnologySection() {
              transition={{ delay: 0.2 }}
              className="text-gray-600 mt-6 max-w-2xl text-[15px] lg:text-base leading-relaxed"
            >
-             Yalnızca alanındaki en gelişmiş, FDA onaylı küresel markaların lazer donanımlarıyla kusursuz sonuçlar hedeflenir.
+             {locale === 'en' 
+               ? 'Flawless results are targeted exclusively with the laser equipment of the most advanced, FDA-approved global brands in the field.' 
+               : 'Yalnızca alanındaki en gelişmiş, FDA onaylı küresel markaların lazer donanımlarıyla kusursuz sonuçlar hedeflenir.'}
            </motion.p>
         </div>
 

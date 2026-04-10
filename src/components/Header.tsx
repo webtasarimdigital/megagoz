@@ -57,9 +57,64 @@ export default function Header() {
   const params = useParams();
 
   const switchLocale = (newLocale: "tr" | "en") => {
+    let newParams = { ...params };
+    let newPathname = pathname;
+
+    // Blog Routing Translation
+    if (newPathname.includes('/blog') && newParams.slug) {
+       const blogMapping: Record<string, string> = {
+         "lazer-goz-ameliyati-nedir": "what-is-laser-eye-surgery",
+         "what-is-laser-eye-surgery": "lazer-goz-ameliyati-nedir",
+         "goz-rengi-degistirme": "eye-color-change",
+         "eye-color-change": "goz-rengi-degistirme",
+         "cocuklarda-goz-sagligi": "eye-health-in-children",
+         "eye-health-in-children": "cocuklarda-goz-sagligi",
+         "katarakt-belirtileri-ve-tedavisi": "cataract-symptoms-and-treatment",
+         "cataract-symptoms-and-treatment": "katarakt-belirtileri-ve-tedavisi",
+         "kuru-goz-sendromu": "how-to-cure-dry-eye",
+         "how-to-cure-dry-eye": "kuru-goz-sendromu",
+         "akilli-lens-tedavisi": "who-is-eligible-for-smart-lenses",
+         "who-is-eligible-for-smart-lenses": "akilli-lens-tedavisi"
+       };
+       if (typeof newParams.slug === 'string' && blogMapping[newParams.slug]) {
+          newParams.slug = blogMapping[newParams.slug];
+       } else {
+          newPathname = '/blog';
+          delete newParams.slug;
+       }
+    } 
+    // Treatments (Tedaviler) Routing Translation
+    else if (newPathname.includes('/tedaviler') || newPathname.includes('/treatments')) {
+       if (newParams.category && typeof newParams.category === 'string') {
+          const currentCat = newParams.category;
+          const catData = TREATMENTS_DATA.find(c => c.slug.tr === currentCat || c.slug.en === currentCat || c.id === currentCat);
+          if (catData) {
+             newParams.category = catData.slug[newLocale];
+             
+             if (newParams.slug && typeof newParams.slug === 'string') {
+                const currentSlug = newParams.slug;
+                const subData = catData.items.find(i => 
+                   (typeof i.slug === 'string' ? i.slug : i.slug.tr) === currentSlug || 
+                   (typeof i.slug === 'string' ? i.slug : i.slug.en) === currentSlug
+                );
+                if (subData) {
+                   newParams.slug = typeof subData.slug === 'string' ? subData.slug : subData.slug[newLocale];
+                } else {
+                   delete newParams.slug;
+                   newPathname = '/tedaviler/[category]';
+                }
+             }
+          } else {
+             newPathname = '/tedaviler';
+             delete newParams.category;
+             delete newParams.slug;
+          }
+       }
+    }
+
     router.replace(
       // @ts-expect-error -- Generic dynamic path support
-      { pathname, params }, 
+      { pathname: newPathname, params: newParams }, 
       { locale: newLocale }
     );
   };
