@@ -482,7 +482,7 @@ export default function Header() {
           >
             {/* Header inside Menu */}
             <div className="flex items-center justify-between p-6 border-b border-light/5 shrink-0 h-[92px]">
-               <img src="/logo.png" alt="Megagöz" className="h-full max-h-[85px] w-auto object-contain brightness-0 invert opacity-90 scale-[1.15] transform origin-left drop-shadow-md pb-2 pt-1" />
+               <img src="/megagoz-logo-mobil.png" alt="Megagöz" className="h-full max-h-[85px] w-auto object-contain scale-[1.05] transform origin-left drop-shadow-md pb-2 pt-1" />
                <button 
                  onClick={() => setMobileMenuOpen(false)}
                  className="w-10 h-10 rounded-xl border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition-colors bg-white/5 active:scale-95"
