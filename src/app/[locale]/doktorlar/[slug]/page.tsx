@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { ArrowLeft, User, Instagram, GraduationCap, Building, FileText, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, User, GraduationCap, Building, FileText, CheckCircle2 } from "lucide-react";
 import { notFound } from "next/navigation";
 import { use } from "react";
 
@@ -190,7 +190,7 @@ export default function DoctorDetailPage({ params }: { params: Promise<{ locale:
                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
                         </a>
                         <a href={doctor.social.instagram} target="_blank" rel="noopener noreferrer" className="w-14 h-14 rounded-full bg-[#F1F5F9] text-[#162f5d] flex items-center justify-center hover:bg-[#ecbb3f] hover:text-white transition-colors">
-                           <Instagram size={24} />
+                           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                         </a>
                      </div>
                   </div>
