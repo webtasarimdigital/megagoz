@@ -1,13 +1,54 @@
 "use client";
 
+import { useLocale } from "next-intl";
+
 import { useState } from "react";
 import { MapPin, Home, Phone, X, ChevronLeft, HeadphonesIcon, CalendarClock } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 
 export default function FloatingActions() {
   const [isWidgetClosed, setIsWidgetClosed] = useState(false);
+  const locale = useLocale();
+  
+  const onlineOperationText = locale === "tr" ? "Online İşlem" : "Online Action";
+  const clickAppointmentText = locale === "tr" ? "Tıkla Randevu Al" : "Get Appointment";
+
   return (
     <>
+      {/* FLOATING APPOINTMENT WIDGET */}
+      <div 
+        className={`fixed left-0 top-[60%] md:top-1/2 -translate-y-1/2 z-[110] transition-transform duration-500 ease-in-out flex shadow-2xl ${isWidgetClosed ? "-translate-x-full" : "translate-x-0"}`}
+      >
+        {/* Main expanded panel */}
+        <div className="bg-white border-r border-t border-b border-[#0a111a]/10 rounded-r-2xl md:rounded-r-3xl overflow-hidden flex items-center p-3 md:p-5 relative shadow-[10px_0_30px_rgba(0,0,0,0.1)] group w-[210px] md:w-[260px]">
+          {/* Close Button */}
+          <button 
+            onClick={(e) => { e.preventDefault(); setIsWidgetClosed(true); }}
+            className="absolute top-1 md:top-2 right-1 md:right-2 text-gray-400 hover:text-red-500 transition-colors bg-gray-50 rounded-full p-1"
+          >
+             <X size={14} className="md:w-4 md:h-4" />
+          </button>
+          
+          <Link href="/iletisim" className="flex items-center gap-2 md:gap-3 w-full pt-1">
+            <div className="w-10 h-10 md:w-14 md:h-14 bg-[#162f5d] rounded-full flex justify-center items-center shrink-0 group-hover:bg-[#ecbb3f] group-hover:text-[#162f5d] text-white transition-all duration-300 shadow-inner">
+               <CalendarClock size={20} className="md:w-6 md:h-6" />
+            </div>
+            <div className="flex flex-col">
+               <span className="text-[#ecbb3f] text-[10px] md:text-xs font-bold uppercase tracking-widest mb-0.5">{onlineOperationText}</span>
+               <span className="text-[#162f5d] font-black text-xs md:text-base leading-tight uppercase tracking-wide">{clickAppointmentText}</span>
+            </div>
+          </Link>
+        </div>
+
+        {/* Small Tab Button (visible only when closed) */}
+        <button 
+          onClick={() => setIsWidgetClosed(false)}
+          className={`absolute top-1/2 -translate-y-1/2 right-0 translate-x-full w-10 md:w-12 h-16 md:h-20 bg-[#162f5d] text-white rounded-r-xl md:rounded-r-2xl flex items-center justify-center shadow-lg transition-opacity duration-300 hover:bg-[#ecbb3f] hover:text-[#162f5d] ${isWidgetClosed ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+          aria-label="Open Appointment"
+        >
+          <CalendarClock size={22} className="md:w-6 md:h-6" />
+        </button>
+      </div>
       {/* DESKTOP (Web) VERSION - Hidden on Mobile */}
       <div className="fixed bottom-6 right-6 z-[100] flex-col gap-3 hidden md:flex">
         {/* Instagram Button */}
@@ -31,8 +72,8 @@ export default function FloatingActions() {
           className="w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
           aria-label="WhatsApp"
         >
-          <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
+          <svg viewBox="0 0 448 512" className="w-[30px] h-[30px]" fill="currentColor">
+            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 222.4-99.6 222.4-222 0-59.3-23.1-115-65.4-157zM223.9 414.4c-33.1 0-65.5-8.9-94-25.7l-6.7-4-69.8 18.3L72 334l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-106.7 86.8-193.5 193.6-193.5 51.7 0 100.3 20.2 136.9 56.8 36.6 36.6 56.8 85.2 56.8 136.9-.1 106.7-86.9 193.4-193.6 193.4zM329.8 281.3c-5.8-2.9-34.3-16.9-39.6-18.9-5.3-1.9-9.2-2.9-13.2 2.9-4 5.8-15.1 18.9-18.5 22.8-3.3 3.9-6.6 4.4-12.4 1.5-5.8-2.9-24.5-9-46.7-28.9-17.2-15.4-28.8-34.5-32.1-40.4-3.3-5.8-.4-9 2.5-11.9 2.6-2.6 5.8-6.8 8.7-10.2 2.9-3.4 3.9-5.8 5.8-9.7 1.9-3.9 1-7.3-.5-10.2-1.5-2.9-13.2-31.9-18-43.7-4.7-11.5-9.5-9.9-13.2-10.1-3.3-.2-7.1-.2-11.1-.2-4 0-10.6 1.5-16.1 7.3-5.5 5.8-21.1 20.6-21.1 50.3 0 29.7 21.6 58.4 24.6 62.3 3 3.9 42.5 64.9 102.9 90.9 14.4 6.2 25.6 9.9 34.3 12.7 14.4 4.6 27.6 3.9 38 2.4 11.6-1.7 34.3-14 39.1-27.5 4.8-13.5 4.8-25.1 3.3-27.5-1.4-2.5-5.3-3.9-11.1-6.8z"/>
           </svg>
         </a>
 
@@ -78,8 +119,8 @@ export default function FloatingActions() {
         {/* WHATSAPP */}
         <a href="https://wa.me/905334814098" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-1 min-w-[70px]">
           <div className="w-10 h-10 rounded-[10px] bg-[#22c55e] flex items-center justify-center text-white shadow-sm">
-            <svg viewBox="0 0 24 24" className="w-[22px] h-[22px]" fill="currentColor">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
+            <svg viewBox="0 0 448 512" className="w-[24px] h-[24px]" fill="currentColor">
+              <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 222.4-99.6 222.4-222 0-59.3-23.1-115-65.4-157zM223.9 414.4c-33.1 0-65.5-8.9-94-25.7l-6.7-4-69.8 18.3L72 334l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-106.7 86.8-193.5 193.6-193.5 51.7 0 100.3 20.2 136.9 56.8 36.6 36.6 56.8 85.2 56.8 136.9-.1 106.7-86.9 193.4-193.6 193.4zM329.8 281.3c-5.8-2.9-34.3-16.9-39.6-18.9-5.3-1.9-9.2-2.9-13.2 2.9-4 5.8-15.1 18.9-18.5 22.8-3.3 3.9-6.6 4.4-12.4 1.5-5.8-2.9-24.5-9-46.7-28.9-17.2-15.4-28.8-34.5-32.1-40.4-3.3-5.8-.4-9 2.5-11.9 2.6-2.6 5.8-6.8 8.7-10.2 2.9-3.4 3.9-5.8 5.8-9.7 1.9-3.9 1-7.3-.5-10.2-1.5-2.9-13.2-31.9-18-43.7-4.7-11.5-9.5-9.9-13.2-10.1-3.3-.2-7.1-.2-11.1-.2-4 0-10.6 1.5-16.1 7.3-5.5 5.8-21.1 20.6-21.1 50.3 0 29.7 21.6 58.4 24.6 62.3 3 3.9 42.5 64.9 102.9 90.9 14.4 6.2 25.6 9.9 34.3 12.7 14.4 4.6 27.6 3.9 38 2.4 11.6-1.7 34.3-14 39.1-27.5 4.8-13.5 4.8-25.1 3.3-27.5-1.4-2.5-5.3-3.9-11.1-6.8z"/>
             </svg>
           </div>
           <span className="text-[10px] font-bold text-[#162f5d] tracking-wide">WHATSAPP</span>
