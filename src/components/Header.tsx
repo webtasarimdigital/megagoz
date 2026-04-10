@@ -235,7 +235,7 @@ export default function Header() {
         <div className="w-full max-w-[1920px] mx-auto flex items-center justify-between lg:justify-center px-4 sm:px-6 md:px-8 gap-2 sm:gap-4 lg:gap-10 xl:gap-20">
           
           {/* Logo */}
-          <Link href="/" className="flex flex-col justify-center items-center shrink-0 w-[140px] sm:w-[170px] md:w-[250px] lg:w-[300px] xl:w-[340px] h-[50px] sm:h-[55px] md:h-[70px] lg:h-[85px] relative group px-1">
+          <Link href="/" className="flex flex-col justify-center items-center shrink-0 w-[125px] sm:w-[150px] md:w-[250px] lg:w-[300px] xl:w-[340px] h-[45px] sm:h-[55px] md:h-[70px] lg:h-[85px] relative group px-1">
              <div className="absolute inset-0 flex items-center justify-center">
                 {/* Mobile Logo */}
                 <img 
@@ -406,18 +406,18 @@ export default function Header() {
           {/* Search Box Removed per request */}
 
           {/* Mobile Language Selector & Menu Toggle (Grouped on Right) */}
-          <div className="lg:hidden flex items-center gap-4 sm:gap-6 relative shrink-0">
+          <div className="lg:hidden flex items-center gap-2 sm:gap-6 relative shrink-0">
              
              {/* Language Dropdown */}
              <button 
                onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-               className="flex items-center gap-2 bg-transparent p-1 active:scale-95 transition-transform"
+               className="flex items-center gap-1.5 sm:gap-2 bg-transparent p-0.5 sm:p-1 active:scale-95 transition-transform"
              >
-               <div className="w-[24px] h-[16px] rounded-[2px] overflow-hidden shrink-0 shadow-sm flex items-center justify-center relative">
+               <div className="w-[20px] h-[14px] sm:w-[24px] sm:h-[16px] rounded-[2px] overflow-hidden shrink-0 shadow-sm flex items-center justify-center relative">
                   <img src={locale === "tr" ? "/tr.svg" : "/en.svg"} alt="Lang" className="absolute inset-0 w-full h-full object-cover scale-[1.2]" />
                </div>
-               <span className="text-[12px] font-bold text-white tracking-widest uppercase leading-none mt-[1px]">{locale === "tr" ? "TÜRKÇE" : "ENGLISH"}</span>
-               <svg width="10" height="10" viewBox="0 0 24 24" fill="white" stroke="none" className="ml-1 opacity-70"><polygon points="6,9 18,9 12,18"/></svg>
+               <span className="text-[11px] sm:text-[12px] font-bold text-white tracking-[0.08em] sm:tracking-widest uppercase leading-none mt-[1px]">{locale === "tr" ? "TÜRKÇE" : "ENGLISH"}</span>
+               <svg width="10" height="10" viewBox="0 0 24 24" fill="white" stroke="none" className="ml-0.5 sm:ml-1 opacity-70 w-2 sm:w-2.5 h-2 sm:h-2.5"><polygon points="6,9 18,9 12,18"/></svg>
              </button>
 
               <AnimatePresence>
@@ -492,7 +492,7 @@ export default function Header() {
             </div>
 
             {/* Scrollable Links */}
-            <div className="flex-1 overflow-y-auto px-6 py-8 flex flex-col text-white">
+            <div className="flex-1 overflow-y-auto w-full pt-2 pb-28 flex flex-col hide-scrollbar">
               {navLinks.map((link) => {
                 const borderClass = "border-b border-white/5 pb-5 mb-5";
                 
@@ -633,23 +633,7 @@ export default function Header() {
               })}
             </div>
 
-            {/* Bottom Floating Bar */}
-            <div className="shrink-0 p-6 border-t border-white/5 flex items-center justify-between pb-safe">
-               <a href="tel:4440320" className="bg-[#cc9b4c] text-[#0a111a] font-black text-[13px] uppercase tracking-wider py-4 px-8 rounded-[14px] hover:bg-[#e0b265] transition-colors shadow-lg active:scale-95">
-                 {locale === 'tr' ? 'RANDEVU AL' : 'BOOK NOW'}
-               </a>
-               <div className="flex items-center gap-6 text-white/80">
-                  <a href="https://wa.me/905057710320" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors active:scale-90">
-                    <svg viewBox="0 0 448 512" className="w-[22px] h-[22px]" fill="currentColor"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 222.4-99.6 222.4-222 0-59.3-23.1-115-65.4-157zM223.9 414.4c-33.1 0-65.5-8.9-94-25.7l-6.7-4-69.8 18.3L72 334l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-106.7 86.8-193.5 193.6-193.5 51.7 0 100.3 20.2 136.9 56.8 36.6 36.6 56.8 85.2 56.8 136.9-.1 106.7-86.9 193.4-193.6 193.4zM329.8 281.3c-5.8-2.9-34.3-16.9-39.6-18.9-5.3-1.9-9.2-2.9-13.2 2.9-4 5.8-15.1 18.9-18.5 22.8-3.3 3.9-6.6 4.4-12.4 1.5-5.8-2.9-24.5-9-46.7-28.9-17.2-15.4-28.8-34.5-32.1-40.4-3.3-5.8-.4-9 2.5-11.9 2.6-2.6 5.8-6.8 8.7-10.2 2.9-3.4 3.9-5.8 5.8-9.7 1.9-3.9 1-7.3-.5-10.2-1.5-2.9-13.2-31.9-18-43.7-4.7-11.5-9.5-9.9-13.2-10.1-3.3-.2-7.1-.2-11.1-.2-4 0-10.6 1.5-16.1 7.3-5.5 5.8-21.1 20.6-21.1 50.3 0 29.7 21.6 58.4 24.6 62.3 3 3.9 42.5 64.9 102.9 90.9 14.4 6.2 25.6 9.9 34.3 12.7 14.4 4.6 27.6 3.9 38 2.4 11.6-1.7 34.3-14 39.1-27.5 4.8-13.5 4.8-25.1 3.3-27.5-1.4-2.5-5.3-3.9-11.1-6.8z"/></svg>
-                  </a>
-                  <a href="https://maps.app.goo.gl/zCtCCuRQEpGYmEwx6" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors active:scale-90">
-                    <MapPin size={24} strokeWidth={2} />
-                  </a>
-                  <a href="tel:4440320" className="hover:text-white transition-colors active:scale-90">
-                    <Phone size={22} strokeWidth={2} />
-                  </a>
-               </div>
-            </div>
+
           </motion.div>
         )}
       </AnimatePresence>

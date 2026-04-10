@@ -83,7 +83,7 @@ export default async function LocaleLayout({
           }}
         />
       </head>
-      <body className="overflow-x-hidden w-full relative">
+      <body className="overflow-x-hidden w-full relative antialiased bg-[#F8FAFC]">
         <noscript>
           <iframe 
             src="https://www.googletagmanager.com/ns.html?id=GTM-WCNQLB6Z"
@@ -93,8 +93,10 @@ export default async function LocaleLayout({
           />
         </noscript>
         <NextIntlClientProvider messages={messages}>
-          {children}
-          <FloatingActions />
+          <div className="flex flex-col w-screen max-w-[100vw] overflow-x-hidden min-h-screen relative">
+            {children}
+            <FloatingActions />
+          </div>
         </NextIntlClientProvider>
       </body>
     </html>
