@@ -43,12 +43,11 @@ export default function AboutPage() {
       <div className="bg-transparent pb-24 relative z-20">
       
       {/* Visual Side-by-side (Moved below hero header) */}
-      <div className="container mx-auto px-6 max-w-[1300px] mb-20 md:mb-32 relative z-20 -mt-24 md:-mt-32">
+      <div className="container mx-auto px-6 max-w-[1300px] relative z-20 -mt-24 md:-mt-32">
         <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100 flex flex-col md:flex-row items-center gap-12 lg:gap-20">
-          <div className="flex-1 space-y-6">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#162f5d] leading-[1.1] tracking-tight">
-              Göz Sağlığında <br className="hidden lg:block"/>
-              <span className="text-[#ecbb3f]">Güvenilir Referans</span>
+          <div className="flex-1 space-y-4">
+            <h2 className="text-3xl md:text-4xl font-black text-[#162f5d] leading-tight tracking-tight">
+              Göz Sağlığında <span className="text-[#ecbb3f]">Güvenilir Referans</span>
             </h2>
             <p className="text-gray-500 text-lg md:text-xl font-medium leading-relaxed max-w-2xl">
               Türkiye’nin en güncel teknik altyapısına sahip kliniğimizde, deneyimli uzmanlarımızla gözleriniz emin ellerde.
@@ -65,22 +64,12 @@ export default function AboutPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#162f5d]/60 to-transparent mix-blend-multiply" />
             </div>
-            {/* Floating Badge */}
-            <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-4 animate-[bounce_3s_ease-in-out_infinite]">
-               <div className="w-16 h-16 rounded-full bg-[#ecbb3f]/10 flex items-center justify-center">
-                 <Shield size={32} className="text-[#ecbb3f]" />
-               </div>
-               <div>
-                  <div className="text-2xl font-black text-[#162f5d]">15+</div>
-                  <div className="text-sm font-bold text-gray-500">Yıllık Tecrübe</div>
-               </div>
-            </div>
           </div>
         </div>
       </div>
 
       {/* Main Content (Megaeste Split Style) */}
-      <div className="bg-[#f8fafc] py-24 md:py-32">
+      <div className="bg-[#f8fafc] pt-12 md:pt-16 pb-24 md:pb-32">
         <div className="container mx-auto px-6 max-w-[1300px]">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
             

@@ -192,7 +192,7 @@ export default function Header() {
                 <img 
                   src="/logo.png" 
                   alt="Megagöz Tıp Merkezi" 
-                  className="hidden lg:block w-full h-full object-contain scale-[1.35] lg:invert-0 lg:mix-blend-normal lg:brightness-100" 
+                  className="hidden lg:block w-full h-full object-contain scale-[1.15] lg:invert-0 lg:mix-blend-normal lg:brightness-100" 
                 />
              </div>
           </Link>
