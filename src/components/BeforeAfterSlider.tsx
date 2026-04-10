@@ -95,22 +95,16 @@ export default function BeforeAfterSlider() {
   }, [isDragging]);
 
   return (
-    <section className="py-24 bg-white select-none">
+    <section className="py-12 md:py-16 bg-white select-none">
       <div className="container mx-auto px-6 max-w-[1300px]">
         
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center gap-3 mb-4">
-             <div className="h-[2px] w-12 bg-[#ecbb3f]" />
-             <span className="text-[#ecbb3f] font-bold tracking-widest uppercase text-sm">TEDAVİLERİMİZ</span>
-             <div className="h-[2px] w-12 bg-[#ecbb3f]" />
-          </div>
-          <h2 className="text-3xl md:text-5xl font-black text-[#162f5d]">Hayat Görmeye Değer</h2>
-          <p className="mt-4 text-gray-500 max-w-2xl mx-auto">Megagöz İle Daha Net Bir Dünyaya Bakın</p>
+        <div className="text-center mb-10 md:mb-12">
+          <h2 className="text-2xl md:text-4xl font-black text-[#162f5d]">Megagöz İle Daha Net Bir Dünyaya Bakın</h2>
         </div>
 
         <div 
           ref={containerRef}
-          className="relative w-full h-[400px] md:h-[600px] xl:h-[700px] rounded-2xl overflow-hidden cursor-ew-resize group shadow-2xl"
+          className="relative w-full h-[300px] md:h-[450px] xl:h-[550px] rounded-2xl overflow-hidden cursor-ew-resize group shadow-[0_15px_40px_rgba(22,47,93,0.15)]"
           onMouseDown={onMouseDown}
           onTouchStart={onTouchStart}
         >

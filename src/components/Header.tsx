@@ -29,7 +29,7 @@ export default function Header() {
     { name: t("about"), href: "/hakkimizda" },
     { name: t("partnerInstitutions"), href: "/anlasmali-kurumlar" },
     { name: t("megagozGallery"), href: "/galeri" },
-    { name: t("jobApplication"), href: "/#is-basvurusu" },
+    { name: t("jobApplication"), href: "/is-basvurusu" },
     { name: t("kvkkPolicy"), href: "/kvkk" }
   ];
 
@@ -176,16 +176,23 @@ export default function Header() {
       </div>
 
       {/* Main Dark Nav Bar */}
-      <div className={`transition-all duration-300 ${isScrolled ? "shadow-md shadow-gray-200 py-2 lg:py-4" : "py-4 lg:py-6 border-b-2 border-transparent"} bg-[#162f5d] lg:bg-white`}>
-        <div className="w-full flex items-center justify-center px-4 md:px-8 gap-8 lg:gap-10 xl:gap-20">
+      <div className={`transition-all duration-300 ${isScrolled ? "shadow-md shadow-gray-200 py-2 lg:py-4" : "py-4 lg:py-6 border-b-2 border-transparent"} bg-white lg:bg-white w-full sticky top-0`}>
+        <div className="w-full flex items-center justify-between lg:justify-center px-4 md:px-8 gap-4 lg:gap-10 xl:gap-20">
           
           {/* Logo */}
           <Link href="/" className="flex flex-col justify-center items-center shrink-0 w-[180px] md:w-[250px] lg:w-[300px] xl:w-[340px] h-[55px] md:h-[70px] lg:h-[85px] relative group px-2">
              <div className="absolute inset-0 flex items-center justify-center">
+                {/* Mobile Logo */}
+                <img 
+                  src="/images/megagoz.webp" 
+                  alt="Megagöz Tıp Merkezi" 
+                  className="w-full h-[85%] object-contain scale-[1.15] lg:hidden" 
+                />
+                {/* Desktop Logo */}
                 <img 
                   src="/logo.png" 
                   alt="Megagöz Tıp Merkezi" 
-                  className="w-full h-full object-contain scale-[1.3] lg:scale-[1.5] filter invert mix-blend-screen brightness-200 lg:invert-0 lg:mix-blend-normal lg:brightness-100" 
+                  className="hidden lg:block w-full h-full object-contain scale-[1.5] lg:invert-0 lg:mix-blend-normal lg:brightness-100" 
                 />
              </div>
           </Link>
@@ -337,12 +344,27 @@ export default function Header() {
 
           {/* Search Box Removed per request */}
 
+          {/* Mobile Language Selector (Centered) */}
+          <div className="lg:hidden absolute left-1/2 -translate-x-1/2 flex items-center">
+             <button 
+               onClick={() => {
+                 switchLocale(locale === "tr" ? "en" : "tr");
+               }}
+               className="flex items-center gap-1.5 bg-gray-50 border border-gray-200 rounded px-2 py-1.5 shadow-sm active:scale-95 transition-transform"
+             >
+               <div className="w-[18px] h-[12px] rounded-sm overflow-hidden shrink-0 shadow-sm border border-gray-200">
+                  <img src={locale === "tr" ? "/en.svg" : "/tr.svg"} alt="Switch Lang" className="w-full h-full object-cover transform scale-[1.2]" />
+               </div>
+               <span className="text-[11px] font-black text-[#162f5d]">{locale === "tr" ? "EN" : "TR"}</span>
+             </button>
+          </div>
+
           {/* Mobile Menu Toggle */}
           <button 
-            className="lg:hidden text-white ml-auto"
+            className="lg:hidden text-[#162f5d] p-1 border-2 border-transparent active:scale-90 transition-transform"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            {mobileMenuOpen ? <X size={32} /> : <Menu size={32} />}
+            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </div>

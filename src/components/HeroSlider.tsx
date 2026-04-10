@@ -5,6 +5,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
 import { Calendar, Handshake, ChevronRight, CheckCircle2, Clock, X, ChevronDown, User, Phone, Mail } from "lucide-react";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-fade";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 // Futuristic, medical AI-generated slides based on user visual references
 const slides = [
   {
@@ -27,7 +34,7 @@ const slides = [
   },
   {
     id: 4,
-    image: "/images/slide4.png",
+    image: "/images/megagoz-clinic-interior.png",
     titleKey: "slide4Title",
     subKey: "slide4Sub"
   }
@@ -49,7 +56,7 @@ export default function HeroSlider() {
   }, []);
 
   return (
-    <div className="relative w-full bg-[#162f5d] pt-[115px] lg:pt-[135px]">
+    <div className="relative w-full mt-[55px] lg:mt-[85px]">
       {/* Sticky Appointment Widget */}
       <div className="fixed right-0 top-[40%] lg:top-[45%] -translate-y-1/2 z-[100]">
         
@@ -176,121 +183,78 @@ export default function HeroSlider() {
           )}
         </AnimatePresence>
 
-        {/* Floating Side Button */}
-        <AnimatePresence>
-          {!isPopupOpen && (
-            <motion.button 
-              initial={{ x: 100, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: 100, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              onClick={() => setIsPopupOpen(true)}
-              className="absolute right-0 top-1/2 -translate-y-1/2 w-[85px] h-[190px] flex flex-col shadow-[-5px_0_20px_rgba(0,0,0,0.15)] overflow-hidden hover:scale-105 origin-right rounded-l-xl z-40"
-            >
-              <div className="bg-[#162f5d] flex-1 w-full flex flex-col items-center justify-center border-b border-white/10">
-                <div className="relative w-12 h-12 flex items-center justify-center">
-                  <svg className="absolute inset-0 w-full h-full text-white/80" viewBox="0 0 100 100">
-                    <path d="M50 15 A35 35 0 1 1 80 80" fill="none" stroke="currentColor" strokeWidth="6" strokeDasharray="10, 8" strokeLinecap="round" />
-                    <path d="M70 70 L80 80 L70 90" fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  <span className="text-white font-black text-[16px] tracking-tighter mt-1 pr-1">24<span className="text-[11px]">/7</span></span>
-                </div>
-              </div>
-              <div className="bg-[#ecbb3f] flex-1 w-full flex items-center justify-center text-center text-white font-black text-[13px] leading-tight tracking-wider px-2">
-                <div>{locale === "en" ? "CLICK TO BOOK" : "TIKLA RANDEVU AL"}</div>
-              </div>
-            </motion.button>
-          )}
-        </AnimatePresence>
+        {/* Removed Floating Side Button to FloatingActions */}
       </div>
 
       {/* Hero Slider Area */}
-      <div className="relative w-full h-[55vh] min-h-[450px] md:h-[75vh] md:min-h-[600px] lg:h-[85vh] lg:min-h-[700px] xl:h-[90vh] xl:min-h-[750px] flex items-center justify-center overflow-hidden">
+      <div className="relative w-full h-[55vh] min-h-[450px] md:h-[75vh] md:min-h-[600px] lg:h-[85vh] lg:min-h-[700px] xl:h-[90vh] xl:min-h-[750px] flex items-center justify-center overflow-hidden !font-sans group">
         
-        <AnimatePresence initial={false} mode="sync">
-          <motion.div
-            key={current}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="absolute inset-0 flex items-center justify-center cursor-grab active:cursor-grabbing"
-            drag="x"
-            dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={0.8}
-            onDragEnd={(e, { offset }) => {
-              if (offset.x < -100) {
-                setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-              } else if (offset.x > 100) {
-                setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-              }
-            }}
-          >
-            {/* Background Images */}
-            <div 
-              className="absolute inset-0 bg-cover bg-center pointer-events-none"
-              style={{ backgroundImage: `url(${slides[current].image})` }}
-            />
-            {/* Elegant Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#162f5d]/70 via-[#162f5d]/30 to-transparent pointer-events-none" />
+        <Swiper
+          modules={[Autoplay, EffectFade, Navigation, Pagination]}
+          effect="fade"
+          fadeEffect={{ crossFade: true }}
+          speed={1000}
+          loop={true}
+          autoplay={{
+            delay: 6000,
+            disableOnInteraction: false,
+          }}
+          navigation={{
+            nextEl: '.swiper-btn-next',
+            prevEl: '.swiper-btn-prev',
+          }}
+          pagination={{
+            clickable: true,
+            el: '.swiper-pagination-custom',
+            renderBullet: function (index, className) {
+              return '<span class="' + className + ' text-[18px] font-black items-center justify-center flex w-12 h-12 rounded transition-all duration-300 text-white hover:text-cyan-200 cursor-pointer">' + String(index + 1).padStart(2, "0") + '</span>';
+            },
+          }}
+          className="w-full h-full"
+          onSlideChange={(swiper) => setCurrent(swiper.realIndex)}
+        >
+          {slides.map((slide, idx) => (
+            <SwiperSlide key={slide.id}>
+              {/* Background Images */}
+              <div 
+                className="absolute inset-0 bg-cover bg-center pointer-events-none"
+                style={{ backgroundImage: `url(${slide.image})` }}
+              />
+              {/* Elegant Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#162f5d]/70 via-[#162f5d]/30 to-transparent pointer-events-none" />
 
-            {/* Text Content */}
-            <div className="relative z-10 w-full container mx-auto px-4 max-w-6xl pb-24 md:pb-32 pointer-events-none">
-              <div className="max-w-2xl">
-                <div className="inline-block px-4 py-1.5 rounded-full bg-[#06b6d4]/20 border border-[#06b6d4]/30 text-[#06b6d4] font-bold text-sm tracking-widest mb-6 uppercase backdrop-blur-sm shadow-lg pointer-events-auto">
-                  MEGAGÖZ
-                </div>
-                <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-white leading-tight mb-4 tracking-tight drop-shadow-xl pointer-events-auto cursor-text">
-                  {t(slides[current].titleKey as any)}
-                </h1>
-                <h2 className="text-xl md:text-3xl font-light text-gray-200 tracking-wide drop-shadow-md pointer-events-auto cursor-text">
-                  {t(slides[current].subKey as any)}
-                </h2>
-                
-                {/* Slide Navigation Buttons */}
-                <div className="flex gap-4 mt-8 pointer-events-auto">
-                   <button 
-                     onClick={(e) => { e.stopPropagation(); setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1)); }}
-                     className="bg-[#162f5d] hover:bg-[#162f5d] transition p-3 rounded-full text-white shadow"
-                   >
-                     <ChevronRight className="rotate-180" size={20}/>
-                   </button>
-                   <button 
-                     onClick={(e) => { e.stopPropagation(); setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1)); }}
-                     className="bg-[#162f5d] hover:bg-[#162f5d] transition p-3 rounded-full text-white shadow"
-                   >
-                     <ChevronRight size={20}/>
-                   </button>
+              {/* Text Content */}
+              <div className="relative z-10 w-full h-full flex flex-col justify-center container mx-auto px-4 max-w-6xl pb-24 md:pb-32 pointer-events-none">
+                <div className="max-w-2xl">
+                  <div className="inline-block px-4 py-1.5 rounded-full bg-[#06b6d4]/20 border border-[#06b6d4]/30 text-[#06b6d4] font-bold text-sm tracking-widest mb-6 uppercase backdrop-blur-sm shadow-lg pointer-events-auto">
+                    MEGAGÖZ
+                  </div>
+                  <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-white leading-tight mb-4 tracking-tight drop-shadow-xl pointer-events-auto cursor-text">
+                    {t(slide.titleKey as any)}
+                  </h1>
+                  <h2 className="text-xl md:text-3xl font-light text-gray-200 tracking-wide drop-shadow-md pointer-events-auto cursor-text">
+                    {t(slide.subKey as any)}
+                  </h2>
+                  
+                  {/* Slide Navigation Buttons */}
+                  <div className="flex gap-4 mt-8 pointer-events-auto">
+                     <button className="swiper-btn-prev bg-[#162f5d] hover:bg-[#204383] transition p-3 rounded-full text-white shadow relative z-20 cursor-pointer">
+                       <ChevronRight className="rotate-180" size={20}/>
+                     </button>
+                     <button className="swiper-btn-next bg-[#162f5d] hover:bg-[#204383] transition p-3 rounded-full text-white shadow relative z-20 cursor-pointer">
+                       <ChevronRight size={20}/>
+                     </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Vertical Numbering Pagination (Left Side) */}
-        <div className="absolute left-4 md:left-8 lg:left-[5%] xl:left-[8%] top-[60%] -translate-y-1/2 z-20 hidden md:flex flex-col gap-5">
-          {slides.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={(e) => {
-                e.stopPropagation(); // Prevent triggering drag end
-                setCurrent(idx);
-              }}
-              className={`transition-all duration-300 relative text-[18px] font-black items-center justify-center flex w-12 h-12 rounded ${
-                current === idx 
-                  ? "text-[#ecbb3f]" 
-                  : "text-white hover:text-cyan-200"
-              }`}
-              aria-label={`Go to slide ${idx + 1}`}
-            >
-              {current === idx && (
-                <div className="absolute inset-0 border-[2px] border-[#ecbb3f] bg-white opacity-100 flex items-center justify-center -z-10 shadow-lg" />
-              )}
-              {String(idx + 1).padStart(2, "0")}
-            </button>
+            </SwiperSlide>
           ))}
-        </div>
-      </div> {/* CLOSES the overflow-hidden slider track */}
+
+          {/* Vertical Numbering Pagination (Left Side) - Overriding Swiper default UI via global CSS in layout or inline styles */}
+          <div className="swiper-pagination-custom absolute left-4 md:left-8 lg:left-[5%] xl:left-[8%] top-[60%] -translate-y-1/2 z-20 hidden md:flex flex-col gap-5"></div>
+        </Swiper>
+
+      </div>
 
       {/* Quick Appointment Form (Overlaps Bottom Edge) */}
       <div className="relative z-40 w-full px-4 md:px-8 max-w-[1250px] mx-auto -mt-[60px] md:-mt-[90px] mb-16">

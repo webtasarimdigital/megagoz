@@ -56,11 +56,11 @@ export default function TreatmentsPage() {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
               
-              {/* Category Background Image (Uses the first item's image) */}
-              {category.items[0]?.image && (
+              {/* Category Background Image (Uses dedicated category image) */}
+              {category.image && (
                 <>
                   <Image 
-                    src={category.items[0].image} 
+                    src={category.image} 
                     alt={category.title[locale]} 
                     fill 
                     className="object-cover opacity-30 group-hover:opacity-50 transition-transform duration-700 group-hover:scale-110" 

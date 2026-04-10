@@ -15,39 +15,45 @@ export default function FloatingActions() {
 
   return (
     <>
-      {/* FLOATING APPOINTMENT WIDGET */}
+      {/* 24/7 RIGHT APPOINTMENT WIDGET (Global) */}
       <div 
-        className={`fixed left-0 top-[60%] md:top-1/2 -translate-y-1/2 z-[110] transition-transform duration-500 ease-in-out flex shadow-2xl ${isWidgetClosed ? "-translate-x-full" : "translate-x-0"}`}
+        className={`fixed right-0 top-[40%] md:top-1/2 -translate-y-1/2 z-[110] transition-transform duration-500 ease-in-out flex items-center ${isWidgetClosed ? "translate-x-full" : "translate-x-0"}`}
       >
-        {/* Main expanded panel */}
-        <div className="bg-white border-r border-t border-b border-[#0a111a]/10 rounded-r-2xl md:rounded-r-3xl overflow-hidden flex items-center p-3 md:p-5 relative shadow-[10px_0_30px_rgba(0,0,0,0.1)] group w-[210px] md:w-[260px]">
-          {/* Close Button */}
-          <button 
-            onClick={(e) => { e.preventDefault(); setIsWidgetClosed(true); }}
-            className="absolute top-1 md:top-2 right-1 md:right-2 text-gray-400 hover:text-red-500 transition-colors bg-gray-50 rounded-full p-1"
-          >
-             <X size={14} className="md:w-4 md:h-4" />
-          </button>
-          
-          <Link href="/iletisim" className="flex items-center gap-2 md:gap-3 w-full pt-1">
-            <div className="w-10 h-10 md:w-14 md:h-14 bg-[#162f5d] rounded-full flex justify-center items-center shrink-0 group-hover:bg-[#ecbb3f] group-hover:text-[#162f5d] text-white transition-all duration-300 shadow-inner">
-               <CalendarClock size={20} className="md:w-6 md:h-6" />
-            </div>
-            <div className="flex flex-col">
-               <span className="text-[#ecbb3f] text-[10px] md:text-xs font-bold uppercase tracking-widest mb-0.5">{onlineOperationText}</span>
-               <span className="text-[#162f5d] font-black text-xs md:text-base leading-tight uppercase tracking-wide">{clickAppointmentText}</span>
-            </div>
-          </Link>
-        </div>
-
-        {/* Small Tab Button (visible only when closed) */}
+        {/* Closed Tab (Expander) */}
         <button 
           onClick={() => setIsWidgetClosed(false)}
-          className={`absolute top-1/2 -translate-y-1/2 right-0 translate-x-full w-10 md:w-12 h-16 md:h-20 bg-[#162f5d] text-white rounded-r-xl md:rounded-r-2xl flex items-center justify-center shadow-lg transition-opacity duration-300 hover:bg-[#ecbb3f] hover:text-[#162f5d] ${isWidgetClosed ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+          className={`absolute left-0 -translate-x-full w-10 md:w-12 h-14 md:h-16 bg-[#ecbb3f] text-[#162f5d] rounded-l-xl flex items-center justify-center shadow-lg transition-all duration-300 hover:bg-[#d99816] hover:text-white ${isWidgetClosed ? "opacity-100" : "opacity-0 pointer-events-none"}`}
           aria-label="Open Appointment"
         >
-          <CalendarClock size={22} className="md:w-6 md:h-6" />
+          <CalendarClock size={20} className="md:w-6 md:h-6" />
         </button>
+
+        {/* Main active panel */}
+        <Link 
+          href="/iletisim" 
+          className="relative w-[70px] h-[150px] md:w-[85px] md:h-[190px] flex flex-col shadow-[-5px_0_20px_rgba(0,0,0,0.2)] overflow-hidden hover:scale-[1.03] origin-right rounded-l-xl md:rounded-l-2xl z-40 bg-white group transition-transform"
+        >
+          <div className="bg-[#162f5d] flex-1 w-full flex flex-col items-center justify-center border-b border-white/10 relative">
+            {/* Close Button */}
+            <button 
+              onClick={(e) => { e.preventDefault(); e.stopPropagation(); setIsWidgetClosed(true); }}
+              className="absolute top-1 left-1 md:top-1.5 md:left-1.5 text-white/50 hover:text-white transition-colors bg-black/20 hover:bg-red-500 rounded-full p-1"
+            >
+               <X size={12} className="md:w-[14px] md:h-[14px]" />
+            </button>
+
+            <div className="relative w-10 h-10 md:w-12 md:h-12 flex items-center justify-center -mt-1 md:mt-0">
+              <svg className="absolute inset-0 w-full h-full text-white/80" viewBox="0 0 100 100">
+                <path d="M50 15 A35 35 0 1 1 80 80" fill="none" stroke="currentColor" strokeWidth="6" strokeDasharray="10, 8" strokeLinecap="round" />
+                <path d="M70 70 L80 80 L70 90" fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <span className="text-white font-black text-[14px] md:text-[16px] tracking-tighter mt-1 pr-1">24<span className="text-[9px] md:text-[11px]">/7</span></span>
+            </div>
+          </div>
+          <div className="bg-[#ecbb3f] group-hover:bg-[#d99816] transition-colors flex-1 w-full flex items-center justify-center text-center text-[#162f5d] group-hover:text-white font-black text-[11px] md:text-[13px] leading-snug tracking-wider px-1 md:px-2">
+            <div>{locale === "en" ? "CLICK TO BOOK" : "TIKLA RANDEVU AL"}</div>
+          </div>
+        </Link>
       </div>
       {/* DESKTOP (Web) VERSION - Hidden on Mobile */}
       <div className="fixed bottom-6 right-6 z-[100] flex-col gap-3 hidden md:flex">

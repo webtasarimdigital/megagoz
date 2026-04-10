@@ -10,23 +10,48 @@ export default function AboutPage() {
   return (
     <main>
       <Header />
-      <div className="min-h-screen bg-white pb-24 pt-[130px] md:pt-[170px]">
+      {/* Hero Header Area */}
+      <div className="relative w-full h-[500px] md:h-[600px] flex items-center justify-center pt-32 md:pt-40">
+        <Image 
+          src="/images/megagoz-tedavi-sonrasi.webp" 
+          alt="Hakkımızda" 
+          fill 
+          priority
+          className="object-cover object-center" 
+        />
+        <div className="absolute inset-0 bg-[#162f5d]/85 z-0" />
+        
+        <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 max-w-3xl pb-16">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="h-[1px] w-8 md:w-12 bg-[#ecbb3f]" />
+            <span className="text-[#ecbb3f] font-bold tracking-[0.2em] uppercase text-sm md:text-base">
+              KURUMSAL
+            </span>
+            <div className="h-[1px] w-8 md:w-12 bg-[#ecbb3f]" />
+          </div>
+          
+          <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight mb-6">
+            {t("about")}
+          </h1>
+          
+          <p className="text-gray-300 md:text-lg font-medium leading-relaxed max-w-2xl px-4">
+            Uluslararası standartlarda sağlık hizmeti sunmak amacıyla kurulan MEGAGÖZ, teknolojiyi ve tıbbı bir araya getiren modern bir göz sağlığı merkezidir.
+          </p>
+        </div>
+      </div>
+
+      <div className="bg-transparent pb-24 relative z-20">
       
-      {/* Page Header (Hero style) */}
-      <div className="container mx-auto px-6 max-w-[1300px] mb-20 md:mb-32">
-        <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+      {/* Visual Side-by-side (Moved below hero header) */}
+      <div className="container mx-auto px-6 max-w-[1300px] mb-20 md:mb-32 relative z-20 -mt-24 md:-mt-32">
+        <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100 flex flex-col md:flex-row items-center gap-12 lg:gap-20">
           <div className="flex-1 space-y-6">
-            <div className="inline-flex items-center gap-3">
-              <div className="h-[2px] w-12 bg-[#ecbb3f]" />
-              <span className="text-[#ecbb3f] font-bold tracking-widest uppercase text-sm">HAKKIMIZDA</span>
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#162f5d] leading-[1.1] tracking-tight">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#162f5d] leading-[1.1] tracking-tight">
               Göz Sağlığında <br className="hidden lg:block"/>
               <span className="text-[#ecbb3f]">Güvenilir Referans</span>
-            </h1>
+            </h2>
             <p className="text-gray-500 text-lg md:text-xl font-medium leading-relaxed max-w-2xl">
-              Uluslararası standartlarda sağlık hizmeti sunmak amacıyla kurulan MEGAGÖZ, 
-              teknolojiyi ve tıbbı bir araya getiren modern bir göz sağlığı merkezidir.
+              Türkiye’nin en güncel teknik altyapısına sahip kliniğimizde, deneyimli uzmanlarımızla gözleriniz emin ellerde.
             </p>
           </div>
           <div className="flex-1 w-full relative">

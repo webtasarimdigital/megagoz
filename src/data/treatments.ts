@@ -10,6 +10,7 @@ export interface TreatmentCategory {
   id: string;
   title: { tr: string; en: string };
   icon: string;
+  image: string;
   items: TreatmentItem[];
 }
 
@@ -18,6 +19,7 @@ export const TREATMENTS_DATA: TreatmentCategory[] = [
     id: "katarakt",
     title: { tr: "Katarakt", en: "Cataract" },
     icon: "Eye",
+    image: "/images/megagoz-katarakt.webp",
     items: [
       { 
         slug: "katarakt-cerrahisi", 
@@ -58,6 +60,7 @@ export const TREATMENTS_DATA: TreatmentCategory[] = [
     id: "lazer-tedavisi",
     title: { tr: "Lazer Tedavisi", en: "Laser Treatment" },
     icon: "Sun",
+    image: "/images/megagoz-lazer-tedavisi,.webp",
     items: [
       { 
         slug: "ilasik-goz-lazer-ameliyati", 
@@ -79,6 +82,7 @@ export const TREATMENTS_DATA: TreatmentCategory[] = [
     id: "kontak-lens",
     title: { tr: "Kontak Lens", en: "Contact Lenses" },
     icon: "Circle",
+    image: "/images/megagoz-kontak-lens.webp",
     items: [
       { slug: "edof-akilli-lens-tedavileri", title: { tr: "EDOF Akıllı Lens Tedavileri", en: "EDOF Smart Lens Treatments" }, excerpt: { tr: "Uzatılmış odak derinliği sayesinde kusursuz kesintisiz görüş.", en: "Flawless contiguous vision thanks to extended depth of focus." }, image: "/images/megagoz-kontak-lens.webp" },
       { slug: "multifokal-lensler", title: { tr: "Multifokal Lensler", en: "Multifocal Lenses" }, excerpt: { tr: "Gözlük ihtiyacını tüm mesafelerde sıfıra indiren multifokal (çok odaklı) çözümler.", en: "Multifocal solutions that eliminate the need for glasses at all distances." }, image: "/images/megagoz-tedavi-sonrasi.webp" },
@@ -91,6 +95,7 @@ export const TREATMENTS_DATA: TreatmentCategory[] = [
     id: "goz-norolojisi",
     title: { tr: "Göz Nörolojisi", en: "Neuro-Ophthalmology" },
     icon: "Activity",
+    image: "/images/megagoz-goz-norolojisi.webp",
     items: [
       { 
         slug: "noro-oftalmoloji", 
@@ -108,6 +113,7 @@ export const TREATMENTS_DATA: TreatmentCategory[] = [
     id: "kornea-hastaliklari",
     title: { tr: "Kornea Hastalıkları", en: "Corneal Diseases" },
     icon: "Shield",
+    image: "/images/megagoz-kornea-tedavisi.jpg",
     items: [
       { 
         slug: "crosslinking", 
@@ -131,6 +137,7 @@ export const TREATMENTS_DATA: TreatmentCategory[] = [
     id: "glokom-tedavisi",
     title: { tr: "Glokom Tedavisi", en: "Glaucoma Treatment" },
     icon: "Target",
+    image: "/images/megagoz-glukom-tedavisi.webp",
     items: [
       { slug: "goz-tansiyonu", title: { tr: "Göz Tansiyonu", en: "Glaucoma (Eye Pressure)" }, excerpt: { tr: "Göz sinirlerinin yüksek basınç nedeniyle hasar görmesinin önlenmesi.", en: "Preventing optic nerve damage caused by high intraocular pressure." }, image: "/images/megagoz-glukom-tedavisi.webp" }
     ]
@@ -139,12 +146,13 @@ export const TREATMENTS_DATA: TreatmentCategory[] = [
     id: "sasilik-tedavisi",
     title: { tr: "Şaşılık Tedavisi", en: "Strabismus Treatment" },
     icon: "Maximize",
+    image: "/images/megagoz-sasilik-tedavisi.webp",
     items: [
       { 
         slug: "sasilik-strabismus", 
         title: { tr: "Şaşılık (Strabismus)", en: "Strabismus" }, 
         excerpt: { tr: "Gözlerin paralel bakış açısını kaybetmesi ve etkili düzeltme ameliyatları.", en: "Loss of parallel eye alignment and effective corrective surgeries." }, 
-        image: "/images/megagoz-sasilik.jpeg",
+        image: "/images/megagoz-sasilik-tedavisi.webp",
         content: {
           tr: "<p class='mb-4'>Şaşılık, her iki gözün aynı anda aynı yöne hedef alamadığı paralel hiza kayması durumudur. Bir göz düz bakarken diğer göz içeriye (ezotropya), dışarıya (ekzotropya), yukarıya veya aşağıya doğru kayabilir. Şaşılık sadece estetik olarak rahatsızlık vermez; tedavi edilmezse derinlik algısının kaybolmasına ve nihayetinde çocukluktan itibaren kalıcı göz tembelliğine (ambliyopi) zemin hazırlar.</p><p class='mb-4'>Kliniğimize sıklıkla doğuştan genetik yatkınlık veya travmalarla gelen bebek/çocuk hastalarımızın yanı sıra, sonradan kazanılmış nörolojik kaymalar yaşayan yetişkin hastalarımız da başvurmaktadır.</p><p class='mb-4'>MegaGöz'de Şaşılık tedavisi öncelikle kırma kusuru ise spesifik gözlüklerle veya prizmatik merceklerle giderilmeye çalışılır. Görme eksikliğinden uzak gelişen kas spazmlarına bağlı olan şaşılıklarda ise, çok minimal ve iz bırakmayan mikroskobik kas ameliyatlarıyla tek seansta dahi gözler başarıyla paralel pozisyonlarına kalıcı olarak kavuşturulur.</p>",
           en: "<p class='mb-4'>Strabismus defines a structural visual misalignment where both eyes simultaneously fail fundamentally to target the exact same directional focal spot together. As one eye remains aimed directly frontward, the opposing eye structure might drift aggressively inward (esotropia), outward (exotropia), upward, or downwards. Strabismus extends far beyond simple cosmetic annoyance; if overlooked medically, it decisively shreds innate depth perception gradients and systematically paves the fatal ground for amblyopia (irreversible lazy eye damage) right from infant childhood.</p><p class='mb-4'>Alongside toddlers facing strabismus derived explicitly from congenital genetic traits or early physical trauma scenarios, adult population groups undergoing late onset neurological alignment regressions also routinely visit our clinic blocks.</p><p class='mb-4'>At MegaGöz, Strabismus treatments primarily commence analytically through corrective functional eyeglasses mapped meticulously with prismatic gradients. Conversely, when strabismus originates entirely from structural muscular disparity regardless of refractive limits, our highly esteemed experts perform minimally invasive microscopic muscular retraction and elongation operations—often stabilizing fully synchronized parallel ocular alignments permanently inside just a single dedicated surgical window.</p>"
@@ -156,6 +164,7 @@ export const TREATMENTS_DATA: TreatmentCategory[] = [
     id: "uveit-tedavisi",
     title: { tr: "Üveit Tedavisi", en: "Uveitis Treatment" },
     icon: "Thermometer",
+    image: "/images/megagoz-uveit-tedavisi.jpg",
     items: [
       { slug: "uvea", title: { tr: "Üvea", en: "Uvea" }, excerpt: { tr: "Gözü besleyen damar tabakasının iltihabı ve bağışıklık tedavisi.", en: "Inflammation of the vascular layer feeding the eye, and immune treatment." }, image: "/images/megagoz-uveit-tedavisi.jpg" }
     ]
@@ -164,6 +173,7 @@ export const TREATMENTS_DATA: TreatmentCategory[] = [
     id: "goz-kapagi-estetigi",
     title: { tr: "Göz Kapağı Estetiği", en: "Eyelid Aesthetics" },
     icon: "Smile",
+    image: "/images/megagoz-goz-kapagi-tedavisi.jpg",
     items: [
       { slug: "goz-alti-torbalari-operasyonu", title: { tr: "Göz Altı Torbaları Operasyonu", en: "Under-Eye Bag Surgery" }, excerpt: { tr: "Bizi yorgun ve yaşlı gösteren torbalardan kalıcı olarak kurtulun.", en: "Permanently get rid of bags that make you look tired and old." }, image: "/images/megagoz-goz-kapagi-tedavisi.jpg" },
       { slug: "goz-cevresi-ve-goz-kapagi-estetigi", title: { tr: "Göz Çevresi Ve Göz Kapağı Estetiği", en: "Eyelid and Eye Surround Aesthetics" }, excerpt: { tr: "Alt ve üst kapak düşüklüklerinin radyofrekans veya lazerle gençleştirilmesi.", en: "Rejuvenation of upper and lower lid ptosis with radiofrequency or laser." }, image: "/images/megagoz-tedavi-oncesi.webp" },
@@ -176,8 +186,9 @@ export const TREATMENTS_DATA: TreatmentCategory[] = [
     id: "cocuk-goz-sagligi",
     title: { tr: "Çocuk Göz Sağlığı", en: "Pediatric Eyecare" },
     icon: "Heart",
+    image: "/images/megagoz-cocuk-goz-tedavisi.webp",
     items: [
-      { slug: "cocuklarda-ve-bebeklerde-sasilik", title: { tr: "Çocuklarda Ve Bebeklerde Şaşılık", en: "Strabismus in Children and Babies" }, excerpt: { tr: "Erken teşhisle tam kontrol altına alınabilen şaşılaşma problemleri.", en: "Strabismus problems fully manageable with early diagnosis." }, image: "/images/megagoz-sasilik-tedavisi.webp" },
+      { slug: "cocuklarda-ve-bebeklerde-sasilik", title: { tr: "Çocuklarda Ve Bebeklerde Şaşılık", en: "Strabismus in Children and Babies" }, excerpt: { tr: "Erken teşhisle tam kontrol altına alınabilen şaşılaşma problemleri.", en: "Strabismus problems fully manageable with early diagnosis." }, image: "/images/megagoz-cocuk-goz-tedavisi.webp" },
       { slug: "cocuklarda-ve-bebeklerde-kirmizi-goz", title: { tr: "Çocuklarda Ve Bebeklerde Kırmızı Göz", en: "Red Eye in Children and Babies" }, excerpt: { tr: "Alerjik veya mikrobik göz içi hastalıklara hassas çözümler.", en: "Sensitive solutions to allergic or microbial intraocular diseases." }, image: "/images/megagoz-cocuk-goz-tedavisi2.webp" },
       { slug: "cocuklarda-ve-bebeklerde-kirma-kusurlari", title: { tr: "Çocuklarda Ve Bebeklerde Kırma Kusurları", en: "Refractive Errors in Children and Babies" }, excerpt: { tr: "Miyop, astigmat ve hipermetrop sorununun gelişim çağındaki yönetimi.", en: "Management of myopia, astigmatism, and hyperopia in the development phase." }, image: "/images/megagoz-cocuk-goz-tedavisi.webp" },
       { slug: "cocuklarda-ve-bebeklerde-katarakt", title: { tr: "Çocuklarda Ve Bebeklerde Katarakt", en: "Pediatric Cataracts" }, excerpt: { tr: "Göz merceğinin genetik veya travmatik yollarla bozulmasının pediatrik tedavisi.", en: "Pediatric treatment for genetic or traumatic deterioration of the eye lens." }, image: "/images/megagoz-katarakt-tedavisi.webp" },

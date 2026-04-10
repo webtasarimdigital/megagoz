@@ -40,7 +40,7 @@ export default function AppointmentFormSection() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-[#243140] rounded-3xl p-8 lg:p-10 shadow-2xl border border-white/5"
+            className="bg-[#162f5d] rounded-3xl p-8 lg:p-10 shadow-2xl border border-white/5"
           >
              <form className="flex flex-col gap-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -48,14 +48,14 @@ export default function AppointmentFormSection() {
                       <input 
                         type="text" 
                         placeholder="İsim Soyisim" 
-                        className="bg-[#1a2531] text-white placeholder-gray-500 rounded-xl px-5 py-4 w-full outline-none focus:ring-1 focus:ring-[#ecbb3f] transition-all border border-transparent text-sm"
+                        className="bg-white/10 text-white placeholder-gray-400 rounded-xl px-5 py-4 w-full outline-none focus:ring-1 focus:ring-[#ecbb3f] transition-all border border-transparent text-sm"
                       />
                    </div>
                    <div className="flex flex-col">
                       <input 
                         type="tel" 
                         placeholder="Telefon Numarası" 
-                        className="bg-[#1a2531] text-white placeholder-gray-500 rounded-xl px-5 py-4 w-full outline-none focus:ring-1 focus:ring-[#ecbb3f] transition-all border border-transparent text-sm"
+                        className="bg-white/10 text-white placeholder-gray-400 rounded-xl px-5 py-4 w-full outline-none focus:ring-1 focus:ring-[#ecbb3f] transition-all border border-transparent text-sm"
                       />
                    </div>
                 </div>

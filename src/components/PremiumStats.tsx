@@ -1,17 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Users, Award, Smile } from "lucide-react";
+import { Users, MessageSquare, Stethoscope } from "lucide-react";
 
 export default function PremiumStats() {
   const stats = [
-    { num: "15.000+", label: "Başarılı Operasyon", icon: <Users size={32} /> },
-    { num: "20+", label: "Yıllık Uzmanlık", icon: <Award size={32} /> },
-    { num: "%100", label: "Hasta Memnuniyeti", icon: <Smile size={32} /> }
+    { num: "14550", label: "TEDAVİ EDİLEN HASTA", icon: <Users size={28} /> },
+    { num: "350", label: "MEMNUN HASTA YORUMU", icon: <MessageSquare size={28} /> },
+    { num: "12", label: "UZMAN HEKİM", icon: <Stethoscope size={28} /> }
   ];
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#ecbb3f] py-16 lg:py-24">
+    <section className="hidden md:block relative w-full overflow-hidden bg-[#ecbb3f] py-16 lg:py-24">
        {/* Marquee Background */}
        <div className="absolute inset-0 flex items-center whitespace-nowrap opacity-10 pointer-events-none select-none overflow-hidden">
           <motion.div 
@@ -24,7 +24,7 @@ export default function PremiumStats() {
        </div>
 
        <div className="container mx-auto px-6 max-w-[1200px] relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left divide-y md:divide-y-0 md:divide-x divide-[#162f5d]/20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
              {stats.map((stat, idx) => (
                <motion.div 
                  key={idx}
@@ -32,14 +32,14 @@ export default function PremiumStats() {
                  whileInView={{ opacity: 1, y: 0 }}
                  viewport={{ once: true }}
                  transition={{ delay: idx * 0.1, duration: 0.8 }}
-                 className={`flex flex-col md:flex-row items-center gap-6 ${idx !== 0 ? "md:pl-12 pt-8 md:pt-0" : "pt-8 md:pt-0"}`}
+                 className="flex flex-col items-center gap-5 pt-8 md:pt-0"
                >
-                 <div className="w-16 h-16 rounded-full bg-[#162f5d] text-[#ecbb3f] flex items-center justify-center shrink-0 shadow-xl">
+                 <div className="w-[84px] h-[84px] rounded-full bg-[#454d52] text-white flex items-center justify-center shrink-0 shadow-lg">
                    {stat.icon}
                  </div>
-                 <div>
-                    <div className="text-4xl lg:text-5xl font-black text-[#162f5d] tracking-tighter mb-1">{stat.num}</div>
-                    <div className="text-sm font-bold text-[#162f5d]/70 uppercase tracking-widest">{stat.label}</div>
+                 <div className="flex flex-col items-center mt-2">
+                    <div className="text-[52px] lg:text-[62px] font-black text-white tracking-tighter mb-2 drop-shadow-sm leading-none">{stat.num}</div>
+                    <div className="text-[14px] font-bold text-[#162f5d] uppercase tracking-[0.15em]">{stat.label}</div>
                  </div>
                </motion.div>
              ))}

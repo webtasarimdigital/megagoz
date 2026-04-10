@@ -105,11 +105,13 @@ export default function TreatmentDetailPage({ params }: { params: Promise<{ loca
                {/* Extensive Image Gallery / Grid */}
                <div className="grid grid-cols-2 gap-4">
                   <div className="h-[300px] relative rounded-3xl overflow-hidden shadow-lg group">
-                     <Image src="/images/slide1.png" alt="Detail 1" fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                     {/* Primary treatment image */}
+                     <Image src={treatment.image} alt="Detail 1" fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
                      <div className="absolute inset-0 bg-[#ecbb3f]/20 mix-blend-overlay" />
                   </div>
                   <div className="h-[300px] relative rounded-3xl overflow-hidden shadow-lg mt-12 group">
-                     <Image src="/images/slide2.png" alt="Detail 2" fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                     {/* Secondary category image or fallback depending on availability */}
+                     <Image src={categoryData.image || "/images/slide2.png"} alt="Detail 2" fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
                      <div className="absolute inset-0 bg-[#162f5d]/20 mix-blend-overlay" />
                   </div>
                </div>
