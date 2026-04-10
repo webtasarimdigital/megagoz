@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon-megagoz.jpg",
   },
+  verification: {
+    google: "lq0sbHYeHizv6hQPY0KzxPzcMnyt8GYAtDTOsIS0-5M",
+  },
 };
 
 export default async function LocaleLayout({
