@@ -28,7 +28,7 @@ const slides = [
   },
   {
     id: 3,
-    image: "/images/slide3.png",
+    image: "/images/blog_smart_lens.png",
     titleKey: "slide3Title",
     subKey: "slide3Sub"
   },
@@ -207,7 +207,7 @@ export default function HeroSlider() {
             clickable: true,
             el: '.swiper-pagination-custom',
             renderBullet: function (index, className) {
-              return '<span class="' + className + ' text-[18px] font-black items-center justify-center flex w-12 h-12 rounded transition-all duration-300 text-white hover:text-cyan-200 cursor-pointer">' + String(index + 1).padStart(2, "0") + '</span>';
+              return '<div class="' + className + ' !opacity-100 !bg-transparent !m-0 !w-14 !h-14 flex items-center justify-center rounded-xl text-[18px] font-black text-white/50 transition-all duration-300 hover:text-white [&.swiper-pagination-bullet-active]:!bg-[#ecbb3f] [&.swiper-pagination-bullet-active]:text-[#162f5d] [&.swiper-pagination-bullet-active]:shadow-[0_10px_25px_rgba(236,187,63,0.3)] shadow-none cursor-pointer">' + String(index + 1).padStart(2, "0") + '</div>';
             },
           }}
           className="w-full h-full"

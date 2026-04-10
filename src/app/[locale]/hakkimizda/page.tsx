@@ -69,7 +69,7 @@ export default function AboutPage() {
       </div>
 
       {/* Main Content (Megaeste Split Style) */}
-      <div className="bg-[#f8fafc] pt-12 md:pt-16 pb-24 md:pb-32">
+      <div className="bg-[#f8fafc] pt-12 md:pt-16 pb-12 md:pb-16">
         <div className="container mx-auto px-6 max-w-[1300px]">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
             
@@ -85,7 +85,7 @@ export default function AboutPage() {
                  </p>
                  <div className="pt-4 border-t border-gray-200">
                     <div className="flex items-center gap-6 mt-8">
-                       <div className="w-16 h-16 rounded-2xl bg-[#162f5d] text-white flex items-center justify-center rotate-3">
+                       <div className="w-16 h-16 rounded-2xl bg-[#162f5d] text-white flex items-center justify-center">
                           <Eye size={28} className="text-[#ecbb3f]" />
                        </div>
                        <div>

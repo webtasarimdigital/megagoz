@@ -345,18 +345,48 @@ export default function Header() {
           {/* Search Box Removed per request */}
 
           {/* Mobile Language Selector & Menu Toggle (Grouped on Right) */}
-          <div className="lg:hidden flex items-center gap-4">
+          <div className="lg:hidden flex items-center gap-3 relative">
              <button 
-               onClick={() => {
-                 switchLocale(locale === "tr" ? "en" : "tr");
-               }}
-               className="flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded px-2.5 py-1.5 shadow-sm active:scale-95 transition-transform"
+               onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
+               className="flex items-center gap-1.5 bg-transparent p-1 active:scale-95 transition-transform"
              >
-               <div className="w-[20px] h-[14px] rounded-sm overflow-hidden shrink-0 shadow-sm border border-white/30">
-                  <img src={locale === "tr" ? "/en.svg" : "/tr.svg"} alt="Switch Lang" className="w-full h-full object-cover transform scale-[1.2]" />
+               <div className="w-[20px] h-[14px] rounded-[2px] overflow-hidden shrink-0 shadow-[0_2px_5px_rgba(0,0,0,0.3)]">
+                  <img src={locale === "tr" ? "/tr.svg" : "/en.svg"} alt="Current Lang" className="w-full h-full object-cover transform scale-[1.2]" />
                </div>
-               <span className="text-[12px] font-black text-white tracking-wide">{locale === "tr" ? "EN" : "TRKÇE"}</span>
+               <span className="text-[11px] font-black text-white tracking-wider uppercase mt-0.5">{locale === "tr" ? "TÜRKÇE" : "ENGLISH"}</span>
+               <ChevronDown size={12} className="text-[#ecbb3f] mt-0.5" />
              </button>
+
+              <AnimatePresence>
+                {isLangMenuOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-[calc(100%+8px)] right-10 bg-white rounded-lg shadow-[0_15px_40px_rgba(0,0,0,0.2)] border border-gray-100 min-w-[150px] z-50 overflow-hidden"
+                  >
+                    <button 
+                      onClick={() => { switchLocale("tr"); setIsLangMenuOpen(false); }}
+                      className="flex items-center gap-3 w-full px-4 py-3 border-b border-gray-50 hover:bg-gray-50 transition-colors"
+                    >
+                      <div className="w-[20px] h-[14px] rounded-[2px] overflow-hidden shrink-0 shadow-sm border border-gray-200">
+                         <img src="/tr.svg" alt="TR" className="w-full h-full object-cover transform scale-[1.2]" />
+                      </div>
+                       <span className={`font-bold tracking-widest text-[11px] uppercase ${locale === "tr" ? "text-[#cda669]" : "text-[#333]"}`}>TÜRKÇE</span>
+                    </button>
+                    <button 
+                      onClick={() => { switchLocale("en"); setIsLangMenuOpen(false); }}
+                      className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-50 transition-colors"
+                    >
+                      <div className="w-[20px] h-[14px] rounded-[2px] overflow-hidden shrink-0 shadow-sm border border-gray-200">
+                         <img src="/en.svg" alt="EN" className="w-full h-full object-cover transform scale-[1.2]" />
+                      </div>
+                       <span className={`font-bold tracking-widest text-[11px] uppercase ${locale === "en" ? "text-[#cda669]" : "text-[#333]"}`}>ENGLISH</span>
+                    </button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
              <button 
                className="text-white p-1 active:scale-90 transition-transform"
@@ -372,22 +402,37 @@ export default function Header() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white border-b border-gray-200 overflow-hidden"
+            initial={{ opacity: 0, x: "-100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "-100%" }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            className="fixed inset-0 bg-[#0c1a32] z-[100] lg:hidden flex flex-col"
           >
-            <div className="flex flex-col px-4 py-4 space-y-4">
+            {/* Header inside Menu */}
+            <div className="flex items-center justify-between p-6 border-b border-light/5 shrink-0 h-[92px]">
+               <img src="/megagoz-logo-horizontal.png" alt="Megagöz" className="h-full max-h-[85px] w-auto object-contain brightness-0 invert opacity-90 scale-125 transform origin-left drop-shadow-md pb-2 pt-1" />
+               <button 
+                 onClick={() => setMobileMenuOpen(false)}
+                 className="w-10 h-10 rounded-xl border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition-colors bg-white/5 active:scale-95"
+               >
+                 <X size={20} />
+               </button>
+            </div>
+
+            {/* Scrollable Links */}
+            <div className="flex-1 overflow-y-auto px-6 py-8 flex flex-col text-white">
               {navLinks.map((link) => {
+                const borderClass = "border-b border-white/5 pb-5 mb-5";
+                
                 if (link.id === "corporate") {
                   return (
-                    <div key={link.name} className="flex flex-col border-b border-gray-100 pb-2 mb-2">
+                    <div key={link.name} className={`flex flex-col ${borderClass}`}>
                        <button 
                          onClick={() => setMobileKurumsalOpen(!mobileKurumsalOpen)}
-                         className="flex items-center justify-between text-[#333] font-bold uppercase text-sm w-full outline-none"
+                         className="flex items-center justify-between font-black uppercase text-[15px] tracking-widest w-full outline-none"
                        >
                          {link.name}
-                         <ChevronDown size={16} className={`transition-transform duration-300 ${mobileKurumsalOpen ? "rotate-180 text-[#ecbb3f]" : ""}`} />
+                         <ChevronDown size={18} className={`transition-transform duration-300 ${mobileKurumsalOpen ? "rotate-180 text-[#ecbb3f]" : "text-white/60"}`} />
                        </button>
                        <AnimatePresence>
                          {mobileKurumsalOpen && (
@@ -395,7 +440,7 @@ export default function Header() {
                              initial={{ height: 0, opacity: 0 }}
                              animate={{ height: "auto", opacity: 1 }}
                              exit={{ height: 0, opacity: 0 }}
-                             className="flex flex-col pl-4 pt-4 space-y-4 overflow-hidden"
+                             className="flex flex-col pt-5 space-y-4 overflow-hidden"
                            >
                              {kurumsalDropdownLinks.map((sublink, idx) => (
                                sublink.href.startsWith("/#") ? (
@@ -403,7 +448,7 @@ export default function Header() {
                                    key={idx}
                                    href={sublink.href} 
                                    onClick={() => setMobileMenuOpen(false)} 
-                                   className="text-sm font-bold text-gray-500 hover:text-[#ecbb3f]"
+                                   className="text-[13px] font-bold text-white/70 hover:text-[#ecbb3f] uppercase tracking-wider pl-4 border-l-2 border-[#ecbb3f]/50 py-1"
                                  >
                                    {sublink.name}
                                  </a>
@@ -412,7 +457,7 @@ export default function Header() {
                                    key={idx}
                                    href={sublink.href as any} 
                                    onClick={() => setMobileMenuOpen(false)} 
-                                   className="text-sm font-bold text-gray-500 hover:text-[#ecbb3f]"
+                                   className="text-[13px] font-bold text-white/70 hover:text-[#ecbb3f] uppercase tracking-wider pl-4 border-l-2 border-[#ecbb3f]/50 py-1"
                                  >
                                    {sublink.name}
                                  </Link>
@@ -427,13 +472,13 @@ export default function Header() {
 
                 if (link.id === "treatments") {
                   return (
-                    <div key={link.name} className="flex flex-col border-b border-gray-100 pb-2">
+                    <div key={link.name} className={`flex flex-col ${borderClass}`}>
                        <button 
                          onClick={() => setMobileTreatmentsOpen(!mobileTreatmentsOpen)}
-                         className="flex items-center justify-between text-[#333] font-bold uppercase text-sm w-full outline-none"
+                         className="flex items-center justify-between font-black uppercase text-[15px] tracking-widest w-full outline-none"
                        >
                          {link.name}
-                         <ChevronDown size={16} className={`transition-transform duration-300 ${mobileTreatmentsOpen ? "rotate-180 text-[#ecbb3f]" : ""}`} />
+                         <ChevronDown size={18} className={`transition-transform duration-300 ${mobileTreatmentsOpen ? "rotate-180 text-[#ecbb3f]" : "text-white/60"}`} />
                        </button>
                        <AnimatePresence>
                          {mobileTreatmentsOpen && (
@@ -441,19 +486,19 @@ export default function Header() {
                              initial={{ height: 0, opacity: 0 }}
                              animate={{ height: "auto", opacity: 1 }}
                              exit={{ height: 0, opacity: 0 }}
-                             className="flex flex-col pl-4 pt-3 space-y-3 overflow-hidden"
+                             className="flex flex-col pt-5 space-y-5 overflow-hidden"
                            >
-                             <Link href="/tedaviler" onClick={() => setMobileMenuOpen(false)} className="text-[#ecbb3f] font-bold text-xs uppercase tracking-wider mb-2">
-                               {locale === 'tr' ? 'Tüm Tedaviler' : 'All Treatments'}
+                             <Link href="/tedaviler" onClick={() => setMobileMenuOpen(false)} className="text-[#ecbb3f] font-black text-[13px] uppercase tracking-widest pl-4 hover:opacity-80">
+                               {locale === 'tr' ? 'TÜM TEDAVİLER' : 'ALL TREATMENTS'}
                              </Link>
                              {TREATMENTS_DATA.map(category => (
-                               <div key={category.id} className="flex flex-col">
+                               <div key={category.id} className="flex flex-col pl-4 border-l-2 border-white/10">
                                  <button
                                    onClick={() => setMobileActiveCategory(mobileActiveCategory === category.id ? null : category.id)}
-                                   className="flex items-center justify-between text-sm font-semibold text-[#454d52] py-1"
+                                   className="flex items-center justify-between text-[14px] font-bold text-white/90 py-2.5 outline-none hover:text-[#ecbb3f] transition-colors"
                                  >
                                    {category.title[locale as "tr"|"en"]}
-                                   <ChevronDown size={14} className={`transition-transform ${mobileActiveCategory === category.id ? "rotate-180 text-[#ecbb3f]" : ""}`} />
+                                   <ChevronDown size={16} className={`transition-transform ${mobileActiveCategory === category.id ? "rotate-180 text-[#ecbb3f]" : "text-white/40"}`} />
                                  </button>
                                  <AnimatePresence>
                                    {mobileActiveCategory === category.id && (
@@ -461,9 +506,9 @@ export default function Header() {
                                        initial={{ height: 0, opacity: 0 }}
                                        animate={{ height: "auto", opacity: 1 }}
                                        exit={{ height: 0, opacity: 0 }}
-                                       className="flex flex-col pl-3 pt-2 space-y-2 overflow-hidden border-l-2 border-gray-100 mt-1 mb-2"
+                                       className="flex flex-col pl-4 mt-2 space-y-4 overflow-hidden border-l border-white/5 pb-2"
                                      >
-                                        <Link href={{ pathname: '/tedaviler/[category]', params: { category: category.id } }} onClick={() => setMobileMenuOpen(false)} className="text-xs text-gray-500 hover:text-[#ecbb3f] py-1 font-medium italic mb-1">
+                                        <Link href={{ pathname: '/tedaviler/[category]', params: { category: category.id } }} onClick={() => setMobileMenuOpen(false)} className="text-[12px] text-[#ecbb3f] font-bold italic py-1">
                                            {locale === 'tr' ? 'Bu bölümü gör' : 'View this section'}
                                         </Link>
                                         {category.items.map(item => (
@@ -471,7 +516,7 @@ export default function Header() {
                                             key={item.slug}
                                             href={{ pathname: '/tedaviler/[category]/[slug]', params: { category: category.id, slug: item.slug } }}
                                             onClick={() => setMobileMenuOpen(false)}
-                                            className="text-xs text-gray-500 hover:text-[#ecbb3f] py-1"
+                                            className="text-[13px] text-white/60 hover:text-white transition-colors"
                                           >
                                             {item.title[locale as "tr"|"en"]}
                                           </Link>
@@ -493,7 +538,7 @@ export default function Header() {
                     key={link.name}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="text-[#333] font-bold uppercase text-sm border-b border-gray-100 pb-2"
+                    className={`font-black uppercase text-[15px] tracking-widest ${borderClass}`}
                   >
                     {link.name}
                   </a>
@@ -502,18 +547,30 @@ export default function Header() {
                     key={link.name}
                     href={link.href as any}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="text-[#333] font-bold uppercase text-sm border-b border-gray-100 pb-2"
+                    className={`font-black uppercase text-[15px] tracking-widest ${borderClass}`}
                   >
                     {link.name}
                   </Link>
                 );
               })}
-              <div className="pt-2">
-                <a href="tel:4440320" className="flex items-center gap-2 text-[#00609C] font-bold">
-                  <Phone size={18} />
-                  444 0 320 Merkezi Çağrı
-                </a>
-              </div>
+            </div>
+
+            {/* Bottom Floating Bar */}
+            <div className="shrink-0 p-6 border-t border-white/5 flex items-center justify-between pb-safe">
+               <a href="tel:4440320" className="bg-[#cc9b4c] text-[#0a111a] font-black text-[13px] uppercase tracking-wider py-4 px-8 rounded-[14px] hover:bg-[#e0b265] transition-colors shadow-lg active:scale-95">
+                 {locale === 'tr' ? 'RANDEVU AL' : 'BOOK NOW'}
+               </a>
+               <div className="flex items-center gap-6 text-white/80">
+                  <a href="https://wa.me/905057710320" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors active:scale-90">
+                    <svg viewBox="0 0 448 512" className="w-[22px] h-[22px]" fill="currentColor"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 222.4-99.6 222.4-222 0-59.3-23.1-115-65.4-157zM223.9 414.4c-33.1 0-65.5-8.9-94-25.7l-6.7-4-69.8 18.3L72 334l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-106.7 86.8-193.5 193.6-193.5 51.7 0 100.3 20.2 136.9 56.8 36.6 36.6 56.8 85.2 56.8 136.9-.1 106.7-86.9 193.4-193.6 193.4zM329.8 281.3c-5.8-2.9-34.3-16.9-39.6-18.9-5.3-1.9-9.2-2.9-13.2 2.9-4 5.8-15.1 18.9-18.5 22.8-3.3 3.9-6.6 4.4-12.4 1.5-5.8-2.9-24.5-9-46.7-28.9-17.2-15.4-28.8-34.5-32.1-40.4-3.3-5.8-.4-9 2.5-11.9 2.6-2.6 5.8-6.8 8.7-10.2 2.9-3.4 3.9-5.8 5.8-9.7 1.9-3.9 1-7.3-.5-10.2-1.5-2.9-13.2-31.9-18-43.7-4.7-11.5-9.5-9.9-13.2-10.1-3.3-.2-7.1-.2-11.1-.2-4 0-10.6 1.5-16.1 7.3-5.5 5.8-21.1 20.6-21.1 50.3 0 29.7 21.6 58.4 24.6 62.3 3 3.9 42.5 64.9 102.9 90.9 14.4 6.2 25.6 9.9 34.3 12.7 14.4 4.6 27.6 3.9 38 2.4 11.6-1.7 34.3-14 39.1-27.5 4.8-13.5 4.8-25.1 3.3-27.5-1.4-2.5-5.3-3.9-11.1-6.8z"/></svg>
+                  </a>
+                  <a href="https://share.google/zC0UTV7bTbwJn46pu" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors active:scale-90">
+                    <MapPin size={24} strokeWidth={2} />
+                  </a>
+                  <a href="tel:4440320" className="hover:text-white transition-colors active:scale-90">
+                    <Phone size={22} strokeWidth={2} />
+                  </a>
+               </div>
             </div>
           </motion.div>
         )}
