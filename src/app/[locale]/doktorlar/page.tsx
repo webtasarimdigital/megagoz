@@ -23,7 +23,7 @@ export default function DoctorsPage() {
         />
         <div className="absolute inset-0 bg-[#0a111a]/85 z-0" />
         
-        <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 max-w-4xl pb-32 md:pb-40">
+        <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 max-w-4xl">
           <div className="flex items-center gap-4 mb-4">
             <div className="h-[1px] w-8 md:w-12 bg-[#ecbb3f]" />
             <span className="text-[#ecbb3f] font-bold tracking-[0.2em] uppercase text-xs md:text-sm">

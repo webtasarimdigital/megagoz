@@ -406,16 +406,18 @@ export default function Header() {
           {/* Search Box Removed per request */}
 
           {/* Mobile Language Selector & Menu Toggle (Grouped on Right) */}
-          <div className="lg:hidden flex items-center gap-1.5 sm:gap-3 relative shrink-0">
+          <div className="lg:hidden flex items-center gap-4 sm:gap-6 relative shrink-0">
+             
+             {/* Language Dropdown */}
              <button 
                onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-               className="flex items-center gap-1.5 sm:gap-2 bg-transparent p-1 active:scale-95 transition-transform"
+               className="flex items-center gap-2 bg-transparent p-1 active:scale-95 transition-transform"
              >
-               <div className="w-[20px] h-[14px] sm:w-[22px] sm:h-[16px] rounded-[2px] overflow-hidden shrink-0 shadow-[0_2px_5px_rgba(0,0,0,0.3)] flex align-center justify-center">
-                  <img src={locale === "tr" ? "/tr.svg" : "/en.svg"} alt="Current Lang" className="w-full h-full object-cover scale-[1.2]" />
+               <div className="w-[24px] h-[16px] rounded-[2px] overflow-hidden shrink-0 shadow-sm flex items-center justify-center relative">
+                  <img src={locale === "tr" ? "/tr.svg" : "/en.svg"} alt="Lang" className="absolute inset-0 w-full h-full object-cover scale-[1.2]" />
                </div>
-               <span className="text-[10px] sm:text-[12px] font-bold text-white tracking-wider uppercase leading-none">{locale === "tr" ? "TR" : "EN"}</span>
-               <ChevronDown size={14} className="text-[#ecbb3f]" />
+               <span className="text-[12px] font-bold text-white tracking-widest uppercase leading-none mt-[1px]">{locale === "tr" ? "TÜRKÇE" : "ENGLISH"}</span>
+               <svg width="10" height="10" viewBox="0 0 24 24" fill="white" stroke="none" className="ml-1 opacity-70"><polygon points="6,9 18,9 12,18"/></svg>
              </button>
 
               <AnimatePresence>
@@ -450,10 +452,19 @@ export default function Header() {
               </AnimatePresence>
 
              <button 
-               className="text-white p-1 active:scale-90 transition-transform shrink-0"
+               className="p-1 active:scale-90 transition-transform shrink-0 flex items-center justify-center w-8 h-8 focus:outline-none"
                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+               aria-label="Toggle Menu"
              >
-               {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
+               {mobileMenuOpen ? (
+                 <X size={30} className="text-white" />
+               ) : (
+                 <div className="flex flex-col justify-between w-[28px] h-[20px]">
+                    <span className="w-full h-[2.5px] bg-white rounded-full"></span>
+                    <span className="w-full h-[2.5px] bg-white rounded-full"></span>
+                    <span className="w-full h-[2.5px] bg-white rounded-full"></span>
+                 </div>
+               )}
              </button>
           </div>
         </div>
@@ -467,11 +478,11 @@ export default function Header() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "-100%" }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed inset-0 bg-[#0c1a32] z-[100] lg:hidden flex flex-col"
+            className="fixed inset-0 bg-[#0c1a32] z-[200] lg:hidden flex flex-col"
           >
             {/* Header inside Menu */}
             <div className="flex items-center justify-between p-6 border-b border-light/5 shrink-0 h-[92px]">
-               <img src="/megagoz-logo-horizontal.png" alt="Megagöz" className="h-full max-h-[85px] w-auto object-contain brightness-0 invert opacity-90 scale-125 transform origin-left drop-shadow-md pb-2 pt-1" />
+               <img src="/logo.png" alt="Megagöz" className="h-full max-h-[85px] w-auto object-contain brightness-0 invert opacity-90 scale-[1.15] transform origin-left drop-shadow-md pb-2 pt-1" />
                <button 
                  onClick={() => setMobileMenuOpen(false)}
                  className="w-10 h-10 rounded-xl border border-white/20 flex items-center justify-center text-white hover:bg-white/10 transition-colors bg-white/5 active:scale-95"
