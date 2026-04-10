@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -8,23 +9,40 @@ export default function KVKKPage() {
   return (
     <main>
       <Header />
-      <div className="min-h-screen bg-[#F8FAFC] pb-24 pt-32 md:pt-40">
-      <div className="absolute top-0 left-0 w-full h-[50vh] bg-[#162f5d] rounded-b-[50px] md:rounded-b-[100px] z-0" />
       
-      <div className="container mx-auto px-6 max-w-[1000px] relative z-10">
+      {/* Hero Header Area */}
+      <div className="relative w-full h-[400px] md:h-[500px] flex items-center justify-center pt-24 md:pt-32">
+        <Image 
+          src="/images/slide2.png" 
+          alt="KVKK Background" 
+          fill 
+          priority
+          className="object-cover object-center" 
+        />
+        <div className="absolute inset-0 bg-[#0a111a]/85 z-0" />
         
-        {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-3 mb-6">
-            <div className="h-[2px] w-12 bg-[#ecbb3f]" />
-            <span className="text-[#ecbb3f] font-bold tracking-widest uppercase text-sm">KURUMSAL</span>
-            <div className="h-[2px] w-12 bg-[#ecbb3f]" />
+        <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 max-w-4xl pb-12">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="h-[1px] w-8 md:w-12 bg-[#ecbb3f]" />
+            <span className="text-[#ecbb3f] font-bold tracking-[0.2em] uppercase text-xs md:text-sm">
+              KURUMSAL
+            </span>
+            <div className="h-[1px] w-8 md:w-12 bg-[#ecbb3f]" />
           </div>
-          <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">
+          
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-4 md:mb-6">
             Kişisel Verilerin Korunması
           </h1>
-          <p className="text-gray-300 font-medium">Aydınlatma Metni</p>
+          
+          <p className="text-gray-300 text-sm md:text-base font-medium leading-relaxed max-w-2xl px-4">
+            Aydınlatma Metni
+          </p>
         </div>
+      </div>
+
+      <div className="bg-[#F8FAFC] pb-24 pt-16">
+      
+      <div className="container mx-auto px-6 max-w-[1000px] relative z-10">
 
         {/* Content Box */}
         <div className="bg-white rounded-3xl p-8 md:p-14 shadow-[0_20px_60px_rgba(0,0,0,0.05)] text-gray-700 leading-relaxed space-y-8 font-medium">

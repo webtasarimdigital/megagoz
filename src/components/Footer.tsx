@@ -20,18 +20,18 @@ export default function Footer() {
           <div className="flex flex-col lg:flex-row divide-y lg:divide-y-0 lg:divide-x divide-gray-100">
            
            {/* Item 1 */}
-           <a href="tel:05334814098" className="flex-1 p-6 lg:p-8 flex items-center justify-center lg:justify-start gap-5 hover:bg-gray-50 transition-colors group">
+           <a href="tel:4440320" className="flex-1 p-6 lg:p-8 flex items-center justify-center lg:justify-start gap-5 hover:bg-gray-50 transition-colors group">
              <div className="w-14 h-14 rounded-full bg-[#ecbb3f]/10 flex items-center justify-center shrink-0 border border-[#ecbb3f]/20 group-hover:bg-[#ecbb3f] group-hover:border-[#ecbb3f] transition-all duration-300">
                <PhoneCall size={26} className="text-[#ecbb3f] group-hover:text-white transition-colors" />
              </div>
              <div>
                 <h4 className="text-[#162f5d] font-bold text-[17px] mb-1 group-hover:text-[#ecbb3f] transition-colors">Bizimle İletişime Geçin</h4>
-                <p className="text-gray-500 font-medium text-[14px]">0533 481 40 98</p>
+                <p className="text-gray-500 font-medium text-[14px]">444 0 320</p>
              </div>
            </a>
 
            {/* Item 2 */}
-           <a href="https://wa.me/905334814098" target="_blank" rel="noopener noreferrer" className="flex-1 p-6 lg:p-8 flex items-center justify-center lg:justify-start gap-5 hover:bg-gray-50 transition-colors group">
+           <a href="https://wa.me/905057710320" target="_blank" rel="noopener noreferrer" className="flex-1 p-6 lg:p-8 flex items-center justify-center lg:justify-start gap-5 hover:bg-gray-50 transition-colors group">
              <div className="w-14 h-14 rounded-full bg-[#ecbb3f]/10 flex items-center justify-center shrink-0 border border-[#ecbb3f]/20 group-hover:bg-[#ecbb3f] group-hover:border-[#ecbb3f] transition-all duration-300">
                <MessageCircle size={26} className="text-[#ecbb3f] group-hover:text-white transition-colors" />
              </div>
@@ -155,7 +155,7 @@ export default function Footer() {
               <div className="flex items-start gap-3">
                 <Phone size={20} className="text-[#ecbb3f] shrink-0" />
                 <p className="text-[14px] text-gray-300 font-medium leading-relaxed">
-                  0555 555 55 55<br/>0216 555 55 55
+                  444 0 320<br/>0 505 771 03 20
                 </p>
               </div>
 

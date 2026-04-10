@@ -34,7 +34,7 @@ const slides = [
   },
   {
     id: 4,
-    image: "/images/megagoz-clinic-interior.png",
+    image: "/images/slide4.png",
     titleKey: "slide4Title",
     subKey: "slide4Sub"
   }
@@ -251,7 +251,7 @@ export default function HeroSlider() {
           ))}
 
           {/* Vertical Numbering Pagination (Left Side) - Overriding Swiper default UI via global CSS in layout or inline styles */}
-          <div className="swiper-pagination-custom absolute left-4 md:left-8 lg:left-[5%] xl:left-[8%] top-[60%] -translate-y-1/2 z-20 hidden md:flex flex-col gap-5"></div>
+          <div className="swiper-pagination-custom absolute !left-4 md:!left-8 lg:!left-[5%] xl:!left-[8%] !top-1/2 !-translate-y-1/2 !bottom-auto !w-auto z-20 hidden md:flex flex-col gap-5"></div>
         </Swiper>
 
       </div>

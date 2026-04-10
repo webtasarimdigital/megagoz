@@ -64,7 +64,7 @@ export default function AppointmentFormSection() {
                    <textarea 
                      rows={5}
                      placeholder="Mesajınız" 
-                     className="bg-[#1a2531] text-white placeholder-gray-500 rounded-xl px-5 py-4 w-full outline-none focus:ring-1 focus:ring-[#ecbb3f] transition-all border border-transparent resize-none text-sm"
+                     className="bg-white/10 text-white placeholder-gray-400 rounded-xl px-5 py-4 w-full outline-none focus:ring-1 focus:ring-[#ecbb3f] transition-all border border-transparent resize-none text-sm"
                    ></textarea>
                 </div>
 

@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Image from "next/image";
 
 export default function GalleryPage() {
   const instagramLinks = [
@@ -14,22 +15,38 @@ export default function GalleryPage() {
   return (
     <main>
       <Header />
-      <div className="min-h-screen bg-[#F8FAFC] pb-24 pt-32 md:pt-40">
+      
+      {/* Hero Header Area */}
+      <div className="relative w-full h-[400px] md:h-[500px] flex items-center justify-center pt-24 md:pt-32">
+        <Image 
+          src="/images/slide4.png" 
+          alt="MegaGöz Galeri" 
+          fill 
+          priority
+          className="object-cover object-center" 
+        />
+        <div className="absolute inset-0 bg-[#0a111a]/85 z-0" />
         
-        {/* Header */}
-        <div className="container mx-auto px-6 max-w-[1300px] mb-12 text-center">
-          <div className="inline-flex items-center gap-3 mb-6">
-            <div className="h-[2px] w-12 bg-[#ecbb3f]" />
-            <span className="text-[#ecbb3f] font-bold tracking-widest uppercase text-sm">MEGAGÖZ BAKIŞI</span>
-            <div className="h-[2px] w-12 bg-[#ecbb3f]" />
+        <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 max-w-4xl pb-12">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="h-[1px] w-8 md:w-12 bg-[#ecbb3f]" />
+            <span className="text-[#ecbb3f] font-bold tracking-[0.2em] uppercase text-xs md:text-sm">
+              MEGAGÖZ BAKIŞI
+            </span>
+            <div className="h-[1px] w-8 md:w-12 bg-[#ecbb3f]" />
           </div>
-          <h1 className="text-4xl md:text-5xl font-black text-[#162f5d] tracking-tight mb-6">
+          
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-4 md:mb-6">
             MegaGöz Galeri
           </h1>
-          <p className="text-gray-500 text-lg font-medium max-w-2xl mx-auto">
+          
+          <p className="text-gray-300 text-sm md:text-base font-medium leading-relaxed max-w-2xl px-4">
             Instagram hesabımızdan yansıyan güncel kareler, teknolojik donanımlarımız ve sizi özel hissettirecek konforlu klinik ortamımıza yakından bakın.
           </p>
         </div>
+      </div>
+
+      <div className="bg-[#F8FAFC] pb-24 pt-16">
 
         {/* Instagram Iframes Grid */}
         <div className="container mx-auto px-4 md:px-6 max-w-[1300px]">

@@ -12,7 +12,7 @@ export default function JobApplicationPage() {
       <Header />
       
       {/* Hero Header Area */}
-      <div className="relative w-full h-[500px] md:h-[600px] flex items-center justify-center pt-32 md:pt-40">
+      <div className="relative w-full h-[400px] md:h-[500px] flex items-center justify-center pt-24 md:pt-32">
         <Image 
           src="/images/megagoz-goz-norolojisi.webp" 
           alt="İş Başvurusu" 
@@ -20,22 +20,22 @@ export default function JobApplicationPage() {
           priority
           className="object-cover object-center" 
         />
-        <div className="absolute inset-0 bg-[#162f5d]/85 z-0" />
+        <div className="absolute inset-0 bg-[#0a111a]/85 z-0" />
         
-        <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 max-w-3xl pb-16">
+        <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 max-w-4xl pb-12">
           <div className="flex items-center gap-4 mb-4">
             <div className="h-[1px] w-8 md:w-12 bg-[#ecbb3f]" />
-            <span className="text-[#ecbb3f] font-bold tracking-[0.2em] uppercase text-sm md:text-base">
+            <span className="text-[#ecbb3f] font-bold tracking-[0.2em] uppercase text-xs md:text-sm">
               KARİYER
             </span>
             <div className="h-[1px] w-8 md:w-12 bg-[#ecbb3f]" />
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-4 md:mb-6">
             İş Başvurusu
           </h1>
           
-          <p className="text-gray-300 md:text-lg font-medium leading-relaxed max-w-2xl px-4">
+          <p className="text-gray-300 text-sm md:text-base font-medium leading-relaxed max-w-2xl px-4">
             Ailemize katılın, geleceğin göz sağlığı standartlarını birlikte yükseltelim.
           </p>
         </div>
@@ -139,7 +139,9 @@ export default function JobApplicationPage() {
                   </div>
                   <div>
                     <p className="text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">Mülakatlar İçin</p>
-                    <a href="tel:05334814098" className="text-lg font-bold text-white hover:text-[#ecbb3f] transition-colors">0533 481 40 98</a>
+                    <a href="tel:4440320" className="text-lg font-bold text-white hover:text-[#ecbb3f] transition-colors">444 0 320</a>
+                    <span className="text-white mx-2">/</span>
+                    <a href="tel:05057710320" className="text-lg font-bold text-white hover:text-[#ecbb3f] transition-colors">0 505 771 03 20</a>
                   </div>
                 </div>
 

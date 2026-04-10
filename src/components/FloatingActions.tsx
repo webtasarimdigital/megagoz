@@ -115,7 +115,7 @@ export default function FloatingActions() {
         </a>
 
         {/* ARA */}
-        <a href="tel:05334814098" className="flex flex-col items-center gap-1 min-w-[70px]">
+        <a href="tel:4440320" className="flex flex-col items-center gap-1 min-w-[70px]">
           <div className="w-10 h-10 rounded-[10px] bg-[#10b981] flex items-center justify-center text-white shadow-sm">
             <Phone size={22} strokeWidth={2.5} />
           </div>
@@ -123,7 +123,7 @@ export default function FloatingActions() {
         </a>
 
         {/* WHATSAPP */}
-        <a href="https://wa.me/905334814098" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-1 min-w-[70px]">
+        <a href="https://wa.me/905057710320" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-1 min-w-[70px]">
           <div className="w-10 h-10 rounded-[10px] bg-[#22c55e] flex items-center justify-center text-white shadow-sm">
             <svg viewBox="0 0 448 512" className="w-[24px] h-[24px]" fill="currentColor">
               <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 222.4-99.6 222.4-222 0-59.3-23.1-115-65.4-157zM223.9 414.4c-33.1 0-65.5-8.9-94-25.7l-6.7-4-69.8 18.3L72 334l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-106.7 86.8-193.5 193.6-193.5 51.7 0 100.3 20.2 136.9 56.8 36.6 36.6 56.8 85.2 56.8 136.9-.1 106.7-86.9 193.4-193.6 193.4zM329.8 281.3c-5.8-2.9-34.3-16.9-39.6-18.9-5.3-1.9-9.2-2.9-13.2 2.9-4 5.8-15.1 18.9-18.5 22.8-3.3 3.9-6.6 4.4-12.4 1.5-5.8-2.9-24.5-9-46.7-28.9-17.2-15.4-28.8-34.5-32.1-40.4-3.3-5.8-.4-9 2.5-11.9 2.6-2.6 5.8-6.8 8.7-10.2 2.9-3.4 3.9-5.8 5.8-9.7 1.9-3.9 1-7.3-.5-10.2-1.5-2.9-13.2-31.9-18-43.7-4.7-11.5-9.5-9.9-13.2-10.1-3.3-.2-7.1-.2-11.1-.2-4 0-10.6 1.5-16.1 7.3-5.5 5.8-21.1 20.6-21.1 50.3 0 29.7 21.6 58.4 24.6 62.3 3 3.9 42.5 64.9 102.9 90.9 14.4 6.2 25.6 9.9 34.3 12.7 14.4 4.6 27.6 3.9 38 2.4 11.6-1.7 34.3-14 39.1-27.5 4.8-13.5 4.8-25.1 3.3-27.5-1.4-2.5-5.3-3.9-11.1-6.8z"/>

@@ -176,7 +176,7 @@ export default function Header() {
       </div>
 
       {/* Main Dark Nav Bar */}
-      <div className={`transition-all duration-300 ${isScrolled ? "shadow-md shadow-gray-200 py-2 lg:py-4" : "py-4 lg:py-6 border-b-2 border-transparent"} bg-white lg:bg-white w-full sticky top-0`}>
+      <div className={`transition-all duration-300 ${isScrolled ? "shadow-md shadow-[rgba(0,0,0,0.1)] py-2 lg:py-4" : "py-4 lg:py-6 border-b-2 border-transparent"} bg-[#162f5d] lg:bg-white w-full sticky top-0`}>
         <div className="w-full flex items-center justify-between lg:justify-center px-4 md:px-8 gap-4 lg:gap-10 xl:gap-20">
           
           {/* Logo */}
@@ -344,28 +344,27 @@ export default function Header() {
 
           {/* Search Box Removed per request */}
 
-          {/* Mobile Language Selector (Centered) */}
-          <div className="lg:hidden absolute left-1/2 -translate-x-1/2 flex items-center">
+          {/* Mobile Language Selector & Menu Toggle (Grouped on Right) */}
+          <div className="lg:hidden flex items-center gap-4">
              <button 
                onClick={() => {
                  switchLocale(locale === "tr" ? "en" : "tr");
                }}
-               className="flex items-center gap-1.5 bg-gray-50 border border-gray-200 rounded px-2 py-1.5 shadow-sm active:scale-95 transition-transform"
+               className="flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded px-2.5 py-1.5 shadow-sm active:scale-95 transition-transform"
              >
-               <div className="w-[18px] h-[12px] rounded-sm overflow-hidden shrink-0 shadow-sm border border-gray-200">
+               <div className="w-[20px] h-[14px] rounded-sm overflow-hidden shrink-0 shadow-sm border border-white/30">
                   <img src={locale === "tr" ? "/en.svg" : "/tr.svg"} alt="Switch Lang" className="w-full h-full object-cover transform scale-[1.2]" />
                </div>
-               <span className="text-[11px] font-black text-[#162f5d]">{locale === "tr" ? "EN" : "TR"}</span>
+               <span className="text-[12px] font-black text-white tracking-wide">{locale === "tr" ? "EN" : "TRKÇE"}</span>
+             </button>
+
+             <button 
+               className="text-white p-1 active:scale-90 transition-transform"
+               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+             >
+               {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
              </button>
           </div>
-
-          {/* Mobile Menu Toggle */}
-          <button 
-            className="lg:hidden text-[#162f5d] p-1 border-2 border-transparent active:scale-90 transition-transform"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
         </div>
       </div>
 

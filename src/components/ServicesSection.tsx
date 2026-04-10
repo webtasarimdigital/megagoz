@@ -7,14 +7,14 @@ import { Link } from "@/i18n/navigation";
 
 const SERVICES = [
   { id: 0, slug: "katarakt", title: "Katarakt", image: "/images/megagoz-katarakt-tedavisi.webp", desc: "Zamanla matlaşan göz merceğinin temizlenmesi ve şeffaf lens ile değiştirilmesi." },
-  { id: 1, slug: "lazer-tedavisi", title: "Lazer Tedavisi", image: "/images/slide1.png", desc: "Miyop, hipermetrop ve astigmatizmanın saniyeler içinde kalıcı olarak düzeltilmesi." },
+  { id: 1, slug: "lazer-tedavisi", title: "Lazer Tedavisi", image: "/images/megagoz-lazer-tedavisi,.webp", desc: "Miyop, hipermetrop ve astigmatizmanın saniyeler içinde kalıcı olarak düzeltilmesi." },
   { id: 2, slug: "kontak-lens", title: "Kontak Lens", image: "/images/megagoz-kontak-lens.webp", desc: "Kişiye özel lens uyumu ve göz sağlığına en uygun lens seçimi." },
   { id: 3, slug: "goz-norolojisi", title: "Göz Nörolojisi", image: "/images/megagoz-goz-norolojisi.webp", desc: "Görme sinirleri ve beyinle ilgili oftalmolojik görme kayıplarının tedavisi." },
-  { id: 4, slug: "kornea-hastaliklari", title: "Kornea Hastalıkları", image: "/images/slide2.png", desc: "Korneanın yapısını bozan keratokonus ve benzeri hastalıkların tanı ve tedavisi." },
-  { id: 5, slug: "glokom", title: "Glokom Tedavisi", image: "/images/megagoz-tedavi-oncesi.webp", desc: "Göz tansiyonuna bağlı sinir hasarlarının erken teşhisi ve tedavisi." },
-  { id: 6, slug: "sasilik", title: "Şaşılık Tedavisi", image: "/images/slide3.png", desc: "Gözlerin paralel bakışının bozulduğu durumların cerrahi veya medikal tedavisi." },
-  { id: 7, slug: "uveit", title: "Üveit Tedavisi", image: "/images/megagoz-tedavi-sonrasi.webp", desc: "Gözün içindeki damar tabakasının iltihaplanmasının ileri tetkiklerle tedavisi." },
-  { id: 8, slug: "goz-kapagi-estetigi", title: "Göz Kapağı Estetiği", image: "/images/slide4.png", desc: "Düşük veya torbalanmış göz kapaklarının blefaroplasti ile estetik düzeltilmesi." },
+  { id: 4, slug: "kornea-hastaliklari", title: "Kornea Hastalıkları", image: "/images/megagoz-kornea-tedavisi.jpg", desc: "Korneanın yapısını bozan keratokonus ve benzeri hastalıkların tanı ve tedavisi." },
+  { id: 5, slug: "glokom", title: "Glokom Tedavisi", image: "/images/megagoz-glukom-tedavisi.webp", desc: "Göz tansiyonuna bağlı sinir hasarlarının erken teşhisi ve tedavisi." },
+  { id: 6, slug: "sasilik", title: "Şaşılık Tedavisi", image: "/images/megagoz-sasilik-tedavisi.webp", desc: "Gözlerin paralel bakışının bozulduğu durumların cerrahi veya medikal tedavisi." },
+  { id: 7, slug: "uveit", title: "Üveit Tedavisi", image: "/images/megagoz-uveit-tedavisi.jpg", desc: "Gözün içindeki damar tabakasının iltihaplanmasının ileri tetkiklerle tedavisi." },
+  { id: 8, slug: "goz-kapagi-estetigi", title: "Göz Kapağı Estetiği", image: "/images/megagoz-goz-kapagi-tedavisi.jpg", desc: "Düşük veya torbalanmış göz kapaklarının blefaroplasti ile estetik düzeltilmesi." },
   { id: 9, slug: "cocuk-goz-sagligi", title: "Çocuk Göz Sağlığı", image: "/images/megagoz-cocuk-goz-tedavisi.webp", desc: "Çocukluk çağında gelişen görme kusurları ve tembelliklerin erken tedavisi." },
 ];
 

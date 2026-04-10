@@ -25,33 +25,35 @@ export default function CategoryPage({ params }: { params: Promise<{ locale: str
       <Header />
       
       {/* Category Hero Section */}
-      <div className="relative w-full h-[50vh] min-h-[400px] flex items-end pb-16 pt-32">
-         {/* Since categories don't have dedicated specific high-res backgrounds yet, using a stable background */}
+      <div className="relative w-full h-[60vh] min-h-[500px] flex items-end pb-16 pt-32 shrink-0">
         <Image 
-          src="/images/slide3.png" 
+          src={categoryData.image || "/images/slide3.png"} 
           alt={categoryName} 
           fill 
           priority
           className="object-cover object-center" 
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a111a] via-[#0a111a]/80 to-[#0a111a]/20 z-0" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#162f5d] via-[#162f5d]/60 to-transparent z-0" />
         
         <div className="container mx-auto px-4 sm:px-6 max-w-[1200px] relative z-10">
-          <Link href="/tedaviler" className="inline-flex items-center gap-2 text-[#ecbb3f] hover:text-white font-bold text-sm tracking-wider uppercase mb-8 transition-colors">
+          <Link href="/tedaviler" className="inline-flex items-center gap-2 text-[#ecbb3f] hover:text-white font-bold text-xs tracking-wider uppercase mb-8 transition-colors">
             <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/20">
                <ArrowLeft size={16} />
             </div>
-            {locale === 'tr' ? 'Tüm Tedaviler' : 'All Treatments'}
+            {locale === 'tr' ? 'TÜM TEDAVİLER' : 'ALL TREATMENTS'}
           </Link>
           
-          <h1 className="text-5xl md:text-6xl font-black text-white tracking-tight mb-4 leading-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-white tracking-tight mb-6 leading-tight">
             {categoryName}
           </h1>
-          <p className="text-gray-300 md:text-lg font-medium max-w-2xl">
-             {locale === 'tr' 
-                ? `${categoryName} kategorisinde sunduğumuz ${items.length} farklı modern alt tedavi yöntemini aşağıdan inceleyebilirsiniz.`
-                : `Explore ${items.length} different modern sub-treatment methods we offer under the ${categoryName} category below.`}
-          </p>
+          
+          <div className="border-l-4 border-[#ecbb3f] pl-6 md:pl-8">
+            <p className="max-w-3xl text-lg md:text-xl text-gray-300 font-medium leading-relaxed">
+              {locale === 'tr' 
+                 ? `${categoryName} kategorisinde sunduğumuz ${items.length} farklı modern alt tedavi yöntemini aşağıdan inceleyebilirsiniz.`
+                 : `Explore ${items.length} different modern sub-treatment methods we offer under the ${categoryName} category below.`}
+            </p>
+          </div>
         </div>
       </div>
 
