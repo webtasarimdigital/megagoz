@@ -231,13 +231,13 @@ export default function Header() {
       </div>
 
       {/* Main Dark Nav Bar */}
-      <div className={`transition-all duration-300 ${isScrolled ? "shadow-md shadow-[rgba(0,0,0,0.1)] py-2 lg:py-4" : "py-4 lg:py-6 border-b-2 border-transparent"} bg-[#162f5d] lg:bg-white w-full sticky top-0`}>
+      <div className={`transition-all duration-300 ${isScrolled ? "shadow-md shadow-[rgba(0,0,0,0.1)] py-3 lg:py-4" : "py-3 lg:py-6 border-b-2 border-transparent"} bg-[#162f5d] lg:bg-white w-full sticky top-0 z-50`}>
         <div className="w-full max-w-[1920px] mx-auto flex items-center justify-between lg:justify-center px-4 sm:px-6 md:px-8 gap-2 sm:gap-4 lg:gap-10 xl:gap-20">
           
           {/* Logo */}
           <Link 
             href="/" 
-            className="flex flex-col justify-center items-center shrink-0 w-[125px] sm:w-[150px] md:w-[250px] lg:w-[300px] xl:w-[340px] h-[45px] sm:h-[55px] md:h-[70px] lg:h-[85px] relative group px-1"
+            className="flex flex-col justify-center items-center shrink-0 w-[145px] sm:w-[170px] md:w-[250px] lg:w-[300px] xl:w-[340px] h-[50px] sm:h-[60px] md:h-[70px] lg:h-[85px] relative group px-1"
             onClick={(e) => {
               if (pathname === '/') {
                 e.preventDefault();
