@@ -33,7 +33,7 @@
     "appointmentDesc": "Please leave your details, and our expert team will contact you shortly.",
     "fullName": "Full Name",
     "phone": "Phone Number",
-    "kvkkAccept": "I have read and accept the Privacy Policy.",
+    "kvkkAccept": "I have read and accept the <kvkk>Privacy Policy</kvkk>.",
     "submitApt": "SUBMIT"
   },
   "About": {

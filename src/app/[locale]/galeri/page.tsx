@@ -1,8 +1,10 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Image from "next/image";
+import { useLocale } from "next-intl";
 
 export default function GalleryPage() {
+  const locale = useLocale();
   const instagramLinks = [
     "DMYA8NmCRXK",
     "DNDjKmKNtoj",
@@ -31,25 +33,25 @@ export default function GalleryPage() {
           <div className="flex items-center gap-4 mb-4">
             <div className="h-[1px] w-8 md:w-12 bg-[#ecbb3f]" />
             <span className="text-[#ecbb3f] font-bold tracking-[0.2em] uppercase text-xs md:text-sm">
-              MEGAGÖZ BAKIŞI
+              {locale === 'en' ? 'MEGAGÖZ VIEW' : 'MEGAGÖZ BAKIŞI'}
             </span>
             <div className="h-[1px] w-8 md:w-12 bg-[#ecbb3f]" />
           </div>
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-4 md:mb-6">
-            MegaGöz Galeri
+            {locale === 'en' ? 'MegaGöz Gallery' : 'MegaGöz Galeri'}
           </h1>
           
           <p className="text-gray-300 text-sm md:text-base font-medium leading-relaxed max-w-2xl px-4">
-            Instagram hesabımızdan yansıyan güncel kareler, teknolojik donanımlarımız ve sizi özel hissettirecek konforlu klinik ortamımıza yakından bakın.
+            {locale === 'en' ? 'Take a closer look at the up-to-date shots reflected from our Instagram account, our technological equipment, and our comfortable clinic environment that will make you feel special.' : 'Instagram hesabımızdan yansıyan güncel kareler, teknolojik donanımlarımız ve sizi özel hissettirecek konforlu klinik ortamımıza yakından bakın.'}
           </p>
         </div>
       </div>
 
-      <div className="bg-[#F8FAFC] pb-24 pt-16">
+      <div className="bg-[#F8FAFC] pb-24 relative z-20">
 
         {/* Instagram Iframes Grid */}
-        <div className="container mx-auto px-4 md:px-6 max-w-[1300px]">
+        <div className="container mx-auto px-4 md:px-6 max-w-[1300px] relative z-20 -mt-16 md:-mt-24">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {instagramLinks.map((code, idx) => (
               <div key={idx} className="bg-white rounded-[30px] shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden border border-gray-100 flex justify-center w-full">

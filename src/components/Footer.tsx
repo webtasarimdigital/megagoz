@@ -24,45 +24,42 @@ export default function Footer() {
           <div className="flex flex-row divide-x divide-gray-100">
            
            {/* Item 1 */}
-           <a href="tel:4440320" className="flex-1 py-4 px-2 md:py-8 flex flex-col items-center justify-center gap-2 md:gap-3 hover:bg-gray-50 transition-colors group border-r border-gray-100">
-             <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-[#ecbb3f]/10 flex items-center justify-center shrink-0 border border-[#ecbb3f]/20 group-hover:bg-[#ecbb3f] group-hover:border-[#ecbb3f] transition-all duration-300">
-               <PhoneCall size={18} className="md:hidden text-[#ecbb3f] group-hover:text-white transition-colors" />
-               <PhoneCall size={26} className="hidden md:block text-[#ecbb3f] group-hover:text-white transition-colors" />
+           <a href="tel:05334814098" className="flex-1 py-6 px-4 md:py-10 flex items-center justify-center gap-3 md:gap-4 hover:bg-gray-50 transition-colors group">
+             <div className="flex items-center justify-center shrink-0">
+               <PhoneCall size={28} className="text-[#162f5d] group-hover:text-[#ecbb3f] transition-colors stroke-[2]" />
              </div>
-             <div className="text-center">
-                <h4 className="text-[#162f5d] font-bold text-[11px] md:text-[16px] group-hover:text-[#ecbb3f] transition-colors leading-tight uppercase tracking-tight md:tracking-normal">
-                  {locale === 'en' ? 'Contact Us' : 'İletişim'}
+             <div className="flex flex-col text-left">
+                <h4 className="text-[#162f5d] font-bold text-[14px] md:text-[16px] group-hover:text-[#ecbb3f] transition-colors leading-tight">
+                  {locale === 'en' ? 'Contact Us' : 'Bizimle İletişime Geçin'}
                 </h4>
-                <p className="text-gray-400 font-bold text-[10px] md:text-[14px] mt-0.5">444 0 320</p>
+                <p className="text-gray-500 font-medium text-[12px] md:text-[13px] mt-1">0533 481 40 98</p>
              </div>
            </a>
 
            {/* Item 2 */}
-           <a href="https://wa.me/905057710320" target="_blank" rel="noopener noreferrer" className="flex-1 py-4 px-2 md:py-8 flex flex-col items-center justify-center gap-2 md:gap-3 hover:bg-gray-50 transition-colors group border-r border-gray-100">
-             <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-[#ecbb3f]/10 flex items-center justify-center shrink-0 border border-[#ecbb3f]/20 group-hover:bg-[#ecbb3f] group-hover:border-[#ecbb3f] transition-all duration-300">
-               <MessageCircle size={18} className="md:hidden text-[#ecbb3f] group-hover:text-white transition-colors" />
-               <MessageCircle size={26} className="hidden md:block text-[#ecbb3f] group-hover:text-white transition-colors" />
+           <a href="https://wa.me/905334814098" target="_blank" rel="noopener noreferrer" className="flex-1 py-6 px-4 md:py-10 flex items-center justify-center gap-3 md:gap-4 hover:bg-gray-50 transition-colors group border-l border-gray-100">
+             <div className="flex items-center justify-center shrink-0">
+               <MessageCircle size={28} className="text-[#162f5d] group-hover:text-[#ecbb3f] transition-colors stroke-[2]" />
              </div>
-             <div className="text-center">
-                <h4 className="text-[#162f5d] font-bold text-[11px] md:text-[16px] group-hover:text-[#ecbb3f] transition-colors leading-tight uppercase tracking-tight md:tracking-normal">WhatsApp</h4>
-                <p className="text-gray-400 font-bold text-[10px] md:text-[14px] mt-0.5">
-                  {locale === 'en' ? 'Online' : 'Çevrimiçi'}
+             <div className="flex flex-col text-left">
+                <h4 className="text-[#162f5d] font-bold text-[14px] md:text-[16px] group-hover:text-[#ecbb3f] transition-colors leading-tight">WhatsApp</h4>
+                <p className="text-gray-500 font-medium text-[12px] md:text-[13px] mt-1">
+                  {locale === 'en' ? 'Click to message' : 'Mesajlaşmak için tıklayın'}
                 </p>
              </div>
            </a>
 
            {/* Item 3 */}
-           <Link href="/iletisim" className="flex-1 py-4 px-2 md:py-8 flex flex-col items-center justify-center gap-2 md:gap-3 hover:bg-gray-50 transition-colors group">
-             <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-[#ecbb3f]/10 flex items-center justify-center shrink-0 border border-[#ecbb3f]/20 group-hover:bg-[#ecbb3f] group-hover:border-[#ecbb3f] transition-all duration-300">
-               <MapPin size={18} className="md:hidden text-[#ecbb3f] group-hover:text-white transition-colors" />
-               <MapPin size={26} className="hidden md:block text-[#ecbb3f] group-hover:text-white transition-colors" />
+           <Link href="/iletisim" className="flex-1 py-6 px-4 md:py-10 flex items-center justify-center gap-3 md:gap-4 hover:bg-gray-50 transition-colors group border-l border-gray-100">
+             <div className="flex items-center justify-center shrink-0">
+               <MapPin size={28} className="text-[#162f5d] group-hover:text-[#ecbb3f] transition-colors stroke-[2]" />
              </div>
-             <div className="text-center">
-                <h4 className="text-[#162f5d] font-bold text-[11px] md:text-[16px] group-hover:text-[#ecbb3f] transition-colors leading-tight uppercase tracking-tight md:tracking-normal">
-                  {locale === 'en' ? 'Location' : 'Konum'}
+             <div className="flex flex-col text-left">
+                <h4 className="text-[#162f5d] font-bold text-[14px] md:text-[16px] group-hover:text-[#ecbb3f] transition-colors leading-tight">
+                  {locale === 'en' ? 'Reach Us' : 'Bize Ulaşın'}
                 </h4>
-                <p className="text-gray-400 font-bold text-[10px] md:text-[14px] mt-0.5">
-                   Ümraniye / İst.
+                <p className="text-gray-500 font-medium text-[12px] md:text-[13px] mt-1">
+                   {locale === 'en' ? 'Click for location' : 'Konumumuz için tıklayın'}
                 </p>
              </div>
            </Link>

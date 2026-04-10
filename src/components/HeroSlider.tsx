@@ -165,7 +165,7 @@ export default function HeroSlider() {
                          {isKvkkChecked && <svg className="w-3.5 h-3.5 text-[#162f5d]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>}
                       </div>
                       <p className="text-[13px] text-gray-500 leading-snug">
-                        {t("kvkkAccept")}
+                        {t.rich("kvkkAccept", { kvkk: (chunks) => <button type="button" onClick={() => setIsKvkkModalOpen(true)} className="underline text-[#ecbb3f] hover:text-[#d6a529] font-bold cursor-pointer transition-colors" title={locale === 'en' ? 'Click to read' : 'Okumak için tıklayın'}>{chunks}</button> })}
                       </p>
                     </div>
 
@@ -305,7 +305,7 @@ export default function HeroSlider() {
                       {isKvkkChecked && <svg className="w-3 h-3 text-[#162f5d]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>}
                     </div>
                     <label className="text-sm font-semibold text-[#162f5d]">
-                      {t("kvkkAccept")}
+                      {t.rich("kvkkAccept", { kvkk: (chunks) => <button type="button" onClick={() => setIsKvkkModalOpen(true)} className="underline text-[#ecbb3f] hover:text-[#d6a529] font-bold cursor-pointer transition-colors" title={locale === 'en' ? 'Click to read' : 'Okumak için tıklayın'}>{chunks}</button> })}
                     </label>
                  </div>
 
@@ -335,15 +335,27 @@ export default function HeroSlider() {
                className="bg-white rounded-3xl w-full max-w-2xl max-h-[85vh] flex flex-col shadow-2xl overflow-hidden"
              >
                 <div className="p-6 md:p-8 flex items-center justify-between border-b border-gray-100 bg-gray-50 shrink-0">
-                   <h3 className="text-xl font-black text-[#162f5d]">KVKK Aydınlatma Metni</h3>
+                   <h3 className="text-xl font-black text-[#162f5d]">
+                      {locale === 'en' ? 'Privacy Policy & Terms' : 'KVKK Aydınlatma Metni'}
+                   </h3>
                    <button onClick={() => setIsKvkkModalOpen(false)} className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 text-gray-500 hover:bg-[#ecbb3f] hover:text-white transition-colors">
                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                    </button>
                 </div>
                 <div className="p-6 md:p-8 overflow-y-auto text-gray-600 text-sm leading-relaxed space-y-4">
-                   <p><strong>MEGAGÖZ</strong> olarak kişisel verilerinizin gizliliğine ve güvenliğine büyük önem vermekteyiz. 6698 Sayılı Kişisel Verilerin Korunması Kanunu (KVKK) uyarınca kişisel verileriniz aşağıdaki şartlar dahilinde işlenmektedir.</p>
-                   <p>Talep etmiş olduğunuz "Hızlı Randevu" işleminin tamamlanabilmesi amacıyla ad, soyad, telefon numarası ve e-posta kayıtlarınız Megagöz sistemlerine şifrelenmiş olarak kaydedilecek ve tarafınıza geri dönüş sağlanması amacıyla çağrı merkezi ekibimiz tarafından işlenecektir.</p>
-                   <p>Verileriniz, hukuki yükümlülükler dışında hiçbir üçüncü taraf reklam veya pazarlama kurumuyla paylaşılmamaktadır. Detaylı KVKK Aydınlatma metnini kurumsal sekmelerimizden bulabilirsiniz.</p>
+                   {locale === 'en' ? (
+                     <>
+                       <p>As <strong>MEGAGÖZ</strong>, we attach great importance to the privacy and security of your personal data. In accordance with the Personal Data Protection Law (KVKK), your personal data is processed under the following conditions.</p>
+                       <p>Your name, surname, phone number, and e-mail records will be saved in Megagöz systems in an encrypted manner in order to complete your "Quick Appointment" request and will be processed by our call center team to get back to you.</p>
+                       <p>Your data is not shared with any third party advertising or marketing agencies other than legal obligations. You can find the detailed Privacy Policy in our corporate tabs.</p>
+                     </>
+                   ) : (
+                     <>
+                       <p><strong>MEGAGÖZ</strong> olarak kişisel verilerinizin gizliliğine ve güvenliğine büyük önem vermekteyiz. 6698 Sayılı Kişisel Verilerin Korunması Kanunu (KVKK) uyarınca kişisel verileriniz aşağıdaki şartlar dahilinde işlenmektedir.</p>
+                       <p>Talep etmiş olduğunuz "Hızlı Randevu" işleminin tamamlanabilmesi amacıyla ad, soyad, telefon numarası ve e-posta kayıtlarınız Megagöz sistemlerine şifrelenmiş olarak kaydedilecek ve tarafınıza geri dönüş sağlanması amacıyla çağrı merkezi ekibimiz tarafından işlenecektir.</p>
+                       <p>Verileriniz, hukuki yükümlülükler dışında hiçbir üçüncü taraf reklam veya pazarlama kurumuyla paylaşılmamaktadır. Detaylı KVKK Aydınlatma metnini kurumsal sekmelerimizden bulabilirsiniz.</p>
+                     </>
+                   )}
                 </div>
                 <div className="p-6 md:p-8 border-t border-gray-100 flex justify-end gap-3 bg-gray-50 shrink-0 mt-auto">
                    <button 
@@ -351,7 +363,7 @@ export default function HeroSlider() {
                      onClick={() => setIsKvkkModalOpen(false)}
                      className="px-6 py-3 rounded-xl font-bold text-gray-500 hover:bg-gray-200 transition-colors text-sm"
                    >
-                     İptal Et
+                     {locale === 'en' ? 'Cancel' : 'İptal Et'}
                    </button>
                    <button 
                      type="button"
@@ -361,7 +373,7 @@ export default function HeroSlider() {
                      }}
                      className="px-8 py-3 rounded-xl font-bold text-[#162f5d] bg-[#ecbb3f] hover:bg-[#d99816] transition-colors shadow-lg text-sm"
                    >
-                     Okudum, Kabul Ediyorum
+                     {locale === 'en' ? 'I Have Read, I Accept' : 'Okudum, Kabul Ediyorum'}
                    </button>
                 </div>
              </motion.div>

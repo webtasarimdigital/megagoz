@@ -350,17 +350,17 @@ export default function Header() {
 
           {/* Search Box Removed per request */}
 
-          {/* Mobile Language Selector & Menu Toggle (Grouped on Right) */}
+           {/* Mobile Language Selector & Menu Toggle (Grouped on Right) */}
           <div className="lg:hidden flex items-center gap-3 relative">
              <button 
                onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-               className="flex items-center gap-1.5 bg-transparent p-1 active:scale-95 transition-transform"
+               className="flex items-center gap-2 bg-transparent p-1 active:scale-95 transition-transform"
              >
-               <div className="w-[20px] h-[14px] rounded-[2px] overflow-hidden shrink-0 shadow-[0_2px_5px_rgba(0,0,0,0.3)]">
-                  <img src={locale === "tr" ? "/tr.svg" : "/en.svg"} alt="Current Lang" className="w-full h-full object-cover transform scale-[1.2]" />
+               <div className="w-[22px] h-[16px] rounded-[2px] overflow-hidden shrink-0 shadow-[0_2px_5px_rgba(0,0,0,0.3)] flex align-center justify-center">
+                  <img src={locale === "tr" ? "/tr.svg" : "/en.svg"} alt="Current Lang" className="w-full h-full object-cover scale-[1.2]" />
                </div>
-               <span className="text-[11px] font-black text-white tracking-wider uppercase mt-0.5">{locale === "tr" ? "TÜRKÇE" : "ENGLISH"}</span>
-               <ChevronDown size={12} className="text-[#ecbb3f] mt-0.5" />
+               <span className="text-[12px] font-bold text-white tracking-wider uppercase leading-none">{locale === "tr" ? "TÜRKÇE" : "ENGLISH"}</span>
+               <ChevronDown size={14} className="text-[#ecbb3f]" />
              </button>
 
               <AnimatePresence>

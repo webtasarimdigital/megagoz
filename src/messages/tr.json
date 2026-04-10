@@ -33,7 +33,7 @@
     "appointmentDesc": "Lütfen bilgilerinizi bırakın, uzman ekibimiz sizi en kısa sürede arasın.",
     "fullName": "Adınız Soyadınız",
     "phone": "Telefon",
-    "kvkkAccept": "KVKK metnini okudum ve onaylıyorum.",
+    "kvkkAccept": "<kvkk>KVKK metnini</kvkk> okudum ve onaylıyorum.",
     "submitApt": "GÖNDER"
   },
   "About": {
