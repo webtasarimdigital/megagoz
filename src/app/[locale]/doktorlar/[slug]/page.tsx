@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { ArrowLeft, User, Linkedin, Instagram, GraduationCap, Building, FileText, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, User, Instagram, GraduationCap, Building, FileText, CheckCircle2 } from "lucide-react";
 import { notFound } from "next/navigation";
 import { use } from "react";
 
@@ -187,7 +187,7 @@ export default function DoctorDetailPage({ params }: { params: Promise<{ locale:
                      </h4>
                      <div className="flex items-center gap-4">
                         <a href={doctor.social.linkedin} target="_blank" rel="noopener noreferrer" className="w-14 h-14 rounded-full bg-[#F1F5F9] text-[#162f5d] flex items-center justify-center hover:bg-[#ecbb3f] hover:text-white transition-colors">
-                           <Linkedin size={24} />
+                           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                         </a>
                         <a href={doctor.social.instagram} target="_blank" rel="noopener noreferrer" className="w-14 h-14 rounded-full bg-[#F1F5F9] text-[#162f5d] flex items-center justify-center hover:bg-[#ecbb3f] hover:text-white transition-colors">
                            <Instagram size={24} />

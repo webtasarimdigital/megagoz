@@ -83,7 +83,7 @@ export default async function LocaleLayout({
           }}
         />
       </head>
-      <body>
+      <body className="overflow-x-hidden w-full relative">
         <noscript>
           <iframe 
             src="https://www.googletagmanager.com/ns.html?id=GTM-WCNQLB6Z"

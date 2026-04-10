@@ -17,7 +17,7 @@ export default function FloatingActions() {
     <>
       {/* 24/7 RIGHT APPOINTMENT WIDGET (Global) */}
       <div 
-        className={`fixed right-0 top-[40%] md:top-1/2 -translate-y-1/2 z-[110] transition-transform duration-500 ease-in-out flex items-center ${isWidgetClosed ? "translate-x-full" : "translate-x-0"}`}
+        className={`hidden md:flex fixed right-0 top-[40%] md:top-1/2 -translate-y-1/2 z-[110] transition-transform duration-500 ease-in-out items-center ${isWidgetClosed ? "translate-x-full" : "translate-x-0"}`}
       >
         {/* Closed Tab (Expander) */}
         <button 

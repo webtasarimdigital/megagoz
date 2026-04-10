@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import { User, Award, ArrowRight, Linkedin, Instagram } from "lucide-react";
+import { User, Award, ArrowRight, Instagram } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -56,7 +56,7 @@ export default function DoctorsPage() {
                  {/* Social Icons - overlapping on bottom left */}
                  <div className="absolute -bottom-[20px] left-8 flex gap-3 z-10">
                     <div className="w-10 h-10 rounded-full bg-[#ecbb3f] text-[#162f5d] flex items-center justify-center shadow-md hover:bg-[#162f5d] hover:text-[#ecbb3f] transition-colors">
-                       <Linkedin size={18} />
+                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                     </div>
                     <div className="w-10 h-10 rounded-full bg-[#ecbb3f] text-[#162f5d] flex items-center justify-center shadow-md hover:bg-[#162f5d] hover:text-[#ecbb3f] transition-colors">
                        <Instagram size={18} />

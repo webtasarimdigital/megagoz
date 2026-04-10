@@ -232,10 +232,10 @@ export default function Header() {
 
       {/* Main Dark Nav Bar */}
       <div className={`transition-all duration-300 ${isScrolled ? "shadow-md shadow-[rgba(0,0,0,0.1)] py-2 lg:py-4" : "py-4 lg:py-6 border-b-2 border-transparent"} bg-[#162f5d] lg:bg-white w-full sticky top-0`}>
-        <div className="w-full flex items-center justify-between lg:justify-center px-4 md:px-8 gap-4 lg:gap-10 xl:gap-20">
+        <div className="w-full max-w-[1920px] mx-auto flex items-center justify-between lg:justify-center px-4 sm:px-6 md:px-8 gap-2 sm:gap-4 lg:gap-10 xl:gap-20">
           
           {/* Logo */}
-          <Link href="/" className="flex flex-col justify-center items-center shrink-0 w-[180px] md:w-[250px] lg:w-[300px] xl:w-[340px] h-[55px] md:h-[70px] lg:h-[85px] relative group px-2">
+          <Link href="/" className="flex flex-col justify-center items-center shrink-0 w-[140px] sm:w-[170px] md:w-[250px] lg:w-[300px] xl:w-[340px] h-[50px] sm:h-[55px] md:h-[70px] lg:h-[85px] relative group px-1">
              <div className="absolute inset-0 flex items-center justify-center">
                 {/* Mobile Logo */}
                 <img 
@@ -405,16 +405,16 @@ export default function Header() {
 
           {/* Search Box Removed per request */}
 
-           {/* Mobile Language Selector & Menu Toggle (Grouped on Right) */}
-          <div className="lg:hidden flex items-center gap-3 relative">
+          {/* Mobile Language Selector & Menu Toggle (Grouped on Right) */}
+          <div className="lg:hidden flex items-center gap-1.5 sm:gap-3 relative shrink-0">
              <button 
                onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-               className="flex items-center gap-2 bg-transparent p-1 active:scale-95 transition-transform"
+               className="flex items-center gap-1.5 sm:gap-2 bg-transparent p-1 active:scale-95 transition-transform"
              >
-               <div className="w-[22px] h-[16px] rounded-[2px] overflow-hidden shrink-0 shadow-[0_2px_5px_rgba(0,0,0,0.3)] flex align-center justify-center">
+               <div className="w-[20px] h-[14px] sm:w-[22px] sm:h-[16px] rounded-[2px] overflow-hidden shrink-0 shadow-[0_2px_5px_rgba(0,0,0,0.3)] flex align-center justify-center">
                   <img src={locale === "tr" ? "/tr.svg" : "/en.svg"} alt="Current Lang" className="w-full h-full object-cover scale-[1.2]" />
                </div>
-               <span className="text-[12px] font-bold text-white tracking-wider uppercase leading-none">{locale === "tr" ? "TÜRKÇE" : "ENGLISH"}</span>
+               <span className="text-[10px] sm:text-[12px] font-bold text-white tracking-wider uppercase leading-none">{locale === "tr" ? "TR" : "EN"}</span>
                <ChevronDown size={14} className="text-[#ecbb3f]" />
              </button>
 
@@ -450,10 +450,10 @@ export default function Header() {
               </AnimatePresence>
 
              <button 
-               className="text-white p-1 active:scale-90 transition-transform"
+               className="text-white p-1 active:scale-90 transition-transform shrink-0"
                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
              >
-               {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+               {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
              </button>
           </div>
         </div>
