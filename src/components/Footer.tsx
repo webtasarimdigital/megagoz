@@ -1,12 +1,16 @@
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { MapPin, Phone, Mail, Clock, PhoneCall, MessageCircle } from "lucide-react";
 import Image from "next/image";
 
 export default function Footer() {
   const t = useTranslations("Navigation");
+  const locale = useLocale();
 
-  const services = [
+  const services = locale === 'en' ? [
+    "Cataract", "Laser Treatment", "Contact Lenses", "Eye Neurology", "Corneal Diseases",
+    "Glaucoma Treatment", "Strabismus Treatment", "Uveitis Treatment", "Eyelid Aesthetics", "Pediatric Eye Health"
+  ] : [
     "Katarakt", "Lazer Tedavisi", "Kontak Lens", "Göz Nörolojisi", "Kornea Hastalıkları",
     "Glokom Tedavisi", "Şaşılık Tedavisi", "Üveit Tedavisi", "Göz Kapağı Estetiği", "Çocuk Göz Sağlığı"
   ];
@@ -17,38 +21,49 @@ export default function Footer() {
       {/* Full-Width Pre-Footer Contact Bar */}
       <div className="w-full bg-white border-t border-b border-gray-100">
         <div className="container mx-auto px-6 max-w-[1300px]">
-          <div className="flex flex-col lg:flex-row divide-y lg:divide-y-0 lg:divide-x divide-gray-100">
+          <div className="flex flex-row divide-x divide-gray-100">
            
            {/* Item 1 */}
-           <a href="tel:4440320" className="flex-1 p-6 lg:p-8 flex items-center justify-center lg:justify-start gap-5 hover:bg-gray-50 transition-colors group">
-             <div className="w-14 h-14 rounded-full bg-[#ecbb3f]/10 flex items-center justify-center shrink-0 border border-[#ecbb3f]/20 group-hover:bg-[#ecbb3f] group-hover:border-[#ecbb3f] transition-all duration-300">
-               <PhoneCall size={26} className="text-[#ecbb3f] group-hover:text-white transition-colors" />
+           <a href="tel:4440320" className="flex-1 py-4 px-2 md:py-8 flex flex-col items-center justify-center gap-2 md:gap-3 hover:bg-gray-50 transition-colors group border-r border-gray-100">
+             <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-[#ecbb3f]/10 flex items-center justify-center shrink-0 border border-[#ecbb3f]/20 group-hover:bg-[#ecbb3f] group-hover:border-[#ecbb3f] transition-all duration-300">
+               <PhoneCall size={18} className="md:hidden text-[#ecbb3f] group-hover:text-white transition-colors" />
+               <PhoneCall size={26} className="hidden md:block text-[#ecbb3f] group-hover:text-white transition-colors" />
              </div>
-             <div>
-                <h4 className="text-[#162f5d] font-bold text-[17px] mb-1 group-hover:text-[#ecbb3f] transition-colors">Bizimle İletişime Geçin</h4>
-                <p className="text-gray-500 font-medium text-[14px]">444 0 320</p>
+             <div className="text-center">
+                <h4 className="text-[#162f5d] font-bold text-[11px] md:text-[16px] group-hover:text-[#ecbb3f] transition-colors leading-tight uppercase tracking-tight md:tracking-normal">
+                  {locale === 'en' ? 'Contact Us' : 'İletişim'}
+                </h4>
+                <p className="text-gray-400 font-bold text-[10px] md:text-[14px] mt-0.5">444 0 320</p>
              </div>
            </a>
 
            {/* Item 2 */}
-           <a href="https://wa.me/905057710320" target="_blank" rel="noopener noreferrer" className="flex-1 p-6 lg:p-8 flex items-center justify-center lg:justify-start gap-5 hover:bg-gray-50 transition-colors group">
-             <div className="w-14 h-14 rounded-full bg-[#ecbb3f]/10 flex items-center justify-center shrink-0 border border-[#ecbb3f]/20 group-hover:bg-[#ecbb3f] group-hover:border-[#ecbb3f] transition-all duration-300">
-               <MessageCircle size={26} className="text-[#ecbb3f] group-hover:text-white transition-colors" />
+           <a href="https://wa.me/905057710320" target="_blank" rel="noopener noreferrer" className="flex-1 py-4 px-2 md:py-8 flex flex-col items-center justify-center gap-2 md:gap-3 hover:bg-gray-50 transition-colors group border-r border-gray-100">
+             <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-[#ecbb3f]/10 flex items-center justify-center shrink-0 border border-[#ecbb3f]/20 group-hover:bg-[#ecbb3f] group-hover:border-[#ecbb3f] transition-all duration-300">
+               <MessageCircle size={18} className="md:hidden text-[#ecbb3f] group-hover:text-white transition-colors" />
+               <MessageCircle size={26} className="hidden md:block text-[#ecbb3f] group-hover:text-white transition-colors" />
              </div>
-             <div>
-                <h4 className="text-[#162f5d] font-bold text-[17px] mb-1 group-hover:text-[#ecbb3f] transition-colors">WhatsApp</h4>
-                <p className="text-gray-500 font-medium text-[14px]">Mesajlaşmak için tıklayın</p>
+             <div className="text-center">
+                <h4 className="text-[#162f5d] font-bold text-[11px] md:text-[16px] group-hover:text-[#ecbb3f] transition-colors leading-tight uppercase tracking-tight md:tracking-normal">WhatsApp</h4>
+                <p className="text-gray-400 font-bold text-[10px] md:text-[14px] mt-0.5">
+                  {locale === 'en' ? 'Online' : 'Çevrimiçi'}
+                </p>
              </div>
            </a>
 
            {/* Item 3 */}
-           <Link href="/iletisim" className="flex-1 p-6 lg:p-8 flex items-center justify-center lg:justify-start gap-5 hover:bg-gray-50 transition-colors group">
-             <div className="w-14 h-14 rounded-full bg-[#ecbb3f]/10 flex items-center justify-center shrink-0 border border-[#ecbb3f]/20 group-hover:bg-[#ecbb3f] group-hover:border-[#ecbb3f] transition-all duration-300">
-               <MapPin size={26} className="text-[#ecbb3f] group-hover:text-white transition-colors" />
+           <Link href="/iletisim" className="flex-1 py-4 px-2 md:py-8 flex flex-col items-center justify-center gap-2 md:gap-3 hover:bg-gray-50 transition-colors group">
+             <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-[#ecbb3f]/10 flex items-center justify-center shrink-0 border border-[#ecbb3f]/20 group-hover:bg-[#ecbb3f] group-hover:border-[#ecbb3f] transition-all duration-300">
+               <MapPin size={18} className="md:hidden text-[#ecbb3f] group-hover:text-white transition-colors" />
+               <MapPin size={26} className="hidden md:block text-[#ecbb3f] group-hover:text-white transition-colors" />
              </div>
-             <div>
-                <h4 className="text-[#162f5d] font-bold text-[17px] mb-1 group-hover:text-[#ecbb3f] transition-colors">Bize Ulaşın</h4>
-                <p className="text-gray-500 font-medium text-[14px]">Konumumuz için tıklayın</p>
+             <div className="text-center">
+                <h4 className="text-[#162f5d] font-bold text-[11px] md:text-[16px] group-hover:text-[#ecbb3f] transition-colors leading-tight uppercase tracking-tight md:tracking-normal">
+                  {locale === 'en' ? 'Location' : 'Konum'}
+                </h4>
+                <p className="text-gray-400 font-bold text-[10px] md:text-[14px] mt-0.5">
+                   Ümraniye / İst.
+                </p>
              </div>
            </Link>
 
@@ -70,7 +85,9 @@ export default function Footer() {
                />
             </Link>
             <p className="text-[13px] leading-relaxed text-gray-300 font-medium">
-              MEGAGÖZ, göz hastalıklarının teşhis ve tedavisinde uluslararası standartlarda sağlık hizmeti sunmak amacıyla kurulmuş, teknolojiyi ve tıbbı bir araya getiren modern bir göz sağlığı merkezidir.
+              {locale === 'en' 
+                ? 'MEGAGÖZ is a modern eye health center established to provide healthcare services at international standards in the diagnosis and treatment of eye diseases, bringing together technology and medicine.' 
+                : 'MEGAGÖZ, göz hastalıklarının teşhis ve tedavisinde uluslararası standartlarda sağlık hizmeti sunmak amacıyla kurulmuş, teknolojiyi ve tıbbı bir araya getiren modern bir göz sağlığı merkezidir.'}
             </p>
             
             <div className="space-y-3 pt-2">
@@ -98,16 +115,24 @@ export default function Footer() {
 
           {/* Column 2: Kurumsal */}
           <div className="col-span-1 md:col-span-1 lg:col-span-2 order-2 lg:order-none">
-            <h4 className="text-white font-black tracking-widest uppercase text-[15px] mb-3 mt-4 lg:mt-0">KURUMSAL</h4>
+            <h4 className="text-white font-black tracking-widest uppercase text-[15px] mb-3 mt-4 lg:mt-0">
+              {locale === 'en' ? 'CORPORATE' : 'KURUMSAL'}
+            </h4>
             <div className="w-[30px] h-[2px] bg-[#ecbb3f] mb-6" />
             <ul className="space-y-3.5 list-none">
-              {[
+              {(locale === 'en' ? [
+                { name: "Home", path: "/", isLink: true },
+                { name: "About Us", path: "/hakkimizda", isLink: true },
+                { name: "Our Doctors", path: "#", isLink: false },
+                { name: "Feedback", path: "#", isLink: false },
+                { name: "Blog", path: "#", isLink: false }
+              ] : [
                 { name: "Ana Sayfa", path: "/", isLink: true },
                 { name: "Hakkımızda", path: "/hakkimizda", isLink: true },
                 { name: "Hekimlerimiz", path: "#", isLink: false },
                 { name: "Görüş ve Önerileriniz", path: "#", isLink: false },
                 { name: "Blog", path: "#", isLink: false }
-              ].map((link, idx) => (
+              ]).map((link, idx) => (
                 <li key={idx}>
                   {link.isLink ? (
                     <Link href={link.path as any} className="text-[14px] text-gray-300 hover:text-[#ecbb3f] transition-colors font-medium">
@@ -123,9 +148,11 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Hizmetlerimiz - Moved to bottom on mobile, side-by-side on tablet/desktop */}
+          {/* Column 3: Hizmetlerimiz */}
           <div className="col-span-2 md:col-span-1 lg:col-span-4 order-4 md:order-3 lg:order-none">
-            <h4 className="text-white font-black tracking-widest uppercase text-[15px] mb-3 mt-4 lg:mt-0">HİZMETLERİMİZ</h4>
+            <h4 className="text-white font-black tracking-widest uppercase text-[15px] mb-3 mt-4 lg:mt-0">
+              {locale === 'en' ? 'OUR SERVICES' : 'HİZMETLERİMİZ'}
+            </h4>
             <div className="w-[30px] h-[2px] bg-[#ecbb3f] mb-6" />
             
             <div className="grid grid-cols-2 gap-x-4 gap-y-3.5 sm:gap-x-6">
@@ -139,16 +166,18 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 4: İletişim - Side-by-side with Kurumsal on mobile */}
+          {/* Column 4: İletişim */}
           <div className="col-span-1 md:col-span-1 lg:col-span-3 order-3 md:order-4 lg:order-none">
-            <h4 className="text-white font-black tracking-widest uppercase text-[15px] mb-3 mt-4 lg:mt-0">İLETİŞİM</h4>
+            <h4 className="text-white font-black tracking-widest uppercase text-[15px] mb-3 mt-4 lg:mt-0">
+              {locale === 'en' ? 'CONTACT' : 'İLETİŞİM'}
+            </h4>
             <div className="w-[30px] h-[2px] bg-[#ecbb3f] mb-6" />
             
             <div className="space-y-5">
               <div className="flex items-start gap-3">
                 <MapPin size={20} className="text-[#ecbb3f] shrink-0 mt-0.5" />
                 <p className="text-[14px] text-gray-300 font-medium leading-relaxed">
-                  İstiklal, Gamsız Sk. No:3, <br/>34762 Ümraniye/İstanbul, Türkiye
+                  İstiklal, Gamsız Sk. No:3, <br/>34762 Ümraniye/İstanbul, {locale === 'en' ? 'Turkey' : 'Türkiye'}
                 </p>
               </div>
               
@@ -169,8 +198,12 @@ export default function Footer() {
               <div className="flex items-start gap-3">
                 <Clock size={20} className="text-[#ecbb3f] shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-[14px] font-bold text-gray-200 mb-0.5">Çalışma Saatleri</p>
-                  <p className="text-[13px] text-gray-400 font-medium">Pazartesi - Cumartesi <br/> 09:00 - 19:00</p>
+                  <p className="text-[14px] font-bold text-gray-200 mb-0.5">
+                    {locale === 'en' ? 'Working Hours' : 'Çalışma Saatleri'}
+                  </p>
+                  <p className="text-[13px] text-gray-400 font-medium">
+                    {locale === 'en' ? 'Monday - Saturday' : 'Pazartesi - Cumartesi'} <br/> 09:00 - 19:00
+                  </p>
                 </div>
               </div>
             </div>
@@ -181,10 +214,10 @@ export default function Footer() {
         {/* Footer Bottom Bar */}
         <div className="border-t border-white/10 pt-6 mt-8 pb-28 md:pb-6 flex flex-col md:flex-row justify-between items-center gap-4 text-center">
           <p className="text-[12px] text-gray-500 font-medium">
-            Web Site Son Güncelleme Tarihi: 07.04.2026 23:05
+            {locale === 'en' ? 'Last Updated: 07.04.2026 23:05' : 'Web Site Son Güncelleme Tarihi: 07.04.2026 23:05'}
           </p>
           <p className="text-[13px] text-gray-400 font-medium tracking-wide">
-            © 2026 <strong className="text-gray-300 font-bold">MegaGöz Tıp Merkezi.</strong> Tüm Hakları Saklıdır.
+            © 2026 <strong className="text-gray-300 font-bold">MegaGöz Tıp Merkezi.</strong> {locale === 'en' ? 'All Rights Reserved.' : 'Tüm Hakları Saklıdır.'}
           </p>
         </div>
         

@@ -14,13 +14,16 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function TreatmentDetailPage({ params }: { params: Promise<{ locale: string; category: string; slug: string }> }) {
   const resolvedParams = use(params);
   const locale = useLocale() as "tr" | "en";
-  const categoryData = TREATMENTS_DATA.find((c) => c.id === resolvedParams.category);
+  const categoryData = TREATMENTS_DATA.find((c) => c.slug[locale] === resolvedParams.category || c.id === resolvedParams.category);
 
   if (!categoryData) {
     notFound();
   }
 
-  const treatment = categoryData.items.find((item) => item.slug === resolvedParams.slug);
+  const treatment = categoryData.items.find((item) => 
+    item.slug[locale] === resolvedParams.slug || 
+    (typeof item.slug === 'string' && item.slug === resolvedParams.slug)
+  );
 
   if (!treatment) {
     notFound();
@@ -54,11 +57,11 @@ export default function TreatmentDetailPage({ params }: { params: Promise<{ loca
         <div className="absolute inset-0 bg-gradient-to-t from-[#162f5d] via-[#162f5d]/60 to-transparent z-0" />
         
         <div className="container mx-auto px-4 sm:px-6 max-w-[1200px] relative z-10">
-          <Link href={{ pathname: '/tedaviler/[category]', params: { category: categoryData.id } }} className="inline-flex items-center gap-2 text-[#ecbb3f] hover:text-white font-bold text-xs tracking-wider uppercase mb-8 transition-colors">
+          <Link href={{ pathname: '/tedaviler/[category]', params: { category: categoryData.slug[locale] } }} className="inline-flex items-center gap-2 text-[#ecbb3f] hover:text-white font-bold text-xs tracking-wider uppercase mb-8 transition-colors">
             <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/20">
                <ArrowLeft size={16} />
             </div>
-            {categoryName} {locale === "tr" ? "Kategorisine Dön" : "Category"}
+            {locale === "tr" ? `${categoryName} Kategorisine Dön` : `Back to ${categoryName}`}
           </Link>
           
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-white tracking-tight mb-6 leading-tight">
@@ -82,7 +85,7 @@ export default function TreatmentDetailPage({ params }: { params: Promise<{ loca
                
                {/* Intro Block */}
                <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100">
-                  <h2 className="text-3xl font-black text-[#162f5d] mb-6">Genel Bakış</h2>
+                  <h2 className="text-3xl font-black text-[#162f5d] mb-6">{locale === 'en' ? 'Overview' : 'Genel Bakış'}</h2>
                   {treatment.content?.[locale] ? (
                     <div 
                        className="prose prose-lg max-w-none text-gray-600 font-medium leading-relaxed"
@@ -91,7 +94,7 @@ export default function TreatmentDetailPage({ params }: { params: Promise<{ loca
                   ) : (
                     <>
                       <p className="text-gray-600 leading-relaxed text-lg mb-6 font-medium">
-                        Mükemmel ve net bir görüşe ulaşmak, hem iş hayatınızda hem de sosyal yaşantınızda büyük bir özgürlüktür. Alanında uzman hekim kadromuz, modern tıp dünyasının sunduğu en güncel metodları bireysel ihtiyaçlarınıza göre uyarlar. 
+                        {locale === 'en' ? 'Achieving perfect and clear vision is a great freedom in both your professional and social life. Our expert medical team adapts the most up-to-date methods offered by the modern medical world to your individual needs.' : 'Mükemmel ve net bir görüşe ulaşmak, hem iş hayatınızda hem de sosyal yaşantınızda büyük bir özgürlüktür. Alanında uzman hekim kadromuz, modern tıp dünyasının sunduğu en güncel metodları bireysel ihtiyaçlarınıza göre uyarlar.'}
                       </p>
                       <p className="text-gray-600 leading-relaxed text-lg font-medium">
                         {locale === "tr"
@@ -118,28 +121,40 @@ export default function TreatmentDetailPage({ params }: { params: Promise<{ loca
 
                {/* Process & Advantages */}
                <div className="bg-gradient-to-br from-[#162f5d] to-[#0a111a] rounded-3xl p-8 md:p-12 shadow-xl text-white">
-                  <h3 className="text-2xl font-black mb-8 text-[#ecbb3f]">Tedavi Süreci Nasıl İşler?</h3>
+                  <h3 className="text-2xl font-black mb-8 text-[#ecbb3f]">{locale === 'en' ? 'How Does the Treatment Work?' : 'Tedavi Süreci Nasıl İşler?'}</h3>
                   
                   <div className="space-y-6">
                      <div className="flex gap-4">
                         <div className="w-12 h-12 rounded-full border-2 border-[#ecbb3f] flex items-center justify-center shrink-0 font-black text-[#ecbb3f]">1</div>
                         <div>
-                           <h4 className="font-bold text-lg mb-2">Detaylı Göz Haritası</h4>
-                           <p className="text-gray-400">Üç boyutlu topografi cihazlarıyla kornea ve retina yapınız saniyelik milimetrik hassasiyetle ölçülür.</p>
+                           <h4 className="font-bold text-lg mb-2">{locale === 'en' ? 'Detailed Eye Map' : 'Detaylı Göz Haritası'}</h4>
+                           <p className="text-gray-400">
+                              {locale === 'en' 
+                                ? 'With 3D topography devices, your corneal and retinal structure is measured with millimetric precision in seconds.' 
+                                : 'Üç boyutlu topografi cihazlarıyla kornea ve retina yapınız saniyelik milimetrik hassasiyetle ölçülür.'}
+                           </p>
                         </div>
                      </div>
                      <div className="flex gap-4">
                         <div className="w-12 h-12 rounded-full border-2 border-[#ecbb3f] flex items-center justify-center shrink-0 font-black text-[#ecbb3f]">2</div>
                         <div>
-                           <h4 className="font-bold text-lg mb-2">Ağrısız Uygulama</h4>
-                           <p className="text-gray-400">Damla anestezi yardımıyla göze dokunulmadan ileri teknoloji bilgisayar kontrollü lazer destekli işlemler yapılır.</p>
+                           <h4 className="font-bold text-lg mb-2">{locale === 'en' ? 'Painless Application' : 'Ağrısız Uygulama'}</h4>
+                           <p className="text-gray-400">
+                              {locale === 'en'
+                                ? 'With the help of drop anesthesia, high-tech computer-controlled laser-assisted procedures are performed without touching the eye.'
+                                : 'Damla anestezi yardımıyla göze dokunulmadan ileri teknoloji bilgisayar kontrollü lazer destekli işlemler yapılır.'}
+                           </p>
                         </div>
                      </div>
                      <div className="flex gap-4">
                         <div className="w-12 h-12 rounded-full border-2 border-[#ecbb3f] flex items-center justify-center shrink-0 font-black text-[#ecbb3f]">3</div>
                         <div>
-                           <h4 className="font-bold text-lg mb-2">Hızlı Toparlanma</h4>
-                           <p className="text-gray-400">Aynı gün taburcu olma imkanı sunulur. Saatler içerisinde normal konforunuza dönmeniz hedeflenir.</p>
+                           <h4 className="font-bold text-lg mb-2">{locale === 'en' ? 'Rapid Recovery' : 'Hızlı Toparlanma'}</h4>
+                           <p className="text-gray-400">
+                              {locale === 'en'
+                                ? 'The possibility of discharge on the same day is offered. It is aimed that you return to your normal comfort within hours.'
+                                : 'Aynı gün taburcu olma imkanı sunulur. Saatler içerisinde normal konforunuza dönmeniz hedeflenir.'}
+                           </p>
                         </div>
                      </div>
                   </div>
@@ -157,7 +172,7 @@ export default function TreatmentDetailPage({ params }: { params: Promise<{ loca
 
                {/* FAQ Accordion Local */}
                <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100">
-                  <h3 className="text-2xl font-black text-[#162f5d] mb-8">Sık Sorulan Sorular</h3>
+                  <h3 className="text-2xl font-black text-[#162f5d] mb-8">{locale === 'en' ? 'Frequently Asked Questions' : 'Sık Sorulan Sorular'}</h3>
                   
                   <div className="space-y-4">
                     {localFaqs.map((faq, index) => (
@@ -196,29 +211,36 @@ export default function TreatmentDetailPage({ params }: { params: Promise<{ loca
                   
                   {/* Contact Widget */}
                   <div className="bg-[#ecbb3f] rounded-3xl p-8 shadow-xl text-[#162f5d]">
-                     <h3 className="text-2xl font-black mb-4">Ücretsiz Ön Görüşme</h3>
-                     <p className="font-bold text-[#162f5d]/80 mb-6">Tedavi hakkında detaylı bilgi ve uygunluk analizi için hemen randevu oluşturun.</p>
+                     <h3 className="text-2xl font-black mb-4">{locale === 'en' ? 'Free Consultation' : 'Ücretsiz Ön Görüşme'}</h3>
+                     <p className="font-bold text-[#162f5d]/80 mb-6">
+                        {locale === 'en' 
+                          ? 'Create an appointment now for detailed information and eligibility analysis about the treatment.' 
+                          : 'Tedavi hakkında detaylı bilgi ve uygunluk analizi için hemen randevu oluşturun.'}
+                     </p>
                      
                      <div className="space-y-4 mb-6">
                         <div className="bg-white/30 rounded-xl p-4 flex items-center gap-4">
                            <Activity size={24} />
                            <div>
-                              <div className="text-xs font-black uppercase tracking-widest opacity-70">Bilgi Hattı</div>
+                              <div className="text-xs font-black uppercase tracking-widest opacity-70">{locale === 'en' ? 'Information Line' : 'Bilgi Hattı'}</div>
                               <a href="tel:4440320" className="text-xl font-black">444 0 320</a>
                            </div>
                         </div>
                      </div>
                      
                      <Link href="/iletisim" className="block text-center w-full bg-[#162f5d] text-white font-bold py-4 rounded-xl hover:bg-[#15232d] transition-colors">
-                        Biz Sizi Arayalım
+                        {locale === 'en' ? 'We Will Call You' : 'Biz Sizi Arayalım'}
                      </Link>
                   </div>
 
                   {/* Highlights Widget */}
                   <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-xl">
-                     <h4 className="font-black text-[#162f5d] mb-6 border-b pb-4">Neden Megagöz?</h4>
+                     <h4 className="font-black text-[#162f5d] mb-6 border-b pb-4">{locale === 'en' ? 'Why Megagöz?' : 'Neden Megagöz?'}</h4>
                      <ul className="space-y-4">
-                        {["Kişiye Özel Tedavi", "FDA Onaylı Teknoloji", "Sıfır Ağrı ve Acı", "Garantili Sonuçlar"].map((item, idx) => (
+                        {(locale === 'en' 
+                           ? ["Personalized Treatment", "FDA Approved Technology", "Zero Pain", "Guaranteed Results"]
+                           : ["Kişiye Özel Tedavi", "FDA Onaylı Teknoloji", "Sıfır Ağrı ve Acı", "Garantili Sonuçlar"]
+                        ).map((item, idx) => (
                            <li key={idx} className="flex items-center gap-3">
                               <CheckCircle2 size={18} className="text-[#ecbb3f]" />
                               <span className="font-bold text-gray-700">{item}</span>

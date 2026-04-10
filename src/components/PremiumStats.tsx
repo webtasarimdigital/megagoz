@@ -2,13 +2,20 @@
 
 import { motion } from "framer-motion";
 import { Users, MessageSquare, Stethoscope } from "lucide-react";
+import { useLocale } from "next-intl";
 
 export default function PremiumStats() {
+  const locale = useLocale();
+
   const stats = [
-    { num: "14550", label: "TEDAVİ EDİLEN HASTA", icon: <Users size={28} /> },
-    { num: "350", label: "MEMNUN HASTA YORUMU", icon: <MessageSquare size={28} /> },
-    { num: "12", label: "UZMAN HEKİM", icon: <Stethoscope size={28} /> }
+    { num: "14550", label: locale === 'en' ? "PATIENTS TREATED" : "TEDAVİ EDİLEN HASTA", icon: <Users size={28} /> },
+    { num: "350", label: locale === 'en' ? "SATISFIED REVIEWS" : "MEMNUN HASTA YORUMU", icon: <MessageSquare size={28} /> },
+    { num: "12", label: locale === 'en' ? "EXPERT DOCTORS" : "UZMAN HEKİM", icon: <Stethoscope size={28} /> }
   ];
+
+  const marqueeText = locale === 'en' 
+    ? "DON'T MISS OUT \u00A0·\u00A0 MEGAGÖZ \u00A0·\u00A0 DON'T MISS OUT \u00A0·\u00A0 MEGAGÖZ \u00A0·\u00A0"
+    : "GÖZDEN KAÇMASIN \u00A0·\u00A0 MEGAGÖZ \u00A0·\u00A0 GÖZDEN KAÇMASIN \u00A0·\u00A0 MEGAGÖZ \u00A0·\u00A0";
 
   return (
     <section className="hidden md:block relative w-full overflow-hidden bg-[#ecbb3f] py-16 lg:py-24">
@@ -19,7 +26,7 @@ export default function PremiumStats() {
             transition={{ repeat: Infinity, ease: "linear", duration: 20 }}
             className="text-[150px] font-black text-[#162f5d] uppercase tracking-tighter mix-blend-overlay"
           >
-             GÖZDEN KAÇMASIN &nbsp;&middot;&nbsp; MEGAGÖZ &nbsp;&middot;&nbsp; GÖZDEN KAÇMASIN &nbsp;&middot;&nbsp; MEGAGÖZ &nbsp;&middot;&nbsp;
+             {marqueeText}
           </motion.div>
        </div>
 

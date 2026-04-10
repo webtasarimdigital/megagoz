@@ -85,7 +85,7 @@ export default function FloatingActions() {
 
         {/* Location Button */}
         <a 
-          href="https://maps.app.goo.gl/YourGoogleMapsLink" 
+          href="https://maps.app.goo.gl/zCtCCuRQEpGYmEwx6" 
           target="_blank"
           rel="noopener noreferrer"
           className="w-14 h-14 bg-[#4285F4] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
@@ -107,7 +107,7 @@ export default function FloatingActions() {
         </Link>
 
         {/* KONUM */}
-        <a href="https://share.google/zC0UTV7bTbwJn46pu" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-1 min-w-[70px]">
+        <a href="https://maps.app.goo.gl/zCtCCuRQEpGYmEwx6" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-1 min-w-[70px]">
           <div className="w-10 h-10 rounded-[10px] bg-[#f59e0b] flex items-center justify-center text-white shadow-sm">
             <MapPin size={22} strokeWidth={2.5} />
           </div>

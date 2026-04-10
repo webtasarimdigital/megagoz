@@ -4,31 +4,44 @@ import { motion, Variants } from "framer-motion";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { ArrowRight, Calendar } from "lucide-react";
+import { useLocale } from "next-intl";
 
 const BLOG_POSTS = [
   {
     id: 1,
     title: "Lazer Göz Ameliyatı (Göz Çizdirme) Nedir?",
+    titleEn: "What is Laser Eye Surgery?",
     category: "Tedaviler",
+    categoryEn: "Treatments",
     date: "14 Ekim 2026",
+    dateEn: "Oct 14, 2026",
     image: "/images/slide1.png",
-    excerpt: "Gözlük ve lens bağımlılığından kurtaran, miyop, hipermetrop ve astigmatizmanın kalıcı olarak düzeltilmesini sağlayan modern lazer teknolojilerini inceliyoruz."
+    excerpt: "Gözlük ve lens bağımlılığından kurtaran, miyop, hipermetrop ve astigmatizmanın kalıcı olarak düzeltilmesini sağlayan modern lazer teknolojilerini inceliyoruz.",
+    excerptEn: "We examine modern laser technologies that free you from glasses and lens dependence, permanently correcting myopia, hypermetropia, and astigmatism."
   },
   {
     id: 2,
     title: "Göz Rengi Değiştirmek Mümkün Mü?",
+    titleEn: "Is It Possible to Change Eye Color?",
     category: "Estetik Oftalmoloji",
+    categoryEn: "Aesthetic Ophthalmology",
     date: "22 Eylül 2026",
+    dateEn: "Sep 22, 2026",
     image: "/images/megagoz-kontak-lens.webp",
-    excerpt: "Göz rengi değiştirme ameliyatları hakkında bilmeniz gereken tıp gerçekleri, keratopigmentasyon ve kontakt lens kullanımı üzerine uzman görüşlerimiz."
+    excerpt: "Göz rengi değiştirme ameliyatları hakkında bilmeniz gereken tıp gerçekleri, keratopigmentasyon ve kontakt lens kullanımı üzerine uzman görüşlerimiz.",
+    excerptEn: "Medical facts you need to know about eye color change surgeries, keratopigmentation, and our expert opinions on contact lens use."
   },
   {
     id: 3,
     title: "Katarakt Cerrahisinde Göz İçi Akıllı Lens Devrimi",
+    titleEn: "The Smart Lens Revolution in Cataract Surgery",
     category: "Göz Sağlığı",
+    categoryEn: "Eye Health",
     date: "05 Eylül 2026",
+    dateEn: "Sep 05, 2026",
     image: "/images/megagoz-katarakt-tedavisi.webp",
-    excerpt: "Görüş netliğini tamamen geri kazandıran ve ömür boyu kalıcı olan akıllı mercek (Trifokal Lens) teknolojisi ile hayata nasıl yeniden net bakabilirsiniz?"
+    excerpt: "Görüş netliğini tamamen geri kazandıran ve ömür boyu kalıcı olan akıllı mercek (Trifokal Lens) teknolojisi ile hayata nasıl yeniden net bakabilirsiniz?",
+    excerptEn: "How can you see life clearly again with smart lens (Trifocal Lens) technology that fully restores vision clarity and lasts a lifetime?"
   }
 ];
 
@@ -50,6 +63,8 @@ const cardVariants: Variants = {
 };
 
 export default function BlogSection() {
+  const locale = useLocale();
+
   return (
     <section className="py-24 bg-gray-50/50 w-full overflow-hidden">
       <div className="container mx-auto px-6 max-w-[1300px]">
@@ -64,10 +79,16 @@ export default function BlogSection() {
           >
             <div className="inline-flex items-center gap-3 mb-4">
                <div className="h-[2px] w-12 bg-[#ecbb3f]" />
-               <span className="text-[#ecbb3f] font-bold tracking-widest uppercase text-sm">GÜNCEL BLOG</span>
+               <span className="text-[#ecbb3f] font-bold tracking-widest uppercase text-sm">
+                 {locale === 'en' ? 'LATEST BLOG' : 'GÜNCEL BLOG'}
+               </span>
             </div>
             <h2 className="text-4xl md:text-5xl font-black text-[#162f5d] tracking-tight">
-              Son Blog <span className="text-[#ecbb3f]">Yazılarımız</span>
+              {locale === 'en' ? (
+                <>Latest Blog <span className="text-[#ecbb3f]">Posts</span></>
+              ) : (
+                <>Son Blog <span className="text-[#ecbb3f]">Yazılarımız</span></>
+              )}
             </h2>
           </motion.div>
 
@@ -81,7 +102,7 @@ export default function BlogSection() {
               href="/blog" 
               className="group flex items-center gap-2 bg-transparent text-[#162f5d] font-bold tracking-wide uppercase text-sm border-b-2 border-[#ecbb3f] pb-1 hover:text-[#ecbb3f] transition-colors"
             >
-              Tüm Blogları Gör
+              {locale === 'en' ? 'View All Posts' : 'Tüm Blogları Gör'}
               <ArrowRight size={18} className="transform group-hover:translate-x-2 transition-transform duration-300 text-[#ecbb3f]" />
             </Link>
           </motion.div>
@@ -103,13 +124,13 @@ export default function BlogSection() {
                 <div className="relative w-full h-[240px] overflow-hidden">
                   <Image 
                     src={post.image}
-                    alt={post.title}
+                    alt={locale === 'en' ? post.titleEn : post.title}
                     fill
                     className="object-cover transition-transform duration-[2s] ease-out group-hover:scale-110"
                   />
                   {/* Category Badge overlay */}
                   <div className="absolute top-4 left-4 bg-[#162f5d]/90 backdrop-blur-sm text-[#ecbb3f] font-bold text-xs uppercase px-3 py-1.5 rounded-lg">
-                    {post.category}
+                    {locale === 'en' ? post.categoryEn : post.category}
                   </div>
                 </div>
 
@@ -117,21 +138,21 @@ export default function BlogSection() {
                 <div className="p-8">
                   <div className="flex items-center gap-2 text-gray-400 text-sm mb-4">
                     <Calendar size={14} className="text-[#ecbb3f]" />
-                    <span className="font-medium">{post.date}</span>
+                    <span className="font-medium">{locale === 'en' ? post.dateEn : post.date}</span>
                   </div>
                   
                   <h3 className="text-[20px] font-black text-[#162f5d] leading-snug mb-3 line-clamp-2 group-hover:text-[#ecbb3f] transition-colors">
                     <Link href="/blog" className="before:absolute before:inset-0">
-                      {post.title}
+                      {locale === 'en' ? post.titleEn : post.title}
                     </Link>
                   </h3>
                   
                   <p className="text-gray-500 font-medium text-sm leading-relaxed mb-6 line-clamp-3">
-                    {post.excerpt}
+                    {locale === 'en' ? post.excerptEn : post.excerpt}
                   </p>
                   
                   <div className="flex items-center gap-2 text-[#ecbb3f] font-bold text-sm tracking-wider uppercase mt-auto">
-                    Detaylı Bilgi
+                    {locale === 'en' ? 'Learn More' : 'Detaylı Bilgi'}
                     <ArrowRight size={16} className="transition-transform group-hover:translate-x-2" />
                   </div>
                 </div>

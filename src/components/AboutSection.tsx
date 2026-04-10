@@ -4,8 +4,11 @@ import { motion } from "framer-motion";
 import { CheckCircle2, ArrowRight, Phone } from "lucide-react";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
+import { useLocale } from "next-intl";
 
 export default function AboutSection() {
+  const locale = useLocale();
+
   return (
     <section className="relative bg-white py-24 w-full overflow-hidden">
       <div className="container mx-auto px-6 max-w-[1300px]">
@@ -64,7 +67,9 @@ export default function AboutSection() {
                 </div>
                 <span className="text-2xl font-black text-[#ecbb3f]">444 0 320</span>
               </div>
-              <span className="text-[11px] md:text-sm font-bold tracking-wider uppercase text-gray-300">Hemen İletişime Geç</span>
+              <span className="text-[11px] md:text-sm font-bold tracking-wider uppercase text-gray-300">
+                {locale === 'en' ? 'CONTACT US NOW' : 'Hemen İletişime Geç'}
+              </span>
             </motion.a>
           </motion.div>
 
@@ -78,26 +83,37 @@ export default function AboutSection() {
           >
             
             <h2 className="text-4xl md:text-5xl font-black text-[#162f5d] tracking-tight leading-[1.1] mb-8">
-              Bakış Açınızı <br />
-              <span className="text-[#ecbb3f]">Mükemmelleştirin.</span>
+              {locale === 'en' ? (
+                <>Perfect Your <br /><span className="text-[#ecbb3f]">Perspective.</span></>
+              ) : (
+                <>Bakış Açınızı <br /><span className="text-[#ecbb3f]">Mükemmelleştirin.</span></>
+              )}
             </h2>
 
             <p className="text-gray-500 text-lg md:text-xl font-medium leading-relaxed mb-8">
-              Standart şablonların ötesinde; her göze adeta bir sanat eseri gibi yaklaşan, yenilikçi teknoloji ve ustalıkla harmanlanmış profesyonel kliniğimize hoş geldiniz.
+              {locale === 'en' ? 
+                'Beyond standard templates; welcome to our professional clinic where innovative technology blends with mastery, approaching each eye like a work of art.' : 
+                'Standart şablonların ötesinde; her göze adeta bir sanat eseri gibi yaklaşan, yenilikçi teknoloji ve ustalıkla harmanlanmış profesyonel kliniğimize hoş geldiniz.'}
             </p>
 
             <blockquote className="border-l-4 border-[#ecbb3f] pl-6 my-8">
                <p className="text-[#162f5d] font-bold italic text-[22px] md:text-[24px] leading-relaxed mb-4">
-                 "Göz sağlığında hata payı yoktur. Teknolojinin ulaştığı en zirve noktayı, on yılların getirdiği tecrübemizle birleştiriyoruz."
+                 {locale === 'en' ? 
+                   '"There is no margin for error in eye health. We combine the peak of technology with our decades of experience."' : 
+                   '"Göz sağlığında hata payı yoktur. Teknolojinin ulaştığı en zirve noktayı, on yılların getirdiği tecrübemizle birleştiriyoruz."'}
                </p>
-               <footer className="text-gray-400 font-bold text-sm md:text-base tracking-widest uppercase">— Başhekimlik & Yönetim Kurulu</footer>
+               <footer className="text-gray-400 font-bold text-sm md:text-base tracking-widest uppercase">
+                 {locale === 'en' ? '— Chief Physician & Board of Directors' : '— Başhekimlik & Yönetim Kurulu'}
+               </footer>
             </blockquote>
 
             <Link href="/hakkimizda" className="self-start mt-4 group flex items-center gap-4 hover:opacity-80 transition-opacity">
                <div className="w-14 h-14 bg-[#162f5d] rounded-full flex items-center justify-center text-[#ecbb3f] group-hover:scale-110 transition-transform shadow-lg">
                  <ArrowRight size={24} />
                </div>
-               <span className="text-[#162f5d] font-black tracking-widest text-[15px]">MEGAGÖZ HAKKINDA</span>
+               <span className="text-[#162f5d] font-black tracking-widest text-[15px]">
+                 {locale === 'en' ? 'ABOUT MEGAGÖZ' : 'MEGAGÖZ HAKKINDA'}
+               </span>
             </Link>
 
           </motion.div>

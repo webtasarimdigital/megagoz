@@ -33,7 +33,7 @@ export default function ContactPage() {
           </div>
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-4 md:mb-6">
-            {t("title") !== "Contact Us" && t("title") !== "İletişime Geçin" ? "İletişim" : t("title")}
+            {locale === "en" ? "Contact Us" : "İletişim"}
           </h1>
           
           <p className="text-gray-300 text-sm md:text-base font-medium leading-relaxed max-w-2xl px-4">
@@ -104,7 +104,7 @@ export default function ContactPage() {
                     <input 
                       type="email" 
                       className="w-full h-12 px-4 border border-gray-200 rounded-lg focus:outline-none focus:border-[#ecbb3f] transition-colors"
-                      placeholder="mail@ornek.com"
+                      placeholder="info@megagoz.com"
                     />
                   </div>
                   <div className="flex flex-col gap-2">

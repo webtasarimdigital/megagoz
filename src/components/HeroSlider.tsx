@@ -125,7 +125,7 @@ export default function HeroSlider() {
                       </div>
                       <input 
                         type="email" 
-                        placeholder="E-posta Adresiniz"
+                        placeholder={locale === 'en' ? 'Your Email Address' : 'E-posta Adresiniz'}
                         className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-2 focus:ring-[#ecbb3f]/20 focus:outline-none text-[#162f5d] h-[50px] pl-12 pr-4 rounded-lg transition-all text-[15px] font-medium placeholder-gray-400" 
                       />
                     </div>
@@ -136,11 +136,11 @@ export default function HeroSlider() {
                         defaultValue=""
                         className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-2 focus:ring-[#ecbb3f]/20 focus:outline-none text-gray-600 h-[50px] pl-5 pr-10 rounded-lg transition-all text-[15px] font-medium appearance-none"
                       >
-                        <option value="" disabled>Konu Seçiniz</option>
-                        <option value="1">Lazer Tedavisi</option>
-                        <option value="2">Katarakt</option>
-                        <option value="3">Akıllı Lens</option>
-                        <option value="4">Genel Muayene</option>
+                        <option value="" disabled>{locale === 'en' ? 'Select Subject' : 'Konu Seçiniz'}</option>
+                        <option value="1">{locale === 'en' ? 'Laser Treatment' : 'Lazer Tedavisi'}</option>
+                        <option value="2">{locale === 'en' ? 'Cataract' : 'Katarakt'}</option>
+                        <option value="3">{locale === 'en' ? 'Smart Lens' : 'Akıllı Lens'}</option>
+                        <option value="4">{locale === 'en' ? 'General Consultation' : 'Genel Muayene'}</option>
                       </select>
                       <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
                         <ChevronDown size={20} className="text-[#162f5d]" strokeWidth={2.5} />
@@ -150,7 +150,7 @@ export default function HeroSlider() {
                     {/* Message Area */}
                     <div>
                       <textarea 
-                        placeholder="Mesajınız / Notunuz"
+                        placeholder={locale === 'en' ? 'Your Message / Note' : 'Mesajınız / Notunuz'}
                         rows={3}
                         className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-2 focus:ring-[#ecbb3f]/20 focus:outline-none text-[#162f5d] py-3.5 px-5 rounded-lg transition-all text-[15px] font-medium placeholder-gray-400 resize-none" 
                       />

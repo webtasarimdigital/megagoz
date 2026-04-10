@@ -4,52 +4,69 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { UserPlus, Medal, Cpu, Globe2, HeartHandshake } from "lucide-react";
+import { useLocale } from "next-intl";
 
 const TABS = [
   {
     id: 0,
     title: "Uzman Hekimler",
+    titleEn: "Expert Doctors",
     icon: <UserPlus size={28} />,
     image: "/images/slide2.png",
     heading: "Uzman Hekimler",
-    desc: "Yurt içinde ve yurt dışında başarılara imza atmış, on binlerce cerrahi vaka tecrübesi bulunan uzman hekim kadromuzla nitelikli göz sağlığı hizmetini sizlerle buluşturuyoruz."
+    headingEn: "Expert Doctors",
+    desc: "Yurt içinde ve yurt dışında başarılara imza atmış, on binlerce cerrahi vaka tecrübesi bulunan uzman hekim kadromuzla nitelikli göz sağlığı hizmetini sizlerle buluşturuyoruz.",
+    descEn: "We bring you high-quality eye health services with our expert medical staff who have achieved domestic and international success and have experience in tens of thousands of surgical cases."
   },
   {
     id: 1,
     title: "Deneyimli Personel",
+    titleEn: "Experienced Staff",
     icon: <Medal size={28} />,
     image: "/images/megagoz.webp",
     heading: "Deneyimli Personel",
-    desc: "Klinik süreçlerinizin ilk anından taburcu olduğunuz saniyeye kadar, her aşamada size güler yüzle ve profesyonellikle eşlik eden tecrübeli, alanında eğitimli sağlık personelimiz yanınızda."
+    headingEn: "Experienced Staff",
+    desc: "Klinik süreçlerinizin ilk anından taburcu olduğunuz saniyeye kadar, her aşamada size güler yüzle ve profesyonellikle eşlik eden tecrübeli, alanında eğitimli sağlık personelimiz yanınızda.",
+    descEn: "From the very first moment of your clinical journey until you are discharged, our experienced and trained healthcare staff are by your side with a smile and professionalism at every step."
   },
   {
     id: 2,
     title: "Teknolojik Altyapı",
+    titleEn: "Technological Infra",
     icon: <Cpu size={28} />,
     image: "/images/slide4.png",
     heading: "Teknolojik Altyapı",
-    desc: "FDA onaylı, sektöre yön veren markaların en yeni jenerasyon excimer lazer cihazları ve 3 boyutlu topografi sistemleri sayesinde sıfır hata payı ile kusursuz cerrahi deneyimi sunuyoruz."
+    headingEn: "Technological Infrastructure",
+    desc: "FDA onaylı, sektöre yön veren markaların en yeni jenerasyon excimer lazer cihazları ve 3 boyutlu topografi sistemleri sayesinde sıfır hata payı ile kusursuz cerrahi deneyimi sunuyoruz.",
+    descEn: "Thanks to FDA-approved, industry-leading new generation excimer laser devices and 3D topography systems, we offer a flawless surgical experience with zero margin of error."
   },
   {
     id: 3,
-    title: "Uuslararası Hasta Merkezi",
+    title: "Uluslararası Hizmet",
+    titleEn: "International Srv",
     icon: <Globe2 size={28} />,
     image: "/images/slide1.png",
     heading: "Uluslararası Hizmet",
-    desc: "Dünyanın dört bir yanından gelen hastalarımıza, VIP transferden konaklamaya ve ana dillerinde tercümanlık desteğine kadar uzanan ayrıcalıklı ve tam teşekküllü global sağlık turizmi sunuyoruz."
+    headingEn: "International Services",
+    desc: "Dünyanın dört bir yanından gelen hastalarımıza, VIP transferden konaklamaya ve ana dillerinde tercümanlık desteğine kadar uzanan ayrıcalıklı ve tam teşekküllü global sağlık turizmi sunuyoruz.",
+    descEn: "We offer global healthcare tourism to patients from all over the world, ranging from VIP transfers and accommodation to native-language interpretation support."
   },
   {
     id: 4,
     title: "Kaliteli Hizmet",
+    titleEn: "Quality Service",
     icon: <HeartHandshake size={28} />,
     image: "/images/slide3.png",
     heading: "Birebir İlgi ve Kalite",
-    desc: "Ticari kaygılardan uzak, tamamen hasta iyileşmesine ve konforuna odaklanmış, etik değerlere sıkı sıkıya bağlı butik yapımızla kendinizi özel hissedeceğiniz şeffaf süreçler kurguluyoruz."
+    headingEn: "Personalized Care",
+    desc: "Ticari kaygılardan uzak, tamamen hasta iyileşmesine ve konforuna odaklanmış, etik değerlere sıkı sıkıya bağlı butik yapımızla kendinizi özel hissedeceğiniz şeffaf süreçler kurguluyoruz.",
+    descEn: "Free from commercial concerns, fully focused on patient recovery and comfort, and strictly committed to ethical values, we build transparent processes where you will feel special."
   }
 ];
 
 export default function WhyChooseUsSection() {
   const [activeTab, setActiveTab] = useState(0);
+  const locale = useLocale();
 
   return (
     <section className="w-full bg-[#F8FAFC]">
@@ -59,7 +76,11 @@ export default function WhyChooseUsSection() {
           
           <div className="container mx-auto px-4 relative z-10 text-center mb-10">
              <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tight">
-               Neden <span className="text-[#ecbb3f]">Megagöz?</span>
+               {locale === 'en' ? (
+                 <>Why <span className="text-[#ecbb3f]">Megagöz?</span></>
+               ) : (
+                 <>Neden <span className="text-[#ecbb3f]">Megagöz?</span></>
+               )}
              </h2>
           </div>
 
@@ -81,7 +102,7 @@ export default function WhyChooseUsSection() {
                        {tab.icon}
                      </div>
                      <span className={`text-xs md:text-sm font-bold tracking-wider text-center px-2 ${activeTab === tab.id ? "text-white" : "text-white/70 group-hover:text-white"}`}>
-                       {tab.title}
+                       {locale === 'en' ? tab.titleEn : tab.title}
                      </span>
                   </button>
                 ))}
@@ -106,7 +127,7 @@ export default function WhyChooseUsSection() {
                    <div className="w-full md:w-[45%] h-[250px] md:h-[350px] relative rounded-xl overflow-hidden shrink-0 shadow-lg">
                       <Image 
                         src={TABS[activeTab].image}
-                        alt={TABS[activeTab].heading}
+                        alt={locale === 'en' ? TABS[activeTab].headingEn : TABS[activeTab].heading}
                         fill
                         className="object-cover"
                       />
@@ -116,10 +137,10 @@ export default function WhyChooseUsSection() {
                    {/* Right Content */}
                    <div className="w-full md:w-[55%] flex flex-col justify-center text-center md:text-left">
                       <h3 className="text-3xl md:text-4xl font-black text-[#162f5d] mb-6 tracking-tight">
-                        {TABS[activeTab].heading}
+                        {locale === 'en' ? TABS[activeTab].headingEn : TABS[activeTab].heading}
                       </h3>
                       <p className="text-gray-500 font-medium text-lg leading-relaxed">
-                        {TABS[activeTab].desc}
+                        {locale === 'en' ? TABS[activeTab].descEn : TABS[activeTab].desc}
                       </p>
                    </div>
                 </motion.div>

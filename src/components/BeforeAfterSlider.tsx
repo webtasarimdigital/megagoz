@@ -3,8 +3,10 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useLocale } from "next-intl";
 
 export default function BeforeAfterSlider() {
+  const locale = useLocale();
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
@@ -99,7 +101,7 @@ export default function BeforeAfterSlider() {
       <div className="container mx-auto px-6 max-w-[1300px]">
         
         <div className="text-center mb-10 md:mb-12">
-          <h2 className="text-2xl md:text-4xl font-black text-[#162f5d]">Megagöz İle Daha Net Bir Dünyaya Bakın</h2>
+          <h2 className="text-2xl md:text-4xl font-black text-[#162f5d]">{locale === 'en' ? 'See a Clearer World with Megagöz' : 'Megagöz İle Daha Net Bir Dünyaya Bakın'}</h2>
         </div>
 
         <div 
@@ -112,7 +114,7 @@ export default function BeforeAfterSlider() {
           <div className="absolute inset-0 w-full h-full">
             <Image 
               src="/images/megagoz-tedavi-sonrasi.webp" 
-              alt="Tedavi Sonrası Net Görüş"
+              alt={locale === 'en' ? 'After Treatment - Clear Vision' : 'Tedavi Sonrası Net Görüş'}
               fill
               className="object-cover pointer-events-none"
               priority
@@ -126,7 +128,7 @@ export default function BeforeAfterSlider() {
           >
             <Image 
               src="/images/megagoz-tedavi-oncesi.webp" 
-              alt="Tedavi Öncesi Bulanık Görüş"
+              alt={locale === 'en' ? 'Before Treatment - Blurry Vision' : 'Tedavi Öncesi Bulanık Görüş'}
               fill
               className="object-cover pointer-events-none"
             />

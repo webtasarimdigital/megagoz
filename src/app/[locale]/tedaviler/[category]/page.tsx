@@ -11,7 +11,7 @@ import { notFound } from "next/navigation";
 export default function CategoryPage({ params }: { params: Promise<{ locale: string; category: string }> }) {
   const resolvedParams = use(params);
   const locale = useLocale() as "tr" | "en";
-  const categoryData = TREATMENTS_DATA.find((c) => c.id === resolvedParams.category);
+  const categoryData = TREATMENTS_DATA.find((c) => c.slug[locale] === resolvedParams.category || c.id === resolvedParams.category);
 
   if (!categoryData) {
     notFound();
@@ -62,7 +62,7 @@ export default function CategoryPage({ params }: { params: Promise<{ locale: str
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {items.map((item) => (
             <Link 
-              href={{ pathname: '/tedaviler/[category]/[slug]', params: { category: categoryData.id, slug: item.slug } }}
+              href={{ pathname: '/tedaviler/[category]/[slug]', params: { category: categoryData.slug[locale], slug: item.slug[locale] } }}
               key={item.slug} 
               className="group flex flex-col bg-white rounded-3xl overflow-hidden shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 relative"
             >
