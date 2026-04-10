@@ -114,7 +114,7 @@ export default function BlogPage() {
       <Header />
       
       {/* Hero Header Area */}
-      <div className="relative w-full h-[500px] md:h-[650px] flex items-center justify-center pt-32 md:pt-48">
+      <div className="relative w-full h-[500px] md:h-[650px] flex items-center justify-center pt-16 md:pt-24 pb-8 md:pb-12">
         <Image 
           src="/images/slide3.png" 
           alt="Blog Background" 

@@ -1,11 +1,39 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import { useLocale } from "next-intl";
 
 export default function AppointmentFormSection() {
   const locale = useLocale();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+    data.source = 'Alt Kısım Detaylı Randevu Formu';
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (res.ok) {
+        alert(locale === 'en' ? "Message sent successfully!" : "Mesajınız başarıyla gönderildi!");
+        (e.target as HTMLFormElement).reset();
+      } else {
+        alert(locale === 'en' ? "An error occurred, please try again." : "Bir hata oluştu, lütfen tekrar deneyin.");
+      }
+    } catch (err) {
+      alert(locale === 'en' ? "Connection error" : "Bağlantı hatası");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section className="bg-white py-20 lg:py-28 relative flex justify-center w-full">
@@ -57,11 +85,13 @@ export default function AppointmentFormSection() {
             viewport={{ once: true }}
             className="bg-[#162f5d] rounded-3xl p-8 lg:p-10 shadow-2xl border border-white/5"
           >
-             <form className="flex flex-col gap-6">
+             <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                    <div className="flex flex-col">
                       <input 
                         type="text" 
+                        name="name"
+                        required
                         placeholder={locale === 'tr' ? 'İsim Soyisim' : 'Full Name'} 
                         className="bg-white/10 text-white placeholder-gray-400 rounded-xl px-5 py-4 w-full outline-none focus:ring-1 focus:ring-[#ecbb3f] transition-all border border-transparent text-sm"
                       />
@@ -69,6 +99,8 @@ export default function AppointmentFormSection() {
                    <div className="flex flex-col">
                       <input 
                         type="tel" 
+                        name="phone"
+                        required
                         placeholder={locale === 'tr' ? 'Telefon Numarası' : 'Phone Number'} 
                         className="bg-white/10 text-white placeholder-gray-400 rounded-xl px-5 py-4 w-full outline-none focus:ring-1 focus:ring-[#ecbb3f] transition-all border border-transparent text-sm"
                       />
@@ -78,6 +110,7 @@ export default function AppointmentFormSection() {
                 <div className="flex flex-col">
                    <textarea 
                      rows={5}
+                     name="message"
                      placeholder={locale === 'tr' ? 'Mesajınız' : 'Your Message'} 
                      className="bg-white/10 text-white placeholder-gray-400 rounded-xl px-5 py-4 w-full outline-none focus:ring-1 focus:ring-[#ecbb3f] transition-all border border-transparent resize-none text-sm"
                    ></textarea>
@@ -85,10 +118,11 @@ export default function AppointmentFormSection() {
 
                 <div className="flex justify-end mt-2">
                    <button 
-                     type="button" 
-                     className="bg-gradient-to-r from-[#dfa932] to-[#b88924] hover:from-[#cda669] hover:to-[#dfa932] text-white/90 font-bold text-sm tracking-widest uppercase rounded-lg px-8 py-4 flex items-center gap-3 transition-all duration-300 transform hover:-translate-y-1 shadow-lg shrink-0"
+                     type="submit" 
+                     disabled={isSubmitting}
+                     className="bg-gradient-to-r from-[#dfa932] to-[#b88924] hover:from-[#cda669] hover:to-[#dfa932] disabled:opacity-50 disabled:cursor-not-allowed text-white/90 font-bold text-sm tracking-widest uppercase rounded-lg px-8 py-4 flex items-center gap-3 transition-all duration-300 transform hover:-translate-y-1 shadow-lg shrink-0"
                    >
-                      {locale === 'tr' ? 'RANDEVU OLUŞTUR' : 'BOOK APPOINTMENT'} <ArrowRight size={18} />
+                      {isSubmitting ? (locale === 'tr' ? 'GÖNDERİLİYOR...' : 'SENDING...') : (locale === 'tr' ? 'RANDEVU OLUŞTUR' : 'BOOK APPOINTMENT')} <ArrowRight size={18} />
                    </button>
                 </div>
              </form>

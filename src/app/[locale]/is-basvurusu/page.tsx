@@ -1,18 +1,50 @@
-import { useTranslations } from "next-intl";
+"use client";
+
+import { useTranslations, useLocale } from "next-intl";
 import { Briefcase, Building, Mail, MapPin, Phone } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function JobApplicationPage() {
   const t = useTranslations("Navigation"); // using Navigation namespace as fallback if no specific one exists
+  const locale = useLocale();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [fileName, setFileName] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    const formData = new FormData(e.currentTarget);
+    
+    try {
+      const res = await fetch('/api/career', {
+        method: 'POST',
+        body: formData, // Sending raw FormData for files
+      });
+      const data = await res.json();
+      
+      if (res.ok) {
+        alert(locale === 'en' ? "Application submitted successfully!" : "Başvurunuz başarıyla gönderildi!");
+        (e.target as HTMLFormElement).reset();
+        setFileName("");
+      } else {
+        alert(data.message || (locale === 'en' ? "An error occurred, please try again." : "Bir hata oluştu, lütfen tekrar deneyin."));
+      }
+    } catch (err) {
+      alert(locale === 'en' ? "Connection error" : "Bağlantı hatası");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <main className="min-h-screen flex flex-col bg-[#F8FAFC]">
       <Header />
       
       {/* Hero Header Area */}
-      <div className="relative w-full h-[500px] md:h-[650px] flex items-center justify-center pt-32 md:pt-48">
+      <div className="relative w-full h-[500px] md:h-[650px] flex items-center justify-center pt-16 md:pt-24 pb-8 md:pb-12">
         <Image 
           src="/images/megagoz-goz-norolojisi.webp" 
           alt="İş Başvurusu" 
@@ -50,12 +82,14 @@ export default function JobApplicationPage() {
             <div className="bg-white rounded-t-3xl rounded-b-3xl md:rounded-t-[40px] md:rounded-b-[40px] shadow-[0_20px_60px_rgba(31,49,63,0.1)] p-8 md:p-12 border border-gray-100 flex flex-col h-full">
               <h3 className="text-2xl md:text-3xl font-black text-[#162f5d] mb-8">Kariyer Başvuru Formu</h3>
               
-              <form className="flex flex-col gap-6 w-full flex-1">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full flex-1">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="flex flex-col gap-2">
                     <label className="text-sm font-bold text-[#162f5d]">Adınız Soyadınız</label>
                     <input 
                       type="text" 
+                      name="name"
+                      required
                       className="w-full h-12 px-4 border border-gray-200 rounded-lg focus:outline-none focus:border-[#ecbb3f] transition-colors"
                       placeholder="Ad Soyad"
                     />
@@ -65,6 +99,8 @@ export default function JobApplicationPage() {
                     <label className="text-sm font-bold text-[#162f5d]">E-Posta Adresi</label>
                     <input 
                       type="email" 
+                      name="email"
+                      required
                       className="w-full h-12 px-4 border border-gray-200 rounded-lg focus:outline-none focus:border-[#ecbb3f] transition-colors"
                       placeholder="E-Posta"
                     />
@@ -76,6 +112,8 @@ export default function JobApplicationPage() {
                     <label className="text-sm font-bold text-[#162f5d]">Telefon Numarası</label>
                     <input 
                       type="tel" 
+                      name="phone"
+                      required
                       className="w-full h-12 px-4 border border-gray-200 rounded-lg focus:outline-none focus:border-[#ecbb3f] transition-colors"
                       placeholder="0(5XX) XXX XX XX"
                     />
@@ -83,38 +121,54 @@ export default function JobApplicationPage() {
                   
                   <div className="flex flex-col gap-2">
                     <label className="text-sm font-bold text-[#162f5d]">Başvurulan Pozisyon</label>
-                    <select className="w-full h-12 px-4 border border-gray-200 rounded-lg focus:outline-none focus:border-[#ecbb3f] transition-colors bg-white">
+                    <select name="position" required className="w-full h-12 px-4 border border-gray-200 rounded-lg focus:outline-none focus:border-[#ecbb3f] transition-colors bg-white">
                       <option value="">Lütfen pozisyon seçin</option>
-                      <option value="hekim">Uzman Hekim</option>
-                      <option value="hemsire">Hemşire</option>
-                      <option value="hasta_danismani">Hasta Danışmanı</option>
-                      <option value="idari_personel">İdari Personel</option>
+                      <option value="Uzman Hekim">Uzman Hekim</option>
+                      <option value="Hemşire">Hemşire</option>
+                      <option value="Hasta Danışmanı">Hasta Danışmanı</option>
+                      <option value="İdari Personel">İdari Personel</option>
                     </select>
                   </div>
                 </div>
 
                 <div className="flex flex-col gap-2">
                    <label className="text-sm font-bold text-[#162f5d]">Özgeçmişiniz (CV)</label>
-                   <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center text-center hover:border-[#ecbb3f] transition-colors cursor-pointer bg-gray-50">
+                   <label className="border-2 border-dashed border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center text-center hover:border-[#ecbb3f] transition-colors cursor-pointer bg-gray-50">
                      <Building size={24} className="text-gray-400 mb-2" />
-                     <p className="text-sm text-gray-500 font-medium">CV dosyanızı buraya sürükleyin veya <span className="text-[#ecbb3f]">seçin</span>.</p>
-                   </div>
+                     <p className="text-sm text-gray-500 font-medium">
+                       {fileName ? <span className="text-[#ecbb3f] font-bold">{fileName}</span> : <>CV dosyanızı buraya sürükleyin veya <span className="text-[#ecbb3f]">seçin</span>.</>}
+                     </p>
+                     <input 
+                       type="file" 
+                       name="cv" 
+                       accept=".pdf,.doc,.docx" 
+                       className="hidden" 
+                       onChange={(e) => {
+                         if (e.target.files && e.target.files[0]) {
+                           setFileName(e.target.files[0].name);
+                         }
+                       }}
+                     />
+                   </label>
                 </div>
 
                 <div className="flex flex-col gap-2 flex-1">
                   <label className="text-sm font-bold text-[#162f5d]">Kariyer Hedefinden Kısaca Bahset</label>
                   <textarea 
+                    name="message"
+                    required
                     className="w-full flex-1 min-h-[120px] p-4 border border-gray-200 rounded-lg focus:outline-none focus:border-[#ecbb3f] transition-colors resize-none"
                     placeholder="Deneyimlerinizden veya hedeflerinizden biraz bahsedebilir misiniz?"
                   ></textarea>
                 </div>
                 
                 <button 
-                  type="button" 
-                  className="mt-2 w-full h-14 bg-[#ecbb3f] hover:bg-[#d4a635] text-[#162f5d] font-black text-lg rounded-xl transition-all shadow-[0_10px_25px_rgba(236,187,63,0.3)] hover:shadow-[0_15px_30px_rgba(236,187,63,0.4)] flex items-center justify-center gap-3"
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="mt-2 w-full h-14 bg-[#ecbb3f] hover:bg-[#d4a635] disabled:opacity-50 disabled:cursor-not-allowed text-[#162f5d] font-black text-lg rounded-xl transition-all shadow-[0_10px_25px_rgba(236,187,63,0.3)] hover:shadow-[0_15px_30px_rgba(236,187,63,0.4)] flex items-center justify-center gap-3"
                 >
                   <Briefcase size={20} />
-                  Başvuru Yap
+                  {isSubmitting ? 'Gönderiliyor...' : 'Başvuru Yap'}
                 </button>
               </form>
             </div>

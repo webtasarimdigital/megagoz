@@ -48,12 +48,43 @@ export default function HeroSlider() {
   const [isKvkkChecked, setIsKvkkChecked] = useState(false);
   const [isKvkkModalOpen, setIsKvkkModalOpen] = useState(false);
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>, sourceForm: string) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+    data.source = sourceForm;
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (res.ok) {
+        alert(locale === 'en' ? "Message sent successfully!" : "Mesajınız başarıyla gönderildi!");
+        (e.target as HTMLFormElement).reset();
+        if (sourceForm === 'Hızlı Randevu (Popup)') {
+          setIsPopupOpen(false);
+        }
+      } else {
+        alert(locale === 'en' ? "An error occurred, please try again." : "Bir hata oluştu, lütfen tekrar deneyin.");
+      }
+    } catch (err) {
+      alert(locale === 'en' ? "Connection error" : "Bağlantı hatası");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
     }, 6000);
     return () => clearInterval(timer);
-  }, []);
+  }, [slides.length]);
 
   return (
     <div className="relative w-full mt-[55px] lg:mt-[85px]">
@@ -92,7 +123,7 @@ export default function HeroSlider() {
                     {t("appointmentDesc")}
                   </p>
 
-                  <form className="space-y-4 font-sans">
+                  <form onSubmit={(e) => handleSubmit(e, 'Hızlı Randevu (Popup)')} className="space-y-4 font-sans">
                     
                     {/* Name field */}
                     <div className="relative">
@@ -101,6 +132,8 @@ export default function HeroSlider() {
                       </div>
                       <input 
                         type="text" 
+                        name="name"
+                        required
                         placeholder={t("fullName")}
                         className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-2 focus:ring-[#ecbb3f]/20 focus:outline-none text-[#162f5d] h-[50px] pl-12 pr-4 rounded-lg transition-all text-[15px] font-medium placeholder-gray-400" 
                       />
@@ -113,6 +146,8 @@ export default function HeroSlider() {
                       </div>
                       <input 
                         type="tel" 
+                        name="phone"
+                        required
                         placeholder={t("phone")}
                         className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-2 focus:ring-[#ecbb3f]/20 focus:outline-none text-[#162f5d] h-[50px] pl-12 pr-4 rounded-lg transition-all text-[15px] font-medium placeholder-gray-400" 
                       />
@@ -125,6 +160,7 @@ export default function HeroSlider() {
                       </div>
                       <input 
                         type="email" 
+                        name="email"
                         placeholder={locale === 'en' ? 'Your Email Address' : 'E-posta Adresiniz'}
                         className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-2 focus:ring-[#ecbb3f]/20 focus:outline-none text-[#162f5d] h-[50px] pl-12 pr-4 rounded-lg transition-all text-[15px] font-medium placeholder-gray-400" 
                       />
@@ -134,6 +170,7 @@ export default function HeroSlider() {
                     <div className="relative">
                       <select 
                         defaultValue=""
+                        name="subject"
                         className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-2 focus:ring-[#ecbb3f]/20 focus:outline-none text-gray-600 h-[50px] pl-5 pr-10 rounded-lg transition-all text-[15px] font-medium appearance-none"
                       >
                         <option value="" disabled>{locale === 'en' ? 'Select Subject' : 'Konu Seçiniz'}</option>
@@ -151,6 +188,7 @@ export default function HeroSlider() {
                     <div>
                       <textarea 
                         placeholder={locale === 'en' ? 'Your Message / Note' : 'Mesajınız / Notunuz'}
+                        name="message"
                         rows={3}
                         className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-2 focus:ring-[#ecbb3f]/20 focus:outline-none text-[#162f5d] py-3.5 px-5 rounded-lg transition-all text-[15px] font-medium placeholder-gray-400 resize-none" 
                       />
@@ -164,15 +202,15 @@ export default function HeroSlider() {
                       >
                          {isKvkkChecked && <svg className="w-3.5 h-3.5 text-[#162f5d]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>}
                       </div>
-                      <p className="text-[13px] text-gray-500 leading-snug">
-                        {t.rich("kvkkAccept", { kvkk: (chunks) => <button type="button" onClick={() => setIsKvkkModalOpen(true)} className="underline text-[#ecbb3f] hover:text-[#d6a529] font-bold cursor-pointer transition-colors" title={locale === 'en' ? 'Click to read' : 'Okumak için tıklayın'}>{chunks}</button> })}
+                      <p className="text-[13px] text-gray-500 leading-snug cursor-pointer select-none" onClick={() => setIsKvkkChecked(!isKvkkChecked)}>
+                        {t.rich("kvkkAccept", { kvkk: (chunks) => <button type="button" onClick={(e) => { e.stopPropagation(); setIsKvkkModalOpen(true) }} className="underline text-[#ecbb3f] hover:text-[#d6a529] font-bold cursor-pointer transition-colors" title={locale === 'en' ? 'Click to read' : 'Okumak için tıklayın'}>{chunks}</button> })}
                       </p>
                     </div>
 
                     {/* Submit */}
                     <div className="pt-3">
-                       <button type="button" className="w-full bg-[#ecbb3f] hover:bg-[#d99816] text-white transition-colors font-bold text-[16px] h-[52px] rounded-lg uppercase tracking-wider">
-                         {t("submitApt")}
+                       <button disabled={!isKvkkChecked || isSubmitting} type="submit" className="w-full bg-[#ecbb3f] hover:bg-[#d99816] disabled:opacity-50 disabled:cursor-not-allowed text-[#162f5d] transition-colors font-bold text-[16px] h-[52px] rounded-lg uppercase tracking-wider">
+                         {isSubmitting ? (locale === 'en' ? 'Sending...' : 'Gönderiliyor...') : t("submitApt")}
                        </button>
                     </div>
 
@@ -266,13 +304,15 @@ export default function HeroSlider() {
            </div>
 
            {/* Form Layout from Screenshot 2 */}
-           <form className="flex flex-col font-sans gap-6">
+           <form onSubmit={(e) => handleSubmit(e, 'Hızlı Randevu (Sayfa İçi)')} className="flex flex-col font-sans gap-6">
               {/* Row 1: Two Inputs */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                  {/* Name Input */}
                  <div className="relative">
                     <input 
-                      type="text" 
+                      type="text"
+                      name="name"
+                      required
                       placeholder={t("fullName")} 
                       className="w-full h-[54px] border border-gray-200 rounded-lg px-4 text-[15px] font-medium text-[#162f5d] placeholder-gray-500 focus:outline-none focus:border-gray-400 transition-all bg-white" 
                     />
@@ -287,7 +327,9 @@ export default function HeroSlider() {
                           <span className="text-gray-600 text-[14px] ml-2">+90</span>
                        </div>
                        <input 
-                         type="tel" 
+                         type="tel"
+                         name="phone"
+                         required
                          placeholder={t("phone")} 
                          className="w-full h-full px-4 text-[15px] font-medium text-[#162f5d] placeholder-gray-500 outline-none bg-transparent" 
                        />
@@ -304,16 +346,17 @@ export default function HeroSlider() {
                     >
                       {isKvkkChecked && <svg className="w-3 h-3 text-[#162f5d]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>}
                     </div>
-                    <label className="text-sm font-semibold text-[#162f5d]">
-                      {t.rich("kvkkAccept", { kvkk: (chunks) => <button type="button" onClick={() => setIsKvkkModalOpen(true)} className="underline text-[#ecbb3f] hover:text-[#d6a529] font-bold cursor-pointer transition-colors" title={locale === 'en' ? 'Click to read' : 'Okumak için tıklayın'}>{chunks}</button> })}
+                    <label className="text-sm font-semibold text-[#162f5d] cursor-pointer select-none" onClick={() => setIsKvkkChecked(!isKvkkChecked)}>
+                      {t.rich("kvkkAccept", { kvkk: (chunks) => <button type="button" onClick={(e) => { e.stopPropagation(); setIsKvkkModalOpen(true) }} className="underline text-[#ecbb3f] hover:text-[#d6a529] font-bold cursor-pointer transition-colors" title={locale === 'en' ? 'Click to read' : 'Okumak için tıklayın'}>{chunks}</button> })}
                     </label>
                  </div>
 
                  <button 
-                   type="button" 
-                   className="w-full sm:w-auto px-16 h-[50px] bg-[#ecbb3f] hover:bg-[#d6a529] text-white font-bold tracking-widest rounded-lg shadow-lg shadow-[#ecbb3f]/20 transition-all text-sm uppercase shrink-0"
+                   type="submit" 
+                   disabled={!isKvkkChecked || isSubmitting}
+                   className="w-full sm:w-auto px-16 h-[50px] bg-[#ecbb3f] hover:bg-[#d6a529] disabled:opacity-50 disabled:cursor-not-allowed text-[#162f5d] font-bold tracking-widest rounded-lg shadow-lg shadow-[#ecbb3f]/20 transition-all text-sm uppercase shrink-0"
                  >
-                    {t("submitApt")}
+                    {isSubmitting ? (locale === 'en' ? 'Sending...' : 'Gönderiliyor...') : t("submitApt")}
                  </button>
               </div>
            </form>

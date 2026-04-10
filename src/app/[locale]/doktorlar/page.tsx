@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import { User, Award, ArrowRight } from "lucide-react";
+import { User, Award, ArrowRight, Linkedin, Instagram } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -13,7 +13,7 @@ export default function DoctorsPage() {
       <Header />
       
       {/* Hero Header Area */}
-      <div className="relative w-full h-[500px] md:h-[650px] flex items-center justify-center pt-32 md:pt-48">
+      <div className="relative w-full h-[500px] md:h-[650px] flex items-center justify-center pt-16 md:pt-24 pb-8 md:pb-12">
         <Image 
           src="/images/slide4.png" 
           alt="Doctors Background" 
@@ -47,41 +47,35 @@ export default function DoctorsPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
            
            {/* Doctor Card */}
-           <div className="bg-white rounded-[30px] overflow-hidden shadow-xl border border-gray-100 group">
-              {/* Empty Image Area */}
-              <div className="h-[350px] w-full bg-[#162f5d]/5 relative flex items-center justify-center">
-                 <User size={64} className="text-gray-300" />
-                 {/* Decorative background circle */}
-                 <div className="absolute inset-0 bg-gradient-to-t from-gray-100 to-transparent opacity-50" />
+           <Link href="/doktorlar/osman-dursun" className="block bg-white rounded-[40px] overflow-hidden shadow-lg border border-gray-100 group transition-transform hover:-translate-y-2">
+              {/* Image Area */}
+              <div className="h-[350px] md:h-[400px] w-full bg-[#E5E7EB] relative flex items-center justify-center rounded-t-[40px]">
+                 {/* Placeholder for doctor image */}
+                 <User size={120} className="text-gray-400" />
+                 
+                 {/* Social Icons - overlapping on bottom left */}
+                 <div className="absolute -bottom-[20px] left-8 flex gap-3 z-10">
+                    <div className="w-10 h-10 rounded-full bg-[#ecbb3f] text-[#162f5d] flex items-center justify-center shadow-md hover:bg-[#162f5d] hover:text-[#ecbb3f] transition-colors">
+                       <Linkedin size={18} />
+                    </div>
+                    <div className="w-10 h-10 rounded-full bg-[#ecbb3f] text-[#162f5d] flex items-center justify-center shadow-md hover:bg-[#162f5d] hover:text-[#ecbb3f] transition-colors">
+                       <Instagram size={18} />
+                    </div>
+                 </div>
               </div>
               
               {/* Doctor Details */}
-              <div className="p-8 relative">
-                 {/* Floating Icon */}
-                 <div className="absolute right-8 -top-8 w-16 h-16 bg-[#ecbb3f] rounded-full border-4 border-white flex items-center justify-center text-[#162f5d] shadow-lg">
-                    <Award size={24} />
-                 </div>
-
-                 <div className="text-sm font-bold text-[#ecbb3f] tracking-widest uppercase mb-2">Başhekim / Göz Hastalıkları Uzmanı</div>
-                 <h3 className="text-2xl font-black text-[#162f5d] mb-4">Op. Dr. Osman Dursun</h3>
+              <div className="p-8 pt-10 bg-white relative">
+                 <h3 className="text-2xl font-black text-[#162f5d] mb-1">Op. Dr. Osman Dursun</h3>
+                 <div className="text-sm font-bold text-[#8FA4B5] tracking-widest uppercase mb-5">GÖZ HASTALIKLARI UZMANI</div>
                  
-                 <div className="text-gray-500 mb-6 font-medium leading-relaxed space-y-4">
-                    <p>
-                      Mikro cerrahi, katarakt, akıllı mercek (trifokal ve edof) implantasyonları ile kornea ve refraktif lazer cerrahilerinde yirmi yılı aşkın yoğun klinik ve operasyon tecrübesine sahiptir. On binlerce başarılı vaka geçmişiyle, uluslararası standartlarda referans gösterilen sonuçlara imza atmıştır.
-                    </p>
-                    <p>
-                      Kariyeri boyunca "her hastaya özel tedavi" ilkesini benimseyerek, standart operasyon algısının dışına çıkmış; göz sağlığında hasta konforunu ve sıfır hata hedefini merkezine yerleştirmiştir. Özellikle zorlu ve kompleks ön segment cerrahilerinde, şaşılık ve glokom operasyonlarında en güncel FDA onaylı medikal protokolleri kliniğimize entegre etmektedir.
-                    </p>
-                    <p>
-                      Modern göz tıbbının teknolojik gelişimini yakından takip eden vizyonuyla, Megagöz tıp kadrosuna başhekim olarak liderlik etmektedir.
-                    </p>
+                 {/* Specialties Badges/Pills */}
+                 <div className="flex flex-wrap gap-2">
+                    <span className="px-4 py-2 rounded-full bg-[#F1F5F9] text-[#556987] text-xs font-bold whitespace-nowrap">KATARAKT (AKILLI LENS)</span>
+                    <span className="px-4 py-2 rounded-full bg-[#F1F5F9] text-[#556987] text-xs font-bold whitespace-nowrap">EXCIMER LAZER</span>
                  </div>
-                 
-                 <Link href="/iletisim" className="inline-flex items-center gap-2 bg-[#162f5d] text-white px-6 py-3 rounded-xl font-bold uppercase tracking-wider text-sm hover:bg-[#ecbb3f] transition-all hover:scale-105 shadow-md">
-                    Randevu Al <ArrowRight size={16} />
-                 </Link>
               </div>
-           </div>
+           </Link>
 
         </div>
       </div>

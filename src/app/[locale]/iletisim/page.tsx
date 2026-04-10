@@ -1,19 +1,49 @@
+"use client";
+
 import { useTranslations, useLocale } from "next-intl";
 import { Mail, MapPin, Phone } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function ContactPage() {
   const t = useTranslations("Contact");
   const locale = useLocale();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+    data.source = 'Bize Ulaşın (İletişim Sayfası)';
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (res.ok) {
+        alert(locale === 'en' ? "Message sent successfully!" : "Mesajınız başarıyla gönderildi!");
+        (e.target as HTMLFormElement).reset();
+      } else {
+        alert(locale === 'en' ? "An error occurred, please try again." : "Bir hata oluştu, lütfen tekrar deneyin.");
+      }
+    } catch (err) {
+      alert(locale === 'en' ? "Connection error" : "Bağlantı hatası");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <main className="min-h-screen flex flex-col bg-[#F8FAFC]">
       <Header />
       
       {/* Hero Header Area */}
-      <div className="relative w-full h-[500px] md:h-[650px] flex items-center justify-center pt-32 md:pt-48">
+      <div className="relative w-full h-[500px] md:h-[650px] flex items-center justify-center pt-16 md:pt-24 pb-8 md:pb-12">
         <Image 
           src="/images/slide2.png" 
           alt="Contact Background" 
@@ -78,12 +108,14 @@ export default function ContactPage() {
                 {locale === "en" ? "Write to Us" : "Bize Yazın"}
               </h3>
               
-              <form className="flex flex-col gap-6 w-full flex-1">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full flex-1">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="flex flex-col gap-2">
                     <label className="text-sm font-bold text-[#162f5d]">{t("form.name")}</label>
                     <input 
                       type="text" 
+                      name="name"
+                      required
                       className="w-full h-12 px-4 border border-gray-200 rounded-lg focus:outline-none focus:border-[#ecbb3f] transition-colors"
                       placeholder={t("form.name")}
                     />
@@ -92,6 +124,8 @@ export default function ContactPage() {
                     <label className="text-sm font-bold text-[#162f5d]">{t("form.phone")}</label>
                     <input 
                       type="tel" 
+                      name="phone"
+                      required
                       className="w-full h-12 px-4 border border-gray-200 rounded-lg focus:outline-none focus:border-[#ecbb3f] transition-colors"
                       placeholder="+90 555 000 0000"
                     />
@@ -103,6 +137,8 @@ export default function ContactPage() {
                     <label className="text-sm font-bold text-[#162f5d]">{t("form.email")}</label>
                     <input 
                       type="email" 
+                      name="email"
+                      required
                       className="w-full h-12 px-4 border border-gray-200 rounded-lg focus:outline-none focus:border-[#ecbb3f] transition-colors"
                       placeholder="info@megagoz.com"
                     />
@@ -111,6 +147,8 @@ export default function ContactPage() {
                     <label className="text-sm font-bold text-[#162f5d]">{t("form.subject")}</label>
                     <input 
                       type="text" 
+                      name="subject"
+                      required
                       className="w-full h-12 px-4 border border-gray-200 rounded-lg focus:outline-none focus:border-[#ecbb3f] transition-colors"
                       placeholder={t("form.subject")}
                     />
@@ -120,14 +158,16 @@ export default function ContactPage() {
                 <div className="flex flex-col gap-2 flex-1">
                   <label className="text-sm font-bold text-[#162f5d]">{t("form.message")}</label>
                   <textarea 
+                    name="message"
+                    required
                     className="w-full h-full min-h-[140px] p-4 border border-gray-200 rounded-lg focus:outline-none focus:border-[#ecbb3f] transition-colors resize-none"
                     placeholder={t("form.message")}
                   />
                 </div>
 
                 <div className="pt-2">
-                  <button type="button" className="w-full md:w-auto px-10 h-12 bg-[#ecbb3f] hover:bg-[#d99816] transition-colors text-white font-bold rounded-lg tracking-widest uppercase shadow-lg shadow-[#ecbb3f]/30">
-                    {t("form.submit")}
+                  <button type="submit" disabled={isSubmitting} className="w-full disabled:opacity-50 md:w-auto px-10 h-12 bg-[#ecbb3f] hover:bg-[#d99816] transition-colors text-[#162f5d] font-bold rounded-lg tracking-widest uppercase shadow-lg shadow-[#ecbb3f]/30">
+                    {isSubmitting ? (locale === 'en' ? 'SENDING...' : 'GÖNDERİLİYOR...') : t("form.submit")}
                   </button>
                 </div>
               </form>
