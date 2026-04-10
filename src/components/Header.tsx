@@ -235,7 +235,16 @@ export default function Header() {
         <div className="w-full max-w-[1920px] mx-auto flex items-center justify-between lg:justify-center px-4 sm:px-6 md:px-8 gap-2 sm:gap-4 lg:gap-10 xl:gap-20">
           
           {/* Logo */}
-          <Link href="/" className="flex flex-col justify-center items-center shrink-0 w-[125px] sm:w-[150px] md:w-[250px] lg:w-[300px] xl:w-[340px] h-[45px] sm:h-[55px] md:h-[70px] lg:h-[85px] relative group px-1">
+          <Link 
+            href="/" 
+            className="flex flex-col justify-center items-center shrink-0 w-[125px] sm:w-[150px] md:w-[250px] lg:w-[300px] xl:w-[340px] h-[45px] sm:h-[55px] md:h-[70px] lg:h-[85px] relative group px-1"
+            onClick={(e) => {
+              if (pathname === '/') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+            }}
+          >
              <div className="absolute inset-0 flex items-center justify-center">
                 {/* Mobile Logo */}
                 <img 
