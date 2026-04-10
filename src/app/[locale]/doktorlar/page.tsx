@@ -47,7 +47,7 @@ export default function DoctorsPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
            
            {/* Doctor Card */}
-           <Link href="/doktorlar/osman-dursun" className="block bg-white rounded-[40px] overflow-hidden shadow-lg border border-gray-100 group transition-transform hover:-translate-y-2">
+           <Link href={{ pathname: '/doktorlar/[slug]', params: { slug: 'osman-dursun' } }} className="block bg-white rounded-[40px] overflow-hidden shadow-lg border border-gray-100 group transition-transform hover:-translate-y-2">
               {/* Image Area */}
               <div className="h-[350px] md:h-[400px] w-full bg-[#E5E7EB] relative flex items-center justify-center rounded-t-[40px]">
                  {/* Placeholder for doctor image */}
