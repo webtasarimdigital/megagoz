@@ -405,8 +405,8 @@ export default function Header() {
 
           {/* Search Box Removed per request */}
 
-          {/* Mobile Language Selector & Menu Toggle (Grouped on Right) */}
-          <div className="lg:hidden flex items-center gap-2 sm:gap-6 relative shrink-0">
+          {/* Mobile Language Selector */}
+          <div className="lg:hidden flex-1 flex justify-center relative">
              
              {/* Language Dropdown */}
              <button 
@@ -450,7 +450,10 @@ export default function Header() {
                   </motion.div>
                 )}
               </AnimatePresence>
+          </div>
 
+          {/* Menu Toggle */}
+          <div className="lg:hidden flex items-center shrink-0 ml-2">
              <button 
                className="p-1 active:scale-90 transition-transform shrink-0 flex items-center justify-center w-8 h-8 focus:outline-none"
                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
