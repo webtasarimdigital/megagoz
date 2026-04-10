@@ -63,7 +63,7 @@ export default function CategoryPage({ params }: { params: Promise<{ locale: str
           {items.map((item) => (
             <Link 
               href={{ pathname: '/tedaviler/[category]/[slug]', params: { category: categoryData.slug[locale], slug: item.slug[locale] } }}
-              key={item.slug} 
+              key={item.slug[locale]}
               className="group flex flex-col bg-white rounded-3xl overflow-hidden shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 relative"
             >
               
