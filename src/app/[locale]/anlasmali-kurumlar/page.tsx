@@ -27,25 +27,40 @@ export default function PartnerInstitutionsPage() {
   return (
     <main>
       <Header />
-      <div className="min-h-screen bg-[#F8FAFC] pb-24 pt-[130px] md:pt-[170px]">
-      
-      {/* Hero Section */}
-      <div className="container mx-auto px-6 max-w-[1200px] mb-16 text-center">
-        <div className="inline-flex items-center gap-3 mb-6">
-          <div className="h-[2px] w-12 bg-[#ecbb3f]" />
-          <span className="text-[#ecbb3f] font-bold tracking-widest uppercase text-sm">KURUMSAL</span>
-          <div className="h-[2px] w-12 bg-[#ecbb3f]" />
+      {/* Hero Header Area */}
+      <div className="relative w-full h-[500px] md:h-[600px] flex items-center justify-center pt-32 md:pt-40">
+        <Image 
+          src="/images/megagoz-tedavi-sonrasi.webp" 
+          alt="Anlaşmalı Kurumlar" 
+          fill 
+          priority
+          className="object-cover object-center" 
+        />
+        <div className="absolute inset-0 bg-[#162f5d]/85 z-0" />
+        
+        <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 max-w-3xl pb-16">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="h-[1px] w-8 md:w-12 bg-[#ecbb3f]" />
+            <span className="text-[#ecbb3f] font-bold tracking-[0.2em] uppercase text-sm md:text-base">
+              KURUMSAL
+            </span>
+            <div className="h-[1px] w-8 md:w-12 bg-[#ecbb3f]" />
+          </div>
+          
+          <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight mb-6">
+            Anlaşmalı Kurumlar
+          </h1>
+          
+          <p className="text-gray-300 md:text-lg font-medium leading-relaxed max-w-2xl px-4">
+            Sağlığınızı güvence altına alan seçkin özel sigortalar, banka sandıkları ve resmi kurumlar ile olan kurumsal işbirliklerimiz.
+          </p>
         </div>
-        <h1 className="text-4xl md:text-5xl font-black text-[#162f5d] tracking-tight mb-6">
-          Anlaşmalı Kurumlar
-        </h1>
-        <p className="text-gray-500 text-lg md:text-xl font-medium max-w-2xl mx-auto">
-          Sağlığınızı güvence altına alan seçkin özel sigortalar, banka sandıkları ve resmi kurumlar ile olan kurumsal işbirliklerimiz.
-        </p>
       </div>
 
+      <div className="min-h-screen bg-[#F8FAFC] pb-24 relative z-20">
+      
       {/* Grid of Partners */}
-      <div className="container mx-auto px-6 max-w-[1200px]">
+      <div className="container mx-auto px-6 max-w-[1200px] relative z-20 -mt-24 md:-mt-32">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5">
           {partners.map((partner, idx) => (
             <div 

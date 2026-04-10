@@ -1,4 +1,4 @@
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Image from "next/image";
@@ -7,8 +7,9 @@ import { Link } from "@/i18n/navigation";
 
 export default function BlogPage() {
   const t = useTranslations("Blog");
+  const locale = useLocale();
 
-  const blogPosts = [
+  const blogPosts = locale === "tr" ? [
     {
       id: 1,
       title: "Lazer Göz Ameliyatı (Göz Çizdirme) Nedir?",
@@ -55,6 +56,55 @@ export default function BlogPage() {
       slug: "akilli-lens-tedavisi",
       excerpt: "Yakından uzağa tüm mesafelerde pırıl pırıl bir görüş sağlayan trifokal (akıllı) mercek cerrahisinin avantajları ve uygunluk şartları.",
       date: "15 Mart 2026",
+      image: "/images/blog_smart_lens.png"
+    }
+  ] : [
+    {
+      id: 1,
+      title: "What is Laser Eye Surgery?",
+      slug: "lazer-goz-ameliyati-nedir",
+      excerpt: "All the details about modern laser operations treating myopia, hypermetropia, and astigmatism in seconds.",
+      date: "April 14, 2026",
+      image: "/images/blog_laser_eye.png"
+    },
+    {
+      id: 2,
+      title: "Is It Possible to Change Eye Color?",
+      slug: "goz-rengi-degistirme",
+      excerpt: "How eye color change with methods like keratopigmentation and lasers is strictly applied in the medical world.",
+      date: "April 10, 2026",
+      image: "/images/megagoz-katarakt-tedavisi.webp"
+    },
+    {
+      id: 3,
+      title: "Importance of Eye Health in Children",
+      slug: "cocuklarda-goz-sagligi",
+      excerpt: "Early diagnosis of problems like lazy eye and strabismus determines your child's future educational life.",
+      date: "April 05, 2026",
+      image: "/images/blog_child_eye.png"
+    },
+    {
+      id: 4,
+      title: "Cataract Symptoms and Modern Treatment",
+      slug: "katarakt-belirtileri-ve-tedavisi",
+      excerpt: "The most frequent cause of age-related vision loss, treated in a very short time with seamless phaco surgery.",
+      date: "March 28, 2026",
+      image: "/images/megagoz-tedavi-sonrasi.webp"
+    },
+    {
+      id: 5,
+      title: "How to Cure Dry Eye Syndrome?",
+      slug: "kuru-goz-sendromu",
+      excerpt: "Practical measures and drop treatments that can be taken for dry eye, the persistent nightmare of heavy computer users.",
+      date: "March 20, 2026",
+      image: "/images/slide2.png"
+    },
+    {
+      id: 6,
+      title: "Who Is Eligible for Smart Lenses?",
+      slug: "akilli-lens-tedavisi",
+      excerpt: "Advantages and eligibility conditions of trifocal (smart) intraocular lens surgery providing sparkling vision at all distances.",
+      date: "March 15, 2026",
       image: "/images/blog_smart_lens.png"
     }
   ];

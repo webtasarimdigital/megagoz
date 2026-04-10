@@ -149,7 +149,7 @@ export default function ContactPage() {
                 <div>
                   <h3 className="text-[#162f5d] font-bold text-[15px] mb-1">{t("info.address")}</h3>
                   <p className="text-gray-500 text-[13px] leading-relaxed mb-1">
-                    İhtisas Sokak. No:3 Ümraniye / İstanbul
+                    İstiklal, Gamsız Sk. No:3, 34762 Ümraniye/İstanbul, Türkiye
                   </p>
                 </div>
               </div>

@@ -107,7 +107,7 @@ export default function FloatingActions() {
         </Link>
 
         {/* KONUM */}
-        <a href="https://maps.app.goo.gl/YourGoogleMapsLink" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-1 min-w-[70px]">
+        <a href="https://share.google/zC0UTV7bTbwJn46pu" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-1 min-w-[70px]">
           <div className="w-10 h-10 rounded-[10px] bg-[#f59e0b] flex items-center justify-center text-white shadow-sm">
             <MapPin size={22} strokeWidth={2.5} />
           </div>

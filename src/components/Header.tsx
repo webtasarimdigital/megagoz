@@ -184,15 +184,15 @@ export default function Header() {
              <div className="absolute inset-0 flex items-center justify-center">
                 {/* Mobile Logo */}
                 <img 
-                  src="/images/megagoz.webp" 
+                  src="/megagoz-logo-mobil.png" 
                   alt="Megagöz Tıp Merkezi" 
-                  className="w-full h-[85%] object-contain scale-[1.15] lg:hidden" 
+                  className="w-full h-[85%] object-contain scale-[1.05] lg:hidden" 
                 />
                 {/* Desktop Logo */}
                 <img 
                   src="/logo.png" 
                   alt="Megagöz Tıp Merkezi" 
-                  className="hidden lg:block w-full h-full object-contain scale-[1.5] lg:invert-0 lg:mix-blend-normal lg:brightness-100" 
+                  className="hidden lg:block w-full h-full object-contain scale-[1.35] lg:invert-0 lg:mix-blend-normal lg:brightness-100" 
                 />
              </div>
           </Link>
