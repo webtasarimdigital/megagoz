@@ -11,7 +11,7 @@ export default function KVKKPage() {
       <Header />
       
       {/* Hero Header Area */}
-      <div className="relative w-full h-[400px] md:h-[500px] flex items-center justify-center pt-24 md:pt-32">
+      <div className="relative w-full h-[500px] md:h-[650px] flex items-center justify-center pt-32 md:pt-48">
         <Image 
           src="/images/slide2.png" 
           alt="KVKK Background" 

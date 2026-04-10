@@ -12,7 +12,7 @@ export default function JobApplicationPage() {
       <Header />
       
       {/* Hero Header Area */}
-      <div className="relative w-full h-[450px] md:h-[600px] flex items-center justify-center pt-24 md:pt-32">
+      <div className="relative w-full h-[500px] md:h-[650px] flex items-center justify-center pt-32 md:pt-48">
         <Image 
           src="/images/megagoz-goz-norolojisi.webp" 
           alt="İş Başvurusu" 

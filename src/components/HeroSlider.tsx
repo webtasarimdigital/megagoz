@@ -207,7 +207,7 @@ export default function HeroSlider() {
             clickable: true,
             el: '.swiper-pagination-custom',
             renderBullet: function (index, className) {
-              return '<div class="' + className + ' !opacity-100 !bg-transparent !m-0 !w-14 !h-14 flex items-center justify-center rounded-xl text-[18px] font-black text-white/50 transition-all duration-300 hover:text-white [&.swiper-pagination-bullet-active]:!bg-[#ecbb3f] [&.swiper-pagination-bullet-active]:text-[#162f5d] [&.swiper-pagination-bullet-active]:shadow-[0_10px_25px_rgba(236,187,63,0.3)] shadow-none cursor-pointer">' + String(index + 1).padStart(2, "0") + '</div>';
+              return '<div class="' + className + ' !opacity-100 !bg-transparent !m-0 !w-12 !h-12 !flex !items-center !justify-center !rounded-xl text-[18px] font-black text-white/50 transition-all duration-300 hover:text-white [&.swiper-pagination-bullet-active]:!bg-[#ecbb3f] [&.swiper-pagination-bullet-active]:!text-[#162f5d] [&.swiper-pagination-bullet-active]:!shadow-[0_10px_25px_rgba(236,187,63,0.3)] !cursor-pointer">' + String(index + 1).padStart(2, "0") + '</div>';
             },
           }}
           className="w-full h-full"
@@ -259,10 +259,9 @@ export default function HeroSlider() {
       {/* Quick Appointment Form (Overlaps Bottom Edge) */}
       <div className="relative z-40 w-full px-4 md:px-8 max-w-[1250px] mx-auto -mt-[60px] md:-mt-[90px] mb-16">
         <div className="bg-white rounded-2xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.2)] p-8 md:p-10">
-           {/* Header */}
            <div className="mb-6">
               <h3 className="text-xl md:text-[22px] font-black tracking-tight text-[#162f5d] flex gap-1.5 items-center uppercase">
-                 HIZLI RANDEVU <span className="text-[#ecbb3f]">FORMU</span>
+                 {t("quickAppointment")} <span className="text-[#ecbb3f]">{locale === 'tr' ? 'FORMU' : 'FORM'}</span>
               </h3>
            </div>
 
@@ -274,7 +273,7 @@ export default function HeroSlider() {
                  <div className="relative">
                     <input 
                       type="text" 
-                      placeholder="Adınız Soyadınız" 
+                      placeholder={t("fullName")} 
                       className="w-full h-[54px] border border-gray-200 rounded-lg px-4 text-[15px] font-medium text-[#162f5d] placeholder-gray-500 focus:outline-none focus:border-gray-400 transition-all bg-white" 
                     />
                  </div>
@@ -289,7 +288,7 @@ export default function HeroSlider() {
                        </div>
                        <input 
                          type="tel" 
-                         placeholder="Telefon" 
+                         placeholder={t("phone")} 
                          className="w-full h-full px-4 text-[15px] font-medium text-[#162f5d] placeholder-gray-500 outline-none bg-transparent" 
                        />
                     </div>
@@ -306,7 +305,7 @@ export default function HeroSlider() {
                       {isKvkkChecked && <svg className="w-3 h-3 text-[#162f5d]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>}
                     </div>
                     <label className="text-sm font-semibold text-[#162f5d]">
-                      <button type="button" onClick={() => setIsKvkkModalOpen(true)} className="text-[#ecbb3f] hover:underline">KVKK metnini</button> okudum, kabul ediyorum.
+                      {t("kvkkAccept")}
                     </label>
                  </div>
 
@@ -314,7 +313,7 @@ export default function HeroSlider() {
                    type="button" 
                    className="w-full sm:w-auto px-16 h-[50px] bg-[#ecbb3f] hover:bg-[#d6a529] text-white font-bold tracking-widest rounded-lg shadow-lg shadow-[#ecbb3f]/20 transition-all text-sm uppercase shrink-0"
                  >
-                    Gönder
+                    {t("submitApt")}
                  </button>
               </div>
            </form>
