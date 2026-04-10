@@ -83,15 +83,23 @@ export default function TreatmentDetailPage({ params }: { params: Promise<{ loca
                {/* Intro Block */}
                <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100">
                   <h2 className="text-3xl font-black text-[#162f5d] mb-6">Genel Bakış</h2>
-                  <p className="text-gray-600 leading-relaxed text-lg mb-6">
-                    Mükemmel ve net bir görüşe ulaşmak, hem iş hayatınızda hem de sosyal yaşantınızda büyük bir özgürlüktür. Alanında uzman hekim kadromuz, modern tıp dünyasının sunduğu en güncel metodları 
-                    bireysel ihtiyaçlarınıza göre uyarlar. 
-                  </p>
-                  <p className="text-gray-600 leading-relaxed text-lg">
-                    {locale === "tr"
-                      ? "Tıp teknolojisindeki en son gelişmeler ışığında sunduğumuz bu tedavi yöntemiyle, hastalarımızın yaşam kalitesini maksimuma çıkarmayı hedefliyoruz."
-                      : "With this treatment method we offer in the light of the latest developments in medical technology, we aim to maximize the quality of life of our patients."}
-                  </p>
+                  {treatment.content?.[locale] ? (
+                    <div 
+                       className="prose prose-lg max-w-none text-gray-600 font-medium leading-relaxed"
+                       dangerouslySetInnerHTML={{ __html: treatment.content[locale] }} 
+                    />
+                  ) : (
+                    <>
+                      <p className="text-gray-600 leading-relaxed text-lg mb-6 font-medium">
+                        Mükemmel ve net bir görüşe ulaşmak, hem iş hayatınızda hem de sosyal yaşantınızda büyük bir özgürlüktür. Alanında uzman hekim kadromuz, modern tıp dünyasının sunduğu en güncel metodları bireysel ihtiyaçlarınıza göre uyarlar. 
+                      </p>
+                      <p className="text-gray-600 leading-relaxed text-lg font-medium">
+                        {locale === "tr"
+                          ? "Tıp teknolojisindeki en son gelişmeler ışığında sunduğumuz bu tedavi yöntemiyle, hastalarımızın yaşam kalitesini maksimuma çıkarmayı hedefliyoruz."
+                          : "With this treatment method we offer in the light of the latest developments in medical technology, we aim to maximize the quality of life of our patients."}
+                      </p>
+                    </>
+                  )}
                </div>
 
                {/* Extensive Image Gallery / Grid */}

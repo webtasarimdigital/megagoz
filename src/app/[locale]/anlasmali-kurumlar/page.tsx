@@ -1,21 +1,33 @@
-import { ShieldCheck, Building2, Landmark, HeartHandshake } from "lucide-react";
+import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export default function PartnerInstitutionsPage() {
   const partners = [
-    { name: "TZH Vakfı", type: "Vakıf", icon: <Building2 className="text-[#ecbb3f] mb-3" size={32} /> },
-    { name: "Yapı Kredi Emekli Sandığı", type: "Emekli Sandığı", icon: <Landmark className="text-[#ecbb3f] mb-3" size={32} /> },
-    { name: "Vakıfbank Emekli Sandığı", type: "Emekli Sandığı", icon: <Landmark className="text-[#ecbb3f] mb-3" size={32} /> },
-    { name: "SGK (Sosyal Güvenlik Kurumu)", type: "Kamu", icon: <ShieldCheck className="text-[#ecbb3f] mb-3" size={32} /> },
-    { name: "Özel Sağlık Sigortaları", type: "ÖSS", icon: <HeartHandshake className="text-[#ecbb3f] mb-3" size={32} /> },
-    { name: "Tamamlayıcı Sağlık", type: "TSS", icon: <HeartHandshake className="text-[#ecbb3f] mb-3" size={32} /> },
+    { name: "ANA SİGORTA A.Ş.", image: "/images/ana-sigorta.png" },
+    { name: "ANADOLU SİGORTA", image: "/images/Anadolu_Sigorta.png" },
+    { name: "ANKARA SİGORTA A.Ş.", image: "/images/ankara-sigorta.png" },
+    { name: "AREX SİGORTA A.Ş.", image: "/images/arax-sigorta.png" },
+    { name: "AXA SİGORTA", image: "/images/sigorta_openb_rgb.png" },
+    { name: "DOĞA SİGORTA A.Ş.", image: "/images/doga_logo_svg.svg" },
+    { name: "ETHICA SİGORTA A.Ş.", image: "/images/ethicasigorta.svg" },
+    { name: "MAGDEBURGER SİGORTA A.Ş.", image: "/images/magdeburger-sigorta.png" },
+    { name: "NEOVA SİGORTA A.Ş.", image: "/images/neova-sigorta.png" },
+    { name: "NİPPON SİGORTA A.Ş.", image: "/images/turk-nippon-sigorta.svg" },
+    { name: "PRIVE SİGORTA A.Ş.", image: "/images/prive-sigorta.png" },
+    { name: "QUICK SİGORTA A.Ş.", image: "/images/quick-sigorta-blue-logo.svg" },
+    { name: "REFERANS SİGORTA A.Ş.", image: "/images/referans-sigorta.svg" },
+    { name: "SOMPO SİGORTA A.Ş.", image: "/images/sompo-sigorta.png" },
+    { name: "TÜRK TELEKOM VAKFI", image: "/images/turktelekomvakfi.png" },
+    { name: "TÜRKİYE SİGORTA", image: "/images/turkiye-sigorta.png" },
+    { name: "UNICO SİGORTA A.Ş.", image: "/images/unico-sigorta-logo.png" },
+    { name: "ZURICH YAŞAM VE EMEKLİLİK A.Ş.", image: "/images/zurich-logo.png" },
   ];
 
   return (
     <main>
       <Header />
-      <div className="min-h-screen bg-[#F8FAFC] pb-24 pt-32 md:pt-40">
+      <div className="min-h-screen bg-[#F8FAFC] pb-24 pt-[130px] md:pt-[170px]">
       
       {/* Hero Section */}
       <div className="container mx-auto px-6 max-w-[1200px] mb-16 text-center">
@@ -34,21 +46,25 @@ export default function PartnerInstitutionsPage() {
 
       {/* Grid of Partners */}
       <div className="container mx-auto px-6 max-w-[1200px]">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5">
           {partners.map((partner, idx) => (
             <div 
               key={idx}
-              className="bg-white rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-[0_10px_30px_rgba(0,0,0,0.03)] border border-gray-100 hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-300 group"
+              className="bg-white rounded-3xl p-4 md:p-6 flex items-center shadow-[0_2px_15px_rgba(0,0,0,0.03)] border border-gray-100 hover:shadow-lg transition-all duration-300 group"
             >
-              <div className="w-20 h-20 rounded-full bg-gray-50 flex items-center justify-center mb-4 group-hover:bg-[#ecbb3f]/10 transition-colors">
-                {partner.icon}
+              {/* Logo Box */}
+              <div className="w-24 md:w-32 h-14 md:h-16 shrink-0 border-r border-gray-100 pr-5 md:pr-6 mr-5 md:mr-6 flex items-center justify-center relative">
+                <Image 
+                  src={partner.image} 
+                  alt={partner.name} 
+                  fill
+                  className="object-contain p-1 group-hover:scale-105 transition-transform" 
+                />
               </div>
-              <h3 className="text-lg font-bold text-[#162f5d] mb-1 leading-snug">
+              {/* Name Block */}
+              <h3 className="text-[13px] md:text-[15px] font-bold text-[#162f5d] leading-snug tracking-wide uppercase">
                 {partner.name}
               </h3>
-              <span className="text-xs font-bold text-gray-400 uppercase tracking-widest bg-gray-50 px-3 py-1 rounded-full mt-3">
-                {partner.type}
-              </span>
             </div>
           ))}
         </div>

@@ -5,12 +5,36 @@
     "services": "Services",
     "blog": "Blog",
     "contact": "Contact",
-    "appointment": "Book Appointment"
+    "appointment": "Book Appointment",
+    "corporate": "CORPORATE",
+    "treatments": "TREATMENTS",
+    "doctors": "OUR DOCTORS",
+    "smartLenses": "Smart Lenses",
+    "laserSurgery": "Laser Eye Surgery",
+    "partnerInstitutions": "Partner Institutions",
+    "megagozGallery": "MegaGöz Gallery",
+    "jobApplication": "Job Application",
+    "kvkkPolicy": "Privacy Policy (KVKK)",
+    "location": "Location"
   },
   "Hero": {
     "title": "The Best for Your\nEye Health",
     "subtitle": "We are here for a clearer world with our expert staff and state-of-the-art systems.",
-    "cta": "Book Now"
+    "cta": "Book Now",
+    "slide1Title": "ALL UNDER ONE ROOF",
+    "slide1Sub": "PERSONALIZED PLANNING",
+    "slide2Title": "YOUR EYE HEALTH IS IN SAFE HANDS",
+    "slide2Sub": "WITH THE LATEST TECHNOLOGIES",
+    "slide3Title": "SMART LENS TECHNOLOGY",
+    "slide3Sub": "CLEAR NEAR AND FAR VISION",
+    "slide4Title": "LASER EYE SURGERY",
+    "slide4Sub": "GET RID OF YOUR GLASSES",
+    "quickAppointment": "Quick Appointment",
+    "appointmentDesc": "Please leave your details, and our expert team will contact you shortly.",
+    "fullName": "Full Name",
+    "phone": "Phone Number",
+    "kvkkAccept": "I have read and accept the Privacy Policy.",
+    "submitApt": "SUBMIT"
   },
   "About": {
     "badge": "About Us",

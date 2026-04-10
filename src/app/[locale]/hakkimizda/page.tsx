@@ -10,7 +10,7 @@ export default function AboutPage() {
   return (
     <main>
       <Header />
-      <div className="min-h-screen bg-white pb-24 pt-32 md:pt-40">
+      <div className="min-h-screen bg-white pb-24 pt-[130px] md:pt-[170px]">
       
       {/* Page Header (Hero style) */}
       <div className="container mx-auto px-6 max-w-[1300px] mb-20 md:mb-32">
@@ -84,33 +84,89 @@ export default function AboutPage() {
             </div>
 
             {/* Scrolling Content */}
-            <div className="lg:col-span-7 space-y-12 md:space-y-20">
+            <div className="lg:col-span-7 space-y-12 md:space-y-16">
               
               <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-gray-100 relative overflow-hidden group">
                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#ecbb3f]/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-150" />
                  <h3 className="text-2xl font-black text-[#162f5d] mb-6 flex items-center gap-3">
-                   <Award className="text-[#ecbb3f]" /> Vizyonumuz
+                   <Award className="text-[#ecbb3f]" /> Vizyonumuz & Misyonumuz
                  </h3>
-                 <p className="text-gray-600 text-[17px] leading-relaxed">
-                   Yenilikçi medikal teknolojileri, deneyimli uzman hekim kadrosu ve hasta memnuniyetine odaklı profesyonel ekibiyle MEGAGÖZ, göz sağlığı alanında çağdaş ve güvenilir bir referans merkezi haline gelmiştir. Her hasta için kişiselleştirilmiş tedavi yaklaşımlarıyla öne çıkar.
+                 <p className="text-gray-600 text-lg leading-relaxed mb-6 font-medium">
+                   Yenilikçi medikal teknolojileri, deneyimli uzman hekim kadrosu ve hasta memnuniyetine odaklı profesyonel ekibiyle MEGAGÖZ, göz sağlığı alanında küresel çapta çağdaş ve güvenilir bir referans merkezi haline gelmeyi <strong className="text-[#162f5d]">vizyon</strong> edinmiştir. Her hasta için kişiselleştirilmiş tedavi yaklaşımlarıyla, standart şablonların çok ötesinde tıbbi hizmet sunmayı hedefler.
+                 </p>
+                 <p className="text-gray-600 text-lg leading-relaxed font-medium">
+                   <strong className="text-[#162f5d]">Misyonumuz</strong> ise; etik tıp kurallarından şaşmadan, toplumun her kesimine ulaşılabilir, uluslararası kalitede göz sağlığı hizmeti sunmaktır. Göz hastalıklarının teşhis ve tedavisinde insan odaklı, yenilikçi ve bilimsel gelişmeleri yakından takip eden bir yapı ile nesillerin aydınlık geleceğine katkıda bulunuyoruz.
                  </p>
               </div>
 
+              {/* Extended Corporate History */}
+              <div>
+                <h3 className="text-3xl font-black text-[#162f5d] mb-8">Köklü Bir Geçmiş, Güçlü Bir Gelecek</h3>
+                <div className="prose prose-lg max-w-none text-gray-600 font-medium leading-relaxed space-y-6">
+                  <p>
+                    Megagöz Tıp Merkezi, temellerinin atıldığı ilk günden itibaren göz sağlığı teşhis ve tedavisinde devrimsel adımlar atmak amacıyla kurulmuştur. Kuruluş felsefemiz, paha biçilemez bir organ olan gözlerin tedavisinde hastalarımıza <strong>"kendi ailemize nasıl bakıyorsak, öyle davranmak"</strong> üzerine inşa edilmiştir. Yıllar içerisinde imza attığımız on binlerce başarılı cerrahi vaka, sadece istatistiksel bir başarı değil; aynı zamanda bize güvenen hastalarımızın dünyaya yeniden net bir şekilde bakabilmesinin onurlu bir kanıtıdır.
+                  </p>
+                  <p>
+                    Katarakt cerrahisinden akıllı lens (trifokal) implantasyonlarına, excimer lazer (iLasik) tedavilerinden ileri seviye şaşılık ve glokom operasyonlarına kadar geniş bir medikal ve cerrahi yelpazede hizmet sunmaktayız. Göz cerrahisi büyük bir incelik, hatasız bir planlama ve son teknoloji donanım gerektirir. Bu bilinçle, ameliyathanelerimizi ve teşhis ünitelerimizi her dönem Amerikan FDA ve Avrupa standartlarında en güncel cihazlarla revize etmekteyiz.
+                  </p>
+                  <p>
+                    Hasta kabul sürecinden başlayarak taburculuk sonrasına kadar devam eden yolculukta, Megagöz ailesi olarak şeffaflık en değerli ilkemizdir. Tedavi öncesi uzman hekimlerimiz, hastalarımızın kornea yapısını, retina topografisini ve tüm anatomik verilerini tamamen kişiselleştirilmiş yazılımlar eşliğinde detaylıca inceler. Bu sayede her bir göz yapısı için tek ve benzersiz bir cerrahi harita çıkarılır. 
+                  </p>
+                </div>
+              </div>
+
+              {/* Infrastructure */}
+              <div className="bg-gradient-to-br from-[#162f5d] to-[#0a111a] rounded-3xl p-8 md:p-12 shadow-xl text-white">
+                 <h3 className="text-2xl font-black mb-8 text-[#ecbb3f]">Teknolojik Altyapımız ve Tıbbi Üstünlüğümüz</h3>
+                 <p className="text-gray-300 leading-relaxed text-lg mb-8 font-medium">
+                    Cerrahlarımızın eşsiz tecrübesi, kliniğimizdeki akıllı cihaz parkuruyla buluştuğunda mükemmel sonuçlar garantilenmektedir. Megagöz'de tıp dünyasının ulaştığı en yeni ekipmanlar kullanılmaktadır:
+                 </p>
+                 <div className="space-y-6">
+                    <div className="flex gap-4 items-start">
+                       <div className="mt-1 w-8 h-8 rounded-full border-2 border-[#ecbb3f] flex items-center justify-center shrink-0">
+                         <CheckCircle2 size={16} className="text-[#ecbb3f]" />
+                       </div>
+                       <div>
+                         <h4 className="font-bold text-lg mb-1 text-white">Üç Boyutlu OCT (Topografi) Analizi</h4>
+                         <p className="text-gray-400">Göz dokularınızın hücresel seviyeye kadar milimetrik haritalandırılması.</p>
+                       </div>
+                    </div>
+                    <div className="flex gap-4 items-start">
+                       <div className="mt-1 w-8 h-8 rounded-full border-2 border-[#ecbb3f] flex items-center justify-center shrink-0">
+                         <CheckCircle2 size={16} className="text-[#ecbb3f]" />
+                       </div>
+                       <div>
+                         <h4 className="font-bold text-lg mb-1 text-white">Damla Anestezi & Bıçaksız Lazer (Femtosaniye)</h4>
+                         <p className="text-gray-400">Genel veya lokal iğneli anesteziye gerek kalmadan, saniyeler içinde ağrısız ve dikişsiz operasyonlar.</p>
+                       </div>
+                    </div>
+                    <div className="flex gap-4 items-start">
+                       <div className="mt-1 w-8 h-8 rounded-full border-2 border-[#ecbb3f] flex items-center justify-center shrink-0">
+                         <CheckCircle2 size={16} className="text-[#ecbb3f]" />
+                       </div>
+                       <div>
+                         <h4 className="font-bold text-lg mb-1 text-white">Yüksek Standartlı V.I.P Ameliyathaneler</h4>
+                         <p className="text-gray-400">Gelişmiş HEPA filtre iklimlendirme sistemli, enfeksiyon riskini sıfıra indiren cerrahi odalar.</p>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+
               <div className="space-y-6">
-                <h3 className="text-2xl font-black text-[#162f5d] mb-8">Neden Megagöz?</h3>
+                <h3 className="text-3xl font-black text-[#162f5d] mb-8 mt-4">Neden Megagöz?</h3>
                 
                 {[
-                  { title: "Uzman Kadro, Güvenilir Tecrübe", desc: "Alanında saygın cerrahlar ve uzmanlardan oluşan kadro." },
-                  { title: "Yenilikçi Teknoloji, Hassas Tanı", desc: "En güncel cihazlar ile kesintisiz teşhis ve tedavi sistemleri." },
-                  { title: "Hasta Odaklı Yaklaşım", desc: "Her aşamada sizi bilgilendiren, şeffaf süreç yönetimi." },
-                  { title: "Modern, Konforlu ve Erişilebilir", desc: "İstanbul'un merkezinde, her detayıyla konforunuz için tasarlanmış klinik." },
+                  { title: "Uzman Kadro, Güvenilir Tecrübe", desc: "Sadece teorik değil, on binlerce zorlu cerrahi vakadan yüzünün akıyla çıkmış, alanında saygın cerrahlar ve uzmanlardan oluşan akademik seviyede bir kadro." },
+                  { title: "Yenilikçi Teknoloji, Hassas Tanı", desc: "Tahminlere değil, ölçümlere dayalı tıp! Dünyanın saygın laboratuvarlarında üretilen en güncel cihazlar ile kesintisiz teşhis ve tedavi sistemleri." },
+                  { title: "Kişiye Özel Hasta Odaklı Yaklaşım", desc: "Kapıdan girdiğiniz andan iyileşene kadar her aşamada sizi detaylıca bilgilendiren, şeffaf süreç yönetimi ve güler yüz." },
+                  { title: "Modern, Konforlu ve Erişilebilir", desc: "Anadolu yakasının kalbi Ümraniye'de, her noktadan kolayca ulaşılabilecek, ferah mimarisiyle ruhunuzu da dinlendiren klinik." },
                 ].map((item, idx) => (
-                  <div key={idx} className="flex gap-5 items-start p-6 rounded-2xl bg-white hover:shadow-lg transition-shadow border border-gray-50">
-                     <div className="mt-1 w-8 h-8 rounded-full bg-[#ecbb3f]/20 flex items-center justify-center shrink-0">
-                       <CheckCircle2 size={18} className="text-[#ecbb3f]" />
+                  <div key={idx} className="flex gap-5 items-start p-6 rounded-2xl bg-white hover:shadow-xl transition-shadow duration-300 border border-gray-100 group">
+                     <div className="mt-1 w-10 h-10 rounded-full bg-[#ecbb3f]/10 group-hover:bg-[#ecbb3f] transition-colors flex items-center justify-center shrink-0">
+                       <CheckCircle2 size={20} className="text-[#ecbb3f] group-hover:text-white transition-colors" />
                      </div>
                      <div>
-                       <h4 className="text-lg font-bold text-[#162f5d] mb-2">{item.title}</h4>
+                       <h4 className="text-xl font-black text-[#162f5d] mb-2">{item.title}</h4>
                        <p className="text-gray-500 leading-relaxed font-medium">{item.desc}</p>
                      </div>
                   </div>

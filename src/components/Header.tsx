@@ -26,11 +26,11 @@ export default function Header() {
   const [mobileKurumsalOpen, setMobileKurumsalOpen] = useState(false);
 
   const kurumsalDropdownLinks = [
-    { name: "Hakkımızda", href: "/hakkimizda" },
-    { name: "Anlaşmalı Kurumlar", href: "/anlasmali-kurumlar" },
-    { name: "MegaGöz Galeri", href: "/galeri" },
-    { name: "İş Başvurusu", href: "/#is-basvurusu" },
-    { name: "KVKK", href: "/kvkk" }
+    { name: t("about"), href: "/hakkimizda" },
+    { name: t("partnerInstitutions"), href: "/anlasmali-kurumlar" },
+    { name: t("megagozGallery"), href: "/galeri" },
+    { name: t("jobApplication"), href: "/#is-basvurusu" },
+    { name: t("kvkkPolicy"), href: "/kvkk" }
   ];
 
   useEffect(() => {
@@ -65,36 +65,36 @@ export default function Header() {
   };
 
   const navLinks = [
-    { name: "ANA SAYFA", href: "/" },
-    { name: "KURUMSAL", href: "/hakkimizda" },
-    { name: "TEDAVİLER", href: "/tedaviler" },
-    { name: "DOKTORLARIMIZ", href: "/doktorlar" },
-    { name: "BLOG", href: "/blog" },
-    { name: "İLETİŞİM", href: "/iletisim" },
+    { id: "home", name: t("home").toUpperCase(), href: "/" },
+    { id: "corporate", name: t("corporate").toUpperCase(), href: "/hakkimizda" },
+    { id: "treatments", name: t("treatments").toUpperCase(), href: "/tedaviler" },
+    { id: "doctors", name: t("doctors").toUpperCase(), href: "/doktorlar" },
+    { id: "blog", name: t("blog").toUpperCase(), href: "/blog" },
+    { id: "contact", name: t("contact").toUpperCase(), href: "/iletisim" },
   ];
 
   return (
     <header className="w-full fixed top-0 left-0 right-0 z-50 flex flex-col font-sans">
       {/* Top Blue Bar - Disappears on scroll */}
       <div 
-        className={`bg-gradient-to-r from-[#0d1d3a] via-[#081224] to-[#0d1d3a] text-white text-[14px] font-semibold tracking-wide transition-all duration-300 origin-top ${
+        className={`bg-[#162f5d] text-white text-[14px] font-semibold tracking-wide transition-all duration-300 origin-top ${
           isScrolled ? "h-0 opacity-0 overflow-hidden" : "hidden lg:flex h-[55px] opacity-100"
         }`}
       >
         <div className="w-full flex items-center justify-center h-full px-4 gap-8 md:gap-16">
           {/* Left quick links */}
           <div className="hidden lg:flex items-center gap-3">
-            <a href="#" className="hover:text-gray-200 transition-colors">Akıllı Lensler</a>
+            <Link href="/tedaviler/akilli-lens/akilli-lens-trifokal-mercek" className="hover:text-gray-200 transition-colors">{t("smartLenses")}</Link>
             <span className="text-white/60">|</span>
-            <a href="#" className="hover:text-gray-200 transition-colors">Göz Lazer Ameliyatı</a>
+            <Link href="/tedaviler/goz-lazer-tedavisi/lazer-goz-ameliyati" className="hover:text-gray-200 transition-colors">{t("laserSurgery")}</Link>
             <span className="text-white/60">|</span>
-            <a href="#" className="hover:text-gray-200 transition-colors">Anlaşmalı Kurumlar</a>
+            <Link href="/anlasmali-kurumlar" className="hover:text-gray-200 transition-colors">{t("partnerInstitutions")}</Link>
           </div>
 
           {/* Right contact & settings */}
           <div className="flex items-center gap-4 shrink-0 font-bold">
             <a href="https://share.google/zC0UTV7bTbwJn46pu" target="_blank" rel="noopener noreferrer" className="hover:text-gray-200 transition-colors flex items-center gap-1.5 hidden lg:flex">
-              <MapPin size={14} /> Konum
+              <MapPin size={14} /> {t("location")}
             </a>
             <span className="text-white/60 hidden lg:inline">|</span>
             <a href="mailto:info@megagoz.com" className="hover:text-gray-200 transition-colors hidden md:flex font-medium">
@@ -176,17 +176,16 @@ export default function Header() {
       </div>
 
       {/* Main Dark Nav Bar */}
-      <div className={`transition-all duration-300 ${isScrolled ? "shadow-md shadow-gray-200 py-2 lg:py-4" : "py-4 lg:py-6 border-b-2 border-transparent"} bg-gradient-to-r from-[#0d1d3a] via-[#081224] to-[#0d1d3a] lg:bg-none lg:bg-white`}>
+      <div className={`transition-all duration-300 ${isScrolled ? "shadow-md shadow-gray-200 py-2 lg:py-4" : "py-4 lg:py-6 border-b-2 border-transparent"} bg-[#162f5d] lg:bg-white`}>
         <div className="w-full flex items-center justify-center px-4 md:px-8 gap-8 lg:gap-10 xl:gap-20">
           
           {/* Logo */}
-          <Link href="/" className="flex flex-col justify-center items-center shrink-0 w-[160px] md:w-[234px] lg:w-[288px] h-[50px] md:h-[63px] lg:h-[72px] relative overflow-hidden group">
-             {/* Logo filter trick: invert makes black->white & whiteBg->black. mix-blend-screen makes the blackBg disappear! Result: pure white logo. */}
+          <Link href="/" className="flex flex-col justify-center items-center shrink-0 w-[180px] md:w-[250px] lg:w-[300px] xl:w-[340px] h-[55px] md:h-[70px] lg:h-[85px] relative group px-2">
              <div className="absolute inset-0 flex items-center justify-center">
                 <img 
                   src="/logo.png" 
                   alt="Megagöz Tıp Merkezi" 
-                  className="w-full h-full object-contain filter invert mix-blend-screen brightness-200 lg:invert-0 lg:mix-blend-normal lg:brightness-100" 
+                  className="w-full h-full object-contain scale-[1.3] lg:scale-[1.5] filter invert mix-blend-screen brightness-200 lg:invert-0 lg:mix-blend-normal lg:brightness-100" 
                 />
              </div>
           </Link>
@@ -194,7 +193,7 @@ export default function Header() {
           {/* Desktop Menu */}
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navLinks.map((link) => {
-              if (link.name === "KURUMSAL") {
+              if (link.id === "corporate") {
                 return (
                   <div 
                     key={link.name} 
@@ -247,7 +246,7 @@ export default function Header() {
                 );
               }
 
-              if (link.name === "TEDAVİLER") {
+              if (link.id === "treatments") {
                 return (
                   <div 
                     key={link.name} 
@@ -359,7 +358,7 @@ export default function Header() {
           >
             <div className="flex flex-col px-4 py-4 space-y-4">
               {navLinks.map((link) => {
-                if (link.name === "KURUMSAL") {
+                if (link.id === "corporate") {
                   return (
                     <div key={link.name} className="flex flex-col border-b border-gray-100 pb-2 mb-2">
                        <button 
@@ -405,7 +404,7 @@ export default function Header() {
                   );
                 }
 
-                if (link.name === "TEDAVİLER") {
+                if (link.id === "treatments") {
                   return (
                     <div key={link.name} className="flex flex-col border-b border-gray-100 pb-2">
                        <button 

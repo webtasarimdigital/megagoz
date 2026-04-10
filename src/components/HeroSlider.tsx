@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Calendar, Handshake, ChevronRight, CheckCircle2, Clock, X, ChevronDown, User, Phone, Mail } from "lucide-react";
 
 // Futuristic, medical AI-generated slides based on user visual references
@@ -10,31 +10,32 @@ const slides = [
   {
     id: 1,
     image: "/images/slide1.png",
-    title: "HEPSİ TEK ÇATI ALTINDA",
-    subtitle: "KİŞİYE ÖZEL PLANLAMA"
+    titleKey: "slide1Title",
+    subKey: "slide1Sub"
   },
   {
     id: 2,
     image: "/images/slide2.png",
-    title: "GÖZ SAĞLIĞINIZ EMİN ELLERDE",
-    subtitle: "EN YENİ TEKNOLOJİLERLE"
+    titleKey: "slide2Title",
+    subKey: "slide2Sub"
   },
   {
     id: 3,
     image: "/images/slide3.png",
-    title: "AKILLI LENS TEKNOLOJİSİ",
-    subtitle: "YAKIN VE UZAK NET GÖRÜŞ"
+    titleKey: "slide3Title",
+    subKey: "slide3Sub"
   },
   {
     id: 4,
     image: "/images/slide4.png",
-    title: "LAZER GÖZ AMELİYATI",
-    subtitle: "GÖZLÜKLERİNİZDEN KURTULUN"
+    titleKey: "slide4Title",
+    subKey: "slide4Sub"
   }
 ];
 
 export default function HeroSlider() {
   const t = useTranslations("Hero");
+  const locale = useLocale();
   const [current, setCurrent] = useState(0);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isKvkkChecked, setIsKvkkChecked] = useState(false);
@@ -48,7 +49,7 @@ export default function HeroSlider() {
   }, []);
 
   return (
-    <div className="relative w-full bg-[#F8FAFC]">
+    <div className="relative w-full bg-[#162f5d] pt-[115px] lg:pt-[135px]">
       {/* Sticky Appointment Widget */}
       <div className="fixed right-0 top-[40%] lg:top-[45%] -translate-y-1/2 z-[100]">
         
@@ -68,7 +69,7 @@ export default function HeroSlider() {
                 <div className="bg-[#162f5d] text-white px-6 py-5 flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <Calendar size={22} className="text-[#ecbb3f]" />
-                    <h3 className="font-bold text-[18px] tracking-wide whitespace-nowrap">Hızlı Randevu</h3>
+                    <h3 className="font-bold text-[18px] tracking-wide whitespace-nowrap">{t("quickAppointment")}</h3>
                   </div>
                   <button 
                     onClick={() => setIsPopupOpen(false)} 
@@ -81,7 +82,7 @@ export default function HeroSlider() {
                 {/* Body */}
                 <div className="p-7 bg-white">
                   <p className="text-gray-500 text-[14px] font-medium mb-6 leading-relaxed">
-                    Lütfen bilgilerinizi bırakın, uzman ekibimiz sizi en kısa sürede arasın.
+                    {t("appointmentDesc")}
                   </p>
 
                   <form className="space-y-4 font-sans">
@@ -93,7 +94,7 @@ export default function HeroSlider() {
                       </div>
                       <input 
                         type="text" 
-                        placeholder="Adınız Soyadınız"
+                        placeholder={t("fullName")}
                         className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-2 focus:ring-[#ecbb3f]/20 focus:outline-none text-[#162f5d] h-[50px] pl-12 pr-4 rounded-lg transition-all text-[15px] font-medium placeholder-gray-400" 
                       />
                     </div>
@@ -105,7 +106,7 @@ export default function HeroSlider() {
                       </div>
                       <input 
                         type="tel" 
-                        placeholder="Telefon Numaranız"
+                        placeholder={t("phone")}
                         className="w-full bg-white border border-gray-200 focus:border-[#ecbb3f] focus:ring-2 focus:ring-[#ecbb3f]/20 focus:outline-none text-[#162f5d] h-[50px] pl-12 pr-4 rounded-lg transition-all text-[15px] font-medium placeholder-gray-400" 
                       />
                     </div>
@@ -157,18 +158,14 @@ export default function HeroSlider() {
                          {isKvkkChecked && <svg className="w-3.5 h-3.5 text-[#162f5d]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>}
                       </div>
                       <p className="text-[13px] text-gray-500 leading-snug">
-                        Randevu talebim için{' '}
-                        <button type="button" onClick={() => setIsKvkkModalOpen(true)} className="text-[#ecbb3f] font-bold underline hover:text-[#cda669]">
-                          KVKK Metnini
-                        </button>
-                        {' '}okudum, kabul ediyorum.
+                        {t("kvkkAccept")}
                       </p>
                     </div>
 
                     {/* Submit */}
                     <div className="pt-3">
                        <button type="button" className="w-full bg-[#ecbb3f] hover:bg-[#d99816] text-white transition-colors font-bold text-[16px] h-[52px] rounded-lg uppercase tracking-wider">
-                         GÖNDER
+                         {t("submitApt")}
                        </button>
                     </div>
 
@@ -199,8 +196,8 @@ export default function HeroSlider() {
                   <span className="text-white font-black text-[16px] tracking-tighter mt-1 pr-1">24<span className="text-[11px]">/7</span></span>
                 </div>
               </div>
-              <div className="bg-[#ecbb3f] flex-1 w-full flex items-center justify-center text-center text-white font-black text-[13px] leading-tight tracking-wider">
-                <div>TIKLA<br/>RANDEVU<br/>AL</div>
+              <div className="bg-[#ecbb3f] flex-1 w-full flex items-center justify-center text-center text-white font-black text-[13px] leading-tight tracking-wider px-2">
+                <div>{locale === "en" ? "CLICK TO BOOK" : "TIKLA RANDEVU AL"}</div>
               </div>
             </motion.button>
           )}
@@ -241,13 +238,13 @@ export default function HeroSlider() {
             <div className="relative z-10 w-full container mx-auto px-4 max-w-6xl pb-24 md:pb-32 pointer-events-none">
               <div className="max-w-2xl">
                 <div className="inline-block px-4 py-1.5 rounded-full bg-[#06b6d4]/20 border border-[#06b6d4]/30 text-[#06b6d4] font-bold text-sm tracking-widest mb-6 uppercase backdrop-blur-sm shadow-lg pointer-events-auto">
-                  Megagöz Lazer Teknolojisi
+                  MEGAGÖZ
                 </div>
                 <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-white leading-tight mb-4 tracking-tight drop-shadow-xl pointer-events-auto cursor-text">
-                  {slides[current].title}
+                  {t(slides[current].titleKey as any)}
                 </h1>
                 <h2 className="text-xl md:text-3xl font-light text-gray-200 tracking-wide drop-shadow-md pointer-events-auto cursor-text">
-                  {slides[current].subtitle}
+                  {t(slides[current].subKey as any)}
                 </h2>
                 
                 {/* Slide Navigation Buttons */}

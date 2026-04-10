@@ -5,12 +5,36 @@
     "services": "Hizmetlerimiz",
     "blog": "Blog",
     "contact": "İletişim",
-    "appointment": "Randevu Al"
+    "appointment": "Randevu Al",
+    "corporate": "KURUMSAL",
+    "treatments": "TEDAVİLER",
+    "doctors": "DOKTORLARIMIZ",
+    "smartLenses": "Akıllı Lensler",
+    "laserSurgery": "Göz Lazer Ameliyatı",
+    "partnerInstitutions": "Anlaşmalı Kurumlar",
+    "megagozGallery": "MegaGöz Galeri",
+    "jobApplication": "İş Başvurusu",
+    "kvkkPolicy": "KVKK",
+    "location": "Konum"
   },
   "Hero": {
     "title": "Göz Sağlığınız İçin\nEn İyisi",
     "subtitle": "Uzman kadromuz ve son teknoloji sistemlerimizle daha net bir dünya için yanınızdayız.",
-    "cta": "Hemen Randevu Al"
+    "cta": "Hemen Randevu Al",
+    "slide1Title": "HEPSİ TEK ÇATI ALTINDA",
+    "slide1Sub": "KİŞİYE ÖZEL PLANLAMA",
+    "slide2Title": "GÖZ SAĞLIĞINIZ EMİN ELLERDE",
+    "slide2Sub": "EN YENİ TEKNOLOJİLERLE",
+    "slide3Title": "AKILLI LENS TEKNOLOJİSİ",
+    "slide3Sub": "YAKIN VE UZAK NET GÖRÜŞ",
+    "slide4Title": "LAZER GÖZ AMELİYATI",
+    "slide4Sub": "GÖZLÜKLERİNİZDEN KURTULUN",
+    "quickAppointment": "Hızlı Randevu",
+    "appointmentDesc": "Lütfen bilgilerinizi bırakın, uzman ekibimiz sizi en kısa sürede arasın.",
+    "fullName": "Adınız Soyadınız",
+    "phone": "Telefon",
+    "kvkkAccept": "KVKK metnini okudum ve onaylıyorum.",
+    "submitApt": "GÖNDER"
   },
   "About": {
     "badge": "Hakkımızda",

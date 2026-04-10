@@ -12,7 +12,7 @@ export default function ContactPage() {
       <Header />
       
       {/* Hero Header Area (Megaeste overlap style) */}
-      <div className="relative w-full h-[500px] md:h-[600px] flex items-center justify-center pt-20">
+      <div className="relative w-full h-[500px] md:h-[600px] flex items-center justify-center pt-32 md:pt-40">
         <Image 
           src="/images/slide2.png" 
           alt="Contact Background" 

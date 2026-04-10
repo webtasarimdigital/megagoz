@@ -1,4 +1,7 @@
-export interface TreatmentItem {
+const fs = require('fs');
+const path = require('path');
+
+const contentData = `export interface TreatmentItem {
   slug: string;
   title: { tr: string; en: string };
   excerpt: { tr: string; en: string };
@@ -187,3 +190,7 @@ export const TREATMENTS_DATA: TreatmentCategory[] = [
     ]
   }
 ];
+`;
+
+fs.writeFileSync(path.join(__dirname, '../src/data/treatments.ts'), contentData);
+console.log("Updated treatments.ts successfully");

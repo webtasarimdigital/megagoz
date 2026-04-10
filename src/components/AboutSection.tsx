@@ -77,7 +77,7 @@ export default function AboutSection() {
             className="flex flex-col justify-center"
           >
             
-            <h2 className="text-5xl lg:text-7xl font-black text-[#162f5d] tracking-tight leading-[1] mb-8">
+            <h2 className="text-4xl md:text-5xl font-black text-[#162f5d] tracking-tight leading-[1.1] mb-8">
               Bakış Açınızı <br />
               <span className="text-[#ecbb3f]">Mükemmelleştirin.</span>
             </h2>

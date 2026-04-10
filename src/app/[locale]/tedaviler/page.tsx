@@ -54,9 +54,20 @@ export default function TreatmentsPage() {
               key={category.id} 
               className="group relative bg-[#162f5d] rounded-[24px] overflow-hidden shadow-xl border border-white/5 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col items-center justify-center text-center p-10 h-64"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
               
-              {/* Optional background image per category could also be used here if added to model */}
+              {/* Category Background Image (Uses the first item's image) */}
+              {category.items[0]?.image && (
+                <>
+                  <Image 
+                    src={category.items[0].image} 
+                    alt={category.title[locale]} 
+                    fill 
+                    className="object-cover opacity-30 group-hover:opacity-50 transition-transform duration-700 group-hover:scale-110" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#162f5d]/95 via-[#162f5d]/70 to-[#162f5d]/80 z-0" />
+                </>
+              )}
               
               <div className="relative z-10 flex flex-col items-center justify-center">
                  <h2 className="text-2xl font-black text-white mb-2 group-hover:text-[#ecbb3f] transition-colors">{category.title[locale]}</h2>
