@@ -8,7 +8,7 @@ export default function KVKKPage() {
   const locale = useLocale();
 
   return (
-    <main>
+    <main className="min-h-screen flex flex-col bg-[#F8FAFC]">
       <Header />
       
       {/* Hero Header Area */}
@@ -41,9 +41,8 @@ export default function KVKKPage() {
         </div>
       </div>
 
-      <div className="bg-[#F8FAFC] pb-24 relative z-20">
-      
-      <div className="container mx-auto px-6 max-w-[1000px] relative z-20 -mt-16 md:-mt-24">
+      {/* Main Content (Overlapping the hero section) */}
+      <div className="container mx-auto px-4 sm:px-6 max-w-[1000px] relative z-20 -mt-16 md:-mt-24 pb-20">
 
         {/* Content Box */}
         <div className="bg-white rounded-3xl p-8 md:p-14 shadow-[0_20px_60px_rgba(0,0,0,0.05)] text-gray-700 leading-relaxed space-y-8 font-medium">
@@ -209,8 +208,8 @@ export default function KVKKPage() {
           </div>
           
         </div>
+        </div>
       </div>
-    </div>
       <Footer />
     </main>
   );

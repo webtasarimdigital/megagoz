@@ -492,7 +492,7 @@ export default function Header() {
             </div>
 
             {/* Scrollable Links */}
-            <div className="flex-1 overflow-y-auto w-full pt-2 pb-28 flex flex-col hide-scrollbar">
+            <div className="flex-1 overflow-y-auto w-full px-6 pt-8 pb-32 flex flex-col hide-scrollbar text-white">
               {navLinks.map((link) => {
                 const borderClass = "border-b border-white/5 pb-5 mb-5";
                 

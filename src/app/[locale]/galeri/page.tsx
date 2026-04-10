@@ -15,7 +15,7 @@ export default function GalleryPage() {
   ];
 
   return (
-    <main>
+    <main className="min-h-screen flex flex-col bg-[#F8FAFC]">
       <Header />
       
       {/* Hero Header Area */}
@@ -48,26 +48,23 @@ export default function GalleryPage() {
         </div>
       </div>
 
-      <div className="bg-[#F8FAFC] pb-24 relative z-20">
-
+      {/* Main Content (Overlapping the hero section) */}
+      <div className="container mx-auto px-4 md:px-6 max-w-[1300px] relative z-20 -mt-16 md:-mt-24 pb-24">
         {/* Instagram Iframes Grid */}
-        <div className="container mx-auto px-4 md:px-6 max-w-[1300px] relative z-20 -mt-16 md:-mt-24">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {instagramLinks.map((code, idx) => (
-              <div key={idx} className="bg-white rounded-[30px] shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden border border-gray-100 flex justify-center w-full">
-                <iframe 
-                  src={`https://www.instagram.com/p/${code}/embed`}
-                  allowTransparency={true}
-                  frameBorder={0}
-                  scrolling="no"
-                  className="w-full h-[450px] sm:h-[550px] md:h-[600px] max-w-full"
-                  style={{ background: 'white', border: 'none' }}
-                />
-              </div>
-            ))}
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {instagramLinks.map((code, idx) => (
+            <div key={idx} className="bg-white rounded-[30px] shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden border border-gray-100 flex justify-center w-full">
+              <iframe 
+                src={`https://www.instagram.com/p/${code}/embed`}
+                allowTransparency={true}
+                frameBorder={0}
+                scrolling="no"
+                className="w-full h-[450px] sm:h-[550px] md:h-[600px] max-w-full"
+                style={{ background: 'white', border: 'none' }}
+              />
+            </div>
+          ))}
         </div>
-
       </div>
       <Footer />
     </main>

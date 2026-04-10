@@ -10,7 +10,7 @@ export default function NotFoundPage() {
   return (
     <main className="min-h-screen flex flex-col bg-[#F8FAFC]">
       <Header />
-      <div className="flex-1 flex flex-col items-center justify-center py-20 px-4 mt-[100px] shrink-0">
+      <div className="flex-1 flex flex-col items-center justify-center py-20 px-4 mt-[150px] lg:mt-[180px] shrink-0">
         <div className="max-w-2xl mx-auto text-center flex flex-col items-center w-full">
           
           {/* Creative 404 Graphic */}
