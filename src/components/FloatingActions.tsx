@@ -3,21 +3,48 @@
 import { useLocale } from "next-intl";
 
 import { useState } from "react";
-import { MapPin, Home, Phone, X, ChevronLeft, HeadphonesIcon, CalendarClock } from "lucide-react";
+import { MapPin, Home, Phone, X, ChevronLeft, HeadphonesIcon, CalendarClock, ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@/i18n/navigation";
 
 export default function FloatingActions() {
-  const [isWidgetClosed, setIsWidgetClosed] = useState(false);
+  const [isWidgetClosed, setIsWidgetClosed] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const locale = useLocale();
   
-  const onlineOperationText = locale === "tr" ? "Online İşlem" : "Online Action";
-  const clickAppointmentText = locale === "tr" ? "Tıkla Randevu Al" : "Get Appointment";
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+    data.source = '24/7 Yüzer Randevu Widgeti';
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (res.ok) {
+        alert(locale === 'en' ? "Message sent successfully!" : "Mesajınız başarıyla gönderildi!");
+        (e.target as HTMLFormElement).reset();
+        setIsModalOpen(false);
+      } else {
+        alert(locale === 'en' ? "An error occurred, please try again." : "Bir hata oluştu, lütfen tekrar deneyin.");
+      }
+    } catch (err) {
+      alert(locale === 'en' ? "Connection error" : "Bağlantı hatası");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <>
       {/* 24/7 RIGHT APPOINTMENT WIDGET (Global) */}
       <div 
-        className={`hidden md:flex fixed right-0 top-[40%] md:top-1/2 -translate-y-1/2 z-[110] transition-transform duration-500 ease-in-out items-center ${isWidgetClosed ? "translate-x-full" : "translate-x-0"}`}
+        className={`fixed right-0 top-[40%] md:top-1/2 -translate-y-1/2 z-[110] transition-transform duration-500 ease-in-out flex items-center ${isWidgetClosed ? "translate-x-full" : "translate-x-0"}`}
       >
         {/* Closed Tab (Expander) */}
         <button 
@@ -29,15 +56,15 @@ export default function FloatingActions() {
         </button>
 
         {/* Main active panel */}
-        <Link 
-          href="/iletisim" 
-          className="relative w-[70px] h-[150px] md:w-[85px] md:h-[190px] flex flex-col shadow-[-5px_0_20px_rgba(0,0,0,0.2)] overflow-hidden hover:scale-[1.03] origin-right rounded-l-xl md:rounded-l-2xl z-40 bg-white group transition-transform"
+        <button 
+          onClick={() => setIsModalOpen(true)}
+          className="relative w-[70px] h-[150px] md:w-[85px] md:h-[190px] flex flex-col shadow-[-5px_0_20px_rgba(0,0,0,0.2)] overflow-hidden hover:scale-[1.03] origin-right rounded-l-xl md:rounded-l-2xl z-40 bg-white group transition-transform text-left cursor-pointer appearance-none border-none"
         >
           <div className="bg-[#162f5d] flex-1 w-full flex flex-col items-center justify-center border-b border-white/10 relative">
             {/* Close Button */}
             <button 
               onClick={(e) => { e.preventDefault(); e.stopPropagation(); setIsWidgetClosed(true); }}
-              className="absolute top-1 left-1 md:top-1.5 md:left-1.5 text-white/50 hover:text-white transition-colors bg-black/20 hover:bg-red-500 rounded-full p-1"
+              className="absolute top-1 left-1 md:top-1.5 md:left-1.5 text-white/50 hover:text-white transition-colors bg-black/20 hover:bg-red-500 rounded-full p-1 z-50"
             >
                <X size={12} className="md:w-[14px] md:h-[14px]" />
             </button>
@@ -53,8 +80,117 @@ export default function FloatingActions() {
           <div className="bg-[#ecbb3f] group-hover:bg-[#d99816] transition-colors flex-1 w-full flex items-center justify-center text-center text-[#162f5d] group-hover:text-white font-black text-[11px] md:text-[13px] leading-snug tracking-wider px-1 md:px-2">
             <div>{locale === "en" ? "CLICK TO BOOK" : "TIKLA RANDEVU AL"}</div>
           </div>
-        </Link>
+        </button>
       </div>
+
+      {/* Appointment Modal */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsModalOpen(false)}
+              className="absolute inset-0 bg-[#0a111a]/80 backdrop-blur-sm"
+            />
+            
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="relative w-full max-w-[500px] bg-white rounded-[32px] overflow-hidden shadow-2xl z-10"
+            >
+              {/* Modal Header */}
+              <div className="bg-[#162f5d] p-8 pb-10 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#ecbb3f]/10 rounded-full -mr-16 -mt-16 blur-3xl" />
+                <button 
+                  onClick={() => setIsModalOpen(false)}
+                  className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors bg-white/10 hover:bg-white/20 rounded-full p-2"
+                >
+                  <X size={20} />
+                </button>
+                
+                <div className="flex items-center gap-3 mb-4">
+                   <div className="h-[2px] w-8 bg-[#ecbb3f]" />
+                   <span className="text-[#ecbb3f] font-bold tracking-widest text-xs uppercase">
+                     {locale === 'tr' ? 'HIZLI İLETİŞİM' : 'QUICK CONTACT'}
+                   </span>
+                </div>
+                
+                <h3 className="text-3xl font-black text-white tracking-tight">
+                  {locale === 'tr' ? 'Randevu Talebi' : 'Appointment Request'}
+                </h3>
+                <p className="text-white/60 text-sm mt-2 font-medium">
+                  {locale === 'tr' ? 
+                    'Formu doldurun, uzmanlarımız en kısa sürede size geri dönsün.' : 
+                    'Fill in the form, our experts will get back to you as soon as possible.'
+                  }
+                </p>
+              </div>
+
+              {/* Modal Body/Form */}
+              <div className="p-8">
+                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                  <div className="flex flex-col">
+                    <label className="text-[11px] font-bold text-[#162f5d] uppercase tracking-wider mb-1.5 ml-1">
+                      {locale === 'tr' ? 'AD SOYAD' : 'FULL NAME'}
+                    </label>
+                    <input 
+                      type="text" 
+                      name="name" 
+                      required 
+                      className="bg-gray-50 border border-gray-100 rounded-2xl px-5 py-4 w-full outline-none focus:ring-2 focus:ring-[#ecbb3f]/30 focus:border-[#ecbb3f] transition-all text-sm font-medium"
+                      placeholder={locale === 'tr' ? 'Örn: Ahmet Yılmaz' : 'e.g. John Doe'}
+                    />
+                  </div>
+                  
+                  <div className="flex flex-col">
+                    <label className="text-[11px] font-bold text-[#162f5d] uppercase tracking-wider mb-1.5 ml-1">
+                      {locale === 'tr' ? 'TELEFON' : 'PHONE'}
+                    </label>
+                    <input 
+                      type="tel" 
+                      name="phone" 
+                      required 
+                      className="bg-gray-50 border border-gray-100 rounded-2xl px-5 py-4 w-full outline-none focus:ring-2 focus:ring-[#ecbb3f]/30 focus:border-[#ecbb3f] transition-all text-sm font-medium"
+                      placeholder={locale === 'tr' ? '05xx xxx xx xx' : '+90 xxx xxx xx xx'}
+                    />
+                  </div>
+
+                  <div className="flex flex-col">
+                    <label className="text-[11px] font-bold text-[#162f5d] uppercase tracking-wider mb-1.5 ml-1">
+                      {locale === 'tr' ? 'MESAJINIZ' : 'YOUR MESSAGE'}
+                    </label>
+                    <textarea 
+                      name="message" 
+                      rows={3}
+                      className="bg-gray-50 border border-gray-100 rounded-2xl px-5 py-4 w-full outline-none focus:ring-2 focus:ring-[#ecbb3f]/30 focus:border-[#ecbb3f] transition-all text-sm font-medium resize-none"
+                      placeholder={locale === 'tr' ? 'Nasıl yardımcı olabiliriz?' : 'How can we help you?'}
+                    ></textarea>
+                  </div>
+
+                  <button 
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="mt-4 w-full bg-[#ecbb3f] hover:bg-[#d99816] disabled:opacity-50 disabled:cursor-not-allowed text-[#162f5d] font-black text-sm tracking-widest uppercase rounded-2xl py-5 flex items-center justify-center gap-3 transition-all duration-300 shadow-xl shadow-[#ecbb3f]/20 group"
+                  >
+                    {isSubmitting ? (locale === 'tr' ? 'GÖNDERİLİYOR...' : 'SENDING...') : (locale === 'tr' ? 'GÖNDER' : 'SEND')}
+                    {!isSubmitting && <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />}
+                  </button>
+                  
+                  <p className="text-[10px] text-gray-400 text-center mt-2 font-medium">
+                    {locale === 'tr' ? 
+                      '* Kişisel verileriniz KVKK kapsamında korunmaktadır.' : 
+                      '* Your personal data is protected under KVKK.'
+                    }
+                  </p>
+                </form>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
       {/* DESKTOP (Web) VERSION - Hidden on Mobile */}
       <div className="fixed bottom-6 right-6 z-[100] flex-col gap-3 hidden md:flex">
         {/* Instagram Button */}
