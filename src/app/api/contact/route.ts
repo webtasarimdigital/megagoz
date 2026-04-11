@@ -21,7 +21,7 @@ export async function POST(request: Request) {
 
     const { source, name, email, phone, message } = data;
 
-    const smtpHost = process.env.SMTP_HOST || 'mail.megagoz.com';
+    const smtpHost = process.env.SMTP_HOST || 'smtp.turkticaret.net';
     const smtpPort = Number(process.env.SMTP_PORT) || 465;
     const smtpUser = process.env.SMTP_USER || 'info@megagoz.com';
     const smtpPass = process.env.SMTP_PASS || 'Asdasd456+';
