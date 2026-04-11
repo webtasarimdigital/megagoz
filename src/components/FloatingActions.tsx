@@ -31,7 +31,8 @@ export default function FloatingActions() {
         (e.target as HTMLFormElement).reset();
         setIsModalOpen(false);
       } else {
-        alert(locale === 'en' ? "An error occurred, please try again." : "Bir hata oluştu, lütfen tekrar deneyin.");
+        const errorData = await res.json();
+        alert((locale === 'en' ? "An error occurred: " : "Bir hata oluştu: ") + (errorData.message || ''));
       }
     } catch (err) {
       alert(locale === 'en' ? "Connection error" : "Bağlantı hatası");

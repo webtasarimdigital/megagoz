@@ -16,43 +16,32 @@ export async function POST(req: Request) {
     });
 
     const mailOptions = {
-      from: `"${name}" <${process.env.SMTP_USER}>`, // Send via authenticated email but set friendly name
+      from: process.env.SMTP_USER, // Using a simple sender address for better compatibility
       replyTo: email || process.env.SMTP_USER,
       to: process.env.SMTP_USER,
-      subject: `Yeni Form Başvurusu: ${source || 'İletişim'}`,
+      subject: `${name} - Yeni Form Başvurusu: ${source || 'İletişim'}`,
       html: `
-        <div style="font-family: sans-serif; max-w: 600px; margin: 0 auto; color: #333;">
-          <h2 style="color: #162f5d;">MegaGöz Web Form Başvurusu</h2>
-          <p>Web sitenizden yeni bir <strong>${source || 'İletişim Formu'}</strong> başvurusu aldınız.</p>
-          <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
-            <tr style="background-color: #f8fafc;">
-              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold; width: 120px;">Ad Soyad:</td>
-              <td style="padding: 12px; border: 1px solid #e2e8f0;">${name || '-'}</td>
-            </tr>
-            <tr>
-              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Telefon:</td>
-              <td style="padding: 12px; border: 1px solid #e2e8f0;">${phone || '-'}</td>
-            </tr>
-            <tr style="background-color: #f8fafc;">
-              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">E-Posta:</td>
-              <td style="padding: 12px; border: 1px solid #e2e8f0;">${email || '-'}</td>
-            </tr>
-            <tr>
-              <td style="padding: 12px; border: 1px solid #e2e8f0; font-weight: bold;">Mesaj:</td>
-              <td style="padding: 12px; border: 1px solid #e2e8f0; white-space: pre-wrap;">${message || '-'}</td>
-            </tr>
-          </table>
-          <p style="margin-top: 30px; font-size: 12px; color: #888;">Bu mesaj otomatik olarak megagoz.com üzerinden gönderilmiştir.</p>
+        <div style="font-family: sans-serif; max-w: 600px; margin: 0 auto; border: 1px solid #eee; padding: 20px;">
+          <h2 style="color: #162f5d;">Yeni Form Başvurusu</h2>
+          <hr />
+          <p><strong>Kaynak:</strong> ${source || 'Genel İletişim'}</p>
+          <p><strong>Ad Soyad:</strong> ${name}</p>
+          <p><strong>Telefon:</strong> <a href="tel:${phone}">${phone}</a></p>
+          ${email ? `<p><strong>E-Posta:</strong> ${email}</p>` : ''}
+          <p><strong>Mesaj:</strong></p>
+          <div style="background: #f9f9f9; padding: 15px; border-radius: 5px;">${message || '-'}</div>
         </div>
       `,
     };
 
     const info = await transporter.sendMail(mailOptions);
-    console.log("Contact Email sent: %s", info.messageId);
-
     return NextResponse.json({ success: true, message: 'Message sent successfully.' }, { status: 200 });
-  } catch (error) {
-    console.error("Error sending contact email:", error);
-    return NextResponse.json({ success: false, message: 'Failed to send message.' }, { status: 500 });
+  } catch (error: any) {
+    console.error("DEBUG - Mail Error:", error);
+    return NextResponse.json({ 
+      success: false, 
+      message: error.message || 'Failed to send message.',
+      code: error.code || 'UNKNOWN'
+    }, { status: 500 });
   }
 }
