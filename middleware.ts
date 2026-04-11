@@ -9,6 +9,6 @@ export const config = {
     // Bütün root `/...` isteklerini locale prefix ekleyecek şekilde yakalıyoruz.
     // next-intl dökümantasyon standartı doğrultusunda.
     '/', '/(tr|en)/:path*',
-    '/((?!_next|_vercel|.*\\..*).*)'
+    '/((?!api|_next|_vercel|.*\\..*).*)'
   ]
 };
