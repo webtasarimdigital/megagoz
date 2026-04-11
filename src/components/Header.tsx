@@ -139,7 +139,7 @@ export default function Header() {
         <div className="w-full flex items-center justify-center h-full px-4 pl-12 gap-8 md:gap-16">
           {/* Left quick links */}
           <div className="hidden lg:flex items-center gap-3">
-            <Link href={{ pathname: '/tedaviler/[category]/[slug]', params: { category: 'kontak-lens', slug: locale === 'tr' ? 'uc-odakli-lensler' : 'trifocal-lenses' } }} className="hover:text-gray-200 transition-colors">{t("smartLenses")}</Link>
+            <Link href={{ pathname: '/tedaviler/[category]/[slug]', params: { category: 'katarakt', slug: locale === 'tr' ? 'uc-odakli-lensler' : 'trifocal-lenses' } }} className="hover:text-gray-200 transition-colors">{t("smartLenses")}</Link>
             <span className="text-white/60">|</span>
             <Link href={{ pathname: '/tedaviler/[category]/[slug]', params: { category: 'lazer-tedavisi', slug: locale === 'tr' ? 'lasik-goz-lazer-ameliyati' : 'lasik-laser-eye-surgery' } }} className="hover:text-gray-200 transition-colors">{t("laserSurgery")}</Link>
             <span className="text-white/60">|</span>
