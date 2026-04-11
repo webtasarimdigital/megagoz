@@ -2,18 +2,25 @@
 
 import { useLocale } from "next-intl";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MapPin, Home, Phone, X, ChevronLeft, HeadphonesIcon, CalendarClock, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@/i18n/navigation";
 
 export default function FloatingActions() {
-  const [isWidgetClosed, setIsWidgetClosed] = useState(true);
+  const [isWidgetClosed, setIsWidgetClosed] = useState(true); // default closed, useEffect opens on desktop
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [formError, setFormError] = useState('');
   const locale = useLocale();
+
+  useEffect(() => {
+    // Open by default on desktop, closed on mobile
+    if (window.innerWidth >= 768) {
+      setIsWidgetClosed(false);
+    }
+  }, []);
   
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

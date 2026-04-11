@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   description: "İstanbul Ümraniye'deki güvenilir adresiniz Megagöz. Gelişmiş teknoloji lazer tedavileri, katarakt ve akıllı lens ameliyatları için tam donanımlı polikliniğimizde uzman hekim kadromuzla yanınızdayız.",
   icons: {
     icon: "/favicon-megagoz.jpg",
+    shortcut: "/favicon-megagoz.jpg",
+    apple: "/favicon-megagoz.jpg",
   },
   verification: {
     google: "lq0sbHYeHizv6hQPY0KzxPzcMnyt8GYAtDTOsIS0-5M",

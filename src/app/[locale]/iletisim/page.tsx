@@ -244,8 +244,8 @@ export default function ContactPage() {
 
             {/* Map iframe wrapped nicely */}
             <div className="w-full h-[250px] md:h-[300px] bg-gray-200 rounded-[30px] overflow-hidden shadow-lg border border-gray-100">
-               <iframe 
-                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3010.518177579998!2d29.11181817586523!3d41.01391517134812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac8ac5661d4ad%3A0xe7f9202f5a6b0933!2zw5ZtcmFuaXllLCDEsHN0YW5idWw!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str" 
+             <iframe 
+                 src="https://maps.google.com/maps?q=41.024096731190525,29.1050488047088&z=16&hl=tr&output=embed" 
                  width="100%" 
                  height="100%" 
                  style={{ border: 0 }} 
