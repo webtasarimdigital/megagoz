@@ -40,7 +40,7 @@ export async function POST(request: Request) {
       tls: {
         rejectUnauthorized: false
       }
-    });
+    } as any);
 
     const mailOptions = {
       from: `"Megagöz Web Form" <${smtpUser}>`,
