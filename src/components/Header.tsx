@@ -201,7 +201,7 @@ export default function Header() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-[calc(100%+14px)] right-0 bg-white rounded-b-md shadow-[0_15px_40px_rgba(0,0,0,0.15)] border-t-[3px] border-t-[#ecbb3f] min-w-[200px] z-50 overflow-hidden"
+                    className="absolute top-[calc(100%+14px)] right-0 bg-white rounded-b-md shadow-[0_15px_40px_rgba(0,0,0,0.15)] border-t-[3px] border-t-[#ecbb3f] min-w-[200px] z-[200] overflow-hidden"
                   >
                     <button 
                       onClick={() => { switchLocale("tr"); setIsLangMenuOpen(false); }}
