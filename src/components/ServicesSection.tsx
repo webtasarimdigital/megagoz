@@ -85,7 +85,7 @@ export default function ServicesSection() {
           {SERVICES.map((service) => (
             <motion.div key={service.id} variants={itemVariants} className="h-full">
               <Link 
-                href={{ pathname: '/tedaviler/[category]/[slug]', params: { category: 'genel', slug: service.slug } }} 
+                href={{ pathname: '/tedaviler/[category]', params: { category: service.slug } }}
                 className="group relative w-full h-[450px] md:h-[500px] flex flex-col justify-end overflow-hidden rounded-[24px] bg-[#162f5d] border border-white/5 shadow-2xl transition-all duration-500 hover:shadow-[0_20px_50px_rgba(236,187,63,0.15)] hover:-translate-y-2"
               >
                 
