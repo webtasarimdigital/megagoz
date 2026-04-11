@@ -39,7 +39,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
  
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-C778NQYZR5" strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -86,7 +86,7 @@ export default async function LocaleLayout({
           }}
         />
       </head>
-      <body className="overflow-x-hidden w-full relative antialiased bg-[#F8FAFC]">
+      <body className="overflow-x-hidden w-full relative antialiased bg-[#F8FAFC]" suppressHydrationWarning>
 
         <NextIntlClientProvider messages={messages}>
           <div className="flex flex-col w-screen max-w-[100vw] overflow-x-hidden min-h-screen relative">
