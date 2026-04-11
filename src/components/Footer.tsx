@@ -76,7 +76,7 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-3 lg:col-span-3 order-1 lg:order-none space-y-7">
             <Link href="/" className="inline-block relative h-[60px] w-[240px] mb-4 overflow-visible rounded-sm">
                <img 
-                 src="/megagoz-logo-mobil.png" 
+                 src="/megagoz-logo-mobil.webp" 
                  alt="Megagöz Logo" 
                  className="absolute inset-0 w-[90%] h-[90%] my-auto object-contain object-left" 
                />

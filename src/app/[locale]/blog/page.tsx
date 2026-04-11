@@ -16,7 +16,7 @@ export default function BlogPage() {
       slug: "lazer-goz-ameliyati-nedir",
       excerpt: "Miyop, hipermetrop ve astigmatizmanın saniyeler içinde tedavi edildiği modern lazer operasyonları hakkında tüm detaylar.",
       date: "14 Nisan 2026",
-      image: "/images/blog_laser_eye.png"
+      image: "/images/blog_laser_eye.webp"
     },
     {
       id: 2,
@@ -32,7 +32,7 @@ export default function BlogPage() {
       slug: "cocuklarda-goz-sagligi",
       excerpt: "Göz tembelliği ve şaşılık gibi problemlerin erken teşhisi, çocuğunuzun gelecekteki eğitim hayatını ve görüş kalitesini belirler.",
       date: "05 Nisan 2026",
-      image: "/images/blog_child_eye.png"
+      image: "/images/blog_child_eye.webp"
     },
     {
       id: 4,
@@ -48,7 +48,7 @@ export default function BlogPage() {
       slug: "kuru-goz-sendromu",
       excerpt: "Bilgisayar başında uzun saatler harcayanların kabusu kuru göz için alınabilecek pratik önlemler ve damla tedavileri.",
       date: "20 Mart 2026",
-      image: "/images/slide2.png"
+      image: "/images/slide2.webp"
     },
     {
       id: 6,
@@ -56,7 +56,7 @@ export default function BlogPage() {
       slug: "akilli-lens-tedavisi",
       excerpt: "Yakından uzağa tüm mesafelerde pırıl pırıl bir görüş sağlayan trifokal (akıllı) mercek cerrahisinin avantajları ve uygunluk şartları.",
       date: "15 Mart 2026",
-      image: "/images/blog_smart_lens.png"
+      image: "/images/blog_smart_lens.webp"
     }
   ] : [
     {
@@ -65,7 +65,7 @@ export default function BlogPage() {
       slug: "what-is-laser-eye-surgery",
       excerpt: "All the details about modern laser operations treating myopia, hypermetropia, and astigmatism in seconds.",
       date: "April 14, 2026",
-      image: "/images/blog_laser_eye.png"
+      image: "/images/blog_laser_eye.webp"
     },
     {
       id: 2,
@@ -81,7 +81,7 @@ export default function BlogPage() {
       slug: "eye-health-in-children",
       excerpt: "Early diagnosis of problems like lazy eye and strabismus determines your child's future educational life.",
       date: "April 05, 2026",
-      image: "/images/blog_child_eye.png"
+      image: "/images/blog_child_eye.webp"
     },
     {
       id: 4,
@@ -97,7 +97,7 @@ export default function BlogPage() {
       slug: "how-to-cure-dry-eye",
       excerpt: "Practical measures and drop treatments that can be taken for dry eye, the persistent nightmare of heavy computer users.",
       date: "March 20, 2026",
-      image: "/images/slide2.png"
+      image: "/images/slide2.webp"
     },
     {
       id: 6,
@@ -105,7 +105,7 @@ export default function BlogPage() {
       slug: "who-is-eligible-for-smart-lenses",
       excerpt: "Advantages and eligibility conditions of trifocal (smart) intraocular lens surgery providing sparkling vision at all distances.",
       date: "March 15, 2026",
-      image: "/images/blog_smart_lens.png"
+      image: "/images/blog_smart_lens.webp"
     }
   ];
 
@@ -116,7 +116,7 @@ export default function BlogPage() {
       {/* Hero Header Area */}
       <div className="relative w-full h-[500px] md:h-[650px] flex items-center justify-center pt-16 md:pt-24 pb-8 md:pb-12">
         <Image 
-          src="/images/slide3.png" 
+          src="/images/slide3.webp" 
           alt="Blog Background" 
           fill 
           priority

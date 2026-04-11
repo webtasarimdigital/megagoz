@@ -16,25 +16,25 @@ import "swiper/css/pagination";
 const slides = [
   {
     id: 1,
-    image: "/images/slide1.png",
+    image: "/images/slide1.webp",
     titleKey: "slide1Title",
     subKey: "slide1Sub"
   },
   {
     id: 2,
-    image: "/images/slide2.png",
+    image: "/images/slide2.webp",
     titleKey: "slide2Title",
     subKey: "slide2Sub"
   },
   {
     id: 3,
-    image: "/images/blog_smart_lens.png",
+    image: "/images/blog_smart_lens.webp",
     titleKey: "slide3Title",
     subKey: "slide3Sub"
   },
   {
     id: 4,
-    image: "/images/slide4.png",
+    image: "/images/slide4.webp",
     titleKey: "slide4Title",
     subKey: "slide4Sub"
   }

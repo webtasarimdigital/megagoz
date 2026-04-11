@@ -12,7 +12,7 @@ const TABS = [
     title: "Uzman Hekimler",
     titleEn: "Expert Doctors",
     icon: <UserPlus size={28} />,
-    image: "/images/slide2.png",
+    image: "/images/slide2.webp",
     heading: "Uzman Hekimler",
     headingEn: "Expert Doctors",
     desc: "Yurt içinde ve yurt dışında başarılara imza atmış, on binlerce cerrahi vaka tecrübesi bulunan uzman hekim kadromuzla nitelikli göz sağlığı hizmetini sizlerle buluşturuyoruz.",
@@ -34,7 +34,7 @@ const TABS = [
     title: "Teknolojik Altyapı",
     titleEn: "Technological Infra",
     icon: <Cpu size={28} />,
-    image: "/images/slide4.png",
+    image: "/images/slide4.webp",
     heading: "Teknolojik Altyapı",
     headingEn: "Technological Infrastructure",
     desc: "FDA onaylı, sektöre yön veren markaların en yeni jenerasyon excimer lazer cihazları ve 3 boyutlu topografi sistemleri sayesinde sıfır hata payı ile kusursuz cerrahi deneyimi sunuyoruz.",
@@ -45,7 +45,7 @@ const TABS = [
     title: "Uluslararası Hizmet",
     titleEn: "International Srv",
     icon: <Globe2 size={28} />,
-    image: "/images/slide1.png",
+    image: "/images/slide1.webp",
     heading: "Uluslararası Hizmet",
     headingEn: "International Services",
     desc: "Dünyanın dört bir yanından gelen hastalarımıza, VIP transferden konaklamaya ve ana dillerinde tercümanlık desteğine kadar uzanan ayrıcalıklı ve tam teşekküllü global sağlık turizmi sunuyoruz.",
@@ -56,7 +56,7 @@ const TABS = [
     title: "Kaliteli Hizmet",
     titleEn: "Quality Service",
     icon: <HeartHandshake size={28} />,
-    image: "/images/slide3.png",
+    image: "/images/slide3.webp",
     heading: "Birebir İlgi ve Kalite",
     headingEn: "Personalized Care",
     desc: "Ticari kaygılardan uzak, tamamen hasta iyileşmesine ve konforuna odaklanmış, etik değerlere sıkı sıkıya bağlı butik yapımızla kendinizi özel hissedeceğiniz şeffaf süreçler kurguluyoruz.",
@@ -72,7 +72,7 @@ export default function WhyChooseUsSection() {
     <section className="w-full bg-[#F8FAFC]">
        {/* Top Header & Tabs Background Wrapper */}
        <div className="bg-[#162f5d] pt-20 pb-28 md:pb-36 relative z-0">
-          <div className="absolute inset-0 bg-[url('/images/slide4.png')] bg-cover bg-center opacity-5 mix-blend-overlay" />
+          <div className="absolute inset-0 bg-[url('/images/slide4.webp')] bg-cover bg-center opacity-5 mix-blend-overlay" />
           
           <div className="container mx-auto px-4 relative z-10 text-center mb-10">
              <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tight">

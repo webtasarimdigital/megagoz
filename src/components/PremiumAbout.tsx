@@ -29,7 +29,7 @@ export default function PremiumAbout() {
              >
                 <div className="absolute inset-0 bg-[#162f5d]/20 mix-blend-multiply z-10" />
                 <Image 
-                  src="/images/slide2.png" 
+                  src="/images/slide2.webp" 
                   alt="Megagöz Uzmanlık" 
                   fill 
                   className="object-cover"
@@ -45,7 +45,7 @@ export default function PremiumAbout() {
                className="absolute -bottom-10 right-0 w-[55%] h-[40%] rounded-3xl overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.15)] ring-8 ring-[#F8FAFC] z-30"
              >
                 <Image 
-                  src="/images/slide1.png" 
+                  src="/images/slide1.webp" 
                   alt="Lazer Teknolojisi" 
                   fill 
                   className="object-cover"

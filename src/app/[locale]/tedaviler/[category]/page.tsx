@@ -27,7 +27,7 @@ export default function CategoryPage({ params }: { params: Promise<{ locale: str
       {/* Category Hero Section */}
       <div className="relative w-full h-[60vh] min-h-[500px] flex items-end pb-16 pt-32 shrink-0">
         <Image 
-          src={categoryData.image || "/images/slide3.png"} 
+          src={categoryData.image || "/images/slide3.webp"} 
           alt={categoryName} 
           fill 
           priority

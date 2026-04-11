@@ -98,7 +98,7 @@ export default function TechnologySection() {
              className="relative h-[400px] lg:h-[550px] w-full rounded-full overflow-hidden shadow-2xl border-8 border-white group"
            >
               <Image 
-                src="/images/slide4.png" 
+                src="/images/slide4.webp" 
                 alt="Megagöz Lazer Makinesi" 
                 fill 
                 className="object-cover transition-transform duration-1000 group-hover:scale-110"

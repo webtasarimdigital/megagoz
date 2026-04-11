@@ -15,7 +15,7 @@ const BLOG_POSTS = [
     categoryEn: "Treatments",
     date: "14 Ekim 2026",
     dateEn: "Oct 14, 2026",
-    image: "/images/slide1.png",
+    image: "/images/slide1.webp",
     excerpt: "Gözlük ve lens bağımlılığından kurtaran, miyop, hipermetrop ve astigmatizmanın kalıcı olarak düzeltilmesini sağlayan modern lazer teknolojilerini inceliyoruz.",
     excerptEn: "We examine modern laser technologies that free you from glasses and lens dependence, permanently correcting myopia, hypermetropia, and astigmatism."
   },

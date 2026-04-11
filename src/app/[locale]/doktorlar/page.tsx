@@ -15,7 +15,7 @@ export default function DoctorsPage() {
       {/* Hero Header Area */}
       <div className="relative w-full h-[500px] md:h-[650px] flex items-center justify-center pt-16 md:pt-24 pb-8 md:pb-12">
         <Image 
-          src="/images/slide4.png" 
+          src="/images/slide4.webp" 
           alt="Doctors Background" 
           fill 
           priority

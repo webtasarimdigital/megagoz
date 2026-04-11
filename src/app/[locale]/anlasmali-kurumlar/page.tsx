@@ -4,24 +4,24 @@ import Footer from "@/components/Footer";
 
 export default function PartnerInstitutionsPage() {
   const partners = [
-    { name: "ANA SİGORTA A.Ş.", image: "/images/ana-sigorta.png" },
-    { name: "ANADOLU SİGORTA", image: "/images/Anadolu_Sigorta.png" },
-    { name: "ANKARA SİGORTA A.Ş.", image: "/images/ankara-sigorta.png" },
-    { name: "AREX SİGORTA A.Ş.", image: "/images/arax-sigorta.png" },
-    { name: "AXA SİGORTA", image: "/images/sigorta_openb_rgb.png" },
+    { name: "ANA SİGORTA A.Ş.", image: "/images/ana-sigorta.webp" },
+    { name: "ANADOLU SİGORTA", image: "/images/Anadolu_Sigorta.webp" },
+    { name: "ANKARA SİGORTA A.Ş.", image: "/images/ankara-sigorta.webp" },
+    { name: "AREX SİGORTA A.Ş.", image: "/images/arax-sigorta.webp" },
+    { name: "AXA SİGORTA", image: "/images/sigorta_openb_rgb.webp" },
     { name: "DOĞA SİGORTA A.Ş.", image: "/images/doga_logo_svg.svg" },
     { name: "ETHICA SİGORTA A.Ş.", image: "/images/ethicasigorta.svg" },
-    { name: "MAGDEBURGER SİGORTA A.Ş.", image: "/images/magdeburger-sigorta.png" },
-    { name: "NEOVA SİGORTA A.Ş.", image: "/images/neova-sigorta.png" },
+    { name: "MAGDEBURGER SİGORTA A.Ş.", image: "/images/magdeburger-sigorta.webp" },
+    { name: "NEOVA SİGORTA A.Ş.", image: "/images/neova-sigorta.webp" },
     { name: "NİPPON SİGORTA A.Ş.", image: "/images/turk-nippon-sigorta.svg" },
-    { name: "PRIVE SİGORTA A.Ş.", image: "/images/prive-sigorta.png" },
+    { name: "PRIVE SİGORTA A.Ş.", image: "/images/prive-sigorta.webp" },
     { name: "QUICK SİGORTA A.Ş.", image: "/images/quick-sigorta-blue-logo.svg" },
     { name: "REFERANS SİGORTA A.Ş.", image: "/images/referans-sigorta.svg" },
-    { name: "SOMPO SİGORTA A.Ş.", image: "/images/sompo-sigorta.png" },
-    { name: "TÜRK TELEKOM VAKFI", image: "/images/turktelekomvakfi.png" },
-    { name: "TÜRKİYE SİGORTA", image: "/images/turkiye-sigorta.png" },
-    { name: "UNICO SİGORTA A.Ş.", image: "/images/unico-sigorta-logo.png" },
-    { name: "ZURICH YAŞAM VE EMEKLİLİK A.Ş.", image: "/images/zurich-logo.png" },
+    { name: "SOMPO SİGORTA A.Ş.", image: "/images/sompo-sigorta.webp" },
+    { name: "TÜRK TELEKOM VAKFI", image: "/images/turktelekomvakfi.webp" },
+    { name: "TÜRKİYE SİGORTA", image: "/images/turkiye-sigorta.webp" },
+    { name: "UNICO SİGORTA A.Ş.", image: "/images/unico-sigorta-logo.webp" },
+    { name: "ZURICH YAŞAM VE EMEKLİLİK A.Ş.", image: "/images/zurich-logo.webp" },
   ];
 
   return (

@@ -36,7 +36,7 @@ const getBlogPostBySlug = (slug: string, locale: string) => {
         <p>Uzman hekimlerimiz tarafından 3 boyutlu topografi cihazlarıyla yapılacak detaylı bir göz taraması sonrasında, gözünüzün lazer cerrahisine uygun olup olmadığı kesin olarak belirlenmektedir. Gözlüklerinizden kurtulmak ve özgürce spora, denize girmek, sabah uyandığınızda dünyayı net görmek için kliniğimizden detaylı randevu alabilirsiniz.</p>
       `,
       date: "14 Nisan 2026",
-      image: "/images/blog_laser_eye.png"
+      image: "/images/blog_laser_eye.webp"
     },
     {
       id: 2,
@@ -71,7 +71,7 @@ const getBlogPostBySlug = (slug: string, locale: string) => {
         <p>Hiçbir şikayeti olmasa bile çocukların düzenli olarak uzman bir pediatrik göz hekimi tarafından muayene edilmesi ebeveynlerin en temel görevlerinden biridir.</p>
       `,
       date: "05 Nisan 2026",
-      image: "/images/blog_child_eye.png"
+      image: "/images/blog_child_eye.webp"
     },
     {
       id: 4,
@@ -89,7 +89,7 @@ const getBlogPostBySlug = (slug: string, locale: string) => {
       excerpt: "Bilgisayar başında uzun saatler harcayanların kabusu kuru göz için alınabilecek pratik önlemler ve damla tedavileri.",
       content: "<p>Kuru göz hastalığı, gözyaşının yeterli miktarda üretilmemesi veya içeriğinin buharlaşmayı engelleyemeyecek kadar bozulması sonucunda batma, yanma, kum kaçmış hissi ve ani bulanıklaşmalar ile kendini gösterir.</p><br/><p>Özellikle klimalı ortamlar, ofis çalışanları ve ekran karşısında odaklanarak saatlerini geçirenler büyük risk altındadır. Suni gözyaşı damlaları geçici rahatlama sağlasa da kliniğimizde özel tetkik cihazlarıyla gözyaşı kaliteniz ve Meibomius bezlerinizin çalışma kapasitesi ölçülmekte, tıkalı kanalları açmaya yönelik <strong>IPL Lazer Tedavisi</strong> veya punktum tıkaçları gibi en yeni medikal protokoller uygulanarak kök çözümler sağlanmaktadır.</p>",
       date: "20 Mart 2026",
-      image: "/images/slide2.png"
+      image: "/images/slide2.webp"
     },
     {
       id: 6,
@@ -114,7 +114,7 @@ const getBlogPostBySlug = (slug: string, locale: string) => {
         <p>Hayat kalitenizi baştan aşağı değiştirecek olan bu operasyondan önce, kliniğimizde dünyanın en gelişmiş ölçüm cihazlarıyla göz topografiniz, endotel sayımınız ve optik biyometrileriniz detaylı bir şekilde analiz edilir. Uzman cerrahlarımız size göz yapınız için en kusursuz lens türünü önerecektir.</p>
       `,
       date: "15 Mart 2026",
-      image: "/images/blog_smart_lens.png"
+      image: "/images/blog_smart_lens.webp"
     }
   ];
 
@@ -146,7 +146,7 @@ const getBlogPostBySlug = (slug: string, locale: string) => {
          <p>After a detailed eye scan to be performed by our expert physicians with 3D topography devices, whether your eye is suitable for laser surgery is definitively determined. You can book a detailed appointment at our clinic to get rid of your glasses, engage in sports freely, swim, and see the world clearly when you wake up in the morning.</p>
        `,
        date: "April 14, 2026",
-       image: "/images/blog_laser_eye.png"
+       image: "/images/blog_laser_eye.webp"
     },
     {
       id: 2,
@@ -181,7 +181,7 @@ const getBlogPostBySlug = (slug: string, locale: string) => {
         <p>Even if there are no complaints, regular examination of children by an expert pediatric ophthalmologist is one of the most fundamental duties of parents.</p>
       `,
       date: "April 05, 2026",
-      image: "/images/blog_child_eye.png"
+      image: "/images/blog_child_eye.webp"
     },
     {
       id: 4,
@@ -199,7 +199,7 @@ const getBlogPostBySlug = (slug: string, locale: string) => {
       excerpt: "Practical measures and drop treatments that can be taken for dry eye, the persistent nightmare of heavy computer users.",
       content: "<p>Dry eye disease manifests itself with stinging, burning, a feeling of sand in the eye, and sudden blurring as a result of insufficient tear production or the deterioration of its content to the point where it cannot prevent evaporation.</p><br/><p>Especially air-conditioned environments, office workers, and those who spend their hours focusing in front of screens are under great risk. Artificial tear drops provide temporary relief, but in our clinic, your tear quality and the working capacity of your Meibomian glands are measured with special diagnostic devices. Radical solutions are provided by applying the newest medical protocols such as <strong>IPL Laser Treatment</strong> or punctal plugs aimed at unblocking obstructed ducts.</p>",
       date: "March 20, 2026",
-      image: "/images/slide2.png"
+      image: "/images/slide2.webp"
     },
     {
       id: 6,
@@ -224,7 +224,7 @@ const getBlogPostBySlug = (slug: string, locale: string) => {
         <p>Prior to this operation, which will radically transform your quality of life from top to bottom, your eye topography, endothelial cell count, and optical biometrics are scrutinized in detail with the world's most advanced measurement devices in our clinic. Our expert surgeons will recommend the most flawless lens type for your eye structure.</p>
       `,
       date: "March 15, 2026",
-      image: "/images/blog_smart_lens.png"
+      image: "/images/blog_smart_lens.webp"
     }
   ];
 

@@ -55,7 +55,7 @@ export const TREATMENTS_DATA: TreatmentCategory[] = [
       },
       { slug: { tr: "uc-odakli-torik-lensler", en: "trifocal-toric-lenses" }, title: { tr: "Üç Odaklı Torik Lensler", en: "Trifocal Toric Lenses" }, excerpt: { tr: "Astigmatizmayı düzelten üç odaklı mercek çeşitleri.", en: "Trifocal lenses specifically designed to correct astigmatism." }, image: "/images/megagoz-katarakt.webp" },
       { slug: { tr: "tek-odakli-lensler", en: "monofocal-lenses" }, title: { tr: "Tek Odaklı Lensler (Monofokal)", en: "Monofocal Lenses" }, excerpt: { tr: "Seçilen tek bir odak noktasında kusursuz görüş imkanı.", en: "Perfect vision targeted at a single chosen focal point." }, image: "/images/megagoz-katarakt-tedavisi.webp" },
-      { slug: { tr: "tek-odakli-torik-lensler", en: "monofocal-toric-lenses" }, title: { tr: "Tek Odaklı Torik Lensler", en: "Monofocal Toric Lenses" }, excerpt: { tr: "Hem tek odaklı görüş sağlayan hem de astigmatı tedavi eden mercekler.", en: "Monofocal lenses that also treat astigmatism." }, image: "/images/megagoz-toric-lens.png" }
+      { slug: { tr: "tek-odakli-torik-lensler", en: "monofocal-toric-lenses" }, title: { tr: "Tek Odaklı Torik Lensler", en: "Monofocal Toric Lenses" }, excerpt: { tr: "Hem tek odaklı görüş sağlayan hem de astigmatı tedavi eden mercekler.", en: "Monofocal lenses that also treat astigmatism." }, image: "/images/megagoz-toric-lens.webp" }
     ]
   },
   {
@@ -76,8 +76,8 @@ export const TREATMENTS_DATA: TreatmentCategory[] = [
         }
       },
       { slug: { tr: "lasek-prk-no-touch-lazer", en: "lasek-prk-no-touch-laser" }, title: { tr: "LASEK / PRK / No Touch Lazer", en: "LASEK / PRK / No Touch Laser" }, excerpt: { tr: "Göze dokunulmadan sadece ışınla uygulanan lazer tedavisi.", en: "Laser treatment applied without touching the eye." }, image: "/images/megagoz-tedavi-oncesi.webp" },
-      { slug: { tr: "argon-lazer-tedavisi", en: "argon-laser-treatment" }, title: { tr: "Argon Lazer Tedavisi", en: "Argon Laser Treatment" }, excerpt: { tr: "Retina yırtıkları ve diyabetik göz hastalıklarına argon çözümü.", en: "Argon laser solutions for retinal tears and diabetic eye diseases." }, image: "/images/slide3.png" },
-      { slug: { tr: "yag-lazer-tedavisi", en: "yag-laser-treatment" }, title: { tr: "Yag Lazer Tedavisi", en: "YAG Laser Treatment" }, excerpt: { tr: "İkincil katarakt ve glokom gibi hastalıkların tedavisinde YAG lazer.", en: "YAG laser used for treating secondary cataracts and glaucoma." }, image: "/images/slide1.png" },
+      { slug: { tr: "argon-lazer-tedavisi", en: "argon-laser-treatment" }, title: { tr: "Argon Lazer Tedavisi", en: "Argon Laser Treatment" }, excerpt: { tr: "Retina yırtıkları ve diyabetik göz hastalıklarına argon çözümü.", en: "Argon laser solutions for retinal tears and diabetic eye diseases." }, image: "/images/slide3.webp" },
+      { slug: { tr: "yag-lazer-tedavisi", en: "yag-laser-treatment" }, title: { tr: "Yag Lazer Tedavisi", en: "YAG Laser Treatment" }, excerpt: { tr: "İkincil katarakt ve glokom gibi hastalıkların tedavisinde YAG lazer.", en: "YAG laser used for treating secondary cataracts and glaucoma." }, image: "/images/slide1.webp" },
       { slug: { tr: "goz-tansiyonunda-lazer-tedavisi-slt", en: "slt-laser-treatment-for-glaucoma" }, title: { tr: "Göz Tansiyonunda Lazer Tedavisi – SLT", en: "SLT Laser Treatment for Glaucoma" }, excerpt: { tr: "Göz içi basıncını düşüren güvenilir lazer operasyonu.", en: "Reliable laser surgery that effectively lowers intraocular pressure." }, image: "/images/megagoz-glukom-tedavisi.webp" }
     ]
   },
@@ -92,7 +92,7 @@ export const TREATMENTS_DATA: TreatmentCategory[] = [
       { slug: { tr: "multifokal-lensler", en: "multifocal-lenses" }, title: { tr: "Multifokal Lensler", en: "Multifocal Lenses" }, excerpt: { tr: "Gözlük ihtiyacını tüm mesafelerde sıfıra indiren multifokal (çok odaklı) çözümler.", en: "Multifocal solutions that eliminate the need for glasses at all distances." }, image: "/images/megagoz-tedavi-sonrasi.webp" },
       { slug: { tr: "fakik-goz-ici-lens-tedavisi", en: "phakic-intraocular-lens-treatment" }, title: { tr: "Fakik Göz İçi Lens Tedavisi", en: "Phakic Intraocular Lens Treatment" }, excerpt: { tr: "Yüksek miyop ve hipermetrop hastaları için göz içi kalıcı lens tedavisi.", en: "Permanent intraocular lens treatment for high myopia and hyperopia patients." }, image: "/images/megagoz-katarakt.webp" },
       { slug: { tr: "add-on-akilli-lens-tedavisi", en: "add-on-smart-lens-treatment" }, title: { tr: "Add On Akıllı Lens Tedavisi", en: "Add-On Smart Lens Treatment" }, excerpt: { tr: "Daha önce ameliyat olmuş gözler için ek, yeni nesil mercek ilaveleri.", en: "Supplementary new generation lens additions for previously operated eyes." }, image: "/images/megagoz-lazer-tedavisi,.webp" },
-      { slug: { tr: "icl-goz-ici-lens-tedavisi", en: "icl-intraocular-lenses" }, title: { tr: "ICL Göz İçi Lens Tedavisi", en: "ICL Intraocular Lenses" }, excerpt: { tr: "Kornea yapısı lazere uygun olmayanlar için devrimsel mercek.", en: "Revolutionary lens implants for corneas unsuitable for laser." }, image: "/images/slide3.png" }
+      { slug: { tr: "icl-goz-ici-lens-tedavisi", en: "icl-intraocular-lenses" }, title: { tr: "ICL Göz İçi Lens Tedavisi", en: "ICL Intraocular Lenses" }, excerpt: { tr: "Kornea yapısı lazere uygun olmayanlar için devrimsel mercek.", en: "Revolutionary lens implants for corneas unsuitable for laser." }, image: "/images/slide3.webp" }
     ]
   },
   {
@@ -119,21 +119,21 @@ export const TREATMENTS_DATA: TreatmentCategory[] = [
     slug: { tr: "kornea-hastaliklari", en: "corneal-diseases" },
     title: { tr: "Kornea Hastalıkları", en: "Corneal Diseases" },
     icon: "Shield",
-    image: "/images/megagoz-kornea-tedavisi.jpg",
+    image: "/images/megagoz-kornea-tedavisi.webp",
     items: [
       { 
         slug: { tr: "crosslinking", en: "crosslinking" }, 
         title: { tr: "Crosslinking (Keratokonus)", en: "Crosslinking" }, 
         excerpt: { tr: "Keratokonusun ilerlemesini durduran kornea çapraz bağ tedavisi.", en: "Corneal cross-linking treatment to stop the progression of keratoconus." }, 
-        image: "/images/megagoz-kornea-tedavisi.jpg",
+        image: "/images/megagoz-kornea-tedavisi.webp",
         content: {
           tr: "<p class='mb-4'>Keratokonus, gözün en dış saydam tabakası olan korneanın incelerek sivrileşmesi ve öne doğru uzamasıyla karakterize olan ilerleyici bir göz hastalığıdır. Tedavi edilmediği takdirde ileri derecede astigmatizmaya, devasa görüş kayıplarına ve hatta kornea nakline (keratoplasti) gidilmesine sebep olabilir.</p><p class='mb-4'>Korneal Crosslinking (Çapraz Bağ) tedavisi, keratokonus hastalığının durdurulmasında tıpta kabul görmüş dünyadaki en etkili birincil işlemdir. Uygulanan lokal anestezi sonrasında göze Riboflavin (B2 vitamini) damlatılıp Ultraviyole A ışını uygulanarak, gözün kollajen lif dokusunun sertleştirilmesi esasına dayanır.</p><p class='mb-4'>İşlem toplamda her bir göz için ortalama 30 dakika sürmektedir. Ultraviyole ile sertleşen kornea, sivrileşmesini tamamen durdurduğu için numara artışı engellenmiş olur.</p>",
           en: "<p class='mb-4'>Keratoconus is an aggressive progressive ocular ailment characterized extensively by the thinning, outward bulging, and extreme steepening of the transparent anterior cornea. If left structurally untreated across the timeline, it forces heavy astigmatism rates, dramatic visual decline, and significantly invokes the desperate need for a widespread corneal transplantation procedure (keratoplasty).</p><p class='mb-4'>In current medical consensus, Corneal Crosslinking strictly functions safely as the foremost effective operation for successfully halting expanding keratoconus decay. Implemented effortlessly through simple local drop anesthesia, the procedural essence counts dynamically on suffusing Vitamin B2 (Riboflavin) drops while simultaneously delivering controlled Ultraviolet A rays.</p><p class='mb-4'>Surgical application inherently consumes near approximately 30 minutes for each eye structure. Hardened rapidly under protective UV bounds, corneal fiber steepening effectively ceases; thus, shielding patients comprehensively against escalating visual deficiency gradients.</p>"
         }
       },
-      { slug: { tr: "corneal-ring-implantasyonu", en: "corneal-ring-implantation" }, title: { tr: "Corneal Ring (Korneal Halka) İmplantasyonu", en: "Corneal Ring Implantation" }, excerpt: { tr: "Görüş kalitesini koruyan korneal içi halka uygulamaları.", en: "Intracorneal ring applications preserving vision quality." }, image: "/images/slide1.png" },
-      { slug: { tr: "keratokonus", en: "keratoconus" }, title: { tr: "Keratokonus", en: "Keratoconus" }, excerpt: { tr: "Korneanın incelerek sivrileşmesi ve güncel tanı-tedavi yolları.", en: "Thinning and bulging of the cornea, and current diagnostic-treatment pathways." }, image: "/images/megagoz-kornea-tedavisi.jpg" },
-      { slug: { tr: "kornea-ve-hastaliklari", en: "cornea-and-diseases" }, title: { tr: "Kornea Ve Hastalıkları", en: "Cornea and its Diseases" }, excerpt: { tr: "Gözün en ön saydam tabakasında oluşan sayısız rahatsızlığın tedavisi.", en: "Treatment of numerous disorders in the anterior transparent layer of the eye." }, image: "/images/slide3.png" },
+      { slug: { tr: "corneal-ring-implantasyonu", en: "corneal-ring-implantation" }, title: { tr: "Corneal Ring (Korneal Halka) İmplantasyonu", en: "Corneal Ring Implantation" }, excerpt: { tr: "Görüş kalitesini koruyan korneal içi halka uygulamaları.", en: "Intracorneal ring applications preserving vision quality." }, image: "/images/slide1.webp" },
+      { slug: { tr: "keratokonus", en: "keratoconus" }, title: { tr: "Keratokonus", en: "Keratoconus" }, excerpt: { tr: "Korneanın incelerek sivrileşmesi ve güncel tanı-tedavi yolları.", en: "Thinning and bulging of the cornea, and current diagnostic-treatment pathways." }, image: "/images/megagoz-kornea-tedavisi.webp" },
+      { slug: { tr: "kornea-ve-hastaliklari", en: "cornea-and-diseases" }, title: { tr: "Kornea Ve Hastalıkları", en: "Cornea and its Diseases" }, excerpt: { tr: "Gözün en ön saydam tabakasında oluşan sayısız rahatsızlığın tedavisi.", en: "Treatment of numerous disorders in the anterior transparent layer of the eye." }, image: "/images/slide3.webp" },
       { slug: { tr: "keratit", en: "keratitis" }, title: { tr: "Keratit", en: "Keratitis" }, excerpt: { tr: "Kornea iltihabına neden olan mikroorganizmalar ve iyileşme süreleri.", en: "Microorganisms causing corneal inflammation and recovery periods." }, image: "/images/megagoz-glukom-tedavisi.webp" },
       { slug: { tr: "mikrokornea", en: "microcornea" }, title: { tr: "Mikrokornea", en: "Microcornea" }, excerpt: { tr: "Doğuştan gelen normalden küçük kornea yapısı sendromu.", en: "Congenital syndrome characterized by an abnormally small cornea." }, image: "/images/megagoz-cocuk-goz-tedavisi.webp" },
       { slug: { tr: "konjonktiva", en: "conjunctiva" }, title: { tr: "Konjonktiva", en: "Conjunctiva" }, excerpt: { tr: "Gözün beyaz kısmını koruyan ince zarın tedavileri.", en: "Treatments focused on the thin membrane protecting the white of the eye." }, image: "/images/megagoz-tedavi-sonrasi.webp" }
@@ -173,9 +173,9 @@ export const TREATMENTS_DATA: TreatmentCategory[] = [
     slug: { tr: "uveit-tedavisi", en: "uveitis-treatment" },
     title: { tr: "Üveit Tedavisi", en: "Uveitis Treatment" },
     icon: "Thermometer",
-    image: "/images/megagoz-uveit-tedavisi.jpg",
+    image: "/images/megagoz-uveit-tedavisi.webp",
     items: [
-      { slug: { tr: "uvea", en: "uvea" }, title: { tr: "Üvea", en: "Uvea" }, excerpt: { tr: "Gözü besleyen damar tabakasının iltihabı ve bağışıklık tedavisi.", en: "Inflammation of the vascular layer feeding the eye, and immune treatment." }, image: "/images/megagoz-uveit-tedavisi.jpg" }
+      { slug: { tr: "uvea", en: "uvea" }, title: { tr: "Üvea", en: "Uvea" }, excerpt: { tr: "Gözü besleyen damar tabakasının iltihabı ve bağışıklık tedavisi.", en: "Inflammation of the vascular layer feeding the eye, and immune treatment." }, image: "/images/megagoz-uveit-tedavisi.webp" }
     ]
   },
   {
@@ -183,13 +183,13 @@ export const TREATMENTS_DATA: TreatmentCategory[] = [
     slug: { tr: "goz-kapagi-estetigi", en: "eyelid-aesthetics" },
     title: { tr: "Göz Kapağı Estetiği", en: "Eyelid Aesthetics" },
     icon: "Smile",
-    image: "/images/megagoz-goz-kapagi-tedavisi.jpg",
+    image: "/images/megagoz-goz-kapagi-tedavisi.webp",
     items: [
-      { slug: { tr: "goz-alti-torbalari-operasyonu", en: "under-eye-bag-surgery" }, title: { tr: "Göz Altı Torbaları Operasyonu", en: "Under-Eye Bag Surgery" }, excerpt: { tr: "Bizi yorgun ve yaşlı gösteren torbalardan kalıcı olarak kurtulun.", en: "Permanently get rid of bags that make you look tired and old." }, image: "/images/megagoz-goz-kapagi-tedavisi.jpg" },
+      { slug: { tr: "goz-alti-torbalari-operasyonu", en: "under-eye-bag-surgery" }, title: { tr: "Göz Altı Torbaları Operasyonu", en: "Under-Eye Bag Surgery" }, excerpt: { tr: "Bizi yorgun ve yaşlı gösteren torbalardan kalıcı olarak kurtulun.", en: "Permanently get rid of bags that make you look tired and old." }, image: "/images/megagoz-goz-kapagi-tedavisi.webp" },
       { slug: { tr: "goz-cevresi-ve-goz-kapagi-estetigi", en: "eye-surround-and-eyelid-aesthetics" }, title: { tr: "Göz Çevresi Ve Göz Kapağı Estetiği", en: "Eyelid and Eye Surround Aesthetics" }, excerpt: { tr: "Alt ve üst kapak düşüklüklerinin radyofrekans veya lazerle gençleştirilmesi.", en: "Rejuvenation of upper and lower lid ptosis with radiofrequency or laser." }, image: "/images/megagoz-tedavi-oncesi.webp" },
-      { slug: { tr: "goz-kapagi-ameliyati", en: "blepharoplasty" }, title: { tr: "Göz Kapağı Ameliyatı", en: "Blepharoplasty" }, excerpt: { tr: "Fazla deri ve yağ dokularının cerrahi olarak tamamen temizlenmesi.", en: "Complete surgical removal of excess skin and fat tissues." }, image: "/images/megagoz-goz-kapagi-tedavisi.jpg" },
-      { slug: { tr: "goz-eti-pterjium", en: "pterygium" }, title: { tr: "Göz Eti (Pterjium)", en: "Pterygium" }, excerpt: { tr: "Güneşin ve tozun sebep olduğu korneaya yürüyen dokunun tedavisi.", en: "Treatment of corneal encroaching tissue caused by sun and dust." }, image: "/images/megagoz-kornea-tedavisi.jpg" },
-      { slug: { tr: "hareketli-goz-protez-ameliyati", en: "movable-eye-prosthesis-surgery" }, title: { tr: "Hareketli Göz Protez Ameliyatı", en: "Movable Eye Prosthesis Surgery" }, excerpt: { tr: "Gerçek gibi duran ve hareket edebilen estetik yapay göz cerrahisi.", en: "Aesthetic artificial eye surgery that looks and moves naturally." }, image: "/images/slide2.png" }
+      { slug: { tr: "goz-kapagi-ameliyati", en: "blepharoplasty" }, title: { tr: "Göz Kapağı Ameliyatı", en: "Blepharoplasty" }, excerpt: { tr: "Fazla deri ve yağ dokularının cerrahi olarak tamamen temizlenmesi.", en: "Complete surgical removal of excess skin and fat tissues." }, image: "/images/megagoz-goz-kapagi-tedavisi.webp" },
+      { slug: { tr: "goz-eti-pterjium", en: "pterygium" }, title: { tr: "Göz Eti (Pterjium)", en: "Pterygium" }, excerpt: { tr: "Güneşin ve tozun sebep olduğu korneaya yürüyen dokunun tedavisi.", en: "Treatment of corneal encroaching tissue caused by sun and dust." }, image: "/images/megagoz-kornea-tedavisi.webp" },
+      { slug: { tr: "hareketli-goz-protez-ameliyati", en: "movable-eye-prosthesis-surgery" }, title: { tr: "Hareketli Göz Protez Ameliyatı", en: "Movable Eye Prosthesis Surgery" }, excerpt: { tr: "Gerçek gibi duran ve hareket edebilen estetik yapay göz cerrahisi.", en: "Aesthetic artificial eye surgery that looks and moves naturally." }, image: "/images/slide2.webp" }
     ]
   },
   {
@@ -203,8 +203,8 @@ export const TREATMENTS_DATA: TreatmentCategory[] = [
       { slug: { tr: "cocuklarda-ve-bebeklerde-kirmizi-goz", en: "red-eye-in-children-and-babies" }, title: { tr: "Çocuklarda Ve Bebeklerde Kırmızı Göz", en: "Red Eye in Children and Babies" }, excerpt: { tr: "Alerjik veya mikrobik göz içi hastalıklara hassas çözümler.", en: "Sensitive solutions to allergic or microbial intraocular diseases." }, image: "/images/megagoz-cocuk-goz-tedavisi2.webp" },
       { slug: { tr: "cocuklarda-ve-bebeklerde-kirma-kusurlari", en: "refractive-errors-in-children-and-babies" }, title: { tr: "Çocuklarda Ve Bebeklerde Kırma Kusurları", en: "Refractive Errors in Children and Babies" }, excerpt: { tr: "Miyop, astigmat ve hipermetrop sorununun gelişim çağındaki yönetimi.", en: "Management of myopia, astigmatism, and hyperopia in the development phase." }, image: "/images/megagoz-cocuk-goz-tedavisi.webp" },
       { slug: { tr: "cocuklarda-ve-bebeklerde-katarakt", en: "pediatric-cataracts" }, title: { tr: "Çocuklarda Ve Bebeklerde Katarakt", en: "Pediatric Cataracts" }, excerpt: { tr: "Göz merceğinin genetik veya travmatik yollarla bozulmasının pediatrik tedavisi.", en: "Pediatric treatment for genetic or traumatic deterioration of the eye lens." }, image: "/images/megagoz-katarakt-tedavisi.webp" },
-      { slug: { tr: "cocuklarda-ve-bebeklerde-gozyasi-kanal-tikanikligi", en: "tear-duct-obstruction-in-children-and-babies" }, title: { tr: "Çocuklarda Ve Bebeklerde Gözyaşı Kanal Tıkanıklığı", en: "Tear Duct Obstruction in Children and Babies" }, excerpt: { tr: "Sürekli sulanma yapan tıkalı kanalların masaj, sondalama veya tüplerle açılması.", en: "Opening blocked channels using massages, probing, or intubation." }, image: "/images/slide1.png" },
-      { slug: { tr: "cocuklarda-ve-bebeklerde-goz-tembelligi", en: "lazy-eye-in-children" }, title: { tr: "Çocuklarda Ve Bebeklerde Göz Tembelliği", en: "Amblyopia (Lazy Eye) in Children" }, excerpt: { tr: "Kapama egzersizleriyle çocukluk çağında çözülmesi gereken gelişim hatası.", en: "Developmental error needing resolution through patching exercises." }, image: "/images/megagoz-cocuk-goz-tembelligi.jpg" },
+      { slug: { tr: "cocuklarda-ve-bebeklerde-gozyasi-kanal-tikanikligi", en: "tear-duct-obstruction-in-children-and-babies" }, title: { tr: "Çocuklarda Ve Bebeklerde Gözyaşı Kanal Tıkanıklığı", en: "Tear Duct Obstruction in Children and Babies" }, excerpt: { tr: "Sürekli sulanma yapan tıkalı kanalların masaj, sondalama veya tüplerle açılması.", en: "Opening blocked channels using massages, probing, or intubation." }, image: "/images/slide1.webp" },
+      { slug: { tr: "cocuklarda-ve-bebeklerde-goz-tembelligi", en: "lazy-eye-in-children" }, title: { tr: "Çocuklarda Ve Bebeklerde Göz Tembelliği", en: "Amblyopia (Lazy Eye) in Children" }, excerpt: { tr: "Kapama egzersizleriyle çocukluk çağında çözülmesi gereken gelişim hatası.", en: "Developmental error needing resolution through patching exercises." }, image: "/images/megagoz-cocuk-goz-tembelligi.webp" },
       { slug: { tr: "cocuklarda-ve-bebeklerde-goz-kurulugu", en: "dry-eye-in-children-and-babies" }, title: { tr: "Çocuklarda Ve Bebeklerde Göz Kuruluğu", en: "Dry Eye in Children and Babies" }, excerpt: { tr: "Ekran kullanımı ve dijital yorgunluğun çocuklardaki sinsi belirtileri.", en: "Hidden symptoms of dry eye caused by screen usage and digital fatigue in children." }, image: "/images/megagoz-cocuk-goz-tedavisi.webp" }
     ]
   }

@@ -114,7 +114,7 @@ export default function TreatmentDetailPage({ params }: { params: Promise<{ loca
                   </div>
                   <div className="h-[300px] relative rounded-3xl overflow-hidden shadow-lg mt-12 group">
                      {/* Secondary category image or fallback depending on availability */}
-                     <Image src={categoryData.image || "/images/slide2.png"} alt="Detail 2" fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                     <Image src={categoryData.image || "/images/slide2.webp"} alt="Detail 2" fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
                      <div className="absolute inset-0 bg-[#162f5d]/20 mix-blend-overlay" />
                   </div>
                </div>
@@ -162,7 +162,7 @@ export default function TreatmentDetailPage({ params }: { params: Promise<{ loca
 
                {/* Full Width Large Image Image */}
                <div className="h-[400px] w-full relative rounded-3xl overflow-hidden shadow-xl">
-                  <Image src="/images/slide4.png" alt="Detail 3" fill className="object-cover object-bottom" />
+                  <Image src="/images/slide4.webp" alt="Detail 3" fill className="object-cover object-bottom" />
                   <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm opacity-0 hover:opacity-100 transition-opacity duration-500">
                     <div className="w-20 h-20 bg-[#ecbb3f] rounded-full flex items-center justify-center pl-1 cursor-pointer">
                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
