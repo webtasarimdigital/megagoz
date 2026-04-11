@@ -55,7 +55,7 @@ export const TREATMENTS_DATA: TreatmentCategory[] = [
       },
       { slug: { tr: "uc-odakli-torik-lensler", en: "trifocal-toric-lenses" }, title: { tr: "Üç Odaklı Torik Lensler", en: "Trifocal Toric Lenses" }, excerpt: { tr: "Astigmatizmayı düzelten üç odaklı mercek çeşitleri.", en: "Trifocal lenses specifically designed to correct astigmatism." }, image: "/images/megagoz-katarakt.webp" },
       { slug: { tr: "tek-odakli-lensler", en: "monofocal-lenses" }, title: { tr: "Tek Odaklı Lensler (Monofokal)", en: "Monofocal Lenses" }, excerpt: { tr: "Seçilen tek bir odak noktasında kusursuz görüş imkanı.", en: "Perfect vision targeted at a single chosen focal point." }, image: "/images/megagoz-katarakt-tedavisi.webp" },
-      { slug: { tr: "tek-odakli-torik-lensler", en: "monofocal-toric-lenses" }, title: { tr: "Tek Odaklı Torik Lensler", en: "Monofocal Toric Lenses" }, excerpt: { tr: "Hem tek odaklı görüş sağlayan hem de astigmatı tedavi eden mercekler.", en: "Monofocal lenses that also treat astigmatism." }, image: "/images/megagoz-tedavi-sonrasi.webp" }
+      { slug: { tr: "tek-odakli-torik-lensler", en: "monofocal-toric-lenses" }, title: { tr: "Tek Odaklı Torik Lensler", en: "Monofocal Toric Lenses" }, excerpt: { tr: "Hem tek odaklı görüş sağlayan hem de astigmatı tedavi eden mercekler.", en: "Monofocal lenses that also treat astigmatism." }, image: "/images/megagoz-toric-lens.png" }
     ]
   },
   {
