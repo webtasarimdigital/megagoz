@@ -69,7 +69,7 @@ export default function ServicesSection() {
             {locale === 'en' ? (
               <>Treatments That <br className="hidden md:block" /><span className="text-[#ecbb3f]">Make a Difference</span></>
             ) : (
-              <>Sizin İçin Fark <br className="hidden md:block" /><span className="text-[#ecbb3f]">Yaratan Tedaviler</span></>
+              <>Sizin İçin Özenle <br className="hidden md:block" /><span className="text-[#ecbb3f]">Planlanan Tedaviler</span></>
             )}
           </motion.h2>
         </div>
