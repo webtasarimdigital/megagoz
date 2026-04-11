@@ -49,10 +49,13 @@ export default function HeroSlider() {
   const [isKvkkModalOpen, setIsKvkkModalOpen] = useState(false);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [formError, setFormError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>, sourceForm: string) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setFormStatus('idle');
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
     data.source = sourceForm;
@@ -64,17 +67,19 @@ export default function HeroSlider() {
         body: JSON.stringify(data),
       });
       if (res.ok) {
-        alert(locale === 'en' ? "Message sent successfully!" : "Mesajınız başarıyla gönderildi!");
+        setFormStatus('success');
         (e.target as HTMLFormElement).reset();
         if (sourceForm === 'Hızlı Randevu (Popup)') {
-          setIsPopupOpen(false);
+          setTimeout(() => { setIsPopupOpen(false); setFormStatus('idle'); }, 2500);
         }
       } else {
         const errorData = await res.json();
-        alert((locale === 'en' ? "An error occurred: " : "Bir hata oluştu: ") + (errorData.message || ''));
+        setFormStatus('error');
+        setFormError(errorData.message || (locale === 'en' ? 'An error occurred.' : 'Bir hata oluştu.'));
       }
     } catch (err) {
-      alert(locale === 'en' ? "Connection error" : "Bağlantı hatası");
+      setFormStatus('error');
+      setFormError(locale === 'en' ? 'Connection error' : 'Bağlantı hatası');
     } finally {
       setIsSubmitting(false);
     }
@@ -339,26 +344,40 @@ export default function HeroSlider() {
               </div>
 
               {/* Row 2: Checkbox & Submit */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pt-2">
-                 <div className="flex items-center gap-3">
-                    <div 
-                      className={`w-4 h-4 rounded border flex items-center justify-center shrink-0 cursor-pointer transition-colors ${isKvkkChecked ? 'bg-[#ecbb3f] border-[#ecbb3f]' : 'bg-white border-gray-300'}`}
-                      onClick={() => setIsKvkkChecked(!isKvkkChecked)}
-                    >
-                      {isKvkkChecked && <svg className="w-3 h-3 text-[#162f5d]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>}
+              <div className="flex flex-col gap-4 pt-2">
+                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+                    <div className="flex items-center gap-3">
+                       <div 
+                         className={`w-4 h-4 rounded border flex items-center justify-center shrink-0 cursor-pointer transition-colors ${isKvkkChecked ? 'bg-[#ecbb3f] border-[#ecbb3f]' : 'bg-white border-gray-300'}`}
+                         onClick={() => setIsKvkkChecked(!isKvkkChecked)}
+                       >
+                         {isKvkkChecked && <svg className="w-3 h-3 text-[#162f5d]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>}
+                       </div>
+                       <label className="text-sm font-semibold text-[#162f5d] cursor-pointer select-none" onClick={() => setIsKvkkChecked(!isKvkkChecked)}>
+                         {t.rich("kvkkAccept", { kvkk: (chunks) => <button type="button" onClick={(e) => { e.stopPropagation(); setIsKvkkModalOpen(true) }} className="underline text-[#ecbb3f] hover:text-[#d6a529] font-bold cursor-pointer transition-colors" title={locale === 'en' ? 'Click to read' : 'Okumak için tıklayın'}>{chunks}</button> })}
+                       </label>
                     </div>
-                    <label className="text-sm font-semibold text-[#162f5d] cursor-pointer select-none" onClick={() => setIsKvkkChecked(!isKvkkChecked)}>
-                      {t.rich("kvkkAccept", { kvkk: (chunks) => <button type="button" onClick={(e) => { e.stopPropagation(); setIsKvkkModalOpen(true) }} className="underline text-[#ecbb3f] hover:text-[#d6a529] font-bold cursor-pointer transition-colors" title={locale === 'en' ? 'Click to read' : 'Okumak için tıklayın'}>{chunks}</button> })}
-                    </label>
-                 </div>
 
-                 <button 
-                   type="submit" 
-                   disabled={!isKvkkChecked || isSubmitting}
-                   className="w-full sm:w-auto px-16 h-[50px] bg-[#ecbb3f] hover:bg-[#d6a529] disabled:opacity-50 disabled:cursor-not-allowed text-[#162f5d] font-bold tracking-widest rounded-lg shadow-lg shadow-[#ecbb3f]/20 transition-all text-sm uppercase shrink-0"
-                 >
-                    {isSubmitting ? (locale === 'en' ? 'Sending...' : 'Gönderiliyor...') : t("submitApt")}
-                 </button>
+                    <button 
+                      type="submit" 
+                      disabled={!isKvkkChecked || isSubmitting}
+                      className="w-full sm:w-auto px-16 h-[50px] bg-[#ecbb3f] hover:bg-[#d6a529] disabled:opacity-50 disabled:cursor-not-allowed text-[#162f5d] font-bold tracking-widest rounded-lg shadow-lg shadow-[#ecbb3f]/20 transition-all text-sm uppercase shrink-0"
+                    >
+                       {isSubmitting ? (locale === 'en' ? 'Sending...' : 'Gönderiliyor...') : t("submitApt")}
+                    </button>
+                 </div>
+                 {formStatus === 'success' && (
+                   <div className="flex items-center gap-3 bg-green-50 border border-green-200 text-green-700 rounded-xl px-5 py-4 text-sm font-semibold">
+                     <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                     {locale === 'tr' ? 'Mesajınız alındı! En kısa sürede sizinle iletişime geçeceğiz.' : "Message received! We'll be in touch shortly."}
+                   </div>
+                 )}
+                 {formStatus === 'error' && (
+                   <div className="flex items-center gap-3 bg-red-50 border border-red-200 text-red-600 rounded-xl px-5 py-4 text-sm font-semibold">
+                     <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                     {formError}
+                   </div>
+                 )}
               </div>
            </form>
         </div>

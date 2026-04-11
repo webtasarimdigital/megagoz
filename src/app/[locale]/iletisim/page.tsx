@@ -11,10 +11,13 @@ export default function ContactPage() {
   const t = useTranslations("Contact");
   const locale = useLocale();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [formError, setFormError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setFormStatus('idle');
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
     data.source = 'Bize Ulaşın (İletişim Sayfası)';
@@ -26,14 +29,16 @@ export default function ContactPage() {
         body: JSON.stringify(data),
       });
       if (res.ok) {
-        alert(locale === 'en' ? "Message sent successfully!" : "Mesajınız başarıyla gönderildi!");
+        setFormStatus('success');
         (e.target as HTMLFormElement).reset();
       } else {
         const errorData = await res.json();
-        alert((locale === 'en' ? "An error occurred: " : "Bir hata oluştu: ") + (errorData.message || ''));
+        setFormStatus('error');
+        setFormError(errorData.message || (locale === 'en' ? 'An error occurred.' : 'Bir hata oluştu.'));
       }
     } catch (err) {
-      alert(locale === 'en' ? "Connection error" : "Bağlantı hatası");
+      setFormStatus('error');
+      setFormError(locale === 'en' ? 'Connection error' : 'Bağlantı hatası');
     } finally {
       setIsSubmitting(false);
     }
@@ -166,10 +171,22 @@ export default function ContactPage() {
                   />
                 </div>
 
-                <div className="pt-2">
+                <div className="flex flex-col gap-4 pt-2">
                   <button type="submit" disabled={isSubmitting} className="w-full disabled:opacity-50 md:w-auto px-10 h-12 bg-[#ecbb3f] hover:bg-[#d99816] transition-colors text-[#162f5d] font-bold rounded-lg tracking-widest uppercase shadow-lg shadow-[#ecbb3f]/30">
                     {isSubmitting ? (locale === 'en' ? 'SENDING...' : 'GÖNDERİLİYOR...') : t("form.submit")}
                   </button>
+                  {formStatus === 'success' && (
+                    <div className="flex items-center gap-3 bg-green-50 border border-green-200 text-green-700 rounded-xl px-5 py-4 text-sm font-semibold">
+                      <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                      {locale === 'tr' ? 'Mesajınız başarıyla gönderildi! En kısa sürede sizinle iletişime geçeceğiz.' : "Your message was sent successfully! We'll get back to you shortly."}
+                    </div>
+                  )}
+                  {formStatus === 'error' && (
+                    <div className="flex items-center gap-3 bg-red-50 border border-red-200 text-red-600 rounded-xl px-5 py-4 text-sm font-semibold">
+                      <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                      {formError}
+                    </div>
+                  )}
                 </div>
               </form>
             </div>

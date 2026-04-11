@@ -8,10 +8,13 @@ import { useLocale } from "next-intl";
 export default function AppointmentFormSection() {
   const locale = useLocale();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [formError, setFormError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setFormStatus('idle');
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
     data.source = 'Alt Kısım Detaylı Randevu Formu';
@@ -23,14 +26,16 @@ export default function AppointmentFormSection() {
         body: JSON.stringify(data),
       });
       if (res.ok) {
-        alert(locale === 'en' ? "Message sent successfully!" : "Mesajınız başarıyla gönderildi!");
+        setFormStatus('success');
         (e.target as HTMLFormElement).reset();
       } else {
         const errorData = await res.json();
-        alert((locale === 'en' ? "An error occurred: " : "Bir hata oluştu: ") + (errorData.message || ''));
+        setFormStatus('error');
+        setFormError(errorData.message || (locale === 'en' ? 'An error occurred.' : 'Bir hata oluştu.'));
       }
     } catch (err) {
-      alert(locale === 'en' ? "Connection error" : "Bağlantı hatası");
+      setFormStatus('error');
+      setFormError(locale === 'en' ? 'Connection error' : 'Bağlantı hatası');
     } finally {
       setIsSubmitting(false);
     }
@@ -126,6 +131,18 @@ export default function AppointmentFormSection() {
                       {isSubmitting ? (locale === 'tr' ? 'GÖNDERİLİYOR...' : 'SENDING...') : (locale === 'tr' ? 'RANDEVU OLUŞTUR' : 'BOOK APPOINTMENT')} <ArrowRight size={18} />
                    </button>
                 </div>
+                    {formStatus === 'success' && (
+                      <div className="flex items-center gap-3 bg-green-400/20 border border-green-400/40 text-green-300 rounded-xl px-5 py-4 text-sm font-semibold w-full">
+                        <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                        {locale === 'tr' ? 'Mesajınız alındı! En kısa sürede iletisime geçeceğiz.' : "Message received! We'll be in touch."}
+                      </div>
+                    )}
+                    {formStatus === 'error' && (
+                      <div className="flex items-center gap-3 bg-red-400/20 border border-red-400/40 text-red-300 rounded-xl px-5 py-4 text-sm font-semibold w-full">
+                        <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                        {formError}
+                      </div>
+                    )}
              </form>
           </motion.div>
        </div>
