@@ -50,7 +50,7 @@ export default function Footer() {
            </a>
 
            {/* Item 3 */}
-           <Link href="/iletisim" className="flex-1 py-6 px-4 md:py-10 flex items-center justify-center gap-3 md:gap-4 hover:bg-gray-50 transition-colors group border-l border-gray-100">
+           <Link prefetch={false} href="/iletisim" className="flex-1 py-6 px-4 md:py-10 flex items-center justify-center gap-3 md:gap-4 hover:bg-gray-50 transition-colors group border-l border-gray-100">
              <div className="flex items-center justify-center shrink-0">
                <MapPin size={28} className="text-[#162f5d] group-hover:text-[#ecbb3f] transition-colors stroke-[2]" />
              </div>
@@ -74,7 +74,7 @@ export default function Footer() {
           
           {/* Column 1: Brand & Intro */}
           <div className="col-span-2 md:col-span-3 lg:col-span-3 order-1 lg:order-none space-y-7">
-            <Link href="/" className="inline-block relative h-[60px] w-[240px] mb-4 overflow-visible rounded-sm">
+            <Link prefetch={false} href="/" className="inline-block relative h-[60px] w-[240px] mb-4 overflow-visible rounded-sm">
                <img 
                  src="/megagoz-logo-mobil.webp" 
                  alt="Megagöz Logo" 
@@ -132,7 +132,7 @@ export default function Footer() {
               ]).map((link, idx) => (
                 <li key={idx}>
                   {link.isLink ? (
-                    <Link href={link.path as any} className="text-[14px] text-gray-300 hover:text-[#ecbb3f] transition-colors font-medium">
+                    <Link prefetch={false} href={link.path as any} className="text-[14px] text-gray-300 hover:text-[#ecbb3f] transition-colors font-medium">
                       {link.name}
                     </Link>
                   ) : (

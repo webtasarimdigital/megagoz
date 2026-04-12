@@ -262,7 +262,7 @@ export default function FloatingActions() {
       <div className="fixed bottom-0 left-0 right-0 z-[250] md:hidden bg-white/95 backdrop-blur-md border-t border-gray-100 flex shadow-[0_-10px_30px_rgba(0,0,0,0.08)] pb-safe h-[65px] sm:h-[70px]">
         
         {/* RANDEVU AL - Priority Button */}
-        <Link href="/iletisim" className="w-[40%] flex items-center justify-center bg-[#ecbb3f] text-[#162f5d] hover:bg-[#d99816] transition-colors h-full border-r border-[#162f5d]/10">
+        <Link prefetch={false} href="/iletisim" className="w-[40%] flex items-center justify-center bg-[#ecbb3f] text-[#162f5d] hover:bg-[#d99816] transition-colors h-full border-r border-[#162f5d]/10">
           <span className="font-black tracking-widest uppercase text-[12px] sm:text-[14px] text-center leading-tight">
             {locale === "en" ? "BOOK NOW" : "RANDEVU AL"}
           </span>

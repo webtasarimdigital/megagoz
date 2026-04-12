@@ -107,7 +107,7 @@ export default function AboutSection() {
                </footer>
             </blockquote>
 
-            <Link href="/hakkimizda" className="self-start mt-4 group flex items-center gap-4 hover:opacity-80 transition-opacity">
+            <Link prefetch={false} href="/hakkimizda" className="self-start mt-4 group flex items-center gap-4 hover:opacity-80 transition-opacity">
                <div className="w-14 h-14 bg-[#162f5d] rounded-full flex items-center justify-center text-[#ecbb3f] group-hover:scale-110 transition-transform shadow-lg">
                  <ArrowRight size={24} />
                </div>

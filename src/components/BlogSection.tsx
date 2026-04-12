@@ -142,7 +142,7 @@ export default function BlogSection() {
                   </div>
                   
                   <h3 className="text-[20px] font-black text-[#162f5d] leading-snug mb-3 line-clamp-2 group-hover:text-[#ecbb3f] transition-colors">
-                    <Link href="/blog" className="before:absolute before:inset-0">
+                    <Link prefetch={false} href="/blog" className="before:absolute before:inset-0">
                       {locale === 'en' ? post.titleEn : post.title}
                     </Link>
                   </h3>

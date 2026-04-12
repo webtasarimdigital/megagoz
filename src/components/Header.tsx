@@ -139,11 +139,11 @@ export default function Header() {
         <div className="w-full flex items-center justify-center h-full px-4 pl-12 gap-8 md:gap-16">
           {/* Left quick links */}
           <div className="hidden lg:flex items-center gap-3">
-            <Link href={{ pathname: '/tedaviler/[category]/[slug]', params: { category: 'katarakt', slug: locale === 'tr' ? 'uc-odakli-lensler' : 'trifocal-lenses' } }} className="hover:text-gray-200 transition-colors">{t("smartLenses")}</Link>
+            <Link prefetch={false} href={{ pathname: '/tedaviler/[category]/[slug]', params: { category: 'katarakt', slug: locale === 'tr' ? 'uc-odakli-lensler' : 'trifocal-lenses' } }} className="hover:text-gray-200 transition-colors">{t("smartLenses")}</Link>
             <span className="text-white/60">|</span>
-            <Link href={{ pathname: '/tedaviler/[category]/[slug]', params: { category: 'lazer-tedavisi', slug: locale === 'tr' ? 'lasik-goz-lazer-ameliyati' : 'lasik-laser-eye-surgery' } }} className="hover:text-gray-200 transition-colors">{t("laserSurgery")}</Link>
+            <Link prefetch={false} href={{ pathname: '/tedaviler/[category]/[slug]', params: { category: 'lazer-tedavisi', slug: locale === 'tr' ? 'lasik-goz-lazer-ameliyati' : 'lasik-laser-eye-surgery' } }} className="hover:text-gray-200 transition-colors">{t("laserSurgery")}</Link>
             <span className="text-white/60">|</span>
-            <Link href="/anlasmali-kurumlar" className="hover:text-gray-200 transition-colors">{t("partnerInstitutions")}</Link>
+            <Link prefetch={false} href="/anlasmali-kurumlar" className="hover:text-gray-200 transition-colors">{t("partnerInstitutions")}</Link>
           </div>
 
           {/* Right contact & settings */}
@@ -362,7 +362,7 @@ export default function Header() {
                                <h3 className="font-bold text-lg text-[#162f5d]">
                                  {TREATMENTS_DATA.find(c => c.id === activeMegaCategory)?.title[locale as "tr"|"en"]}
                                </h3>
-                               <Link href={{ pathname: '/tedaviler/[category]', params: { category: TREATMENTS_DATA.find(c => c.id === activeMegaCategory)?.slug[locale as "tr"|"en"] || activeMegaCategory } }} className="text-[#ecbb3f] text-xs font-bold uppercase tracking-wider hover:text-[#cda669]">
+                               <Link prefetch={false} href={{ pathname: '/tedaviler/[category]', params: { category: TREATMENTS_DATA.find(c => c.id === activeMegaCategory)?.slug[locale as "tr"|"en"] || activeMegaCategory } }} className="text-[#ecbb3f] text-xs font-bold uppercase tracking-wider hover:text-[#cda669]">
                                   {locale === 'tr' ? 'Tümünü Gör' : 'View All'}
                                </Link>
                              </div>
@@ -572,7 +572,7 @@ export default function Header() {
                              exit={{ height: 0, opacity: 0 }}
                              className="flex flex-col pt-5 space-y-5 overflow-hidden"
                            >
-                             <Link href="/tedaviler" onClick={() => setMobileMenuOpen(false)} className="text-[#ecbb3f] font-black text-[13px] uppercase tracking-widest pl-4 hover:opacity-80">
+                             <Link prefetch={false} href="/tedaviler" onClick={() => setMobileMenuOpen(false)} className="text-[#ecbb3f] font-black text-[13px] uppercase tracking-widest pl-4 hover:opacity-80">
                                {locale === 'tr' ? 'TÜM TEDAVİLER' : 'ALL TREATMENTS'}
                              </Link>
                              {TREATMENTS_DATA.map(category => (
@@ -592,7 +592,7 @@ export default function Header() {
                                        exit={{ height: 0, opacity: 0 }}
                                        className="flex flex-col pl-4 mt-2 space-y-4 overflow-hidden border-l border-white/5 pb-2"
                                      >
-                                        <Link href={{ pathname: '/tedaviler/[category]', params: { category: category.slug[locale as "tr"|"en"] } }} onClick={() => setMobileMenuOpen(false)} className="text-[12px] text-[#ecbb3f] font-bold italic py-1">
+                                        <Link prefetch={false} href={{ pathname: '/tedaviler/[category]', params: { category: category.slug[locale as "tr"|"en"] } }} onClick={() => setMobileMenuOpen(false)} className="text-[12px] text-[#ecbb3f] font-bold italic py-1">
                                            {locale === 'tr' ? 'Bu bölümü gör' : 'View this section'}
                                         </Link>
                                         {category.items.map(item => (
