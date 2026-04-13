@@ -41,6 +41,19 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
+        {/* Google Tag Manager */}
+        <Script id="google-tag-manager" strategy="afterInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-WCNQLB6Z');
+          `}
+        </Script>
+        {/* End Google Tag Manager */}
+
+        {/* Google Analytics */}
         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-C778NQYZR5" strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
@@ -87,6 +100,16 @@ export default async function LocaleLayout({
         />
       </head>
       <body className="overflow-x-hidden w-full relative antialiased bg-[#F8FAFC]" suppressHydrationWarning>
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe 
+            src="https://www.googletagmanager.com/ns.html?id=GTM-WCNQLB6Z"
+            height="0" 
+            width="0" 
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
 
         <NextIntlClientProvider messages={messages}>
           <div className="flex flex-col w-screen max-w-[100vw] overflow-x-hidden min-h-screen relative">
