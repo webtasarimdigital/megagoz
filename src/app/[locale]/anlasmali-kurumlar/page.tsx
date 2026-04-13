@@ -27,7 +27,7 @@ export default function PartnerInstitutionsPage() {
     { name: "TÜRK TELEKOM VAKFI", image: "/images/turktelekomvakfi.webp" },
     { name: "TÜRKİYE SİGORTA", image: "/images/turkiye-sigorta.webp" },
     { name: "UNICO SİGORTA A.Ş.", image: "/images/unico-sigorta-logo.webp" },
-    { name: "YAPI KREDİ BANKASI ESV", image: "/images/yaou-kredi-esv.webp" },
+    { name: "YAPI KREDİ BANKASI ESV", image: "/images/yapi-kredi-esv.webp" },
     { name: "ZURICH YAŞAM VE EMEKLİLİK A.Ş.", image: "/images/zurich-logo.webp" },
   ];
 
