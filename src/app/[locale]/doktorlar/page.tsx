@@ -49,9 +49,8 @@ export default function DoctorsPage() {
            {/* Doctor Card */}
            <Link href={{ pathname: '/doktorlar/[slug]', params: { slug: 'osman-dursun' } }} className="block bg-white rounded-[40px] overflow-hidden shadow-lg border border-gray-100 group transition-transform hover:-translate-y-2">
               {/* Image Area */}
-              <div className="h-[350px] md:h-[400px] w-full bg-[#E5E7EB] relative flex items-center justify-center rounded-t-[40px]">
-                 {/* Placeholder for doctor image */}
-                 <User size={120} className="text-gray-400" />
+              <div className="h-[350px] md:h-[400px] w-full bg-[#E5E7EB] relative flex items-center justify-center rounded-t-[40px] overflow-hidden">
+                 <Image src="/images/dr-osman-dursun.webp" alt="Op. Dr. Osman Dursun" fill className="object-cover object-top" />
                  
                  {/* Social Icons - overlapping on bottom left */}
                  <div className="absolute -bottom-[20px] left-8 flex gap-3 z-10">

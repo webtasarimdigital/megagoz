@@ -2,18 +2,11 @@ import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { MapPin, Phone, Mail, Clock, PhoneCall, MessageCircle } from "lucide-react";
 import Image from "next/image";
+import { TREATMENTS_DATA } from "@/data/treatments";
 
 export default function Footer() {
   const t = useTranslations("Navigation");
   const locale = useLocale();
-
-  const services = locale === 'en' ? [
-    "Cataract", "Laser Treatment", "Contact Lenses", "Eye Neurology", "Corneal Diseases",
-    "Glaucoma Treatment", "Strabismus Treatment", "Uveitis Treatment", "Eyelid Aesthetics", "Pediatric Eye Health"
-  ] : [
-    "Katarakt", "Lazer Tedavisi", "Kontak Lens", "Göz Nörolojisi", "Kornea Hastalıkları",
-    "Glokom Tedavisi", "Şaşılık Tedavisi", "Üveit Tedavisi", "Göz Kapağı Estetiği", "Çocuk Göz Sağlığı"
-  ];
 
   return (
     <footer className="bg-[#152d59] mt-16 md:mt-24">
@@ -120,15 +113,15 @@ export default function Footer() {
               {(locale === 'en' ? [
                 { name: "Home", path: "/", isLink: true },
                 { name: "About Us", path: "/hakkimizda", isLink: true },
-                { name: "Our Doctors", path: "#", isLink: false },
-                { name: "Feedback", path: "#", isLink: false },
-                { name: "Blog", path: "#", isLink: false }
+                { name: "Our Doctors", path: "/doktorlar", isLink: true },
+                { name: "Feedback", path: "/iletisim", isLink: true },
+                { name: "Blog", path: "/blog", isLink: true }
               ] : [
                 { name: "Ana Sayfa", path: "/", isLink: true },
                 { name: "Hakkımızda", path: "/hakkimizda", isLink: true },
-                { name: "Hekimlerimiz", path: "#", isLink: false },
-                { name: "Görüş ve Önerileriniz", path: "#", isLink: false },
-                { name: "Blog", path: "#", isLink: false }
+                { name: "Hekimlerimiz", path: "/doktorlar", isLink: true },
+                { name: "Görüş ve Önerileriniz", path: "/iletisim", isLink: true },
+                { name: "Blog", path: "/blog", isLink: true }
               ]).map((link, idx) => (
                 <li key={idx}>
                   {link.isLink ? (
@@ -153,11 +146,11 @@ export default function Footer() {
             <div className="w-[30px] h-[2px] bg-[#ecbb3f] mb-6" />
             
             <div className="grid grid-cols-2 gap-x-4 gap-y-3.5 sm:gap-x-6">
-              {services.map((service, idx) => (
-                <div key={idx} className="flex flex-col">
-                   <a href="#" className="text-[14px] text-gray-300 hover:text-[#ecbb3f] transition-colors font-medium">
-                     {service}
-                   </a>
+              {TREATMENTS_DATA.map((category) => (
+                <div key={category.id} className="flex flex-col">
+                   <Link prefetch={false} href={{ pathname: '/tedaviler/[category]', params: { category: category.slug[locale as "tr" | "en"] || category.id } }} className="text-[14px] text-gray-300 hover:text-[#ecbb3f] transition-colors font-medium">
+                     {category.title[locale as "tr" | "en"]}
+                   </Link>
                 </div>
               ))}
             </div>

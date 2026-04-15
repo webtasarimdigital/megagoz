@@ -14,7 +14,7 @@ const getDoctorBySlug = (slug: string, locale: string) => {
       slug: "osman-dursun",
       name: "Op. Dr. Osman Dursun",
       title: locale === "en" ? "CHIEF PHYSICIAN / OPHTHALMOLOGIST" : "BAŞHEKİM / GÖZ HASTALIKLARI UZMANI",
-      image: "", // Placeholder or actual image
+      image: "/images/dr-osman-dursun.webp", // Updated with user uploaded image
       about: "", // User requested no description for now
       specialties: locale === "en" ? ["Cataract (Smart Lens)", "Excimer Laser"] : ["Katarakt (Akıllı Lens)", "Excimer Lazer"],
       education: locale === "en" ? [
@@ -122,7 +122,7 @@ export default function DoctorDetailPage({ params }: { params: Promise<{ locale:
                  </div>
                )}
 
-               {/* Education */}
+               {/* Education 
                <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="w-12 h-12 rounded-full bg-[#ecbb3f]/10 flex items-center justify-center text-[#ecbb3f]">
@@ -140,8 +140,9 @@ export default function DoctorDetailPage({ params }: { params: Promise<{ locale:
                      ))}
                   </ul>
                </div>
+               */}
 
-               {/* Experience */}
+               {/* Experience 
                <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="w-12 h-12 rounded-full bg-[#ecbb3f]/10 flex items-center justify-center text-[#ecbb3f]">
@@ -159,6 +160,7 @@ export default function DoctorDetailPage({ params }: { params: Promise<{ locale:
                      ))}
                   </ul>
                </div>
+               */}
 
             </div>
 
