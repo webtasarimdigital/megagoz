@@ -90,7 +90,7 @@ export default function DoctorDetailPage({ params }: { params: Promise<{ locale:
           {/* Picture Box */}
           <div className="order-1 lg:order-2 w-64 h-64 md:w-80 md:h-80 bg-white rounded-full overflow-hidden border-8 border-white/10 shadow-2xl relative flex items-center justify-center flex-shrink-0">
             {doctor.image ? (
-              <Image src={doctor.image} alt={doctor.name} fill className="object-cover" />
+              <Image src={doctor.image} alt={doctor.name} fill className="object-cover object-top" />
             ) : (
               <User size={120} className="text-gray-300" />
             )}
