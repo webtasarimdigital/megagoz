@@ -55,7 +55,7 @@ export default function DoctorDetailPage({ params }: { params: Promise<{ locale:
       <Header />
       
       {/* Detail Hero Section */}
-      <div className="relative w-full bg-[#162f5d] pt-32 pb-24 shrink-0">
+      <div className="relative w-full bg-[#162f5d] pt-40 lg:pt-52 pb-24 shrink-0">
         <div className="absolute inset-0 bg-[#0a111a]/50 z-0" />
         {/* Subtle pattern or gradient */}
         
