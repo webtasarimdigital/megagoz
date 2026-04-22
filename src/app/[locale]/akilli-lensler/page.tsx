@@ -1,11 +1,13 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { useState } from "react";import { useLocale } from "next-intl";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { CheckCircle2, Shield, Eye, Clock, Sparkles, ChevronRight } from "lucide-react";
+import { CheckCircle2, Shield, Eye, Clock, Sparkles, ChevronRight, ArrowRight } from "lucide-react";
 import AppointmentFormSection from "@/components/AppointmentFormSection";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const content = {
   tr: {
@@ -14,7 +16,7 @@ const content = {
       desc: "Ömür boyu kalıcı net görüş. Trifokal akıllı lensler ile uzak, orta ve yakın mesafede gözlük ihtiyacınızı tamamen ortadan kaldırın."
     },
     hero: {
-      badge: "PREMIUM LENS TEKNOLOJİSİ",
+      badge: "AKILLI LENS",
       title: "Gözlüklere Veda Edin,\nNet Görüşe Merhaba!",
       subtitle: "Akıllı Lens tedavisi ile uzak, orta ve yakın mesafelerde kusursuz görüşe sahip olun. Ömür boyu kalıcı çözüm ile dünyayı yeniden keşfedin.",
       cta: "Ücretsiz Randevu Al",
@@ -32,13 +34,13 @@ const content = {
           icon: <Eye className="w-8 h-8 text-[#dfa932]" />,
           title: "Kesintisiz Görüş",
           desc: "Uzak, yakın ve ara mesafelerde gözlüksüz net görüş sağlar.",
-          image: "/images/slide1.webp"
+          image: "/images/blog_smart_lens.webp"
         },
         {
           icon: <Clock className="w-8 h-8 text-[#dfa932]" />,
           title: "Ömür Boyu Kalıcı",
           desc: "Göz içine yerleştirilen mercek ömrünüz boyunca yapısını korur.",
-          image: "/images/megagoz-tedavi-sonrasi.webp"
+          image: "/images/megagoz-clinic-interior.webp"
         },
         {
           icon: <Shield className="w-8 h-8 text-[#dfa932]" />,
@@ -50,7 +52,7 @@ const content = {
           icon: <Sparkles className="w-8 h-8 text-[#dfa932]" />,
           title: "Hızlı İyileşme",
           desc: "Aynı gün taburcu olur, birkaç gün içinde normal yaşama dönersiniz.",
-          image: "/images/slide2.webp"
+          image: "/images/dr-osman-dursun.webp"
         }
       ]
     },
@@ -77,7 +79,7 @@ const content = {
   },
   en: {
     hero: {
-      badge: "PREMIUM LENS TECHNOLOGY",
+      badge: "SMART LENSES",
       title: "Say Goodbye to Glasses,\nHello to Clear Vision!",
       subtitle: "Achieve flawless vision at distance, intermediate, and near distances with Smart Lens treatment. Rediscover the world with a permanent lifetime solution.",
       cta: "Book Free Consultation",
@@ -95,13 +97,13 @@ const content = {
           icon: <Eye className="w-8 h-8 text-[#dfa932]" />,
           title: "Continuous Vision",
           desc: "Provides clear, glasses-free vision at distance, near, and intermediate distances.",
-          image: "/images/slide1.webp"
+          image: "/images/blog_smart_lens.webp"
         },
         {
           icon: <Clock className="w-8 h-8 text-[#dfa932]" />,
           title: "Permanent for Life",
           desc: "The intraocular lens maintains its structure throughout your life.",
-          image: "/images/megagoz-tedavi-sonrasi.webp"
+          image: "/images/megagoz-clinic-interior.webp"
         },
         {
           icon: <Shield className="w-8 h-8 text-[#dfa932]" />,
@@ -113,7 +115,7 @@ const content = {
           icon: <Sparkles className="w-8 h-8 text-[#dfa932]" />,
           title: "Rapid Recovery",
           desc: "Return home on the same day and resume normal life quickly.",
-          image: "/images/slide2.webp"
+          image: "/images/dr-osman-dursun.webp"
         }
       ]
     },
@@ -143,6 +145,40 @@ const content = {
 export default function SmartLensesPage() {
   const locale = useLocale();
   const t = locale === "tr" ? content.tr : content.en;
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [formError, setFormError] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setFormStatus('idle');
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+    data.source = 'Akıllı Lensler Hero Formu';
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (res.ok) {
+        setFormStatus('success');
+        (e.target as HTMLFormElement).reset();
+      } else {
+        const errorData = await res.json();
+        setFormStatus('error');
+        setFormError(errorData.message || (locale === 'en' ? 'An error occurred.' : 'Bir hata oluştu.'));
+      }
+    } catch (err) {
+      setFormStatus('error');
+      setFormError(locale === 'en' ? 'Connection error' : 'Bağlantı hatası');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const scrollToForm = () => {
     const formElement = document.getElementById('appointment-section');
@@ -153,7 +189,7 @@ export default function SmartLensesPage() {
 
   return (
     <main className="min-h-screen bg-[#fafafc]">
-      
+      <Header />
       {/* HERO SECTION - Visual Heavy */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-[#162f5d]">
         <div className="absolute inset-0 z-0">
@@ -204,6 +240,56 @@ export default function SmartLensesPage() {
                 ))}
               </div>
             </motion.div>
+
+            {/* Right Side - Hero Form */}
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="bg-white/10 backdrop-blur-md rounded-3xl p-8 shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/20 ml-auto w-full max-w-[450px]"
+            >
+               <div className="mb-6">
+                 <h3 className="text-2xl font-bold text-white mb-2">{locale === 'tr' ? 'Hemen Bilgi Alın' : 'Get Information Now'}</h3>
+                 <p className="text-white/80 text-sm">{locale === 'tr' ? 'Uzmanlarımız sizi saniyeler içinde arasın.' : 'Let our experts call you in seconds.'}</p>
+               </div>
+               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                 <input 
+                   type="text" 
+                   name="name"
+                   required
+                   placeholder={locale === 'tr' ? 'İsim Soyisim' : 'Full Name'} 
+                   className="bg-white/90 text-[#162f5d] placeholder-gray-500 rounded-xl px-5 py-4 w-full outline-none focus:bg-white focus:ring-2 focus:ring-[#dfa932] transition-all text-sm font-semibold"
+                 />
+                 <input 
+                   type="tel" 
+                   name="phone"
+                   required
+                   placeholder={locale === 'tr' ? 'Telefon Numarası' : 'Phone Number'} 
+                   className="bg-white/90 text-[#162f5d] placeholder-gray-500 rounded-xl px-5 py-4 w-full outline-none focus:bg-white focus:ring-2 focus:ring-[#dfa932] transition-all text-sm font-semibold"
+                 />
+                 <button 
+                   type="submit" 
+                   disabled={isSubmitting}
+                   className="bg-gradient-to-r from-[#dfa932] to-[#b88924] hover:opacity-90 disabled:opacity-50 text-white font-bold text-sm tracking-widest uppercase rounded-xl px-8 py-4 flex items-center justify-center gap-3 transition-all duration-300 mt-2 shadow-lg"
+                 >
+                    {isSubmitting ? (locale === 'tr' ? 'GÖNDERİLİYOR...' : 'SENDING...') : (locale === 'tr' ? 'ÜCRETSİZ RANDEVU AL' : 'BOOK FREE APPOINTMENT')} <ChevronRight size={18} />
+                 </button>
+                 
+                 {formStatus === 'success' && (
+                   <div className="text-green-300 text-sm font-semibold text-center mt-2 bg-green-900/50 p-3 rounded-lg border border-green-500/30">
+                     {locale === 'tr' ? 'Mesajınız alındı! Sizi hemen arıyoruz.' : "Message received! We're calling you now."}
+                   </div>
+                 )}
+                 {formStatus === 'error' && (
+                   <div className="text-red-300 text-sm font-semibold text-center mt-2 bg-red-900/50 p-3 rounded-lg border border-red-500/30">
+                     {formError}
+                   </div>
+                 )}
+                 <p className="text-center text-white/50 text-xs mt-2">
+                   {locale === 'tr' ? 'Kişisel verileriniz KVKK kapsamında korunmaktadır.' : 'Your data is protected under privacy policy.'}
+                 </p>
+               </form>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -249,14 +335,21 @@ export default function SmartLensesPage() {
                    <h3 className="text-3xl font-bold text-[#162f5d] mb-4">{item.title}</h3>
                    <p className="text-gray-600 text-lg leading-relaxed">{item.desc}</p>
                    
-                   <ul className="mt-8 space-y-3">
-                     <li className="flex items-center gap-3 text-[#162f5d] font-medium">
-                       <CheckCircle2 className="w-5 h-5 text-[#dfa932]" /> {locale === 'tr' ? 'Uzman Kadro' : 'Expert Staff'}
+                   <ul className="mt-8 space-y-3 mb-8">
+                     <li className="flex items-center gap-3 text-[#162f5d] font-semibold">
+                       <CheckCircle2 className="w-6 h-6 text-[#dfa932]" /> {locale === 'tr' ? '10+ Yıllık Tecrübeli Uzman Kadro' : 'Board Certified Expert Surgeons'}
                      </li>
-                     <li className="flex items-center gap-3 text-[#162f5d] font-medium">
-                       <CheckCircle2 className="w-5 h-5 text-[#dfa932]" /> {locale === 'tr' ? 'Modern Teknoloji' : 'Modern Technology'}
+                     <li className="flex items-center gap-3 text-[#162f5d] font-semibold">
+                       <CheckCircle2 className="w-6 h-6 text-[#dfa932]" /> {locale === 'tr' ? 'Ağrısız ve Dikişsiz Operasyon' : 'Painless and Seamless Operation'}
                      </li>
                    </ul>
+
+                   <button 
+                     onClick={scrollToForm}
+                     className="self-start text-[#162f5d] hover:text-[#dfa932] font-bold text-sm tracking-widest uppercase flex items-center gap-2 transition-colors border-b-2 border-transparent hover:border-[#dfa932] pb-1"
+                   >
+                      {locale === 'tr' ? 'FİYAT BİLGİSİ AL' : 'GET PRICING INFO'} <ArrowRight size={16} />
+                   </button>
                 </div>
               </motion.div>
             ))}
@@ -316,6 +409,7 @@ export default function SmartLensesPage() {
         <AppointmentFormSection />
       </div>
 
+      <Footer />
     </main>
   );
 }
