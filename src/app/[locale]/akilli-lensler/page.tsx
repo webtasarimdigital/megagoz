@@ -52,7 +52,7 @@ const content = {
           icon: <Sparkles className="w-8 h-8 text-[#dfa932]" />,
           title: "Hızlı İyileşme",
           desc: "Aynı gün taburcu olur, birkaç gün içinde normal yaşama dönersiniz.",
-          image: "/images/dr-osman-dursun.webp"
+          image: "/images/megagoz-goz-norolojisi.webp"
         }
       ]
     },
@@ -72,7 +72,7 @@ const content = {
         {
           title: "EDOF (Uzatılmış Odak) Lensler",
           desc: "Uzak ve orta mesafede mükemmel ve kesintisiz odaklanma sağlayan yepyeni nesil premium lenslerdir.",
-          image: "/images/slide3.webp"
+          image: "/images/megagoz-katarakt.webp"
         }
       ]
     }
@@ -115,7 +115,7 @@ const content = {
           icon: <Sparkles className="w-8 h-8 text-[#dfa932]" />,
           title: "Rapid Recovery",
           desc: "Return home on the same day and resume normal life quickly.",
-          image: "/images/dr-osman-dursun.webp"
+          image: "/images/megagoz-goz-norolojisi.webp"
         }
       ]
     },
@@ -135,7 +135,7 @@ const content = {
         {
           title: "EDOF (Extended Depth) Lenses",
           desc: "The brand new generation premium lenses providing excellent, continuous focus at distance and intermediate ranges.",
-          image: "/images/slide3.webp"
+          image: "/images/megagoz-katarakt.webp"
         }
       ]
     }
