@@ -17,7 +17,7 @@ export default function Footer() {
           <div className="flex flex-row divide-x divide-gray-100">
            
            {/* Item 1 */}
-           <a href="tel:05334814098" className="flex-1 py-6 px-4 md:py-10 flex items-center justify-center gap-3 md:gap-4 hover:bg-gray-50 transition-colors group">
+           <a href="tel:05057710320" className="flex-1 py-6 px-4 md:py-10 flex items-center justify-center gap-3 md:gap-4 hover:bg-gray-50 transition-colors group">
              <div className="flex items-center justify-center shrink-0">
                <PhoneCall size={28} className="text-[#162f5d] group-hover:text-[#ecbb3f] transition-colors stroke-[2]" />
              </div>
@@ -25,12 +25,12 @@ export default function Footer() {
                 <h4 className="text-[#162f5d] font-bold text-[14px] md:text-[16px] group-hover:text-[#ecbb3f] transition-colors leading-tight">
                   {locale === 'en' ? 'Contact Us' : 'Bizimle İletişime Geçin'}
                 </h4>
-                <p className="text-gray-500 font-medium text-[12px] md:text-[13px] mt-1">0533 481 40 98</p>
+                <p className="text-gray-500 font-medium text-[12px] md:text-[13px] mt-1">0 505 771 03 20</p>
              </div>
            </a>
 
            {/* Item 2 */}
-           <a href="https://wa.me/905334814098" target="_blank" rel="noopener noreferrer" className="flex-1 py-6 px-4 md:py-10 flex items-center justify-center gap-3 md:gap-4 hover:bg-gray-50 transition-colors group border-l border-gray-100">
+           <a href="https://wa.me/905057710320" target="_blank" rel="noopener noreferrer" className="flex-1 py-6 px-4 md:py-10 flex items-center justify-center gap-3 md:gap-4 hover:bg-gray-50 transition-colors group border-l border-gray-100">
              <div className="flex items-center justify-center shrink-0">
                <MessageCircle size={28} className="text-[#162f5d] group-hover:text-[#ecbb3f] transition-colors stroke-[2]" />
              </div>
