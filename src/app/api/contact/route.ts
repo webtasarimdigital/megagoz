@@ -19,7 +19,7 @@ export async function POST(request: Request) {
       data = jsonData as Record<string, string>;
     }
 
-    const { source, name, email, phone, message } = data;
+    const { source, name, email, phone, message, branch, subject, page } = data;
 
     const smtpHost = process.env.SMTP_HOST || 'smtp.turkticaret.net';
     const smtpPort = Number(process.env.SMTP_PORT) || 465;
@@ -49,11 +49,14 @@ export async function POST(request: Request) {
       from: `"Megagöz Web" <${smtpUser}>`,
       to: smtpUser,
       replyTo: email || smtpUser,
-      subject: `Web Form: ${name || 'İsimsiz'} - ${source || 'Genel'}`,
+      subject: `Web Form: ${branch ? `[${branch}] ` : ''}${name || 'İsimsiz'} - ${source || 'Genel'}`,
       html: `
         <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee;">
           <h2 style="color: #162f5d;">Yeni Başvuru</h2>
+          ${branch ? `<p><strong>Branş:</strong> ${branch}</p>` : ''}
           <p><strong>Kaynak:</strong> ${source || 'Bilinmiyor'}</p>
+          ${page ? `<p><strong>Sayfa:</strong> ${page}</p>` : ''}
+          ${subject && isNaN(Number(subject)) ? `<p><strong>Konu:</strong> ${subject}</p>` : ''}
           <p><strong>Ad:</strong> ${name || '-'}</p>
           <p><strong>Tel:</strong> ${phone || '-'}</p>
           ${email ? `<p><strong>Email:</strong> ${email}</p>` : ''}

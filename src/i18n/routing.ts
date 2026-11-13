@@ -57,7 +57,12 @@ export const routing = defineRouting({
     '/kvkk': {
       tr: '/kvkk',
       en: '/kvkk'
-    }
+    },
+    // ── Çok branşlı yapı DEMO rotaları (noindex) ──
+    '/demo': '/demo',
+    '/demo/yapi': '/demo/yapi',
+    '/demo/[brans]': '/demo/[brans]',
+    '/demo/[brans]/[hizmet]': '/demo/[brans]/[hizmet]'
   }
 });
 

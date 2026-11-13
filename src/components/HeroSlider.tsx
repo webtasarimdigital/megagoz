@@ -40,7 +40,7 @@ const slides = [
   }
 ];
 
-export default function HeroSlider() {
+export default function HeroSlider({ branch }: { branch?: string } = {}) {
   const t = useTranslations("Hero");
   const locale = useLocale();
   const [current, setCurrent] = useState(0);
@@ -59,6 +59,8 @@ export default function HeroSlider() {
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
     data.source = sourceForm;
+    // Çok branşlı yapı: formun hangi branştan geldiği (verilmezse eski davranış)
+    if (branch) data.branch = branch;
 
     try {
       const res = await fetch('/api/contact', {
