@@ -15,12 +15,12 @@ const item: Variants = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y
 /* ─────────────────────────── 1. HERO — dört branşa giriş ─────────────────────────── */
 export function CorporateHero() {
   return (
-    <section className="relative bg-[#0a111a] w-full overflow-hidden pt-[74px] sm:pt-[82px] lg:pt-[146px]">
+    <section className="relative bg-[#0a111a] w-full overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-[#162f5d]/60 via-[#162f5d]/20 to-transparent pointer-events-none" />
       <div className="absolute right-0 top-0 w-1/2 h-full bg-[#ecbb3f]/5 blur-[150px] rounded-full pointer-events-none" />
       <div className="absolute left-0 bottom-0 w-1/3 h-1/2 bg-[#06b6d4]/5 blur-[150px] rounded-full pointer-events-none" />
 
-      <div className="relative container mx-auto px-5 sm:px-6 max-w-[1400px] pt-12 md:pt-16 lg:pt-20 pb-16 lg:pb-24">
+      <div className="relative container mx-auto px-5 sm:px-6 max-w-[1400px] pt-20 lg:pt-28 pb-16 lg:pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-[1.25fr_1fr] gap-6 lg:gap-16 items-end mb-10 lg:mb-14">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
             <div className="inline-block px-4 py-1.5 rounded-full bg-[#06b6d4]/15 border border-[#06b6d4]/30 text-[#06b6d4] font-bold text-[12px] sm:text-sm tracking-widest mb-6 uppercase backdrop-blur-sm">

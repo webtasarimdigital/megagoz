@@ -39,7 +39,7 @@ export default function SiteStructurePage() {
       <DemoHeader />
 
       {/* Başlık */}
-      <section className="relative bg-[#0a111a] overflow-hidden pt-[74px] sm:pt-[82px] lg:pt-[146px]">
+      <section className="relative bg-[#0a111a] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[#162f5d]/60 to-transparent" />
         <div className="relative max-w-[1200px] mx-auto px-6 py-16 lg:py-20">
           <div className="inline-block px-4 py-1.5 rounded-full bg-[#ecbb3f] text-[#162f5d] font-black text-[11px] tracking-widest mb-6 uppercase">Demo · Öneri dokümanı</div>

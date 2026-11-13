@@ -2,6 +2,7 @@ import DemoHeader from "@/components/demo/DemoHeader";
 import DemoFooter from "@/components/demo/DemoFooter";
 import BranchAppointmentForm from "@/components/demo/BranchAppointmentForm";
 import FaqList from "@/components/demo/FaqList";
+import BranchHeroSlider from "@/components/demo/BranchHeroSlider";
 import { CorporateHero, BrandStory, SharedStandards, BranchExplorer, CallBand } from "@/components/demo/CorporateHome";
 
 const CORPORATE_FAQ = [
@@ -15,6 +16,7 @@ export default function DemoCorporateHome() {
   return (
     <main className="min-h-screen flex flex-col bg-white">
       <DemoHeader />
+      <BranchHeroSlider />
       <CorporateHero />
       <BrandStory />
       <BranchExplorer />

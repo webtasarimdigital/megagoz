@@ -33,8 +33,8 @@ export async function generateMetadata({ params }: { params: Promise<{ brans: st
   };
 }
 
-/** Sabit header'ın yüksekliği kadar boşluk (mobil / masaüstü) */
-const HEADER_SPACER = "pt-[74px] sm:pt-[82px] lg:pt-[146px]";
+/** Header kendi boşluğunu bırakır */
+const HEADER_SPACER = "";
 
 export default async function BranchPage({ params }: { params: Promise<{ brans: string }> }) {
   const { brans } = await params;

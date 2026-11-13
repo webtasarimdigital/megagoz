@@ -43,7 +43,7 @@ export default async function ServicePage({ params }: { params: Promise<{ brans:
   return (
     <main className="min-h-screen flex flex-col bg-white">
       <DemoHeader activeBranch={b.id} />
-      <div className="pt-[74px] sm:pt-[82px] lg:pt-[146px]">
+      <div>
         <BranchBar branchId={b.id} trail={s.title} />
       </div>
 
