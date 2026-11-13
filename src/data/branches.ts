@@ -3,7 +3,8 @@
 // Göz branşının hizmetleri mevcut TREATMENTS_DATA'dan gelir;
 // diğer branşların hizmetleri burada tanımlıdır.
 // Not: Görseller demo amaçlı Unsplash'tan gelir, yayına alınmadan
-// önce kurumun kendi çekimleriyle değiştirilmelidir.
+// önce kurumun kendi çekimleriyle değiştirilmelidir. Tıbbi metinler
+// genel bilgilendirme amaçlıdır ve hekim onayından geçmelidir.
 // ─────────────────────────────────────────────────────────────
 
 export type BranchId = "goz" | "medikal-estetik" | "sac-ekimi" | "dis";
@@ -12,10 +13,17 @@ export interface BranchService {
   slug: string;
   title: string;
   excerpt: string;
-  /** Detay sayfasında kullanılacak kısa bölümler */
-  body?: { heading: string; text: string }[];
-  duration?: string;
-  recovery?: string;
+  /** Detay sayfası içerik bölümleri */
+  body: { heading: string; text: string }[];
+  /** Kimler için uygundur — madde listesi */
+  suitable: string[];
+  /** Öne çıkan avantajlar */
+  benefits: string[];
+  duration: string;
+  anesthesia: string;
+  sessions: string;
+  recovery: string;
+  faqs: { q: string; a: string }[];
 }
 
 export interface Branch {
@@ -34,6 +42,8 @@ export interface Branch {
   image: string;
   imageAlt: string;
   secondaryImage: string;
+  /** Branş tanıtım bölümü */
+  intro: { title: [string, string]; text: string[]; facts: [string, string][] };
   services: BranchService[];
   highlights: string[];
   process: { title: string; text: string }[];
@@ -46,6 +56,7 @@ const u = (id: string, w = 1600) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
 
 export const BRANCHES: Branch[] = [
+  /* ═════════════════════════════ GÖZ ═════════════════════════════ */
   {
     id: "goz",
     slug: "goz",
@@ -60,12 +71,15 @@ export const BRANCHES: Branch[] = [
     image: "/images/slide2.webp",
     imageAlt: "MegaGöz göz muayenesi",
     secondaryImage: "/images/megagoz-katarakt-tedavisi.webp",
+    intro: { title: ["", ""], text: [], facts: [] },
     services: [], // TREATMENTS_DATA'dan beslenir
     highlights: [],
     process: [],
     faqs: [],
     formTopics: ["Katarakt / Akıllı Lens", "Lazer Tedavisi", "Göz Muayenesi", "Çocuk Göz Sağlığı", "Diğer"],
   },
+
+  /* ═════════════════════════ MEDİKAL ESTETİK ═════════════════════════ */
   {
     id: "medikal-estetik",
     slug: "medikal-estetik",
@@ -80,23 +94,138 @@ export const BRANCHES: Branch[] = [
     image: u("photo-1552693673-1bf958298935"),
     imageAlt: "Medikal estetik cilt bakımı uygulaması",
     secondaryImage: u("photo-1728727267814-792db55ce678", 1200),
+    intro: {
+      title: ["Güzelliğe", "tıbbi bir bakış."],
+      text: [
+        "Medikal estetik bölümümüz; cerrahi olmayan, kısa sürede uygulanan ve günlük hayata hızla dönmenizi sağlayan işlemler üzerine kuruludur. Amacımız yüzünüzü değiştirmek değil, dinlenmiş ve sağlıklı görünmenizi sağlamaktır.",
+        "Her uygulama öncesinde hekimimiz yüz oranlarınızı, cilt tipinizi ve sağlık geçmişinizi değerlendirir. Ürün seçimi, doz ve uygulama noktaları bu analize göre kişiye özel belirlenir.",
+      ],
+      facts: [
+        ["Uygulama süresi", "15–60 dk"],
+        ["Anestezi", "Krem / lokal"],
+        ["Günlük hayata dönüş", "Çoğunlukla aynı gün"],
+        ["Kontrol", "2. hafta"],
+      ],
+    },
     services: [
       {
         slug: "botoks",
         title: "Botoks",
         excerpt: "Mimik çizgilerini yumuşatan, doğal ifadeyi koruyan uygulama.",
         duration: "15–20 dk",
+        anesthesia: "Gerekmez / soğuk uygulama",
+        sessions: "Tek seans, 4–6 ayda bir tekrar",
         recovery: "Aynı gün",
         body: [
-          { heading: "Botoks nedir?", text: "Botulinum toksini, mimik kaslarını geçici olarak gevşeterek alın, kaş arası ve göz çevresindeki dinamik çizgileri yumuşatır. Doğru dozda uygulandığında yüz ifadesi korunur." },
-          { heading: "Kimler için uygundur?", text: "Mimik çizgilerinden şikâyet eden, gebelik veya emzirme dönemi dışında olan ve hekim muayenesinde uygun bulunan yetişkinler için planlanır." },
+          { heading: "Botoks nedir?", text: "Botulinum toksini, mimik kaslarını geçici olarak gevşeterek alın, kaş arası ve göz çevresindeki dinamik çizgileri yumuşatır. Doğru dozda ve doğru noktalara uygulandığında yüz ifadesi korunur; donuk bir görünüm oluşmaz." },
+          { heading: "Nasıl uygulanır?", text: "Hekim muayenesinde mimikleriniz incelenir ve uygulama noktaları işaretlenir. Çok ince iğnelerle kas içine küçük miktarlar uygulanır. İşlem 15–20 dakika sürer; etki 3–5 gün içinde başlar, 2. haftada tam olarak görülür." },
+          { heading: "Sonrasında nelere dikkat edilmeli?", text: "İlk 4 saat yatmamak, uygulama bölgesine masaj yapmamak ve ilk 24 saat yoğun spor, sauna ve hamamdan kaçınmak önerilir. 2. haftada yapılan kontrolde gerekirse küçük rötuşlar planlanır." },
+        ],
+        suitable: ["Alın, kaş arası ve göz çevresi mimik çizgileri olanlar", "Kaş kaldırma (botoks ile kaş askısı) isteyenler", "Aşırı terleme (hiperhidroz) şikâyeti olanlar", "Diş sıkma ve çene kası belirginliği olanlar"],
+        benefits: ["Kısa sürede uygulanır", "İz bırakmaz, kesi gerektirmez", "Doğal ifadeyi korur", "Günlük hayata hemen dönülür"],
+        faqs: [
+          { q: "Botoksun etkisi ne kadar sürer?", a: "Kişiden kişiye değişmekle birlikte etkisi genellikle 4–6 ay sürer. Düzenli uygulamalarla bu süre uzayabilir." },
+          { q: "Gebelikte botoks yapılır mı?", a: "Gebelik ve emzirme döneminde botoks uygulanmaz." },
+          { q: "Yüzüm donuk görünür mü?", a: "Doz ve uygulama noktaları mimiklerinize göre belirlendiğinde ifadeniz korunur; amaç çizgileri yumuşatmaktır." },
         ],
       },
-      { slug: "dolgu", title: "Dolgu Uygulamaları", excerpt: "Dudak, elmacık ve çene hattında hacim ve denge.", duration: "30–45 dk", recovery: "1–2 gün" },
-      { slug: "mezoterapi", title: "Mezoterapi", excerpt: "Cildin ihtiyaç duyduğu vitamin ve aktiflerin doğrudan uygulanması.", duration: "30 dk", recovery: "Aynı gün" },
-      { slug: "prp", title: "PRP", excerpt: "Kişinin kendi kanından elde edilen plazma ile cilt yenileme.", duration: "45 dk", recovery: "Aynı gün" },
-      { slug: "cilt-yenileme", title: "Cilt Yenileme", excerpt: "Leke, gözenek ve ton eşitsizliğine yönelik protokoller.", duration: "45–60 dk", recovery: "1–3 gün" },
-      { slug: "ip-askilama", title: "İp Askılama", excerpt: "Cerrahi olmadan yüz ve boyun hattında toparlanma.", duration: "45–60 dk", recovery: "3–5 gün" },
+      {
+        slug: "dolgu",
+        title: "Dolgu Uygulamaları",
+        excerpt: "Dudak, elmacık ve çene hattında hacim ve denge.",
+        duration: "30–45 dk",
+        anesthesia: "Anestezik krem",
+        sessions: "Tek seans",
+        recovery: "1–2 gün",
+        body: [
+          { heading: "Dolgu nedir?", text: "Hyalüronik asit bazlı dolgular, yaşla birlikte azalan hacmi geri kazandırmak ve yüz hatlarını dengelemek için kullanılır. Hyalüronik asit vücutta doğal olarak bulunan bir maddedir ve zamanla vücut tarafından emilir." },
+          { heading: "Hangi bölgelere uygulanır?", text: "Dudak, elmacık kemiği, göz altı çukuru, burun-dudak çizgisi, çene ucu ve çene hattı en sık uygulanan bölgelerdir. Her bölge için farklı yoğunlukta ürün tercih edilir." },
+          { heading: "Uygulama süreci", text: "Bölgeye anestezik krem sürülür, ardından ince iğne veya kanül ile dolgu uygulanır. Hafif şişlik ve kızarıklık 1–2 gün içinde geçer; sonuç hemen görülür." },
+        ],
+        suitable: ["Dudak hacmi ve kontur isteyenler", "Elmacık ve yanaklarda hacim kaybı olanlar", "Göz altı çukurluğu belirgin olanlar", "Çene hattını belirginleştirmek isteyenler"],
+        benefits: ["Sonuç hemen görülür", "Kalıcı değildir, kontrollüdür", "Gerektiğinde eritilebilir", "Kısa iyileşme süresi"],
+        faqs: [
+          { q: "Dolgu ne kadar kalıcıdır?", a: "Bölgeye ve ürüne göre 6–18 ay arasında kalıcılık gösterir." },
+          { q: "Dolgu sonrası morarma olur mu?", a: "Bazı bölgelerde hafif morarma olabilir; genellikle birkaç gün içinde geçer." },
+          { q: "Sonuçtan memnun kalmazsam?", a: "Hyalüronik asit dolgular, gerekli durumlarda özel bir enzimle eritilebilir." },
+        ],
+      },
+      {
+        slug: "mezoterapi",
+        title: "Mezoterapi",
+        excerpt: "Cildin ihtiyaç duyduğu vitamin ve aktiflerin doğrudan uygulanması.",
+        duration: "30 dk",
+        anesthesia: "Anestezik krem",
+        sessions: "4–6 seans, 2 hafta arayla",
+        recovery: "Aynı gün",
+        body: [
+          { heading: "Mezoterapi nedir?", text: "Vitamin, mineral, amino asit ve hyalüronik asit içeren karışımların mikro enjeksiyonlarla cildin orta katmanına uygulanmasıdır. Cilt nemi, parlaklığı ve elastikiyeti desteklenir." },
+          { heading: "Nasıl bir sonuç beklenir?", text: "İlk seanslardan itibaren ciltte canlılık ve nem artışı hissedilir. Kür tamamlandığında ince çizgilerde yumuşama ve daha eşit bir cilt tonu hedeflenir." },
+        ],
+        suitable: ["Mat, yorgun ve nemsiz cilde sahip olanlar", "İnce çizgileri olanlar", "Cilt kalitesini artırmak isteyenler", "Etkinlik öncesi cildini hazırlamak isteyenler"],
+        benefits: ["Cilde doğrudan etki", "Kısa seans süresi", "Diğer uygulamalarla birleştirilebilir", "İz bırakmaz"],
+        faqs: [
+          { q: "Kaç seans gerekir?", a: "Genellikle 2 hafta arayla 4–6 seanslık bir kür önerilir; ardından koruyucu seanslar planlanabilir." },
+          { q: "İşlem sonrası makyaj yapabilir miyim?", a: "İlk 12–24 saat makyaj yapılmaması önerilir." },
+        ],
+      },
+      {
+        slug: "prp",
+        title: "PRP",
+        excerpt: "Kişinin kendi kanından elde edilen plazma ile cilt yenileme.",
+        duration: "45 dk",
+        anesthesia: "Anestezik krem",
+        sessions: "3 seans, 4 hafta arayla",
+        recovery: "Aynı gün",
+        body: [
+          { heading: "PRP nedir?", text: "Platelet Rich Plasma; kişinin kendi kanından alınan örneğin özel tüplerde ayrıştırılmasıyla elde edilen, trombositten zengin plazmadır. İçerdiği büyüme faktörleri cildin kendini yenileme sürecini destekler." },
+          { heading: "Uygulama süreci", text: "Koldan az miktarda kan alınır, santrifüj ile plazma ayrıştırılır ve aynı seansta yüz, boyun veya dekolte bölgesine uygulanır. Tüm süreç yaklaşık 45 dakika sürer." },
+        ],
+        suitable: ["Cilt kalitesi ve sıkılığı azalmış olanlar", "Akne izi ve gözenek görünümünden şikâyetçi olanlar", "Göz altı morluğu ve ince çizgileri olanlar", "Doğal içerikli uygulama tercih edenler"],
+        benefits: ["Kişinin kendi kanından elde edilir", "Alerji riski çok düşüktür", "Doğal yenilenmeyi destekler", "Saç uygulamalarında da kullanılır"],
+        faqs: [
+          { q: "PRP acı verir mi?", a: "Anestezik krem uygulandığı için işlem genellikle rahat geçer." },
+          { q: "Sonuçlar ne zaman görülür?", a: "İlk seanstan sonra parlaklık fark edilir; belirgin sonuçlar kür tamamlandıktan sonra değerlendirilir." },
+        ],
+      },
+      {
+        slug: "cilt-yenileme",
+        title: "Cilt Yenileme",
+        excerpt: "Leke, gözenek ve ton eşitsizliğine yönelik protokoller.",
+        duration: "45–60 dk",
+        anesthesia: "Gerekirse krem",
+        sessions: "Cilde göre 3–6 seans",
+        recovery: "1–3 gün",
+        body: [
+          { heading: "Cilt yenileme nedir?", text: "Kimyasal peeling, dermapen (mikro iğneleme) ve cilt bakım protokollerinin cildin ihtiyacına göre birleştirildiği uygulamalardır. Amaç; leke, gözenek, akne izi ve ton eşitsizliğini azaltmaktır." },
+          { heading: "Kişiye özel protokol", text: "Cilt analizi sonrasında hangi yöntemlerin, hangi sırayla ve kaç seans uygulanacağı belirlenir. Evde kullanılacak ürünler de planın bir parçasıdır." },
+        ],
+        suitable: ["Güneş ve hormonal lekeleri olanlar", "Geniş gözenek ve akne izinden şikâyetçi olanlar", "Cilt tonu eşitsiz olanlar", "Cilt dokusunu iyileştirmek isteyenler"],
+        benefits: ["Cilt analizine dayalı plan", "Birden fazla soruna tek protokol", "Kademeli ve kontrollü sonuç", "Evde bakım desteği"],
+        faqs: [
+          { q: "Yaz aylarında yapılabilir mi?", a: "Bazı peeling türleri yaz aylarında önerilmez; hekiminiz mevsime uygun protokolü belirler. Her durumda güneş koruyucu kullanımı şarttır." },
+          { q: "Soyulma olur mu?", a: "Uygulanan yönteme göre birkaç gün hafif kepeklenme olabilir." },
+        ],
+      },
+      {
+        slug: "ip-askilama",
+        title: "İp Askılama",
+        excerpt: "Cerrahi olmadan yüz ve boyun hattında toparlanma.",
+        duration: "45–60 dk",
+        anesthesia: "Lokal anestezi",
+        sessions: "Tek seans",
+        recovery: "3–5 gün",
+        body: [
+          { heading: "İp askı nedir?", text: "Vücutta zamanla eriyen özel tıbbi ipler, cilt altına yerleştirilerek sarkan dokuların toparlanmasını sağlar. İpler aynı zamanda kolajen üretimini de destekler." },
+          { heading: "Uygulama süreci", text: "Lokal anestezi altında, kesi yapılmadan ince kanüllerle uygulanır. İşlem sonrası birkaç gün hafif gerginlik hissi ve şişlik olabilir." },
+        ],
+        suitable: ["Yanak ve çene hattında hafif-orta sarkma olanlar", "Kaş ve göz çevresinde düşüklük olanlar", "Cerrahi istemeyen hastalar", "Boyun hattında toparlanma isteyenler"],
+        benefits: ["Kesi ve dikiş gerektirmez", "Hemen görülen toparlanma", "Kolajen üretimini destekler", "Kısa iyileşme süresi"],
+        faqs: [
+          { q: "İp askı ne kadar kalıcıdır?", a: "Kullanılan ipe ve cilt yapısına göre etki genellikle 12–18 ay sürer." },
+          { q: "İpler dışarıdan belli olur mu?", a: "Doğru teknikle uygulanan ipler dışarıdan görünmez ve hissedilmez." },
+        ],
+      },
     ],
     highlights: [
       "Her işlem öncesi hekim muayenesi ve yüz analizi",
@@ -113,10 +242,15 @@ export const BRANCHES: Branch[] = [
     faqs: [
       { q: "Sonuçlar doğal görünür mü?", a: "Planlama yüz oranlarınıza göre yapılır; hedef, abartısız ve ifadenizi koruyan bir sonuçtur." },
       { q: "İşlem sonrası günlük hayatıma dönebilir miyim?", a: "Botoks ve mezoterapi gibi uygulamaların çoğunda aynı gün işinize dönebilirsiniz. Her işlem için hekiminiz özel öneriler verir." },
-      { q: "Göz çevresi uygulamalarını kim yapıyor?", a: "Göz çevresine yönelik uygulamalar, gerekli durumlarda göz hekimlerimizle birlikte değerlendirilir." },
+      { q: "Uygulamaları kim yapıyor?", a: "Tüm medikal estetik uygulamaları, muayeneyi de yapan hekimlerimiz tarafından gerçekleştirilir." },
+      { q: "Hangi ürünler kullanılıyor?", a: "Yalnızca Sağlık Bakanlığı onaylı ürünler kullanılır; ürünün seri ve lot numarası hasta dosyanıza kaydedilir." },
+      { q: "Birden fazla uygulama aynı gün yapılabilir mi?", a: "Uygun durumlarda botoks ve dolgu gibi işlemler aynı seansta planlanabilir. Kararı muayene sonrası hekiminiz verir." },
+      { q: "Göz çevresi uygulamalarını kim değerlendiriyor?", a: "Göz çevresine yönelik uygulamalar, gerekli durumlarda göz hekimlerimizle birlikte değerlendirilir." },
     ],
-    formTopics: ["Botoks", "Dolgu", "Cilt Yenileme", "Mezoterapi / PRP", "Diğer"],
+    formTopics: ["Botoks", "Dolgu", "Cilt Yenileme", "Mezoterapi / PRP", "İp Askılama", "Diğer"],
   },
+
+  /* ═════════════════════════════ SAÇ EKİMİ ═════════════════════════════ */
   {
     id: "sac-ekimi",
     slug: "sac-ekimi",
@@ -131,23 +265,136 @@ export const BRANCHES: Branch[] = [
     image: u("photo-1643837833100-8b2ebd7127bc"),
     imageAlt: "Saç ekimi öncesi saçlı deri değerlendirmesi",
     secondaryImage: u("photo-1512663150964-d8f43c899f76", 1200),
+    intro: {
+      title: ["Doğal sonuç,", "doğru planlamayla başlar."],
+      text: [
+        "Saç ekiminde başarı; greft sayısından çok, saç çizgisinin yüzünüze uygun tasarlanmasına ve donör bölgenin doğru kullanılmasına bağlıdır. Bu nedenle her operasyon, hekimimizin yaptığı saç analizi ve tasarımla başlar.",
+        "Operasyonlarımız tıp merkezi bünyesinde, steril operasyon ortamında yapılır. Ekim sonrası yıkama, kontrol ve fotoğraflı takip süreci 12 ay boyunca sizinle birlikte ilerler.",
+      ],
+      facts: [
+        ["Operasyon süresi", "6–8 saat"],
+        ["Anestezi", "Lokal"],
+        ["İşe dönüş", "3–5 gün"],
+        ["Nihai sonuç", "12. ay"],
+      ],
+    },
     services: [
       {
         slug: "fue-sac-ekimi",
         title: "FUE Saç Ekimi",
         excerpt: "Greftlerin tek tek alınıp açılan kanallara yerleştirildiği yöntem.",
         duration: "6–8 saat",
+        anesthesia: "Lokal anestezi",
+        sessions: "Tek seans",
         recovery: "7–10 gün",
         body: [
           { heading: "FUE yöntemi nedir?", text: "Follicular Unit Extraction; ense bölgesindeki saç köklerinin mikromotorla tek tek alınması ve seyrek bölgeye açılan kanallara yerleştirilmesidir. İz bırakmayan ve en yaygın kullanılan tekniktir." },
-          { heading: "Kimler için uygundur?", text: "Donör bölgesi yeterli olan, saç dökülmesi belirli bir düzeye ulaşmış kadın ve erkek hastalar için uygundur. Uygunluk, hekim muayenesi ve saç analizi ile belirlenir." },
+          { heading: "Operasyon günü", text: "Saç çizgisi çizilir ve fotoğraflanır, ardından lokal anestezi uygulanır. Greftler toplanır, kanallar açılır ve greftler yerleştirilir. Operasyon gün içinde tamamlanır; aynı gün evinize dönersiniz." },
+          { heading: "Ekim sonrası süreç", text: "İlk yıkama 2. gün merkezimizde yapılır. Kabuklanma 10 gün içinde dökülür. Ekilen saçlar ilk 1–2 ayda dökülür (şok dökülme), 3–4. aydan itibaren çıkmaya başlar; nihai sonuç 12. ayda değerlendirilir." },
+        ],
+        suitable: ["Donör bölgesi yeterli olan erkek ve kadın hastalar", "Tepe ve ön bölgede açıklığı olanlar", "Saç çizgisi gerilemiş olanlar", "Daha önce ekim olup sıklaştırma isteyenler"],
+        benefits: ["İz bırakmaz", "Geniş alanlara uygundur", "Kalıcı ve doğal sonuç", "Kısa iyileşme süresi"],
+        faqs: [
+          { q: "Kaç greft ekilebilir?", a: "Donör kapasitesine ve açıklık derecesine göre tek seansta genellikle 2.500–4.500 greft planlanır." },
+          { q: "Ekilen saçlar dökülür mü?", a: "Ekilen saçlar ilk aylarda geçici olarak dökülür; kökler yerinde kalır ve 3–4. aydan itibaren yeni saçlar çıkar." },
+          { q: "Ne zaman spor yapabilirim?", a: "Hafif yürüyüşler hemen yapılabilir; yoğun spora genellikle 1 ay sonra dönülmesi önerilir." },
         ],
       },
-      { slug: "dhi-sac-ekimi", title: "DHI Saç Ekimi", excerpt: "Choi kalemiyle kanal açmadan, sık ve yönlü ekim.", duration: "6–8 saat", recovery: "7–10 gün" },
-      { slug: "sakal-ekimi", title: "Sakal ve Bıyık Ekimi", excerpt: "Seyrek ya da boş bölgelerde doğal sakal hattı.", duration: "4–5 saat", recovery: "5–7 gün" },
-      { slug: "kas-ekimi", title: "Kaş Ekimi", excerpt: "Yüz ifadesine uygun kalıcı kaş tasarımı.", duration: "2–3 saat", recovery: "5–7 gün" },
-      { slug: "kadin-sac-ekimi", title: "Kadın Saç Ekimi", excerpt: "Traşsız teknikle, saç çizgisi ve tepe bölgesinde.", duration: "5–7 saat", recovery: "7–10 gün" },
-      { slug: "sac-mezoterapisi-prp", title: "Saç Mezoterapisi & PRP", excerpt: "Saç dökülmesini yavaşlatan ve kökleri güçlendiren destek.", duration: "30 dk", recovery: "Aynı gün" },
+      {
+        slug: "dhi-sac-ekimi",
+        title: "DHI Saç Ekimi",
+        excerpt: "Choi kalemiyle kanal açmadan, sık ve yönlü ekim.",
+        duration: "6–8 saat",
+        anesthesia: "Lokal anestezi",
+        sessions: "Tek seans",
+        recovery: "5–7 gün",
+        body: [
+          { heading: "DHI yöntemi nedir?", text: "Direct Hair Implantation; greftlerin Choi implanter kalem ile kanal açma ve yerleştirme işlemi aynı anda yapılarak ekilmesidir. Saçların açısı ve yönü daha hassas kontrol edilir." },
+          { heading: "Hangi durumlarda tercih edilir?", text: "Mevcut saçlar arasına sıklaştırma, saç çizgisi tasarımı ve traşsız ekim isteyen hastalarda sıklıkla tercih edilir." },
+        ],
+        suitable: ["Saç çizgisinde yoğun sıklık isteyenler", "Mevcut saçlar arası sıklaştırma isteyenler", "Traşsız ekim tercih edenler", "Kadın hastalar"],
+        benefits: ["Yüksek sıklık", "Açı ve yön kontrolü", "Daha hızlı iyileşme", "Traşsız seçenek"],
+        faqs: [
+          { q: "DHI mı FUE mi daha iyi?", a: "İki yöntem de başarılıdır; hangisinin uygun olduğu açıklık derecesi, saç yapısı ve beklentiye göre muayenede belirlenir." },
+          { q: "Traşsız ekim mümkün mü?", a: "Uygun hastalarda DHI ile traşsız ekim planlanabilir." },
+        ],
+      },
+      {
+        slug: "sakal-ekimi",
+        title: "Sakal ve Bıyık Ekimi",
+        excerpt: "Seyrek ya da boş bölgelerde doğal sakal hattı.",
+        duration: "4–5 saat",
+        anesthesia: "Lokal anestezi",
+        sessions: "Tek seans",
+        recovery: "5–7 gün",
+        body: [
+          { heading: "Sakal ekimi nedir?", text: "Ense bölgesinden alınan greftlerin sakal ve bıyık bölgesindeki seyrek ya da boş alanlara, sakalın doğal çıkış açısına uygun şekilde yerleştirilmesidir." },
+          { heading: "Sonuç ne zaman görülür?", text: "Ekilen sakallar ilk haftalarda dökülür, 3. aydan itibaren çıkmaya başlar ve 6–9 ayda belirgin sonuç alınır. İlk tıraş genellikle 10. günden sonra yapılabilir." },
+        ],
+        suitable: ["Seyrek veya bölgesel boşluğu olan sakal", "Yanık ya da yara izi bulunan bölgeler", "Bıyık bölgesini yoğunlaştırmak isteyenler", "Sakal hattını belirginleştirmek isteyenler"],
+        benefits: ["Kalıcı sonuç", "Yüze uygun sakal tasarımı", "İz bırakmaz", "Tek seansta tamamlanır"],
+        faqs: [
+          { q: "Ekilen sakal tıraş edilebilir mi?", a: "Evet. Ekilen sakallar kalıcıdır ve normal sakal gibi tıraş edilebilir." },
+          { q: "Kaç greft gerekir?", a: "Bölgenin genişliğine göre genellikle 1.500–3.000 greft planlanır." },
+        ],
+      },
+      {
+        slug: "kas-ekimi",
+        title: "Kaş Ekimi",
+        excerpt: "Yüz ifadesine uygun kalıcı kaş tasarımı.",
+        duration: "2–3 saat",
+        anesthesia: "Lokal anestezi",
+        sessions: "Tek seans",
+        recovery: "5–7 gün",
+        body: [
+          { heading: "Kaş ekimi nedir?", text: "Saç köklerinin, kaşın doğal yönü ve açısı dikkate alınarak seyrek ya da boş kaş bölgesine tek tek yerleştirilmesidir. Yüz oranlarına uygun bir kaş tasarımı önceden çizilir." },
+          { heading: "Bakım", text: "Ekilen kaşlar saç kökünden alındığı için uzamaya devam eder; düzenli olarak kısaltılması gerekir." },
+        ],
+        suitable: ["Seyrek veya ince kaşları olanlar", "Kaşında boşluk ya da iz bulunanlar", "Kalıcı makyaj yerine doğal çözüm isteyenler", "Kaş şeklini değiştirmek isteyenler"],
+        benefits: ["Doğal ve kalıcı görünüm", "Yüze özel tasarım", "Kısa operasyon süresi", "İz bırakmaz"],
+        faqs: [
+          { q: "Kaş ekimi kalıcı mıdır?", a: "Evet, ekilen kökler kalıcıdır." },
+          { q: "Ne zaman makyaj yapabilirim?", a: "Kaş bölgesine makyaj genellikle 2 hafta sonra yapılabilir." },
+        ],
+      },
+      {
+        slug: "kadin-sac-ekimi",
+        title: "Kadın Saç Ekimi",
+        excerpt: "Traşsız teknikle, saç çizgisi ve tepe bölgesinde.",
+        duration: "5–7 saat",
+        anesthesia: "Lokal anestezi",
+        sessions: "Tek seans",
+        recovery: "7–10 gün",
+        body: [
+          { heading: "Kadınlarda saç ekimi", text: "Kadınlarda saç dökülmesi genellikle yaygın incelme şeklindedir. Bu nedenle önce dökülmenin nedeni (hormonal, beslenme, tiroid vb.) araştırılır; ekim, uygun hastalarda planlanır." },
+          { heading: "Traşsız ekim", text: "Kadın hastalarda saçlar kısaltılmadan, sadece donör bölgede küçük bir alan açılarak ekim yapılabilir. Böylece sosyal hayata dönüş daha konforlu olur." },
+        ],
+        suitable: ["Saç çizgisi yüksek veya geniş alnı olanlar", "Tepe bölgesinde belirgin incelme olanlar", "Yara izi veya travma sonrası açıklık olanlar", "Dökülme nedeni kontrol altına alınmış hastalar"],
+        benefits: ["Traşsız seçenek", "Saç çizgisi tasarımı", "Kan tahlili ile ön değerlendirme", "Destek tedavilerle birlikte planlama"],
+        faqs: [
+          { q: "Her kadın saç ekimi olabilir mi?", a: "Yaygın ve aktif dökülmede önce neden araştırılır; ekim, donör bölgesi uygun ve dökülmesi kontrol altında olan hastalara planlanır." },
+          { q: "Saçlarımı kestirmem gerekir mi?", a: "Uygun hastalarda traşsız teknik kullanılabilir." },
+        ],
+      },
+      {
+        slug: "sac-mezoterapisi-prp",
+        title: "Saç Mezoterapisi & PRP",
+        excerpt: "Saç dökülmesini yavaşlatan ve kökleri güçlendiren destek.",
+        duration: "30 dk",
+        anesthesia: "Gerekmez",
+        sessions: "4–6 seans",
+        recovery: "Aynı gün",
+        body: [
+          { heading: "Destek tedavileri", text: "Saç mezoterapisi ve PRP; saç köklerini besleyen, dökülmeyi yavaşlatan ve mevcut saçların kalitesini artıran uygulamalardır. Saç ekimi sonrasında da iyileşmeyi desteklemek için kullanılır." },
+          { heading: "Uygulama", text: "Saçlı deriye ince iğnelerle uygulanır. Seanslar genellikle 2–4 hafta arayla planlanır." },
+        ],
+        suitable: ["Mevsimsel veya stres kaynaklı dökülme yaşayanlar", "Saçları incelmiş olanlar", "Saç ekimi sonrası destek isteyenler", "Erken dönem dökülmesi olanlar"],
+        benefits: ["Kısa seans süresi", "Günlük hayatı etkilemez", "Ekim sonuçlarını destekler", "Saç kalitesini artırır"],
+        faqs: [
+          { q: "Mezoterapi dökülmeyi tamamen durdurur mu?", a: "Dökülmenin nedenine göre etkisi değişir; amaç dökülmeyi yavaşlatmak ve saç köklerini güçlendirmektir." },
+          { q: "Kaç seans gerekir?", a: "Genellikle 4–6 seanslık bir kür önerilir." },
+        ],
+      },
     ],
     highlights: [
       "Operasyon planlaması ve saç çizgisi hekim tarafından yapılır",
@@ -165,9 +412,14 @@ export const BRANCHES: Branch[] = [
       { q: "Saç ekimi ağrılı mı?", a: "İşlem lokal anestezi altında yapılır. Anestezi uygulaması dışında işlem sırasında genellikle ağrı hissedilmez." },
       { q: "Sonuçlar ne zaman görülür?", a: "Ekilen saçlar ilk aylarda dökülür (şok dökülme), 3–4. aydan itibaren çıkmaya başlar; nihai sonuç 12. ay civarında değerlendirilir." },
       { q: "Kaç greft gerekir?", a: "Greft sayısı, açıklık derecesi ve donör kapasitesine göre muayenede belirlenir." },
+      { q: "Operasyonu kim yapıyor?", a: "Planlama ve saç çizgisi tasarımı hekimimiz tarafından yapılır; operasyon hekim kontrolünde deneyimli ekibimizle gerçekleştirilir." },
+      { q: "Ne zaman işe dönebilirim?", a: "Masa başı işlerde genellikle 3–5 gün sonra işe dönülebilir." },
+      { q: "Ekilen saçlar kalıcı mı?", a: "Ense bölgesindeki kökler dökülmeye karşı dirençlidir; ekildikleri bölgede de bu özelliklerini korurlar." },
     ],
     formTopics: ["FUE / DHI Saç Ekimi", "Sakal / Kaş Ekimi", "Kadın Saç Ekimi", "Saç Dökülmesi Tedavisi", "Diğer"],
   },
+
+  /* ═══════════════════════════ AĞIZ VE DİŞ ═══════════════════════════ */
   {
     id: "dis",
     slug: "dis",
@@ -182,23 +434,136 @@ export const BRANCHES: Branch[] = [
     image: u("photo-1663755489920-5e09f66d011a"),
     imageAlt: "Diş hekimi muayenesi",
     secondaryImage: u("photo-1629909613654-28e377c37b09", 1200),
+    intro: {
+      title: ["Her gülüş için", "dijital planlama."],
+      text: [
+        "Ağız ve diş sağlığı bölümümüzde tedavi, dijital ağız içi tarama ve gerekli görüntülemelerle başlar. Size birden fazla seçenek, süre ve maliyetleriyle birlikte açıkça sunulur; karar birlikte verilir.",
+        "İmplanttan ortodontiye, çocuk diş hekimliğinden estetik uygulamalara kadar her alanda uzman hekimlerimiz; MegaGöz'ün tüm branşlarında uygulanan sterilizasyon ve izlenebilirlik standartlarıyla çalışır.",
+      ],
+      facts: [
+        ["Muayene", "Dijital tarama"],
+        ["Planlama", "3D görüntüleme"],
+        ["Seans süresi", "30–90 dk"],
+        ["Takip", "6 ayda bir kontrol"],
+      ],
+    },
     services: [
       {
         slug: "implant",
         title: "İmplant Tedavisi",
         excerpt: "Eksik dişlerin yerine kalıcı ve doğal görünümlü çözüm.",
-        duration: "1–2 seans",
+        duration: "Diş başına 30–60 dk",
+        anesthesia: "Lokal anestezi",
+        sessions: "2–3 aşama",
         recovery: "2–3 gün",
         body: [
-          { heading: "İmplant nedir?", text: "Eksik diş bölgesine yerleştirilen titanyum vida ve üzerine yapılan protezle doğal dişe en yakın fonksiyon ve görünüm sağlanır." },
-          { heading: "Kimler için uygundur?", text: "Kemik yapısı yeterli olan ve genel sağlık durumu uygun yetişkinlere planlanır. Uygunluk, 3D tomografi ve hekim muayenesiyle belirlenir." },
+          { heading: "İmplant nedir?", text: "Eksik diş bölgesindeki çene kemiğine yerleştirilen titanyum vida ve üzerine yapılan protezle doğal dişe en yakın fonksiyon ve görünüm sağlanır. Komşu dişlere dokunulmadan eksik diş tamamlanır." },
+          { heading: "Tedavi aşamaları", text: "3D tomografi ile kemik yapısı değerlendirilir ve implantın yeri planlanır. Lokal anestezi altında implant yerleştirilir. İmplantın kemikle kaynaşması için genellikle 2–3 ay beklenir; ardından kalıcı diş (kron) takılır." },
+          { heading: "Bakım", text: "İmplantlı dişler doğal dişler gibi fırçalanır ve diş ipi ile temizlenir. 6 ayda bir yapılan kontroller implantın ömrünü uzatır." },
+        ],
+        suitable: ["Tek veya birden fazla diş eksikliği olanlar", "Hareketli protezden kurtulmak isteyenler", "Köprü için sağlam dişlerinin kesilmesini istemeyenler", "Kemik yapısı yeterli olan yetişkinler"],
+        benefits: ["Doğal diş görünümü ve hissi", "Komşu dişlere zarar vermez", "Uzun ömürlü çözüm", "Çiğneme fonksiyonunu geri kazandırır"],
+        faqs: [
+          { q: "İmplant tedavisi ağrılı mı?", a: "İşlem lokal anestezi altında yapılır; sonrasında birkaç gün hafif hassasiyet olabilir ve ağrı kesicilerle kontrol edilir." },
+          { q: "Kemik yetersizse implant yapılabilir mi?", a: "Kemik tozu (greft) veya sinüs lifting gibi ek işlemlerle çoğu durumda implant mümkün hâle getirilebilir." },
+          { q: "İmplant ömrü ne kadar?", a: "İyi ağız bakımı ve düzenli kontrollerle implantlar uzun yıllar kullanılabilir." },
         ],
       },
-      { slug: "gulus-tasarimi", title: "Gülüş Tasarımı", excerpt: "Yüz hatlarınıza uyumlu, dijital olarak planlanan gülüş.", duration: "2–3 seans", recovery: "Aynı gün" },
-      { slug: "zirkonyum-lamina", title: "Zirkonyum & Lamina", excerpt: "Estetik kaplamalarla renk ve form düzeltmesi.", duration: "2–3 seans", recovery: "Aynı gün" },
-      { slug: "ortodonti", title: "Ortodonti & Şeffaf Plak", excerpt: "Teller veya şeffaf plaklarla diş dizilimi.", duration: "6–18 ay", recovery: "—" },
-      { slug: "dis-beyazlatma", title: "Diş Beyazlatma", excerpt: "Ofis tipi beyazlatma ile tek seansta belirgin sonuç.", duration: "60 dk", recovery: "Aynı gün" },
-      { slug: "cocuk-dis-hekimligi", title: "Çocuk Diş Hekimliği", excerpt: "Çocuklara özel, korkutmayan ilk diş deneyimi.", duration: "30 dk", recovery: "Aynı gün" },
+      {
+        slug: "gulus-tasarimi",
+        title: "Gülüş Tasarımı",
+        excerpt: "Yüz hatlarınıza uyumlu, dijital olarak planlanan gülüş.",
+        duration: "Seans başına 60–90 dk",
+        anesthesia: "Gerekirse lokal",
+        sessions: "2–3 seans",
+        recovery: "Aynı gün",
+        body: [
+          { heading: "Gülüş tasarımı nedir?", text: "Dişlerin rengi, formu, boyu ve diş eti çizgisinin; yüz oranlarınıza, dudak yapınıza ve ten renginize göre birlikte planlandığı kapsamlı bir estetik tedavidir." },
+          { heading: "Dijital planlama ve prova", text: "Fotoğraf ve dijital taramalarla yeni gülüşünüz bilgisayarda tasarlanır. Kalıcı işlemlerden önce ağız içi prova ile sonucu görür, gerekirse değişiklik isteyebilirsiniz." },
+        ],
+        suitable: ["Diş renginden ve formundan memnun olmayanlar", "Dişleri arasında boşluk olanlar", "Diş eti çizgisi düzensiz olanlar", "Kırık ya da aşınmış dişleri olanlar"],
+        benefits: ["Yüze özel tasarım", "Dijital ön izleme", "Ağız içi prova imkânı", "Birden fazla sorunun tek planda çözümü"],
+        faqs: [
+          { q: "Gülüş tasarımında dişler kesilir mi?", a: "Kullanılacak yönteme göre değişir; lamina gibi uygulamalarda minimum aşındırma yapılır." },
+          { q: "Sonucu önceden görebilir miyim?", a: "Evet, dijital tasarım ve ağız içi prova ile sonucu önceden görürsünüz." },
+        ],
+      },
+      {
+        slug: "zirkonyum-lamina",
+        title: "Zirkonyum & Lamina",
+        excerpt: "Estetik kaplamalarla renk ve form düzeltmesi.",
+        duration: "Seans başına 60 dk",
+        anesthesia: "Lokal anestezi",
+        sessions: "2–3 seans",
+        recovery: "Aynı gün",
+        body: [
+          { heading: "Zirkonyum kaplama", text: "Metal alt yapı içermeyen, ışığı doğal diş gibi geçiren dayanıklı kaplamalardır. Renk değişikliği, kırık ya da kanal tedavisi görmüş dişlerde tercih edilir." },
+          { heading: "Lamina (yaprak porselen)", text: "Dişin sadece ön yüzeyine yapıştırılan ince porselen yapraklardır. Dişten çok az madde kaldırılarak renk ve form düzeltilir." },
+        ],
+        suitable: ["Dişlerinde renk değişikliği olanlar", "Kırık veya aşınmış dişleri olanlar", "Hafif çapraşıklığı olanlar", "Beyazlatmanın yetmediği durumlar"],
+        benefits: ["Doğal görünüm", "Uzun ömürlü ve dayanıklı", "Renk değiştirmez", "Diş eti dostu"],
+        faqs: [
+          { q: "Zirkonyum mu lamina mı?", a: "Dişin mevcut durumuna göre karar verilir; sağlam dişlerde genellikle lamina, yıpranmış dişlerde zirkonyum tercih edilir." },
+          { q: "Kaplamalar ne kadar dayanır?", a: "İyi ağız bakımıyla uzun yıllar kullanılabilir." },
+        ],
+      },
+      {
+        slug: "ortodonti",
+        title: "Ortodonti & Şeffaf Plak",
+        excerpt: "Teller veya şeffaf plaklarla diş dizilimi.",
+        duration: "Kontrol başına 20–30 dk",
+        anesthesia: "Gerekmez",
+        sessions: "6–18 ay tedavi",
+        recovery: "—",
+        body: [
+          { heading: "Ortodonti nedir?", text: "Çapraşık, aralıklı veya yanlış kapanan dişlerin; braketler (teller) ya da şeffaf plaklar yardımıyla doğru konuma getirilmesidir." },
+          { heading: "Şeffaf plak tedavisi", text: "Dijital planlamayla üretilen, neredeyse görünmeyen plaklar belirli aralıklarla değiştirilerek dişler kademeli olarak hareket ettirilir. Yemek ve fırçalama sırasında çıkarılabilir." },
+        ],
+        suitable: ["Çapraşık veya aralıklı dişleri olanlar", "Çene kapanış bozukluğu olanlar", "Görünür tel istemeyen yetişkinler", "Gelişim çağındaki çocuklar"],
+        benefits: ["Estetik ve fonksiyonel iyileşme", "Şeffaf plak seçeneği", "Dijital tedavi planı", "Ağız hijyenine katkı"],
+        faqs: [
+          { q: "Ortodonti için yaş sınırı var mı?", a: "Sağlıklı diş ve diş eti yapısına sahip her yaşta tedavi yapılabilir." },
+          { q: "Şeffaf plakları günde kaç saat takmalıyım?", a: "Etkili sonuç için günde yaklaşık 20–22 saat takılması önerilir." },
+        ],
+      },
+      {
+        slug: "dis-beyazlatma",
+        title: "Diş Beyazlatma",
+        excerpt: "Ofis tipi beyazlatma ile tek seansta belirgin sonuç.",
+        duration: "60 dk",
+        anesthesia: "Gerekmez",
+        sessions: "Tek seans",
+        recovery: "Aynı gün",
+        body: [
+          { heading: "Ofis tipi beyazlatma", text: "Diş eti korunduktan sonra dişlere özel beyazlatma jeli uygulanır ve ışıkla aktive edilir. Tek seansta birkaç ton açılma sağlanabilir." },
+          { heading: "Sonrası", text: "İlk 48 saat çay, kahve, kola ve sigara gibi renkli içecek ve maddelerden uzak durulması önerilir. Geçici hassasiyet birkaç gün içinde geçer." },
+        ],
+        suitable: ["Dişlerinde sararma ve renklenme olanlar", "Çay, kahve, sigara kaynaklı lekeleri olanlar", "Özel bir gün öncesi hızlı sonuç isteyenler", "Diş eti ve dişleri sağlıklı yetişkinler"],
+        benefits: ["Tek seansta sonuç", "Hekim kontrolünde güvenli uygulama", "Diş eti koruması", "Kısa işlem süresi"],
+        faqs: [
+          { q: "Beyazlatma dişlere zarar verir mi?", a: "Hekim kontrolünde uygulanan beyazlatma diş minesine zarar vermez; geçici hassasiyet olabilir." },
+          { q: "Etkisi ne kadar sürer?", a: "Beslenme alışkanlıklarına bağlı olarak 1–2 yıl kalıcılık gösterebilir." },
+        ],
+      },
+      {
+        slug: "cocuk-dis-hekimligi",
+        title: "Çocuk Diş Hekimliği",
+        excerpt: "Çocuklara özel, korkutmayan ilk diş deneyimi.",
+        duration: "30 dk",
+        anesthesia: "Gerekirse lokal",
+        sessions: "6 ayda bir kontrol",
+        recovery: "Aynı gün",
+        body: [
+          { heading: "Pedodonti", text: "Çocuk diş hekimliği; süt dişlerinden daimi dişlere geçiş döneminde ağız sağlığının korunması, çürüklerin önlenmesi ve tedavisi ile ilgilenir." },
+          { heading: "Koruyucu uygulamalar", text: "Flor uygulaması ve fissür örtücüler gibi koruyucu işlemlerle çürük riski azaltılır. İlk ziyaretlerde çocuğun hekime ve ortama alışması önceliklidir." },
+        ],
+        suitable: ["İlk diş kontrolü yapılacak çocuklar", "Süt dişlerinde çürük olan çocuklar", "Koruyucu uygulama isteyen aileler", "Diş tedavisinden korkan çocuklar"],
+        benefits: ["Çocuğa özel yaklaşım", "Koruyucu tedaviler", "Düzenli takip programı", "Aile bilgilendirmesi"],
+        faqs: [
+          { q: "İlk diş muayenesi ne zaman yapılmalı?", a: "İlk dişin çıkmasıyla ya da en geç 1 yaşında ilk kontrolün yapılması önerilir." },
+          { q: "Süt dişleri nasılsa değişecek, tedavi gerekir mi?", a: "Evet. Süt dişleri, daimi dişlerin doğru yerde çıkması için yer tutucudur; çürükleri tedavi edilmelidir." },
+        ],
+      },
     ],
     highlights: [
       "Dijital ağız içi tarama ve 3D planlama",
@@ -216,8 +581,11 @@ export const BRANCHES: Branch[] = [
       { q: "İmplant tedavisi ne kadar sürer?", a: "İmplantın yerleştirilmesi tek seansta yapılır; kemikle kaynaşma süreci genellikle 2–3 ay sürer, ardından kalıcı diş takılır." },
       { q: "Gülüş tasarımı kaç seansta tamamlanır?", a: "Dijital planlama ve prova dahil çoğunlukla 2–3 seansta tamamlanır." },
       { q: "Çocuklar için ilk diş muayenesi ne zaman yapılmalı?", a: "İlk dişin çıkmasıyla ya da en geç 1 yaşında ilk kontrolün yapılması önerilir." },
+      { q: "Tedavi öncesi fiyat bilgisi alabilir miyim?", a: "Muayene ve görüntüleme sonrasında tedavi planınız, seçenekler ve maliyetleriyle birlikte yazılı olarak paylaşılır." },
+      { q: "Diş taşı temizliği ne sıklıkla yapılmalı?", a: "Genellikle 6 ayda bir kontrol ve gerekirse diş taşı temizliği önerilir." },
+      { q: "Anlaşmalı kurumlar diş tedavilerinde geçerli mi?", a: "Kapsam kuruma ve tedaviye göre değişir; hasta danışmanlarımız detaylı bilgi verir." },
     ],
-    formTopics: ["İmplant", "Gülüş Tasarımı / Estetik", "Ortodonti", "Genel Muayene", "Diğer"],
+    formTopics: ["İmplant", "Gülüş Tasarımı / Estetik", "Ortodonti", "Diş Beyazlatma", "Genel Muayene", "Diğer"],
   },
 ];
 

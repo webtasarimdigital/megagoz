@@ -1,13 +1,13 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { BRANCHES, getBranch } from "@/data/branches";
+import { getBranch } from "@/data/branches";
 import DemoHeader from "@/components/demo/DemoHeader";
 import DemoFooter from "@/components/demo/DemoFooter";
 import BranchBar from "@/components/demo/BranchBar";
 import BranchAppointmentForm from "@/components/demo/BranchAppointmentForm";
 import OtherBranches from "@/components/demo/OtherBranches";
 import FaqList from "@/components/demo/FaqList";
-import { BranchHero, BranchServices, BranchProcess, BranchHighlights } from "@/components/demo/BranchHome";
+import { BranchHero, BranchIntro, BranchServices, BranchProcess, BranchHighlights } from "@/components/demo/BranchHome";
 
 // Göz branşı = mevcut ana sayfanın bileşenleri (içerik birebir korunur)
 import HeroSlider from "@/components/HeroSlider";
@@ -19,9 +19,9 @@ import TechnologySection from "@/components/TechnologySection";
 import BlogSection from "@/components/BlogSection";
 import FAQSection from "@/components/FAQSection";
 
-export function generateStaticParams() {
-  return BRANCHES.map((b) => ({ brans: b.slug }));
-}
+// Not: Bu rota bilerek generateStaticParams KULLANMAZ. Sitenin diğer
+// sayfaları gibi istek anında render edilir; statik üretimde next-intl
+// dili istekten okuyamadığı için canlıda 500 hatası oluşuyordu.
 
 export async function generateMetadata({ params }: { params: Promise<{ brans: string }> }): Promise<Metadata> {
   const { brans } = await params;
@@ -33,9 +33,6 @@ export async function generateMetadata({ params }: { params: Promise<{ brans: st
   };
 }
 
-/** Header kendi boşluğunu bırakır */
-const HEADER_SPACER = "";
-
 export default async function BranchPage({ params }: { params: Promise<{ brans: string }> }) {
   const { brans } = await params;
   const b = getBranch(brans);
@@ -45,9 +42,7 @@ export default async function BranchPage({ params }: { params: Promise<{ brans: 
     return (
       <main className="min-h-screen flex flex-col bg-white">
         <DemoHeader activeBranch="goz" />
-        <div className={HEADER_SPACER}>
-          <BranchBar branchId="goz" />
-        </div>
+        <BranchBar branchId="goz" />
         {/* HeroSlider kendi üst boşluğunu ekliyor; branş barının hemen altına oturması için geri alıyoruz */}
         <div className="-mt-[55px] lg:-mt-[85px]">
           <HeroSlider branch={b.name} />
@@ -69,15 +64,19 @@ export default async function BranchPage({ params }: { params: Promise<{ brans: 
   return (
     <main className="min-h-screen flex flex-col bg-white">
       <DemoHeader activeBranch={b.id} />
-      <div className={HEADER_SPACER}>
-        <BranchBar branchId={b.id} />
-      </div>
+      <BranchBar branchId={b.id} />
       <BranchHero branch={b} />
+      <BranchIntro branch={b} />
       <BranchServices branch={b} />
       <BranchProcess branch={b} />
       <BranchHighlights branch={b} />
       <BranchAppointmentForm defaultBranch={b.id} source={`${b.name} Branşı Randevu Formu`} />
-      <FaqList items={b.faqs} eyebrow={`${b.shortName} · SSS`} title={["Sık sorulan", "sorular"]} />
+      <FaqList
+        items={b.faqs}
+        eyebrow={`${b.shortName} · SSS`}
+        title={["Sık sorulan", "sorular"]}
+        text={`${b.name} hakkında en çok merak edilenleri derledik. Size özel sorularınızı ön görüşmede hekimimize iletebilirsiniz.`}
+      />
       <OtherBranches current={b.id} />
       <DemoFooter />
     </main>

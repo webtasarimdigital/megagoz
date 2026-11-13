@@ -58,11 +58,54 @@ export function BranchHero({ branch: b }: { branch: Branch }) {
   );
 }
 
+/* ─────────── Branş tanıtımı ─────────── */
+export function BranchIntro({ branch: b }: { branch: Branch }) {
+  return (
+    <section className="bg-white pt-24 lg:pt-32 overflow-hidden">
+      <div className="container mx-auto px-6 max-w-[1300px] grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-14 lg:gap-24 items-center">
+        <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.8 }}>
+          <div className="flex items-center gap-3 mb-5">
+            <div className="h-[2px] w-8 bg-[#ecbb3f]" />
+            <span className="text-[#ecbb3f] font-bold tracking-widest text-sm uppercase">MegaGöz {b.shortName}</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-black text-[#162f5d] tracking-tight leading-[1.1] mb-8">
+            {b.intro.title[0]}
+            <br />
+            <span className="text-[#ecbb3f]">{b.intro.title[1]}</span>
+          </h2>
+          {b.intro.text.map((t) => (
+            <p key={t} className="text-gray-500 text-[17px] leading-[1.8] font-medium mb-5">{t}</p>
+          ))}
+          <blockquote className="border-l-4 border-[#ecbb3f] pl-6 mt-8">
+            <p className="text-[#162f5d] font-bold italic text-[19px] leading-relaxed">&ldquo;Göz cerrahisinden gelen titizliği, {b.shortName.toLocaleLowerCase("tr-TR")} bölümümüzün her uygulamasına taşıyoruz.&rdquo;</p>
+          </blockquote>
+        </motion.div>
+
+        <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.8 }} className="relative">
+          <div className="relative h-[380px] sm:h-[480px] rounded-[28px] overflow-hidden shadow-2xl">
+            <img src={b.secondaryImage} alt={b.name} className="absolute inset-0 w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#162f5d]/40 to-transparent" />
+          </div>
+          {/* Hızlı bilgiler */}
+          <div className="relative -mt-20 mx-4 sm:mx-8 grid grid-cols-2 bg-white rounded-2xl shadow-[0_25px_60px_rgba(22,47,93,0.15)] border border-gray-100 overflow-hidden">
+            {b.intro.facts.map(([label, value], i) => (
+              <div key={label} className={`p-5 sm:p-6 ${i % 2 === 0 ? "border-r" : ""} ${i < 2 ? "border-b" : ""} border-gray-100`}>
+                <p className="text-[11px] font-black tracking-[0.15em] text-gray-400 uppercase mb-1.5">{label}</p>
+                <p className="text-[16px] sm:text-[18px] font-black text-[#162f5d]">{value}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
 /* ─────────── Hizmetler ─────────── */
 export function BranchServices({ branch: b }: { branch: Branch }) {
   const [first, ...rest] = b.services;
   return (
-    <section className="bg-white pt-24 pb-20 lg:pt-32 lg:pb-28">
+    <section className="bg-white pt-28 pb-20 lg:pt-36 lg:pb-28">
       <div className="container mx-auto px-6 max-w-[1300px]">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
           <div>
@@ -99,7 +142,33 @@ export function BranchServices({ branch: b }: { branch: Branch }) {
             </Link>
           </motion.div>
 
-          {rest.map((s, i) => (
+          {rest.map((s, i) => {
+            // Tek kalan son kart boşluk bırakmasın diye tam genişlikte, yatay gösterilir
+            const wide = rest.length % 2 === 1 && i === rest.length - 1;
+            if (wide)
+              return (
+                <motion.div key={s.slug} variants={item} className="md:col-span-2 lg:col-span-3">
+                  <Link
+                    href={{ pathname: "/demo/[brans]/[hizmet]", params: { brans: b.slug, hizmet: s.slug } }}
+                    className="group relative overflow-hidden flex flex-col md:flex-row md:items-center gap-6 md:gap-10 rounded-[24px] bg-[#162f5d] p-7 md:p-9 hover:shadow-[0_20px_50px_rgba(22,47,93,0.25)] transition-all duration-300"
+                  >
+                    <div className="absolute -right-16 -top-16 w-64 h-64 rounded-full bg-[#ecbb3f]/10 blur-3xl" />
+                    <span className="relative text-[56px] font-black leading-none text-transparent shrink-0" style={{ WebkitTextStroke: "1.5px #ecbb3f" }}>0{i + 2}</span>
+                    <div className="relative flex-1">
+                      <h3 className="text-2xl font-black text-white tracking-tight mb-2 group-hover:text-[#ecbb3f] transition-colors">{s.title}</h3>
+                      <p className="text-gray-300 text-[15px] leading-relaxed max-w-2xl">{s.excerpt}</p>
+                    </div>
+                    <div className="relative flex flex-wrap items-center gap-2 text-[11px] font-bold text-white/80 uppercase tracking-wider">
+                      <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 border border-white/15"><Clock size={12} className="text-[#ecbb3f]" /> {s.duration}</span>
+                      <span className="px-3 py-1.5 rounded-full bg-white/10 border border-white/15">İyileşme: {s.recovery}</span>
+                    </div>
+                    <span className="relative w-12 h-12 rounded-full bg-[#ecbb3f] text-[#162f5d] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                      <ArrowUpRight size={20} className="group-hover:rotate-45 transition-transform" />
+                    </span>
+                  </Link>
+                </motion.div>
+              );
+            return (
             <motion.div key={s.slug} variants={item}>
               <Link
                 href={{ pathname: "/demo/[brans]/[hizmet]", params: { brans: b.slug, hizmet: s.slug } }}
@@ -113,11 +182,16 @@ export function BranchServices({ branch: b }: { branch: Branch }) {
                 </div>
                 <div>
                   <h3 className="text-xl font-black text-[#162f5d] tracking-tight mb-2">{s.title}</h3>
-                  <p className="text-gray-500 text-[14px] leading-relaxed">{s.excerpt}</p>
+                  <p className="text-gray-500 text-[14px] leading-relaxed mb-4">{s.excerpt}</p>
+                  <div className="flex flex-wrap gap-2 text-[11px] font-bold text-[#162f5d]/70 uppercase tracking-wider">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white border border-gray-200"><Clock size={12} className="text-[#ecbb3f]" /> {s.duration}</span>
+                    <span className="px-2.5 py-1 rounded-full bg-white border border-gray-200">İyileşme: {s.recovery}</span>
+                  </div>
                 </div>
               </Link>
             </motion.div>
-          ))}
+            );
+          })}
         </motion.div>
       </div>
     </section>
