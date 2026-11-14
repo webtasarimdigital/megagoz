@@ -96,7 +96,7 @@ export function BrandStory() {
               href="https://maps.app.goo.gl/zCtCCuRQEpGYmEwx6"
               target="_blank"
               rel="noopener noreferrer"
-              className="group absolute top-0 right-0 w-[52%] max-w-[300px] aspect-[287/510] rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10"
+              className="group absolute top-0 right-0 z-20 w-[52%] max-w-[300px] aspect-[287/510] rounded-2xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.55)] border-[6px] border-[#162f5d]"
             >
               <img src="/images/megagoz-bina.webp" alt={T.buildingAlt} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#0a111a]/90 to-transparent" />
