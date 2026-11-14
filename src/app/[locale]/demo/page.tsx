@@ -15,9 +15,9 @@ export default async function DemoCorporateHome({ params }: { params: Promise<{ 
       <BranchHeroSlider />
       <CorporateHero />
       <BrandStory />
-      <BranchExplorer />
-      <SharedStandards />
       <BranchAppointmentForm source="Kurum Ana Sayfası Randevu Formu" title={T.corporateFormTitle} text={T.corporateFormText} />
+      <SharedStandards />
+      <BranchExplorer />
       <CallBand />
       <FaqList items={T.corporateFaq} title={T.corporateFaqTitle} text={T.corporateFaqText} />
       <DemoFooter />
