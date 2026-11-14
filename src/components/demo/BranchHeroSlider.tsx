@@ -21,7 +21,9 @@ export default function BranchHeroSlider() {
   const [active, setActive] = useState(0);
 
   return (
-    <section className="relative w-full h-[640px] sm:h-[680px] lg:h-[calc(100vh-154px)] lg:min-h-[640px] lg:max-h-[860px] overflow-hidden bg-[#0a111a]">
+    // Mobilde slider tam olarak "ekran − header" kadar; böylece her telefonda tek ekrana oturur.
+    // Alt sekmeler, sitenin mobil sabit alt barının (65/70px + güvenli alan) üstünde durur.
+    <section className="relative w-full h-[calc(100svh-74px)] sm:h-[calc(100svh-82px)] min-h-[540px] max-h-[900px] md:h-[680px] lg:h-[calc(100vh-154px)] lg:min-h-[640px] lg:max-h-[860px] overflow-hidden bg-[#0a111a]">
       <Swiper
         modules={[Autoplay, EffectFade]}
         effect="fade"
@@ -52,7 +54,7 @@ export default function BranchHeroSlider() {
                 <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#0a111a]/90 to-transparent" />
 
                 {/* Metin */}
-                <div className="relative z-10 h-full max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 flex items-center pb-[120px] sm:pb-[130px]">
+                <div className="relative z-10 h-full max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 flex items-start pt-8 sm:pt-12 md:items-center md:pt-0 md:pb-[130px]">
                   <motion.div
                     initial={false}
                     animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
@@ -60,17 +62,17 @@ export default function BranchHeroSlider() {
                     className="max-w-[720px]"
                   >
                     <div
-                      className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border backdrop-blur-sm mb-6 text-[12px] sm:text-sm font-bold tracking-widest uppercase"
+                      className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border backdrop-blur-sm mb-4 sm:mb-6 text-[11px] sm:text-sm font-bold tracking-widest uppercase"
                       style={{ color: b.accent, borderColor: `${b.accent}66`, backgroundColor: `${b.accent}22` }}
                     >
                       <BranchIcon icon={b.icon} size={15} /> MegaGöz · {b.name}
                     </div>
-                    <h2 className="text-[40px] leading-[1.04] sm:text-6xl lg:text-7xl xl:text-[84px] font-black text-white tracking-tight mb-5 drop-shadow-xl">
+                    <h2 className="text-[34px] leading-[1.05] min-[390px]:text-[38px] sm:text-6xl lg:text-7xl xl:text-[84px] font-black text-white tracking-tight mb-4 sm:mb-5 drop-shadow-xl">
                       {b.heroTitle[0]}
                       <br />
                       <span className="text-[#ecbb3f]">{b.heroTitle[1]}</span>
                     </h2>
-                    <p className="text-gray-200 text-[15px] sm:text-lg lg:text-xl font-light leading-relaxed max-w-[600px] mb-8 drop-shadow-md">{b.heroText}</p>
+                    <p className="text-gray-200 text-[14px] min-[390px]:text-[15px] sm:text-lg lg:text-xl font-light leading-relaxed max-w-[600px] mb-6 sm:mb-8 drop-shadow-md line-clamp-4 sm:line-clamp-none">{b.heroText}</p>
                     <div className="flex flex-col sm:flex-row gap-3">
                       <Link
                         href={{ pathname: "/demo/[brans]", params: { brans: b.slug } }}
@@ -101,7 +103,7 @@ export default function BranchHeroSlider() {
 
       {/* Alt branş sekmeleri (slider kontrolü) */}
       <div className="absolute bottom-0 inset-x-0 z-20">
-        <div className="max-w-[1400px] mx-auto px-3 sm:px-8 lg:px-12 pb-4 sm:pb-6">
+        <div className="max-w-[1400px] mx-auto px-3 sm:px-8 lg:px-12 pb-[calc(77px_+_env(safe-area-inset-bottom))] sm:pb-[calc(84px_+_env(safe-area-inset-bottom))] md:pb-6">
           <div className="grid grid-cols-4 gap-1.5 sm:gap-3">
             {BRANCHES.map((b, i) => {
               const on = i === active;
