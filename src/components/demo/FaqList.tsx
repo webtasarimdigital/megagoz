@@ -12,30 +12,62 @@ interface Props {
   title: [string, string];
   /** Sol kolondaki kısa açıklama */
   text?: string;
+  /** Zemin tonu — koyu/açık bölüm sırasını korumak için */
+  tone?: "light" | "dark";
 }
 
-export default function FaqList({ items, eyebrow, title, text }: Props) {
+export default function FaqList({ items, eyebrow, title, text, tone = "light" }: Props) {
   const T = dt(useLocale());
   const [open, setOpen] = useState<number | null>(0);
+  const dark = tone === "dark";
+
+  const c = dark
+    ? {
+        section: "relative bg-[#0a111a] overflow-hidden",
+        title: "text-white",
+        text: "text-gray-300 font-light",
+        card: "bg-white/[0.06] border border-white/10 shadow-none",
+        item: (on: boolean) => (on ? "bg-white/[0.07] border-[#ecbb3f]/60" : "bg-white/[0.04] border-white/10 hover:border-white/20"),
+        q: "text-white",
+        num: "text-white/30",
+        plus: "bg-white/10 text-white",
+        a: "text-gray-300",
+      }
+    : {
+        section: "relative bg-[#f8fafc]",
+        title: "text-[#162f5d]",
+        text: "text-gray-500 font-medium",
+        card: "bg-[#162f5d] shadow-[0_25px_60px_rgba(22,47,93,0.25)]",
+        item: (on: boolean) => (on ? "bg-white border-[#ecbb3f]/60 shadow-[0_15px_40px_rgba(22,47,93,0.08)]" : "bg-white border-gray-100 hover:border-gray-200"),
+        q: "text-[#162f5d]",
+        num: "text-gray-300",
+        plus: "bg-gray-100 text-[#162f5d]",
+        a: "text-gray-500",
+      };
+
   return (
-    <section className="bg-[#f8fafc] py-20 lg:py-28">
-      <div className="container mx-auto px-6 max-w-[1200px] grid grid-cols-1 lg:grid-cols-[1fr_1.45fr] gap-10 lg:gap-16 items-start">
+    <section className={`${c.section} py-20 lg:py-28`}>
+      {dark && (
+        <>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#162f5d]/50 to-transparent pointer-events-none" />
+          <div className="absolute right-0 top-0 w-1/2 h-full bg-[#ecbb3f]/5 blur-[150px] rounded-full pointer-events-none" />
+        </>
+      )}
+      <div className="relative container mx-auto px-6 max-w-[1200px] grid grid-cols-1 lg:grid-cols-[1fr_1.45fr] gap-10 lg:gap-16 items-start">
         {/* Sol: başlık + iletişim kartı (masaüstünde yapışık) */}
         <div className="lg:sticky lg:top-[120px]">
           <div className="flex items-center gap-3 mb-4">
             <div className="h-[2px] w-8 bg-[#ecbb3f]" />
             <span className="text-[#ecbb3f] font-bold tracking-widest text-sm uppercase">{eyebrow ?? T.faqDefaultEyebrow}</span>
           </div>
-          <h2 className="text-4xl lg:text-5xl font-black text-[#162f5d] tracking-tight leading-[1.1] mb-5">
+          <h2 className={`text-4xl lg:text-5xl font-black tracking-tight leading-[1.1] mb-5 ${c.title}`}>
             {title[0]}
             <br />
             <span className="font-light">{title[1]}</span>
           </h2>
-          <p className="text-gray-500 text-[16px] leading-relaxed font-medium mb-8 max-w-md">
-            {text ?? T.faqDefaultText}
-          </p>
+          <p className={`text-[16px] leading-relaxed mb-8 max-w-md ${c.text}`}>{text ?? T.faqDefaultText}</p>
 
-          <div className="relative overflow-hidden rounded-3xl bg-[#162f5d] p-7 text-white shadow-[0_25px_60px_rgba(22,47,93,0.25)]">
+          <div className={`relative overflow-hidden rounded-3xl p-7 text-white ${c.card}`}>
             <div className="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-[#ecbb3f]/15 blur-2xl" />
             <p className="relative text-[11px] font-black tracking-[0.2em] text-[#ecbb3f] uppercase mb-2">{T.haveQuestion}</p>
             <p className="relative text-xl font-black leading-snug mb-6">{T.advisorsHere}</p>
@@ -63,20 +95,20 @@ export default function FaqList({ items, eyebrow, title, text }: Props) {
           {items.map((f, i) => {
             const on = open === i;
             return (
-              <div key={i} className={`bg-white rounded-2xl border transition-all duration-300 ${on ? "border-[#ecbb3f]/60 shadow-[0_15px_40px_rgba(22,47,93,0.08)]" : "border-gray-100 hover:border-gray-200"}`}>
+              <div key={i} className={`rounded-2xl border transition-all duration-300 ${c.item(on)}`}>
                 <button onClick={() => setOpen(on ? null : i)} aria-expanded={on} className="w-full flex items-center justify-between gap-4 text-left px-6 py-5">
                   <span className="flex items-start gap-4">
-                    <span className={`text-[13px] font-black tracking-widest mt-0.5 ${on ? "text-[#ecbb3f]" : "text-gray-300"}`}>{String(i + 1).padStart(2, "0")}</span>
-                    <span className="font-bold text-[#162f5d] text-[16px] leading-snug">{f.q}</span>
+                    <span className={`text-[13px] font-black tracking-widest mt-0.5 ${on ? "text-[#ecbb3f]" : c.num}`}>{String(i + 1).padStart(2, "0")}</span>
+                    <span className={`font-bold text-[16px] leading-snug ${c.q}`}>{f.q}</span>
                   </span>
-                  <span className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${on ? "bg-[#ecbb3f] text-[#162f5d] rotate-45" : "bg-gray-100 text-[#162f5d]"}`}>
+                  <span className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${on ? "bg-[#ecbb3f] text-[#162f5d] rotate-45" : c.plus}`}>
                     <Plus size={16} />
                   </span>
                 </button>
                 <AnimatePresence initial={false}>
                   {on && (
                     <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }} className="overflow-hidden">
-                      <p className="pl-[60px] pr-6 pb-6 text-gray-500 leading-relaxed text-[15px]">{f.a}</p>
+                      <p className={`pl-[60px] pr-6 pb-6 leading-relaxed text-[15px] ${c.a}`}>{f.a}</p>
                     </motion.div>
                   )}
                 </AnimatePresence>

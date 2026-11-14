@@ -65,7 +65,7 @@ const tr = {
   aboutMegagoz: "MEGAGÖZ HAKKINDA",
   oneInstitution: "Tek kurum · Dört branş",
   buildingAlt: "MegaGöz Tıp Merkezi",
-  interiorAlt: "MegaGöz klinik iç mekân",
+  interiorAlt: "MegaGöz göz muayenesi",
   whyMegagoz: "Neden MegaGöz",
   standardsTitle: ["Ortak çatı,", "ortak standart."] as [string, string],
   pillars: [
@@ -246,7 +246,7 @@ const en: Dict = {
   aboutMegagoz: "ABOUT MEGAGÖZ",
   oneInstitution: "One institution · Four departments",
   buildingAlt: "MegaGöz Medical Centre",
-  interiorAlt: "MegaGöz clinic interior",
+  interiorAlt: "Eye examination at MegaGöz",
   whyMegagoz: "Why MegaGöz",
   standardsTitle: ["One roof,", "one standard."],
   pillars: [

@@ -19,7 +19,7 @@ export default async function DemoCorporateHome({ params }: { params: Promise<{ 
       <SharedStandards />
       <BranchExplorer />
       <CallBand />
-      <FaqList items={T.corporateFaq} title={T.corporateFaqTitle} text={T.corporateFaqText} />
+      <FaqList items={T.corporateFaq} title={T.corporateFaqTitle} text={T.corporateFaqText} tone="dark" />
       <DemoFooter />
     </main>
   );
