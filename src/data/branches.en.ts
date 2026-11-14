@@ -20,7 +20,7 @@ export const BRANCH_TEXT_EN: Record<BranchId, BranchText> = {
     tagline: "Cataract, smart lenses, laser and all eye conditions",
     heroTitle: ["Your eye health", "is in safe hands."],
     heroText:
-      "MegaGöz's founding specialty. From cataract and smart lens surgery to laser treatments, pediatric eye care and retinal diseases — every eye service under one roof.",
+      "MegaGöz's founding specialty. From cataract and smart lens surgery to laser treatments, pediatric eye care and retinal diseases — the full range of eye services.",
     imageAlt: "MegaGöz eye examination",
     slides: [
       { title: "ALL UNDER ONE ROOF", sub: "PERSONALIZED PLANNING" },
@@ -54,7 +54,7 @@ export const BRANCH_TEXT_EN: Record<BranchId, BranchText> = {
       { title: "Follow-up", text: "Results are maintained with regular check-ups." },
     ],
     faqs: [
-      { q: "Is cataract surgery painful?", a: "Cataract surgery is usually performed with anaesthetic eye drops and is painless during the procedure. Most patients go home the same day." },
+      { q: "How is cataract surgery performed?", a: "Cataract surgery is usually performed with anaesthetic eye drops and most patients go home the same day. Your physician will explain the procedure and recovery in detail during the consultation." },
       { q: "Are smart lenses suitable for everyone?", a: "Suitability depends on eye structure, other eye conditions and expectations, and is determined during the examination. Your physician will recommend the most suitable lens." },
       { q: "Is there an age limit for laser eye surgery?", a: "It is generally performed for people over 18 whose prescription has been stable for at least a year. Corneal structure is assessed beforehand." },
       { q: "Does glaucoma cause symptoms?", a: "Glaucoma often progresses silently without symptoms, which is why regular eye exams are recommended after age 40." },
@@ -70,19 +70,19 @@ export const BRANCH_TEXT_EN: Record<BranchId, BranchText> = {
     name: "Medical Aesthetics",
     shortName: "Aesthetics",
     tagline: "Botox, fillers, skin renewal and rejuvenation treatments",
-    heroTitle: ["Natural results,", "signed by a physician."],
+    heroTitle: ["Personalised planning,", "led by a physician."],
     heroText:
       "Subtle, personalised medical aesthetic treatments planned around your facial features. Every procedure begins with a physician's examination and a detailed analysis.",
     imageAlt: "Medical aesthetic skin care treatment",
     slides: [
-      { title: "NATURAL RESULTS, SIGNED BY A PHYSICIAN", sub: "PERSONALISED MEDICAL AESTHETICS" },
-      { title: "BOTOX AND FILLERS", sub: "SUBTLE, BALANCED RESULTS" },
-      { title: "SKIN RENEWAL", sub: "RADIANT, HEALTHY SKIN" },
+      { title: "LED BY PHYSICIAN ASSESSMENT", sub: "PERSONALISED MEDICAL AESTHETICS" },
+      { title: "BOTOX AND FILLERS", sub: "PLANNED FOR YOUR FACIAL STRUCTURE" },
+      { title: "SKIN RENEWAL", sub: "PROTOCOLS BASED ON SKIN ANALYSIS" },
     ],
     intro: {
       title: ["A medical approach", "to beauty."],
       text: [
-        "Our medical aesthetics department focuses on non-surgical procedures that are quick to perform and let you return to daily life right away. Our goal is not to change your face, but to help you look rested and healthy.",
+        "Our medical aesthetics department focuses on non-surgical procedures that are quick to perform and let you return to daily life right away. We assess your expectations and facial structure together to create a plan that suits you.",
         "Before every treatment, our physician evaluates your facial proportions, skin type and medical history. Product choice, dosage and injection points are tailored to this analysis.",
       ],
       facts: [
@@ -105,7 +105,7 @@ export const BRANCH_TEXT_EN: Record<BranchId, BranchText> = {
       { title: "Follow-up", text: "Results are reviewed together within two weeks." },
     ],
     faqs: [
-      { q: "Will the results look natural?", a: "Treatment is planned around your facial proportions; the aim is a subtle result that preserves your expressions." },
+      { q: "How is treatment planned?", a: "Treatment is planned individually during the physician examination, based on your facial proportions and expectations." },
       { q: "Can I return to daily life after treatment?", a: "For most procedures such as Botox and mesotherapy you can return to work the same day. Your physician will give specific advice for each treatment." },
       { q: "Who performs the treatments?", a: "All medical aesthetic procedures are performed by the same physicians who carry out your examination." },
       { q: "Which products are used?", a: "Only products approved by the Ministry of Health are used, and each product's batch and lot number is recorded in your patient file." },
@@ -116,22 +116,22 @@ export const BRANCH_TEXT_EN: Record<BranchId, BranchText> = {
     services: {
       botoks: {
         title: "Botox",
-        excerpt: "Softens expression lines while keeping your natural look.",
+        excerpt: "A treatment aimed at softening expression lines.",
         duration: "15–20 min",
         anesthesia: "Not required / cooling",
         sessions: "Single session, repeated every 4–6 months",
         recovery: "Same day",
         body: [
-          { heading: "What is Botox?", text: "Botulinum toxin temporarily relaxes the expression muscles, softening dynamic lines on the forehead, between the brows and around the eyes. Applied at the right dose and points, it keeps your expressions natural — no frozen look." },
+          { heading: "What is Botox?", text: "Botulinum toxin temporarily relaxes the expression muscles, softening dynamic lines on the forehead, between the brows and around the eyes. Dose and injection points are determined by the physician after assessing your expressions." },
           { heading: "How is it applied?", text: "Your expressions are assessed and injection points are marked. Small amounts are injected into the muscle with very fine needles. The procedure takes 15–20 minutes; the effect starts within 3–5 days and is fully visible by week two." },
           { heading: "Aftercare", text: "Avoid lying down for the first 4 hours, do not massage the area, and avoid intense exercise, sauna and steam rooms for 24 hours. Any small touch-ups are planned at the two-week check." },
         ],
         suitable: ["Expression lines on the forehead, between the brows and around the eyes", "Those wanting a Botox brow lift", "Excessive sweating (hyperhidrosis)", "Teeth grinding and prominent jaw muscles"],
-        benefits: ["Quick procedure", "No incisions, no scars", "Preserves natural expressions", "Immediate return to daily life"],
+        benefits: ["Short procedure", "No incisions", "Planned around your expressions", "Most people return to daily life the same day"],
         faqs: [
           { q: "How long does Botox last?", a: "It varies from person to person, but the effect usually lasts 4–6 months. With regular treatments this period can lengthen." },
           { q: "Can Botox be done during pregnancy?", a: "Botox is not performed during pregnancy or breastfeeding." },
-          { q: "Will my face look frozen?", a: "When dose and points are tailored to your expressions, your face stays expressive; the aim is to soften lines." },
+          { q: "How is the treatment planned?", a: "Dose and injection points are tailored to your expressions; your expectations are discussed with your physician during the consultation." },
         ],
       },
       dolgu: {
@@ -144,14 +144,14 @@ export const BRANCH_TEXT_EN: Record<BranchId, BranchText> = {
         body: [
           { heading: "What are fillers?", text: "Hyaluronic acid fillers restore volume lost with age and balance facial contours. Hyaluronic acid occurs naturally in the body and is gradually absorbed over time." },
           { heading: "Which areas can be treated?", text: "Lips, cheekbones, tear troughs, nasolabial folds, chin and jawline are the most common areas. A different product density is chosen for each area." },
-          { heading: "The procedure", text: "Numbing cream is applied, then the filler is placed with a fine needle or cannula. Mild swelling and redness settle within 1–2 days; results are visible immediately." },
+          { heading: "The procedure", text: "Numbing cream is applied, then the filler is placed with a fine needle or cannula. Mild swelling and redness usually settle within 1–2 days." },
         ],
         suitable: ["Those wanting lip volume and definition", "Volume loss in the cheeks", "Pronounced tear troughs", "Those wanting a more defined jawline"],
-        benefits: ["Immediate results", "Not permanent, fully controlled", "Can be dissolved if needed", "Short recovery"],
+        benefits: ["Short procedure", "Gradually absorbed by the body", "Can be dissolved if needed", "Short recovery"],
         faqs: [
-          { q: "How long do fillers last?", a: "Depending on the area and product, results last between 6 and 18 months." },
+          { q: "How long do fillers last?", a: "It varies by area, product and person, but is usually between 6 and 18 months." },
           { q: "Will there be bruising?", a: "Mild bruising can occur in some areas and usually fades within a few days." },
-          { q: "What if I'm not happy with the result?", a: "Hyaluronic acid fillers can be dissolved with a special enzyme when needed." },
+          { q: "Can fillers be reversed?", a: "Hyaluronic acid fillers can be dissolved with a special enzyme when needed, following a physician's assessment." },
         ],
       },
       mezoterapi: {
@@ -166,7 +166,7 @@ export const BRANCH_TEXT_EN: Record<BranchId, BranchText> = {
           { heading: "What results can I expect?", text: "Skin feels more vibrant and hydrated from the first sessions. Once the course is complete, fine lines soften and skin tone becomes more even." },
         ],
         suitable: ["Dull, tired or dehydrated skin", "Fine lines", "Those wanting to improve skin quality", "Preparing the skin before a special event"],
-        benefits: ["Works directly on the skin", "Short sessions", "Can be combined with other treatments", "No scarring"],
+        benefits: ["Applied directly to the skin", "Short sessions", "Can be planned with other treatments", "Short recovery"],
         faqs: [
           { q: "How many sessions do I need?", a: "A course of 4–6 sessions two weeks apart is usually recommended, followed by maintenance sessions." },
           { q: "Can I wear make-up afterwards?", a: "Avoiding make-up for the first 12–24 hours is recommended." },
@@ -184,9 +184,9 @@ export const BRANCH_TEXT_EN: Record<BranchId, BranchText> = {
           { heading: "The procedure", text: "A small amount of blood is drawn, the plasma is separated by centrifuge and applied to the face, neck or décolletage in the same session. The whole process takes about 45 minutes." },
         ],
         suitable: ["Reduced skin quality and firmness", "Acne scars and enlarged pores", "Under-eye darkness and fine lines", "Those preferring a natural treatment"],
-        benefits: ["Made from your own blood", "Very low risk of allergy", "Supports natural renewal", "Also used for hair treatments"],
+        benefits: ["Prepared from your own blood", "Prepared and applied in the same session", "Supports the skin's renewal process", "Also used for hair treatments"],
         faqs: [
-          { q: "Is PRP painful?", a: "Numbing cream is applied, so the procedure is usually comfortable." },
+          { q: "What does PRP feel like?", a: "Numbing cream is applied beforehand. Mild discomfort may be felt during the procedure." },
           { q: "When will I see results?", a: "A glow is noticeable after the first session; clear results are assessed after the course is complete." },
         ],
       },
@@ -220,10 +220,10 @@ export const BRANCH_TEXT_EN: Record<BranchId, BranchText> = {
           { heading: "The procedure", text: "Performed under local anaesthesia with fine cannulas and no incisions. A mild feeling of tightness and some swelling may last a few days." },
         ],
         suitable: ["Mild to moderate sagging of cheeks and jawline", "Drooping brows and eye area", "Patients who prefer to avoid surgery", "Those wanting to tighten the neck"],
-        benefits: ["No incisions or stitches", "Immediately visible lift", "Stimulates collagen", "Short recovery"],
+        benefits: ["No incisions or stitches", "Performed under local anaesthesia", "Stimulates collagen", "Short recovery"],
         faqs: [
           { q: "How long does a thread lift last?", a: "Depending on the thread and skin structure, the effect usually lasts 12–18 months." },
-          { q: "Will the threads be visible?", a: "When placed with the right technique, the threads can neither be seen nor felt." },
+          { q: "Where are the threads placed?", a: "The threads are placed under the skin with fine cannulas. Your physician will explain the recovery process in detail." },
         ],
       },
     },
@@ -236,15 +236,15 @@ export const BRANCH_TEXT_EN: Record<BranchId, BranchText> = {
     tagline: "FUE, DHI, beard & eyebrow transplant and hair loss treatments",
     heroTitle: ["Your hairline,", "designed for you."],
     heroText:
-      "FUE and DHI hair transplants planned under physician supervision, beard and eyebrow transplants, and supportive treatments for hair loss. Every graft is planned for a natural look.",
+      "FUE and DHI hair transplants planned under physician supervision, beard and eyebrow transplants, and supportive treatments for hair loss. Graft placement is planned according to your hair structure.",
     imageAlt: "Scalp assessment before a hair transplant",
     slides: [
       { title: "A HAIRLINE DESIGNED FOR YOU", sub: "PHYSICIAN-LED HAIR TRANSPLANTS" },
-      { title: "FUE AND DHI HAIR TRANSPLANT", sub: "NATURAL, PERMANENT RESULTS" },
+      { title: "FUE AND DHI HAIR TRANSPLANT", sub: "PLANNED BY A PHYSICIAN" },
       { title: "BEARD AND EYEBROW TRANSPLANT", sub: "DESIGNED FOR YOUR FACE" },
     ],
     intro: {
-      title: ["Natural results", "start with the right plan."],
+      title: ["Every transplant", "starts with a plan."],
       text: [
         "Success in hair transplantation depends less on the number of grafts than on a hairline designed for your face and the right use of the donor area. That is why every operation begins with our physician's hair analysis and design.",
         "Operations take place in a sterile operating environment within our medical centre. Washing, check-ups and photo follow-up continue with you for 12 months after the transplant.",
@@ -269,12 +269,12 @@ export const BRANCH_TEXT_EN: Record<BranchId, BranchText> = {
       { title: "12-Month Follow-up", text: "Washing, check-ups and result photos." },
     ],
     faqs: [
-      { q: "Is a hair transplant painful?", a: "The procedure is done under local anaesthesia. Apart from the anaesthetic injections, there is usually no pain during the operation." },
+      { q: "What does a hair transplant feel like?", a: "The procedure is done under local anaesthesia. Mild discomfort may be felt during the anaesthetic injections; your physician will explain the process during the consultation." },
       { q: "When will I see results?", a: "Transplanted hair sheds in the first months (shock loss), starts growing from month 3–4, and the final result is assessed around month 12." },
       { q: "How many grafts will I need?", a: "The number of grafts is determined during the examination based on the degree of hair loss and donor capacity." },
       { q: "Who performs the operation?", a: "Planning and hairline design are done by our physician; the operation is carried out by our experienced team under physician supervision." },
       { q: "When can I return to work?", a: "For desk jobs, most patients return to work after 3–5 days." },
-      { q: "Is transplanted hair permanent?", a: "Follicles from the back of the head are resistant to hair loss and keep this property where they are transplanted." },
+      { q: "Why are follicles taken from the back of the head?", a: "Follicles at the back of the head are genetically more resistant to hair loss, which is why this area is used as the donor site." },
     ],
     formTopics: ["FUE / DHI Hair Transplant", "Beard / Eyebrow Transplant", "Female Hair Transplant", "Hair Loss Treatment", "Other"],
     services: {
@@ -286,12 +286,12 @@ export const BRANCH_TEXT_EN: Record<BranchId, BranchText> = {
         sessions: "Single session",
         recovery: "7–10 days",
         body: [
-          { heading: "What is FUE?", text: "Follicular Unit Extraction removes hair follicles one by one from the back of the head with a micromotor and places them into channels opened in the thinning area. It leaves no linear scar and is the most widely used technique." },
+          { heading: "What is FUE?", text: "Follicular Unit Extraction removes hair follicles one by one from the back of the head with a micromotor and places them into channels opened in the thinning area. It does not require a linear incision and is a widely used technique." },
           { heading: "Operation day", text: "Your hairline is drawn and photographed, then local anaesthesia is applied. Grafts are harvested, channels are opened and grafts are placed. The operation is completed within the day and you go home the same day." },
           { heading: "After the transplant", text: "The first wash is done at our centre on day 2. Scabs fall off within 10 days. Transplanted hairs shed in the first 1–2 months (shock loss), start growing from month 3–4, and the final result is assessed at month 12." },
         ],
         suitable: ["Men and women with a sufficient donor area", "Thinning on the crown and front", "A receding hairline", "Those wanting to add density after a previous transplant"],
-        benefits: ["No linear scar", "Suitable for large areas", "Permanent, natural result", "Short recovery"],
+        benefits: ["No linear incision", "Can be applied to large areas", "Hairline planned by a physician", "Short recovery"],
         faqs: [
           { q: "How many grafts can be transplanted?", a: "Depending on donor capacity and the degree of hair loss, 2,500–4,500 grafts are usually planned in a single session." },
           { q: "Will the transplanted hair fall out?", a: "Transplanted hair sheds temporarily in the first months; the follicles stay in place and new hair grows from month 3–4." },
@@ -310,7 +310,7 @@ export const BRANCH_TEXT_EN: Record<BranchId, BranchText> = {
           { heading: "When is it preferred?", text: "It is often chosen for adding density between existing hair, hairline design and unshaven transplants." },
         ],
         suitable: ["Those wanting high density at the hairline", "Adding density between existing hair", "Patients preferring an unshaven transplant", "Female patients"],
-        benefits: ["High density", "Control of angle and direction", "Faster healing", "Unshaven option"],
+        benefits: ["Dense implantation possible", "Control of angle and direction", "Short recovery", "Unshaven option"],
         faqs: [
           { q: "Is DHI or FUE better?", a: "Both methods are successful; which one suits you is decided during the examination based on hair loss, hair type and expectations." },
           { q: "Is an unshaven transplant possible?", a: "An unshaven DHI transplant can be planned for suitable patients." },
@@ -328,15 +328,15 @@ export const BRANCH_TEXT_EN: Record<BranchId, BranchText> = {
           { heading: "When will I see results?", text: "Transplanted hairs shed in the first weeks, start growing from month 3 and show clear results in 6–9 months. The first shave can usually be done after day 10." },
         ],
         suitable: ["Sparse or patchy beards", "Areas with burn or scar tissue", "Those wanting a fuller moustache", "Those wanting a more defined beard line"],
-        benefits: ["Permanent result", "Beard design suited to your face", "No linear scar", "Completed in one session"],
+        benefits: ["Uses your own hair follicles", "Beard design suited to your face", "No linear incision", "Usually planned in one session"],
         faqs: [
-          { q: "Can the transplanted beard be shaved?", a: "Yes. Transplanted beard hair is permanent and can be shaved like a normal beard." },
+          { q: "Can the transplanted beard be shaved?", a: "Yes. Once healing is complete, transplanted beard hair can be shaved like a normal beard." },
           { q: "How many grafts are needed?", a: "Depending on the size of the area, 1,500–3,000 grafts are usually planned." },
         ],
       },
       "kas-ekimi": {
         title: "Eyebrow Transplant",
-        excerpt: "Permanent eyebrows designed for your expression.",
+        excerpt: "Eyebrows designed to suit your expression.",
         duration: "2–3 hours",
         anesthesia: "Local anaesthesia",
         sessions: "Single session",
@@ -345,10 +345,10 @@ export const BRANCH_TEXT_EN: Record<BranchId, BranchText> = {
           { heading: "What is an eyebrow transplant?", text: "Hair follicles are placed one by one into sparse or empty brow areas, following the natural direction and angle of the eyebrow. A brow shape suited to your facial proportions is drawn beforehand." },
           { heading: "Care", text: "Because transplanted brows come from scalp hair, they keep growing and need regular trimming." },
         ],
-        suitable: ["Sparse or thin eyebrows", "Gaps or scars in the brows", "Those wanting a natural alternative to permanent make-up", "Those wanting to reshape their brows"],
-        benefits: ["Natural, permanent look", "Personalised design", "Short procedure", "No linear scar"],
+        suitable: ["Sparse or thin eyebrows", "Gaps or scars in the brows", "Those looking for an alternative to permanent make-up", "Those wanting to reshape their brows"],
+        benefits: ["Uses your own hair follicles", "Personalised design", "Short procedure", "No linear incision"],
         faqs: [
-          { q: "Is an eyebrow transplant permanent?", a: "Yes, the transplanted follicles are permanent." },
+          { q: "Will the transplanted brows fall out?", a: "Transplanted hairs may shed in the first weeks; new hairs grow from the follicles that take hold. Progress is followed up at check-ups." },
           { q: "When can I wear make-up?", a: "Make-up on the brow area can usually be worn after two weeks." },
         ],
       },
@@ -382,7 +382,7 @@ export const BRANCH_TEXT_EN: Record<BranchId, BranchText> = {
           { heading: "The procedure", text: "Applied to the scalp with fine needles. Sessions are usually planned 2–4 weeks apart." },
         ],
         suitable: ["Seasonal or stress-related hair loss", "Thinning hair", "Support after a transplant", "Early-stage hair loss"],
-        benefits: ["Short sessions", "No impact on daily life", "Supports transplant results", "Improves hair quality"],
+        benefits: ["Short sessions", "Same-day return to daily life", "Supports the post-transplant period", "Nourishes hair follicles"],
         faqs: [
           { q: "Does mesotherapy stop hair loss completely?", a: "Its effect depends on the cause of hair loss; the aim is to slow it down and strengthen the follicles." },
           { q: "How many sessions are needed?", a: "A course of 4–6 sessions is usually recommended." },
@@ -431,7 +431,7 @@ export const BRANCH_TEXT_EN: Record<BranchId, BranchText> = {
       { title: "Check-ups", text: "Results are maintained with regular check-ups." },
     ],
     faqs: [
-      { q: "How long does implant treatment take?", a: "The implant is placed in a single session; healing with the bone usually takes 2–3 months, after which the permanent tooth is fitted." },
+      { q: "How long does implant treatment take?", a: "The implant is placed in a single session; healing with the bone usually takes 2–3 months, after which the fixed crown is fitted." },
       { q: "How many sessions does smile design take?", a: "Including digital planning and a trial, it is usually completed in 2–3 sessions." },
       { q: "When should a child have their first dental check-up?", a: "The first check-up is recommended when the first tooth appears, or by age one at the latest." },
       { q: "Can I get a price before treatment?", a: "After the examination and imaging, your treatment plan is shared in writing with options and costs." },
@@ -442,22 +442,22 @@ export const BRANCH_TEXT_EN: Record<BranchId, BranchText> = {
     services: {
       implant: {
         title: "Dental Implants",
-        excerpt: "A permanent, natural-looking replacement for missing teeth.",
+        excerpt: "A fixed treatment option for missing teeth.",
         duration: "30–60 min per tooth",
         anesthesia: "Local anaesthesia",
         sessions: "2–3 stages",
         recovery: "2–3 days",
         body: [
-          { heading: "What is an implant?", text: "A titanium screw placed in the jawbone with a prosthetic tooth on top provides the function and look closest to a natural tooth. The gap is filled without touching the neighbouring teeth." },
-          { heading: "Treatment stages", text: "Bone structure is assessed with 3D tomography and the implant position is planned. The implant is placed under local anaesthesia. Healing with the bone usually takes 2–3 months, after which the permanent crown is fitted." },
+          { heading: "What is an implant?", text: "A titanium screw is placed in the jawbone and a fixed prosthesis is made on top. The gap is filled without touching the neighbouring teeth." },
+          { heading: "Treatment stages", text: "Bone structure is assessed with 3D tomography and the implant position is planned. The implant is placed under local anaesthesia. Healing with the bone usually takes 2–3 months, after which the fixed crown is fitted." },
           { heading: "Care", text: "Implant teeth are brushed and flossed just like natural teeth. Check-ups every 6 months extend the life of the implant." },
         ],
         suitable: ["One or more missing teeth", "Those wanting to replace removable dentures", "Those who don't want healthy teeth cut for a bridge", "Adults with sufficient bone structure"],
-        benefits: ["Natural look and feel", "No harm to neighbouring teeth", "Long-lasting solution", "Restores chewing function"],
+        benefits: ["Fixed prosthesis option", "Neighbouring teeth are not touched", "Planned with 3D imaging", "Supports chewing function"],
         faqs: [
-          { q: "Is implant treatment painful?", a: "The procedure is done under local anaesthesia; mild sensitivity may last a few days afterwards and is managed with pain relief." },
+          { q: "What does implant treatment feel like?", a: "The procedure is done under local anaesthesia. Some sensitivity may follow for a few days; your physician will give advice for this period." },
           { q: "Can implants be placed if there isn't enough bone?", a: "In most cases, additional procedures such as bone grafting or sinus lifting make implants possible." },
-          { q: "How long do implants last?", a: "With good oral hygiene and regular check-ups, implants can last for many years." },
+          { q: "How should implants be cared for?", a: "Implant teeth are brushed and flossed like natural teeth, and regular check-ups are recommended." },
         ],
       },
       "gulus-tasarimi": {
@@ -469,7 +469,7 @@ export const BRANCH_TEXT_EN: Record<BranchId, BranchText> = {
         recovery: "Same day",
         body: [
           { heading: "What is smile design?", text: "A comprehensive cosmetic treatment in which the colour, shape and length of the teeth and the gum line are planned together according to your facial proportions, lips and skin tone." },
-          { heading: "Digital planning and trial", text: "Your new smile is designed on screen from photos and digital scans. Before any permanent work, you see the result with an intraoral trial and can ask for changes." },
+          { heading: "Digital planning and trial", text: "Your new smile is designed on screen from photos and digital scans. Before the final work, you see the design with an intraoral trial and can ask for changes." },
         ],
         suitable: ["Those unhappy with tooth colour and shape", "Gaps between teeth", "An uneven gum line", "Chipped or worn teeth"],
         benefits: ["Design tailored to your face", "Digital preview", "Intraoral trial", "Several concerns solved in one plan"],
@@ -490,10 +490,10 @@ export const BRANCH_TEXT_EN: Record<BranchId, BranchText> = {
           { heading: "Veneers (porcelain laminates)", text: "Thin porcelain shells bonded only to the front surface of the tooth. Colour and shape are corrected with very little tooth reduction." },
         ],
         suitable: ["Discoloured teeth", "Broken or worn teeth", "Mild crowding", "Cases where whitening isn't enough"],
-        benefits: ["Natural appearance", "Long-lasting and durable", "Colour-stable", "Gum-friendly"],
+        benefits: ["Metal-free framework", "Durable material", "Personalised shade selection", "Planned with digital impressions"],
         faqs: [
           { q: "Zirconia or veneers?", a: "It depends on the condition of the tooth; veneers are usually preferred for healthy teeth and zirconia for worn teeth." },
-          { q: "How long do they last?", a: "With good oral hygiene they can last for many years." },
+          { q: "How are they cared for?", a: "With regular brushing, flossing and periodic check-ups." },
         ],
       },
       ortodonti: {
@@ -516,20 +516,20 @@ export const BRANCH_TEXT_EN: Record<BranchId, BranchText> = {
       },
       "dis-beyazlatma": {
         title: "Teeth Whitening",
-        excerpt: "In-office whitening with visible results in one session.",
+        excerpt: "In-office teeth whitening under dentist supervision.",
         duration: "60 min",
         anesthesia: "Not required",
         sessions: "Single session",
         recovery: "Same day",
         body: [
-          { heading: "In-office whitening", text: "After the gums are protected, a special whitening gel is applied to the teeth and activated with light. Several shades of lightening can be achieved in one session." },
+          { heading: "In-office whitening", text: "After the gums are protected, a special whitening gel is applied to the teeth and activated with light. The degree of lightening varies from person to person." },
           { heading: "Aftercare", text: "Avoid tea, coffee, cola, smoking and other staining substances for the first 48 hours. Temporary sensitivity passes within a few days." },
         ],
         suitable: ["Yellowed or stained teeth", "Stains from tea, coffee or smoking", "Those wanting quick results before a special day", "Adults with healthy teeth and gums"],
-        benefits: ["Results in one session", "Safe, dentist-supervised treatment", "Gum protection", "Short procedure"],
+        benefits: ["Usually one session", "Dentist-supervised treatment", "Gum protection", "Short procedure"],
         faqs: [
-          { q: "Does whitening damage teeth?", a: "Whitening performed under dentist supervision does not harm enamel; temporary sensitivity may occur." },
-          { q: "How long does it last?", a: "Depending on diet and habits, results can last 1–2 years." },
+          { q: "Is there sensitivity after whitening?", a: "Temporary sensitivity may occur. Suitability and aftercare advice are determined during the dental examination." },
+          { q: "How long does it last?", a: "It varies from person to person depending on diet and habits." },
         ],
       },
       "cocuk-dis-hekimligi": {
@@ -541,7 +541,7 @@ export const BRANCH_TEXT_EN: Record<BranchId, BranchText> = {
         recovery: "Same day",
         body: [
           { heading: "Pedodontics", text: "Pediatric dentistry protects oral health during the transition from baby teeth to permanent teeth, and prevents and treats cavities." },
-          { heading: "Preventive care", text: "Preventive treatments such as fluoride and fissure sealants reduce the risk of cavities. In the first visits, helping the child get comfortable with the dentist and the setting comes first." },
+          { heading: "Preventive care", text: "Preventive treatments such as fluoride and fissure sealants aim to protect against cavities. In the first visits, helping the child get comfortable with the dentist and the setting comes first." },
         ],
         suitable: ["Children due for their first check-up", "Cavities in baby teeth", "Families wanting preventive care", "Children who are anxious about the dentist"],
         benefits: ["Child-focused approach", "Preventive treatments", "Regular follow-up programme", "Guidance for parents"],

@@ -2,7 +2,7 @@
 
 import { motion, type Variants } from "framer-motion";
 import { Link } from "@/i18n/navigation";
-import { ArrowRight, ArrowUpRight, CheckCircle2, Clock, MessageCircle, CalendarCheck } from "lucide-react";
+import { ArrowRight, ArrowUpRight, CheckCircle2, Clock, MessageCircle, CalendarCheck, MapPin } from "lucide-react";
 import type { Branch } from "@/data/branches";
 import BranchIcon from "./BranchIcon";
 import { TREATMENTS_DATA } from "@/data/treatments";
@@ -114,7 +114,7 @@ type Card = { key: string; title: string; excerpt: string; href: any; chips: str
 /** Göz branşında öne çıkan 6 tedavi alanı (mevcut /tedaviler sayfalarına gider) */
 const EYE_CARDS: { id: string; tr: string; en: string }[] = [
   { id: "katarakt", tr: "Zamanla matlaşan göz merceğinin temizlenmesi ve şeffaf, akıllı lens ile değiştirilmesi.", en: "Removing the clouded natural lens and replacing it with a clear smart lens." },
-  { id: "lazer-tedavisi", tr: "Miyop, hipermetrop ve astigmatizmanın lazerle kalıcı olarak düzeltilmesi.", en: "Permanent laser correction of myopia, hyperopia and astigmatism." },
+  { id: "lazer-tedavisi", tr: "Miyop, hipermetrop ve astigmatizmanın lazer yöntemleriyle düzeltilmesi.", en: "Correction of myopia, hyperopia and astigmatism with laser methods." },
   { id: "kontak-lens", tr: "Kişiye özel lens uyumu ve göz içi akıllı lens seçenekleri.", en: "Personalised lens fitting and intraocular smart lens options." },
   { id: "glokom-tedavisi", tr: "Göz tansiyonuna bağlı sinir hasarının erken teşhisi ve tedavisi.", en: "Early diagnosis and treatment of pressure-related optic nerve damage." },
   { id: "cocuk-goz-sagligi", tr: "Çocukluk çağı görme kusurları ve göz tembelliğinin erken tedavisi.", en: "Early treatment of childhood vision problems and lazy eye." },
@@ -281,13 +281,38 @@ export function BranchHighlights({ branch: b }: { branch: Branch }) {
   return (
     <section className="bg-white py-24 lg:py-32 overflow-hidden">
       <div className="container mx-auto px-6 max-w-[1300px] grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-24 items-center">
-        <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative h-[420px] sm:h-[520px]">
-          <div className="absolute inset-0 right-10 rounded-2xl overflow-hidden shadow-2xl">
-            <img src="/images/megagoz-clinic-interior.webp" alt={T.clinicAlt} className="w-full h-full object-cover" />
-          </div>
-          <div className="absolute bottom-8 right-0 bg-[#162f5d] text-white p-6 rounded-2xl shadow-xl border-b-4 border-[#ecbb3f] max-w-[240px]">
-            <p className="text-[#ecbb3f] font-black text-3xl leading-none mb-2">{T.oneInstitutionBig}</p>
-            <p className="text-[13px] text-gray-300 font-medium leading-snug">{T.oneInstitutionText}</p>
+        {/* Sol: gerçek bina fotoğrafı + branş görseli */}
+        <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative">
+          <div className="absolute -left-8 top-10 w-40 h-40 bg-[#ecbb3f]/20 rounded-full blur-3xl -z-10" />
+          <div className="grid grid-cols-[0.82fr_1fr] gap-4 sm:gap-5 items-start">
+            {/* Bina (dikey, orijinal oranında — küçük kaynak dosya bulanıklaşmasın diye geniş tutulmaz) */}
+            <a
+              href="https://maps.app.goo.gl/zCtCCuRQEpGYmEwx6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative block aspect-[287/510] max-w-[290px] rounded-2xl overflow-hidden shadow-2xl ring-1 ring-black/5"
+            >
+              <img src="/images/megagoz-bina.webp" alt={T.buildingPhotoAlt} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#0a111a]/90 via-[#0a111a]/40 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5 text-white">
+                <p className="text-[10px] sm:text-[11px] font-black tracking-[0.2em] text-[#ecbb3f] uppercase mb-1">{T.ourCentre}</p>
+                <p className="text-[13px] sm:text-[14px] font-bold leading-snug flex items-start gap-1.5">
+                  <MapPin size={14} className="text-[#ecbb3f] shrink-0 mt-0.5" /> Gamsız Sk. No:3, Ümraniye
+                </p>
+              </div>
+            </a>
+
+            {/* Branş görseli (aşağı kaydırılmış, katmanlı görünüm) */}
+            <div className="relative mt-14 sm:mt-20 aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl ring-1 ring-black/5">
+              <img src={b.secondaryImage} alt={b.name} className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#162f5d]/60 via-transparent to-transparent" />
+              <span className="absolute left-4 bottom-4 inline-flex items-center gap-2 bg-white/95 backdrop-blur px-3 py-2 rounded-xl shadow-lg text-[12px] sm:text-[13px] font-black text-[#162f5d]">
+                <span className="w-7 h-7 rounded-lg bg-[#162f5d] flex items-center justify-center" style={{ color: b.accent }}>
+                  <BranchIcon icon={b.icon} size={15} />
+                </span>
+                {b.name}
+              </span>
+            </div>
           </div>
         </motion.div>
         <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
