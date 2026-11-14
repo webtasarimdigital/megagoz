@@ -67,6 +67,8 @@ export default function DemoHeader({ activeBranch }: { activeBranch?: BranchId }
   const [mobileSection, setMobileSection] = useState<string | null>(null);
   const [langOpen, setLangOpen] = useState(false);
   const langRef = useRef<HTMLDivElement>(null);
+  const [mobileLangOpen, setMobileLangOpen] = useState(false);
+  const mobileLangRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 40);
@@ -85,13 +87,13 @@ export default function DemoHeader({ activeBranch }: { activeBranch?: BranchId }
   useEffect(() => {
     const onDown = (e: MouseEvent) => {
       if (langRef.current && !langRef.current.contains(e.target as Node)) setLangOpen(false);
+      if (mobileLangRef.current && !mobileLangRef.current.contains(e.target as Node)) setMobileLangOpen(false);
     };
     document.addEventListener("mousedown", onDown);
     return () => document.removeEventListener("mousedown", onDown);
   }, []);
 
   const openBranch = BRANCHES.find((b) => b.id === openMenu);
-  const otherLocale: Loc = locale === "tr" ? "en" : "tr";
 
   return (
     <>
@@ -243,19 +245,47 @@ export default function DemoHeader({ activeBranch }: { activeBranch?: BranchId }
               </Link>
             </nav>
 
-            {/* Mobil: dil + ara + hamburger */}
-            <div className="xl:hidden flex items-center gap-2 sm:gap-3">
+            {/* Mobil dil seçimi — orijinal sitedeki gibi: bayrak + dil adı, dokununca menü açılır */}
+            <div className="xl:hidden flex-1 flex justify-center relative" ref={mobileLangRef}>
               <button
-                onClick={() => switchLocale(otherLocale)}
-                aria-label={otherLocale === "en" ? "Switch to English" : "Türkçeye geç"}
-                className="h-10 px-2.5 rounded-xl bg-white/10 border border-white/15 flex items-center gap-1.5 text-white text-[12px] font-black tracking-wider"
+                onClick={() => setMobileLangOpen(!mobileLangOpen)}
+                aria-haspopup="listbox"
+                aria-expanded={mobileLangOpen}
+                className="flex items-center gap-1.5 sm:gap-2 p-1 active:scale-95 transition-transform"
               >
-                <Flag code={otherLocale} className="!w-[20px] !h-[14px]" />
-                {otherLocale.toUpperCase()}
+                <Flag code={locale} className="!w-[20px] !h-[14px] sm:!w-[24px] sm:!h-[16px] border-white/20" />
+                <span className="text-[11px] sm:text-[12px] font-bold text-white tracking-[0.08em] sm:tracking-widest uppercase leading-none mt-[1px]">{T.languageName}</span>
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="white" className={`opacity-70 w-2 sm:w-2.5 h-2 sm:h-2.5 transition-transform ${mobileLangOpen ? "rotate-180" : ""}`}><polygon points="6,9 18,9 12,18" /></svg>
               </button>
-              <a href="tel:4440320" className="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center text-[#ecbb3f]" aria-label={T.call}>
-                <Phone size={18} />
-              </a>
+              <AnimatePresence>
+                {mobileLangOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.2 }}
+                    role="listbox"
+                    className="absolute top-[calc(100%+10px)] left-1/2 -translate-x-1/2 bg-white rounded-lg shadow-[0_15px_40px_rgba(0,0,0,0.25)] border border-gray-100 min-w-[160px] z-50 overflow-hidden"
+                  >
+                    {(["tr", "en"] as Loc[]).map((l) => (
+                      <button
+                        key={l}
+                        role="option"
+                        aria-selected={locale === l}
+                        onClick={() => { setMobileLangOpen(false); if (l !== locale) switchLocale(l); }}
+                        className="flex items-center gap-3 w-full px-4 py-3 border-b last:border-b-0 border-gray-50 hover:bg-gray-50 transition-colors"
+                      >
+                        <Flag code={l} className="!w-[20px] !h-[14px]" />
+                        <span className={`font-bold tracking-widest text-[12px] uppercase ${locale === l ? "text-[#cda669]" : "text-[#333]"}`}>{l === "tr" ? "TÜRKÇE" : "ENGLISH"}</span>
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* Mobil: hamburger */}
+            <div className="xl:hidden flex items-center shrink-0">
               <button onClick={() => setMobileOpen(true)} aria-label={T.openMenu} className="w-10 h-10 flex items-center justify-center">
                 <span className="flex flex-col justify-between w-[26px] h-[19px]">
                   <span className="w-full h-[2.5px] bg-white rounded-full" />
