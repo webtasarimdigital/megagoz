@@ -8,6 +8,8 @@ import type { Branch, BranchId, BranchService } from "./branches";
 export type ServiceText = Pick<BranchService, "title" | "excerpt" | "body" | "suitable" | "benefits" | "duration" | "anesthesia" | "sessions" | "recovery" | "faqs">;
 export type BranchText = Pick<Branch, "name" | "shortName" | "tagline" | "heroTitle" | "heroText" | "imageAlt" | "intro" | "highlights" | "process" | "faqs" | "formTopics"> & {
   services: Record<string, ServiceText>;
+  /** Hero slayt metinleri (görseller branches.ts'ten) */
+  slides: { title: string; sub: string }[];
 };
 
 export const BRANCH_TEXT_EN: Record<BranchId, BranchText> = {
@@ -20,10 +22,45 @@ export const BRANCH_TEXT_EN: Record<BranchId, BranchText> = {
     heroText:
       "MegaGöz's founding specialty. From cataract and smart lens surgery to laser treatments, pediatric eye care and retinal diseases — every eye service under one roof.",
     imageAlt: "MegaGöz eye examination",
-    intro: { title: ["", ""], text: [], facts: [] },
-    highlights: [],
-    process: [],
-    faqs: [],
+    slides: [
+      { title: "ALL UNDER ONE ROOF", sub: "PERSONALIZED PLANNING" },
+      { title: "YOUR EYE HEALTH IS IN SAFE HANDS", sub: "WITH THE LATEST TECHNOLOGIES" },
+      { title: "SMART LENS TECHNOLOGY", sub: "CLEAR NEAR AND FAR VISION" },
+      { title: "LASER EYE SURGERY", sub: "GET RID OF YOUR GLASSES" },
+    ],
+    intro: {
+      title: ["Since day one,", "our focus is your eyes."],
+      text: [
+        "MegaGöz was founded as an eye health centre. From cataract and smart lens surgery to laser treatments, glaucoma and pediatric eye care, our specialist physicians diagnose and treat the full range of eye conditions.",
+        "Every treatment begins with a comprehensive eye examination and advanced tests. The right method is chosen together with your physician, based on the structure of your eyes and your lifestyle.",
+      ],
+      facts: [
+        ["Examination", "Comprehensive eye exam"],
+        ["Diagnostics", "Advanced imaging"],
+        ["Anaesthesia", "Mostly eye drops"],
+        ["Follow-up", "Regular check-ups"],
+      ],
+    },
+    highlights: [
+      "Specialist physicians in every sub-field of ophthalmology",
+      "Comprehensive pre-operative tests and personalised lens planning",
+      "Sterile operating theatre backed by a medical centre",
+      "Regular post-operative check-ups and follow-up",
+    ],
+    process: [
+      { title: "Examination", text: "Visual acuity, eye pressure and the retina are assessed." },
+      { title: "Diagnostics", text: "Advanced tests confirm the diagnosis." },
+      { title: "Treatment", text: "The right method is planned together and carried out." },
+      { title: "Follow-up", text: "Results are maintained with regular check-ups." },
+    ],
+    faqs: [
+      { q: "Is cataract surgery painful?", a: "Cataract surgery is usually performed with anaesthetic eye drops and is painless during the procedure. Most patients go home the same day." },
+      { q: "Are smart lenses suitable for everyone?", a: "Suitability depends on eye structure, other eye conditions and expectations, and is determined during the examination. Your physician will recommend the most suitable lens." },
+      { q: "Is there an age limit for laser eye surgery?", a: "It is generally performed for people over 18 whose prescription has been stable for at least a year. Corneal structure is assessed beforehand." },
+      { q: "Does glaucoma cause symptoms?", a: "Glaucoma often progresses silently without symptoms, which is why regular eye exams are recommended after age 40." },
+      { q: "When should children have their first eye exam?", a: "An eye exam is recommended before school age even without symptoms; if a squint is noticed, see a physician without delay." },
+      { q: "Do partner institutions cover eye treatments?", a: "Coverage depends on the institution and treatment; our patient advisors will give you details." },
+    ],
     formTopics: ["Cataract / Smart Lens", "Laser Treatment", "Eye Examination", "Pediatric Eye Care", "Other"],
     services: {},
   },
@@ -37,6 +74,11 @@ export const BRANCH_TEXT_EN: Record<BranchId, BranchText> = {
     heroText:
       "Subtle, personalised medical aesthetic treatments planned around your facial features. Every procedure begins with a physician's examination and a detailed analysis.",
     imageAlt: "Medical aesthetic skin care treatment",
+    slides: [
+      { title: "NATURAL RESULTS, SIGNED BY A PHYSICIAN", sub: "PERSONALISED MEDICAL AESTHETICS" },
+      { title: "BOTOX AND FILLERS", sub: "SUBTLE, BALANCED RESULTS" },
+      { title: "SKIN RENEWAL", sub: "RADIANT, HEALTHY SKIN" },
+    ],
     intro: {
       title: ["A medical approach", "to beauty."],
       text: [
@@ -196,6 +238,11 @@ export const BRANCH_TEXT_EN: Record<BranchId, BranchText> = {
     heroText:
       "FUE and DHI hair transplants planned under physician supervision, beard and eyebrow transplants, and supportive treatments for hair loss. Every graft is planned for a natural look.",
     imageAlt: "Scalp assessment before a hair transplant",
+    slides: [
+      { title: "A HAIRLINE DESIGNED FOR YOU", sub: "PHYSICIAN-LED HAIR TRANSPLANTS" },
+      { title: "FUE AND DHI HAIR TRANSPLANT", sub: "NATURAL, PERMANENT RESULTS" },
+      { title: "BEARD AND EYEBROW TRANSPLANT", sub: "DESIGNED FOR YOUR FACE" },
+    ],
     intro: {
       title: ["Natural results", "start with the right plan."],
       text: [
@@ -353,6 +400,11 @@ export const BRANCH_TEXT_EN: Record<BranchId, BranchText> = {
     heroText:
       "Specialist dentists in every area of oral and dental health — from implants and cosmetic dentistry to orthodontics, pediatric dentistry and root canal treatment.",
     imageAlt: "Dental examination",
+    slides: [
+      { title: "CONFIDENT SMILES", sub: "WITH DIGITAL PLANNING" },
+      { title: "DENTAL IMPLANTS", sub: "THE COMFORT OF NATURAL TEETH" },
+      { title: "SMILE DESIGN", sub: "AESTHETICS IN HARMONY WITH YOUR FACE" },
+    ],
     intro: {
       title: ["Digital planning", "for every smile."],
       text: [

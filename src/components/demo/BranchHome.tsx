@@ -5,6 +5,7 @@ import { Link } from "@/i18n/navigation";
 import { ArrowRight, ArrowUpRight, CheckCircle2, Clock, MessageCircle, CalendarCheck } from "lucide-react";
 import type { Branch } from "@/data/branches";
 import BranchIcon from "./BranchIcon";
+import { TREATMENTS_DATA } from "@/data/treatments";
 import { useLocale } from "next-intl";
 import { dt } from "./demoText";
 
@@ -83,7 +84,7 @@ export function BranchIntro({ branch: b }: { branch: Branch }) {
             <p key={t} className="text-gray-500 text-[17px] leading-[1.8] font-medium mb-5">{t}</p>
           ))}
           <blockquote className="border-l-4 border-[#ecbb3f] pl-6 mt-8">
-            <p className="text-[#162f5d] font-bold italic text-[19px] leading-relaxed">{T.introQuote(b.shortName.toLocaleLowerCase(T === dt("en") ? "en-US" : "tr-TR"))}</p>
+            <p className="text-[#162f5d] font-bold italic text-[19px] leading-relaxed">{b.id === "goz" ? T.introQuoteEye : T.introQuote(b.shortName.toLocaleLowerCase(T === dt("en") ? "en-US" : "tr-TR"))}</p>
           </blockquote>
         </motion.div>
 
@@ -108,9 +109,46 @@ export function BranchIntro({ branch: b }: { branch: Branch }) {
 }
 
 /* ─────────── Hizmetler ─────────── */
+type Card = { key: string; title: string; excerpt: string; href: any; chips: string[] };
+
+/** Göz branşında öne çıkan 6 tedavi alanı (mevcut /tedaviler sayfalarına gider) */
+const EYE_CARDS: { id: string; tr: string; en: string }[] = [
+  { id: "katarakt", tr: "Zamanla matlaşan göz merceğinin temizlenmesi ve şeffaf, akıllı lens ile değiştirilmesi.", en: "Removing the clouded natural lens and replacing it with a clear smart lens." },
+  { id: "lazer-tedavisi", tr: "Miyop, hipermetrop ve astigmatizmanın lazerle kalıcı olarak düzeltilmesi.", en: "Permanent laser correction of myopia, hyperopia and astigmatism." },
+  { id: "kontak-lens", tr: "Kişiye özel lens uyumu ve göz içi akıllı lens seçenekleri.", en: "Personalised lens fitting and intraocular smart lens options." },
+  { id: "glokom-tedavisi", tr: "Göz tansiyonuna bağlı sinir hasarının erken teşhisi ve tedavisi.", en: "Early diagnosis and treatment of pressure-related optic nerve damage." },
+  { id: "cocuk-goz-sagligi", tr: "Çocukluk çağı görme kusurları ve göz tembelliğinin erken tedavisi.", en: "Early treatment of childhood vision problems and lazy eye." },
+  { id: "goz-kapagi-estetigi", tr: "Düşük veya torbalanmış göz kapaklarının estetik ve fonksiyonel düzeltilmesi.", en: "Aesthetic and functional correction of drooping or puffy eyelids." },
+];
+
+function useCards(b: Branch): Card[] {
+  const locale = useLocale() as "tr" | "en";
+  const T = dt(locale);
+  if (b.id === "goz") {
+    return EYE_CARDS.map((c) => {
+      const cat = TREATMENTS_DATA.find((x) => x.id === c.id)!;
+      return {
+        key: c.id,
+        title: cat.title[locale],
+        excerpt: c[locale],
+        href: { pathname: "/tedaviler/[category]", params: { category: cat.slug[locale] } },
+        chips: [T.treatmentOptions(cat.items.length)],
+      };
+    });
+  }
+  return b.services.map((s) => ({
+    key: s.slug,
+    title: s.title,
+    excerpt: s.excerpt,
+    href: { pathname: "/demo/[brans]/[hizmet]", params: { brans: b.slug, hizmet: s.slug } },
+    chips: [s.duration, `${T.recovery}: ${s.recovery}`],
+  }));
+}
+
 export function BranchServices({ branch: b }: { branch: Branch }) {
   const T = useT();
-  const [first, ...rest] = b.services;
+  const cards = useCards(b);
+  const [first, ...rest] = cards;
   return (
     <section className="bg-white pt-28 pb-20 lg:pt-36 lg:pb-28">
       <div className="container mx-auto px-6 max-w-[1300px]">
@@ -118,23 +156,27 @@ export function BranchServices({ branch: b }: { branch: Branch }) {
           <div>
             <div className="flex items-center gap-3 mb-4">
               <div className="h-[2px] w-8 bg-[#ecbb3f]" />
-              <span className="text-[#ecbb3f] font-bold tracking-widest text-sm uppercase">{T.branchServices(b.shortName)}</span>
+              <span className="text-[#ecbb3f] font-bold tracking-widest text-sm uppercase">{b.id === "goz" ? T.eyeTreatments : T.branchServices(b.shortName)}</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-black text-[#162f5d] tracking-tight leading-[1.1]">
               {T.servicesHeading[0]} <span className="text-[#ecbb3f]">{T.servicesHeading[1]}</span>
               <br className="hidden md:block" /> {T.servicesHeading[2]}
             </h2>
           </div>
-          <p className="text-gray-500 font-medium max-w-md leading-relaxed">{b.tagline}. {T.servicesNote}</p>
+          <div className="max-w-md">
+            <p className="text-gray-500 font-medium leading-relaxed">{b.tagline}. {T.servicesNote}</p>
+            {b.id === "goz" && (
+              <Link href="/tedaviler" className="inline-flex items-center gap-2 mt-4 text-[13px] font-black tracking-widest uppercase text-[#162f5d] hover:text-[#ecbb3f] transition-colors">
+                {T.allEyeTreatments} <ArrowRight size={15} />
+              </Link>
+            )}
+          </div>
         </div>
 
         <motion.div variants={container} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
           {/* Öne çıkan hizmet — görselli büyük kart */}
           <motion.div variants={item} className="md:col-span-2 lg:col-span-1 lg:row-span-2">
-            <Link
-              href={{ pathname: "/demo/[brans]/[hizmet]", params: { brans: b.slug, hizmet: first.slug } }}
-              className="group relative h-[380px] lg:h-full min-h-[380px] flex flex-col justify-end rounded-[24px] overflow-hidden bg-[#162f5d] shadow-2xl"
-            >
+            <Link href={first.href} className="group relative h-[380px] lg:h-full min-h-[380px] flex flex-col justify-end rounded-[24px] overflow-hidden bg-[#162f5d] shadow-2xl">
               <img src={b.secondaryImage} alt={first.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0a111a] via-[#0a111a]/60 to-transparent" />
               <span className="absolute top-5 left-5 px-3 py-1 rounded-full bg-[#ecbb3f] text-[#162f5d] text-[10px] font-black tracking-widest uppercase">{T.mostPreferred}</span>
@@ -142,7 +184,7 @@ export function BranchServices({ branch: b }: { branch: Branch }) {
                 <h3 className="text-3xl font-black text-white tracking-tight mb-2 group-hover:text-[#ecbb3f] transition-colors">{first.title}</h3>
                 <p className="text-gray-300 text-[15px] leading-relaxed mb-5">{first.excerpt}</p>
                 <div className="flex items-center gap-5 text-[12px] font-bold text-white/70 uppercase tracking-wider">
-                  {first.duration && <span className="flex items-center gap-1.5"><Clock size={14} className="text-[#ecbb3f]" /> {first.duration}</span>}
+                  <span className="flex items-center gap-1.5"><Clock size={14} className="text-[#ecbb3f]" /> {first.chips[0]}</span>
                   <span className="flex items-center gap-1.5 text-[#ecbb3f]">{T.review} <ArrowRight size={14} /></span>
                 </div>
               </div>
@@ -154,11 +196,8 @@ export function BranchServices({ branch: b }: { branch: Branch }) {
             const wide = rest.length % 2 === 1 && i === rest.length - 1;
             if (wide)
               return (
-                <motion.div key={s.slug} variants={item} className="md:col-span-2 lg:col-span-3">
-                  <Link
-                    href={{ pathname: "/demo/[brans]/[hizmet]", params: { brans: b.slug, hizmet: s.slug } }}
-                    className="group relative overflow-hidden flex flex-col md:flex-row md:items-center gap-6 md:gap-10 rounded-[24px] bg-[#162f5d] p-7 md:p-9 hover:shadow-[0_20px_50px_rgba(22,47,93,0.25)] transition-all duration-300"
-                  >
+                <motion.div key={s.key} variants={item} className="md:col-span-2 lg:col-span-3">
+                  <Link href={s.href} className="group relative overflow-hidden flex flex-col md:flex-row md:items-center gap-6 md:gap-10 rounded-[24px] bg-[#162f5d] p-7 md:p-9 hover:shadow-[0_20px_50px_rgba(22,47,93,0.25)] transition-all duration-300">
                     <div className="absolute -right-16 -top-16 w-64 h-64 rounded-full bg-[#ecbb3f]/10 blur-3xl" />
                     <span className="relative text-[56px] font-black leading-none text-transparent shrink-0" style={{ WebkitTextStroke: "1.5px #ecbb3f" }}>0{i + 2}</span>
                     <div className="relative flex-1">
@@ -166,8 +205,11 @@ export function BranchServices({ branch: b }: { branch: Branch }) {
                       <p className="text-gray-300 text-[15px] leading-relaxed max-w-2xl">{s.excerpt}</p>
                     </div>
                     <div className="relative flex flex-wrap items-center gap-2 text-[11px] font-bold text-white/80 uppercase tracking-wider">
-                      <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 border border-white/15"><Clock size={12} className="text-[#ecbb3f]" /> {s.duration}</span>
-                      <span className="px-3 py-1.5 rounded-full bg-white/10 border border-white/15">{T.recovery}: {s.recovery}</span>
+                      {s.chips.map((c, ci) => (
+                        <span key={c} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 border border-white/15">
+                          {ci === 0 && <Clock size={12} className="text-[#ecbb3f]" />} {c}
+                        </span>
+                      ))}
                     </div>
                     <span className="relative w-12 h-12 rounded-full bg-[#ecbb3f] text-[#162f5d] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                       <ArrowUpRight size={20} className="group-hover:rotate-45 transition-transform" />
@@ -176,27 +218,27 @@ export function BranchServices({ branch: b }: { branch: Branch }) {
                 </motion.div>
               );
             return (
-            <motion.div key={s.slug} variants={item}>
-              <Link
-                href={{ pathname: "/demo/[brans]/[hizmet]", params: { brans: b.slug, hizmet: s.slug } }}
-                className="group h-full min-h-[200px] flex flex-col justify-between rounded-[24px] bg-[#f8fafc] border border-gray-100 p-7 hover:bg-white hover:border-[#ecbb3f]/50 hover:shadow-[0_20px_50px_rgba(22,47,93,0.08)] transition-all duration-300"
-              >
-                <div className="flex items-start justify-between mb-6">
-                  <span className="text-[13px] font-black tracking-[0.2em] text-gray-300">0{i + 2}</span>
-                  <span className="w-10 h-10 rounded-full bg-white border border-gray-200 text-[#162f5d] flex items-center justify-center group-hover:bg-[#ecbb3f] group-hover:border-[#ecbb3f] transition-all">
-                    <ArrowUpRight size={17} className="group-hover:rotate-45 transition-transform" />
-                  </span>
-                </div>
-                <div>
-                  <h3 className="text-xl font-black text-[#162f5d] tracking-tight mb-2">{s.title}</h3>
-                  <p className="text-gray-500 text-[14px] leading-relaxed mb-4">{s.excerpt}</p>
-                  <div className="flex flex-wrap gap-2 text-[11px] font-bold text-[#162f5d]/70 uppercase tracking-wider">
-                    <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white border border-gray-200"><Clock size={12} className="text-[#ecbb3f]" /> {s.duration}</span>
-                    <span className="px-2.5 py-1 rounded-full bg-white border border-gray-200">{T.recovery}: {s.recovery}</span>
+              <motion.div key={s.key} variants={item}>
+                <Link href={s.href} className="group h-full min-h-[200px] flex flex-col justify-between rounded-[24px] bg-[#f8fafc] border border-gray-100 p-7 hover:bg-white hover:border-[#ecbb3f]/50 hover:shadow-[0_20px_50px_rgba(22,47,93,0.08)] transition-all duration-300">
+                  <div className="flex items-start justify-between mb-6">
+                    <span className="text-[13px] font-black tracking-[0.2em] text-gray-300">0{i + 2}</span>
+                    <span className="w-10 h-10 rounded-full bg-white border border-gray-200 text-[#162f5d] flex items-center justify-center group-hover:bg-[#ecbb3f] group-hover:border-[#ecbb3f] transition-all">
+                      <ArrowUpRight size={17} className="group-hover:rotate-45 transition-transform" />
+                    </span>
                   </div>
-                </div>
-              </Link>
-            </motion.div>
+                  <div>
+                    <h3 className="text-xl font-black text-[#162f5d] tracking-tight mb-2">{s.title}</h3>
+                    <p className="text-gray-500 text-[14px] leading-relaxed mb-4">{s.excerpt}</p>
+                    <div className="flex flex-wrap gap-2 text-[11px] font-bold text-[#162f5d]/70 uppercase tracking-wider">
+                      {s.chips.map((c, ci) => (
+                        <span key={c} className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white border border-gray-200">
+                          {ci === 0 && <Clock size={12} className="text-[#ecbb3f]" />} {c}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
             );
           })}
         </motion.div>

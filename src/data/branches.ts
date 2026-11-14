@@ -44,6 +44,8 @@ export interface Branch {
   image: string;
   imageAlt: string;
   secondaryImage: string;
+  /** Branş sayfası hero slaytları (orijinal göz hero'su ile aynı yapı) */
+  slides: { image: string; title: string; sub: string }[];
   /** Branş tanıtım bölümü */
   intro: { title: [string, string]; text: string[]; facts: [string, string][] };
   services: BranchService[];
@@ -73,11 +75,46 @@ export const BRANCHES: Branch[] = [
     image: "/images/slide2.webp",
     imageAlt: "MegaGöz göz muayenesi",
     secondaryImage: "/images/megagoz-katarakt-tedavisi.webp",
-    intro: { title: ["", ""], text: [], facts: [] },
-    services: [], // TREATMENTS_DATA'dan beslenir
-    highlights: [],
-    process: [],
-    faqs: [],
+    slides: [
+      { image: "/images/slide1.webp", title: "HEPSİ TEK ÇATI ALTINDA", sub: "KİŞİYE ÖZEL PLANLAMA" },
+      { image: "/images/slide2.webp", title: "GÖZ SAĞLIĞINIZ EMİN ELLERDE", sub: "EN YENİ TEKNOLOJİLERLE" },
+      { image: "/images/blog_smart_lens.webp", title: "AKILLI LENS TEKNOLOJİSİ", sub: "YAKIN VE UZAK NET GÖRÜŞ" },
+      { image: "/images/slide4.webp", title: "LAZER GÖZ AMELİYATI", sub: "GÖZLÜKLERİNİZDEN KURTULUN" },
+    ],
+    intro: {
+      title: ["Kuruluşumuzdan beri", "odağımız göz sağlığı."],
+      text: [
+        "MegaGöz, göz sağlığı merkezi olarak kuruldu. Katarakt ve akıllı lens cerrahisinden lazer tedavilerine, glokomdan çocuk göz sağlığına kadar göz hastalıklarının tanı ve tedavisinde uzman hekim kadromuzla hizmet veriyoruz.",
+        "Her tedavi kapsamlı bir göz muayenesi ve ileri tetkiklerle başlar. Size uygun yöntem, gözünüzün yapısına ve yaşam tarzınıza göre hekiminizle birlikte belirlenir.",
+      ],
+      facts: [
+        ["Muayene", "Kapsamlı göz muayenesi"],
+        ["Tetkik", "İleri görüntüleme"],
+        ["Anestezi", "Çoğunlukla damla"],
+        ["Takip", "Düzenli kontroller"],
+      ],
+    },
+    services: [], // Hizmet kartları TREATMENTS_DATA'dan beslenir (bkz. BranchServices)
+    highlights: [
+      "Göz hastalıklarının tüm alt dallarında uzman hekim kadrosu",
+      "Ameliyat öncesi kapsamlı tetkik ve kişiye özel lens planlaması",
+      "Steril ameliyathane ve tıp merkezi güvencesi",
+      "Ameliyat sonrası düzenli kontrol ve takip programı",
+    ],
+    process: [
+      { title: "Muayene", text: "Görme keskinliği, göz içi basınç ve göz dibi değerlendirilir." },
+      { title: "Tetkik", text: "Gerekli ileri tetkiklerle teşhis netleştirilir." },
+      { title: "Tedavi", text: "Size uygun yöntem birlikte planlanır ve uygulanır." },
+      { title: "Takip", text: "Düzenli kontrollerle sonuç korunur." },
+    ],
+    faqs: [
+      { q: "Katarakt ameliyatı ağrılı mı?", a: "Katarakt ameliyatı genellikle damla anestezi ile yapılır ve işlem sırasında ağrı hissedilmez. Çoğu hasta aynı gün evine döner." },
+      { q: "Akıllı lens herkese uygun mu?", a: "Uygunluk; göz yapısı, ek göz hastalıkları ve beklentilere göre muayenede belirlenir. Hekiminiz size en uygun lens tipini önerir." },
+      { q: "Lazer tedavisi için yaş sınırı var mı?", a: "Genellikle 18 yaşını doldurmuş ve göz numarası en az bir yıldır sabit olan kişilere uygulanır. Kornea yapısı ön muayenede değerlendirilir." },
+      { q: "Göz tansiyonu (glokom) belirti verir mi?", a: "Glokom çoğu zaman sinsi ilerler ve belirti vermez. Bu nedenle 40 yaşından sonra düzenli göz muayenesi önerilir." },
+      { q: "Çocuklar ilk göz muayenesine ne zaman götürülmeli?", a: "Belirti olmasa bile okul öncesi dönemde göz muayenesi önerilir; şaşılık veya göz kayması fark edilirse beklemeden hekime başvurulmalıdır." },
+      { q: "Anlaşmalı kurumlar göz tedavilerinde geçerli mi?", a: "Kapsam kuruma ve tedaviye göre değişir; hasta danışmanlarımız detaylı bilgi verir." },
+    ],
     formTopics: ["Katarakt / Akıllı Lens", "Lazer Tedavisi", "Göz Muayenesi", "Çocuk Göz Sağlığı", "Diğer"],
   },
 
@@ -96,6 +133,11 @@ export const BRANCHES: Branch[] = [
     image: u("photo-1552693673-1bf958298935"),
     imageAlt: "Medikal estetik cilt bakımı uygulaması",
     secondaryImage: u("photo-1728727267814-792db55ce678", 1200),
+    slides: [
+      { image: u("photo-1552693673-1bf958298935", 2200), title: "DOĞAL GÖRÜNÜM, HEKİM İMZASI", sub: "KİŞİYE ÖZEL MEDİKAL ESTETİK" },
+      { image: u("photo-1728727267814-792db55ce678", 2200), title: "BOTOKS VE DOLGU", sub: "ABARTISIZ, DENGELİ SONUÇLAR" },
+      { image: u("photo-1713085085470-fba013d67e65", 2200), title: "CİLT YENİLEME", sub: "IŞILTILI VE SAĞLIKLI BİR CİLT" },
+    ],
     intro: {
       title: ["Güzelliğe", "tıbbi bir bakış."],
       text: [
@@ -267,6 +309,11 @@ export const BRANCHES: Branch[] = [
     image: u("photo-1643837833100-8b2ebd7127bc"),
     imageAlt: "Saç ekimi öncesi saçlı deri değerlendirmesi",
     secondaryImage: u("photo-1512663150964-d8f43c899f76", 1200),
+    slides: [
+      { image: u("photo-1643837833100-8b2ebd7127bc", 2200), title: "SAÇ ÇİZGİNİZ SİZE ÖZEL", sub: "HEKİM KONTROLÜNDE SAÇ EKİMİ" },
+      { image: u("photo-1785860420936-b4f8bb4de5e1", 2200), title: "FUE VE DHI SAÇ EKİMİ", sub: "DOĞAL VE KALICI SONUÇ" },
+      { image: u("photo-1512663150964-d8f43c899f76", 2200), title: "SAKAL VE KAŞ EKİMİ", sub: "YÜZÜNÜZE UYGUN TASARIM" },
+    ],
     intro: {
       title: ["Doğal sonuç,", "doğru planlamayla başlar."],
       text: [
@@ -436,6 +483,11 @@ export const BRANCHES: Branch[] = [
     image: u("photo-1663755489920-5e09f66d011a"),
     imageAlt: "Diş hekimi muayenesi",
     secondaryImage: u("photo-1629909613654-28e377c37b09", 1200),
+    slides: [
+      { image: u("photo-1663755489920-5e09f66d011a", 2200), title: "KENDİNDEN EMİN GÜLÜŞLER", sub: "DİJİTAL PLANLAMA İLE" },
+      { image: u("photo-1629909613654-28e377c37b09", 2200), title: "İMPLANT TEDAVİSİ", sub: "DOĞAL DİŞ KONFORU" },
+      { image: u("photo-1777331903190-341a3dd0441b", 2200), title: "GÜLÜŞ TASARIMI", sub: "YÜZÜNÜZE UYUMLU ESTETİK" },
+    ],
     intro: {
       title: ["Her gülüş için", "dijital planlama."],
       text: [
@@ -599,10 +651,11 @@ export function getBranches(locale?: string): Branch[] {
   if (locale !== "en") return BRANCHES;
   return BRANCHES.map((b) => {
     const t = BRANCH_TEXT_EN[b.id];
-    const { services: serviceText, ...rest } = t;
+    const { services: serviceText, slides: slideText, ...rest } = t;
     return {
       ...b,
       ...rest,
+      slides: b.slides.map((s, i) => ({ ...s, ...(slideText[i] ?? {}) })),
       services: b.services.map((s) => ({ ...s, ...(serviceText[s.slug] ?? {}) })),
     };
   });

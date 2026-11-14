@@ -8,17 +8,11 @@ import BranchAppointmentForm from "@/components/demo/BranchAppointmentForm";
 import OtherBranches from "@/components/demo/OtherBranches";
 import FaqList from "@/components/demo/FaqList";
 import { dt } from "@/components/demo/demoText";
-import { BranchHero, BranchIntro, BranchServices, BranchProcess, BranchHighlights } from "@/components/demo/BranchHome";
+import BranchSliderHero from "@/components/demo/BranchSliderHero";
+import { BranchIntro, BranchServices, BranchProcess, BranchHighlights } from "@/components/demo/BranchHome";
 
-// Göz branşı = mevcut ana sayfanın bileşenleri (içerik birebir korunur)
-import HeroSlider from "@/components/HeroSlider";
-import ServicesSection from "@/components/ServicesSection";
-import WhyChooseUsSection from "@/components/WhyChooseUsSection";
-import PremiumStats from "@/components/PremiumStats";
-import BeforeAfterSlider from "@/components/BeforeAfterSlider";
-import TechnologySection from "@/components/TechnologySection";
-import BlogSection from "@/components/BlogSection";
-import FAQSection from "@/components/FAQSection";
+// Dört branş (Göz dahil) aynı şablonu kullanır: aynı site, farklı hizmet.
+// Göz tedavi kartları mevcut /tedaviler/... adreslerine gider (URL'ler korunur).
 
 // Not: Bu rota bilerek generateStaticParams KULLANMAZ. Sitenin diğer
 // sayfaları gibi istek anında render edilir; statik üretimde next-intl
@@ -40,34 +34,11 @@ export default async function BranchPage({ params }: { params: Promise<{ locale:
   const b = getBranch(brans, locale);
   if (!b) notFound();
 
-  if (b.id === "goz") {
-    return (
-      <main className="min-h-screen flex flex-col bg-white">
-        <DemoHeader activeBranch="goz" />
-        <BranchBar branchId="goz" />
-        {/* HeroSlider kendi üst boşluğunu ekliyor; branş barının hemen altına oturması için geri alıyoruz */}
-        <div className="-mt-[55px] lg:-mt-[85px]">
-          <HeroSlider branch="Göz Sağlığı" />
-        </div>
-        <ServicesSection />
-        <BranchAppointmentForm defaultBranch="goz" source="Göz Branşı Randevu Formu" />
-        <WhyChooseUsSection />
-        <PremiumStats />
-        <BeforeAfterSlider />
-        <TechnologySection />
-        <BlogSection />
-        <FAQSection />
-        <OtherBranches current="goz" />
-        <DemoFooter />
-      </main>
-    );
-  }
-
   return (
     <main className="min-h-screen flex flex-col bg-white">
       <DemoHeader activeBranch={b.id} />
       <BranchBar branchId={b.id} />
-      <BranchHero branch={b} />
+      <BranchSliderHero branch={b} />
       <BranchIntro branch={b} />
       <BranchServices branch={b} />
       <BranchProcess branch={b} />
