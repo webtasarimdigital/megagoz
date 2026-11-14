@@ -77,7 +77,7 @@ export const BRANCHES: Branch[] = [
     secondaryImage: "/images/megagoz-katarakt-tedavisi.webp",
     slides: [
       { image: "/images/slide1.webp", title: "HEPSİ TEK ÇATI ALTINDA", sub: "KİŞİYE ÖZEL PLANLAMA" },
-      { image: "/images/slide2.webp", title: "GÖZ SAĞLIĞINIZ EMİN ELLERDE", sub: "EN YENİ TEKNOLOJİLERLE" },
+      { image: "/images/slide2.webp", title: "GÖZ SAĞLIĞINIZ EMİN ELLERDE", sub: "İLERİ TANI VE TEDAVİ OLANAKLARIYLA" },
       { image: "/images/blog_smart_lens.webp", title: "AKILLI LENS TEKNOLOJİSİ", sub: "YAKIN VE UZAK NET GÖRÜŞ" },
       { image: "/images/slide4.webp", title: "LAZER GÖZ AMELİYATI", sub: "GÖZLÜKLERİNİZDEN KURTULUN" },
     ],

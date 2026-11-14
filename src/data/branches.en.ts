@@ -24,7 +24,7 @@ export const BRANCH_TEXT_EN: Record<BranchId, BranchText> = {
     imageAlt: "MegaGöz eye examination",
     slides: [
       { title: "ALL UNDER ONE ROOF", sub: "PERSONALIZED PLANNING" },
-      { title: "YOUR EYE HEALTH IS IN SAFE HANDS", sub: "WITH THE LATEST TECHNOLOGIES" },
+      { title: "YOUR EYE HEALTH IS IN SAFE HANDS", sub: "WITH ADVANCED DIAGNOSTIC AND TREATMENT OPTIONS" },
       { title: "SMART LENS TECHNOLOGY", sub: "CLEAR NEAR AND FAR VISION" },
       { title: "LASER EYE SURGERY", sub: "GET RID OF YOUR GLASSES" },
     ],
