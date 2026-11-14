@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Phone, MessageCircle, Clock, ArrowRight } from "lucide-react";
+import { useLocale } from "next-intl";
+import { dt } from "./demoText";
 
 interface Props {
   items: { q: string; a: string }[];
@@ -12,7 +14,8 @@ interface Props {
   text?: string;
 }
 
-export default function FaqList({ items, eyebrow = "Sık Sorulan Sorular", title, text }: Props) {
+export default function FaqList({ items, eyebrow, title, text }: Props) {
+  const T = dt(useLocale());
   const [open, setOpen] = useState<number | null>(0);
   return (
     <section className="bg-[#f8fafc] py-20 lg:py-28">
@@ -21,7 +24,7 @@ export default function FaqList({ items, eyebrow = "Sık Sorulan Sorular", title
         <div className="lg:sticky lg:top-[120px]">
           <div className="flex items-center gap-3 mb-4">
             <div className="h-[2px] w-8 bg-[#ecbb3f]" />
-            <span className="text-[#ecbb3f] font-bold tracking-widest text-sm uppercase">{eyebrow}</span>
+            <span className="text-[#ecbb3f] font-bold tracking-widest text-sm uppercase">{eyebrow ?? T.faqDefaultEyebrow}</span>
           </div>
           <h2 className="text-4xl lg:text-5xl font-black text-[#162f5d] tracking-tight leading-[1.1] mb-5">
             {title[0]}
@@ -29,13 +32,13 @@ export default function FaqList({ items, eyebrow = "Sık Sorulan Sorular", title
             <span className="font-light">{title[1]}</span>
           </h2>
           <p className="text-gray-500 text-[16px] leading-relaxed font-medium mb-8 max-w-md">
-            {text ?? "Aklınıza takılan her soruyu hasta danışmanlarımıza iletebilirsiniz. Tedaviye özel sorularınızı hekimlerimiz ön görüşmede yanıtlar."}
+            {text ?? T.faqDefaultText}
           </p>
 
           <div className="relative overflow-hidden rounded-3xl bg-[#162f5d] p-7 text-white shadow-[0_25px_60px_rgba(22,47,93,0.25)]">
             <div className="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-[#ecbb3f]/15 blur-2xl" />
-            <p className="relative text-[11px] font-black tracking-[0.2em] text-[#ecbb3f] uppercase mb-2">Sorunuz mu var?</p>
-            <p className="relative text-xl font-black leading-snug mb-6">Hasta danışmanlarımız sizi bilgilendirmek için hazır.</p>
+            <p className="relative text-[11px] font-black tracking-[0.2em] text-[#ecbb3f] uppercase mb-2">{T.haveQuestion}</p>
+            <p className="relative text-xl font-black leading-snug mb-6">{T.advisorsHere}</p>
             <div className="relative grid grid-cols-2 gap-3 mb-5">
               <a href="tel:4440320" className="flex items-center justify-center gap-2 h-[50px] rounded-xl bg-[#ecbb3f] hover:bg-[#d6a529] text-[#162f5d] font-black text-[14px] transition-colors">
                 <Phone size={16} /> 444 0 320
@@ -46,10 +49,10 @@ export default function FaqList({ items, eyebrow = "Sık Sorulan Sorular", title
             </div>
             <div className="relative flex items-center justify-between gap-3 pt-5 border-t border-white/10 text-[13px]">
               <span className="flex items-center gap-2 text-gray-300 font-medium">
-                <Clock size={15} className="text-[#ecbb3f]" /> Pzt – Cmt · 09:00 – 19:00
+                <Clock size={15} className="text-[#ecbb3f]" /> {T.hours}
               </span>
               <a href="#randevu" className="flex items-center gap-1.5 font-bold text-[#ecbb3f] hover:gap-2.5 transition-all">
-                Randevu <ArrowRight size={14} />
+                {T.appointment} <ArrowRight size={14} />
               </a>
             </div>
           </div>

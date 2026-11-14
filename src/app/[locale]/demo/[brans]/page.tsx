@@ -7,6 +7,7 @@ import BranchBar from "@/components/demo/BranchBar";
 import BranchAppointmentForm from "@/components/demo/BranchAppointmentForm";
 import OtherBranches from "@/components/demo/OtherBranches";
 import FaqList from "@/components/demo/FaqList";
+import { dt } from "@/components/demo/demoText";
 import { BranchHero, BranchIntro, BranchServices, BranchProcess, BranchHighlights } from "@/components/demo/BranchHome";
 
 // Göz branşı = mevcut ana sayfanın bileşenleri (içerik birebir korunur)
@@ -23,19 +24,20 @@ import FAQSection from "@/components/FAQSection";
 // sayfaları gibi istek anında render edilir; statik üretimde next-intl
 // dili istekten okuyamadığı için canlıda 500 hatası oluşuyordu.
 
-export async function generateMetadata({ params }: { params: Promise<{ brans: string }> }): Promise<Metadata> {
-  const { brans } = await params;
-  const b = getBranch(brans);
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; brans: string }> }): Promise<Metadata> {
+  const { locale, brans } = await params;
+  const b = getBranch(brans, locale);
   if (!b) return {};
   return {
-    title: b.id === "goz" ? "Megagöz | Göz Sağlığı Merkezi, Ümraniye - İstanbul" : `${b.name} | MegaGöz Tıp Merkezi, Ümraniye - İstanbul`,
+    title: b.id === "goz" ? (locale === "en" ? "Megagöz | Eye Health Centre, Ümraniye - Istanbul" : "Megagöz | Göz Sağlığı Merkezi, Ümraniye - İstanbul") : `${b.name} | ${dt(locale).centreName}, Ümraniye - İstanbul`,
     description: b.heroText,
   };
 }
 
-export default async function BranchPage({ params }: { params: Promise<{ brans: string }> }) {
-  const { brans } = await params;
-  const b = getBranch(brans);
+export default async function BranchPage({ params }: { params: Promise<{ locale: string; brans: string }> }) {
+  const { locale, brans } = await params;
+  const T = dt(locale);
+  const b = getBranch(brans, locale);
   if (!b) notFound();
 
   if (b.id === "goz") {
@@ -45,7 +47,7 @@ export default async function BranchPage({ params }: { params: Promise<{ brans: 
         <BranchBar branchId="goz" />
         {/* HeroSlider kendi üst boşluğunu ekliyor; branş barının hemen altına oturması için geri alıyoruz */}
         <div className="-mt-[55px] lg:-mt-[85px]">
-          <HeroSlider branch={b.name} />
+          <HeroSlider branch="Göz Sağlığı" />
         </div>
         <ServicesSection />
         <BranchAppointmentForm defaultBranch="goz" source="Göz Branşı Randevu Formu" />
@@ -70,12 +72,12 @@ export default async function BranchPage({ params }: { params: Promise<{ brans: 
       <BranchServices branch={b} />
       <BranchProcess branch={b} />
       <BranchHighlights branch={b} />
-      <BranchAppointmentForm defaultBranch={b.id} source={`${b.name} Branşı Randevu Formu`} />
+      <BranchAppointmentForm defaultBranch={b.id} source={`${getBranch(brans, "tr")!.name} Branşı Randevu Formu`} />
       <FaqList
         items={b.faqs}
-        eyebrow={`${b.shortName} · SSS`}
-        title={["Sık sorulan", "sorular"]}
-        text={`${b.name} hakkında en çok merak edilenleri derledik. Size özel sorularınızı ön görüşmede hekimimize iletebilirsiniz.`}
+        eyebrow={`${b.shortName} · ${T.faqShort}`}
+        title={T.faqTitle}
+        text={T.branchFaqText(b.name)}
       />
       <OtherBranches current={b.id} />
       <DemoFooter />

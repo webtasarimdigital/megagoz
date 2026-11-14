@@ -10,37 +10,40 @@ import BranchAppointmentForm from "@/components/demo/BranchAppointmentForm";
 import OtherBranches from "@/components/demo/OtherBranches";
 import FaqList from "@/components/demo/FaqList";
 import BranchIcon from "@/components/demo/BranchIcon";
+import { dt } from "@/components/demo/demoText";
 
 // Not: generateStaticParams bilerek yok (bkz. [brans]/page.tsx).
 
-function find(brans: string, hizmet: string) {
-  const b = getBranch(brans);
+function find(brans: string, hizmet: string, locale?: string) {
+  const b = getBranch(brans, locale);
   const s = b?.services.find((x) => x.slug === hizmet);
   return b && s ? { b, s } : null;
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ brans: string; hizmet: string }> }): Promise<Metadata> {
-  const { brans, hizmet } = await params;
-  const r = find(brans, hizmet);
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; brans: string; hizmet: string }> }): Promise<Metadata> {
+  const { locale, brans, hizmet } = await params;
+  const r = find(brans, hizmet, locale);
   if (!r) return {};
   return { title: `${r.s.title} | MegaGöz ${r.b.shortName}`, description: r.s.excerpt };
 }
 
-export default async function ServicePage({ params }: { params: Promise<{ brans: string; hizmet: string }> }) {
-  const { brans, hizmet } = await params;
+export default async function ServicePage({ params }: { params: Promise<{ locale: string; brans: string; hizmet: string }> }) {
+  const { locale, brans, hizmet } = await params;
+  const T = dt(locale);
   // Göz tedavileri mevcut /tedaviler/... adreslerinde kalır; burada yalnızca yeni branşlar var
-  const r = find(brans, hizmet);
+  const r = find(brans, hizmet, locale);
   if (!r) notFound();
+  const trNames = find(brans, hizmet, "tr")!;
   const { b, s } = r;
   const index = b.services.findIndex((x) => x.slug === s.slug);
   const related = b.services.filter((x) => x.slug !== s.slug);
   const image = index % 2 === 0 ? b.image : b.secondaryImage;
 
   const facts = [
-    { icon: Clock, label: "İşlem süresi", value: s.duration },
-    { icon: Syringe, label: "Anestezi", value: s.anesthesia },
-    { icon: Repeat, label: "Seans", value: s.sessions },
-    { icon: Activity, label: "Günlük hayata dönüş", value: s.recovery },
+    { icon: Clock, label: T.facts.duration, value: s.duration },
+    { icon: Syringe, label: T.facts.anesthesia, value: s.anesthesia },
+    { icon: Repeat, label: T.facts.sessions, value: s.sessions },
+    { icon: Activity, label: T.facts.recovery, value: s.recovery },
   ];
 
   return (
@@ -61,10 +64,10 @@ export default async function ServicePage({ params }: { params: Promise<{ brans:
             <p className="text-gray-300 text-lg lg:text-xl max-w-xl font-light leading-relaxed mb-8">{s.excerpt}</p>
             <div className="flex flex-col sm:flex-row gap-3">
               <a href="#randevu" className="flex items-center justify-center gap-2.5 bg-[#ecbb3f] hover:bg-[#d6a529] text-[#162f5d] font-black text-[13px] tracking-widest uppercase h-[54px] px-7 rounded-lg shadow-lg shadow-[#ecbb3f]/20 transition-colors">
-                Ücretsiz Ön Görüşme <ArrowRight size={17} />
+                {T.freeConsultation} <ArrowRight size={17} />
               </a>
               <a href="https://wa.me/905057710320" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2.5 border border-white/20 hover:border-white/50 text-white font-bold text-[13px] tracking-widest uppercase h-[54px] px-7 rounded-lg transition-colors">
-                <MessageCircle size={17} /> WhatsApp ile Sor
+                <MessageCircle size={17} /> {T.askOnWhatsapp}
               </a>
             </div>
           </div>
@@ -107,7 +110,7 @@ export default async function ServicePage({ params }: { params: Promise<{ brans:
 
             {/* Kimler için */}
             <div className="rounded-3xl bg-[#f8fafc] border border-gray-100 p-7 lg:p-9">
-              <h2 className="text-2xl md:text-3xl font-black text-[#162f5d] tracking-tight mb-6">Kimler için uygundur?</h2>
+              <h2 className="text-2xl md:text-3xl font-black text-[#162f5d] tracking-tight mb-6">{T.whoIsItFor}</h2>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
                 {s.suitable.map((x) => (
                   <li key={x} className="flex items-start gap-3 text-[15px] text-gray-600 font-medium leading-relaxed">
@@ -116,14 +119,14 @@ export default async function ServicePage({ params }: { params: Promise<{ brans:
                 ))}
               </ul>
               <p className="mt-6 pt-5 border-t border-gray-200 text-[14px] text-gray-500 leading-relaxed">
-                Uygunluk; sağlık geçmişiniz ve hekim muayenesi sonucuna göre kesinleşir.
+                {T.suitabilityNote}
               </p>
             </div>
 
             {/* Avantajlar */}
             <div>
               <h2 className="text-2xl md:text-3xl font-black text-[#162f5d] tracking-tight mb-6 flex items-center gap-3">
-                <span className="w-1.5 h-8 bg-[#ecbb3f] rounded-full shrink-0" /> Öne çıkan avantajlar
+                <span className="w-1.5 h-8 bg-[#ecbb3f] rounded-full shrink-0" /> {T.keyBenefits}
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {s.benefits.map((x, i) => (
@@ -140,13 +143,13 @@ export default async function ServicePage({ params }: { params: Promise<{ brans:
             {/* Süreç */}
             <div>
               <h2 className="text-2xl md:text-3xl font-black text-[#162f5d] tracking-tight mb-6 flex items-center gap-3">
-                <span className="w-1.5 h-8 bg-[#ecbb3f] rounded-full shrink-0" /> Süreç nasıl ilerler?
+                <span className="w-1.5 h-8 bg-[#ecbb3f] rounded-full shrink-0" /> {T.howItWorks}
               </h2>
               <ol className="relative grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {b.process.map((p, i) => (
                   <li key={p.title} className="relative rounded-2xl bg-[#162f5d] p-6 overflow-hidden">
                     <span className="absolute -right-2 -top-4 text-[90px] font-black leading-none text-white/[0.05]">0{i + 1}</span>
-                    <span className="relative text-[#ecbb3f] font-black text-[12px] tracking-[0.2em]">ADIM 0{i + 1}</span>
+                    <span className="relative text-[#ecbb3f] font-black text-[12px] tracking-[0.2em]">{T.step} 0{i + 1}</span>
                     <h3 className="relative text-lg font-black text-white mt-1.5 mb-1">{p.title}</h3>
                     <p className="relative text-gray-300 text-[14px] leading-relaxed">{p.text}</p>
                   </li>
@@ -157,7 +160,7 @@ export default async function ServicePage({ params }: { params: Promise<{ brans:
             <div className="flex gap-4 rounded-2xl border border-[#ecbb3f]/40 bg-[#ecbb3f]/5 p-6 text-[14px] text-gray-600 leading-relaxed">
               <Info size={20} className="text-[#ecbb3f] shrink-0 mt-0.5" />
               <p>
-                <strong className="text-[#162f5d]">Bilgilendirme:</strong> Bu sayfadaki bilgiler genel bilgilendirme amaçlıdır. Tedaviye uygunluk, süreler ve sonuçlar kişiden kişiye değişir; kesin bilgi için hekim muayenesi gereklidir.
+                <strong className="text-[#162f5d]">{T.disclaimerTitle}</strong> {T.disclaimer}
               </p>
             </div>
           </article>
@@ -167,19 +170,19 @@ export default async function ServicePage({ params }: { params: Promise<{ brans:
             <div className="relative overflow-hidden rounded-3xl bg-[#162f5d] p-7 text-white shadow-2xl">
               <div className="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-[#ecbb3f]/15 blur-2xl" />
               <p className="relative text-[11px] font-black tracking-[0.2em] text-[#ecbb3f] uppercase mb-2 flex items-center gap-2">
-                <Sparkle size={13} /> Ücretsiz ön görüşme
+                <Sparkle size={13} /> {T.freeConsultationSmall}
               </p>
-              <h3 className="relative text-xl font-black mb-2 leading-snug">{s.title} için size uygun planı birlikte belirleyelim.</h3>
-              <p className="relative text-gray-300 text-[14px] leading-relaxed mb-6">Hasta danışmanımız sizi arayarak uygun hekim ve saati planlasın.</p>
+              <h3 className="relative text-xl font-black mb-2 leading-snug">{T.planTogether(s.title)}</h3>
+              <p className="relative text-gray-300 text-[14px] leading-relaxed mb-6">{T.advisorWillCall}</p>
               <a href="#randevu" className="relative flex items-center justify-center gap-2 bg-[#ecbb3f] hover:bg-[#d6a529] text-[#162f5d] font-black text-[13px] tracking-widest uppercase h-[52px] rounded-lg transition-colors mb-3">
-                Randevu Talebi <ArrowRight size={16} />
+                {T.appointmentRequest} <ArrowRight size={16} />
               </a>
               <a href="tel:4440320" className="relative flex items-center justify-center gap-2 border border-white/20 hover:border-white/50 text-white font-bold h-[52px] rounded-lg transition-colors">
                 <Phone size={16} className="text-[#ecbb3f]" /> 444 0 320
               </a>
             </div>
             <div className="rounded-3xl border border-gray-100 bg-white p-7 shadow-[0_15px_40px_rgba(22,47,93,0.05)]">
-              <p className="text-[11px] font-black tracking-[0.2em] text-gray-400 uppercase mb-3">{b.shortName} · Diğer hizmetler</p>
+              <p className="text-[11px] font-black tracking-[0.2em] text-gray-400 uppercase mb-3">{T.otherServices(b.shortName)}</p>
               <ul className="divide-y divide-gray-100">
                 {related.map((x) => (
                   <li key={x.slug}>
@@ -194,15 +197,15 @@ export default async function ServicePage({ params }: { params: Promise<{ brans:
                 ))}
               </ul>
               <Link href={{ pathname: "/demo/[brans]", params: { brans: b.slug } }} className="mt-4 flex items-center gap-2 text-[12px] font-black tracking-widest uppercase text-[#ecbb3f]">
-                <CheckCircle2 size={15} /> {b.shortName} ana sayfası
+                <CheckCircle2 size={15} /> {T.branchHomeLower(b.shortName)}
               </Link>
             </div>
           </aside>
         </div>
       </section>
 
-      <FaqList items={s.faqs} eyebrow={`${s.title} · SSS`} title={[s.title, "hakkında"]} text={`${s.title} ile ilgili en sık sorulan soruları yanıtladık.`} />
-      <BranchAppointmentForm defaultBranch={b.id} source={`${b.name} › ${s.title} Sayfası`} />
+      <FaqList items={s.faqs} eyebrow={`${s.title} · ${T.faqShort}`} title={T.serviceFaqTitle(s.title)} text={T.serviceFaqText(s.title)} />
+      <BranchAppointmentForm defaultBranch={b.id} source={`${trNames.b.name} › ${trNames.s.title} Sayfası`} />
       <OtherBranches current={b.id} />
       <DemoFooter />
     </main>

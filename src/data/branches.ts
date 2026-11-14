@@ -7,6 +7,8 @@
 // genel bilgilendirme amaçlıdır ve hekim onayından geçmelidir.
 // ─────────────────────────────────────────────────────────────
 
+import { BRANCH_TEXT_EN } from "./branches.en";
+
 export type BranchId = "goz" | "medikal-estetik" | "sac-ekimi" | "dis";
 
 export interface BranchService {
@@ -589,7 +591,24 @@ export const BRANCHES: Branch[] = [
   },
 ];
 
-export const getBranch = (slug: string) => BRANCHES.find((b) => b.slug === slug);
+/**
+ * Dile göre branş listesi. Türkçe ana veridir; İngilizcede yalnızca metin
+ * alanları branches.en.ts'ten gelir (slug, görsel, renk ortak kalır).
+ */
+export function getBranches(locale?: string): Branch[] {
+  if (locale !== "en") return BRANCHES;
+  return BRANCHES.map((b) => {
+    const t = BRANCH_TEXT_EN[b.id];
+    const { services: serviceText, ...rest } = t;
+    return {
+      ...b,
+      ...rest,
+      services: b.services.map((s) => ({ ...s, ...(serviceText[s.slug] ?? {}) })),
+    };
+  });
+}
+
+export const getBranch = (slug: string, locale?: string) => getBranches(locale).find((b) => b.slug === slug);
 
 /** Kurum geneli görseller (demo) */
 export const CORPORATE_IMAGES = {

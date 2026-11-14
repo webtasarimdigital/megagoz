@@ -19,7 +19,7 @@ export async function POST(request: Request) {
       data = jsonData as Record<string, string>;
     }
 
-    const { source, name, email, phone, message, branch, subject, page } = data;
+    const { source, name, email, phone, message, branch, subject, page, language } = data;
 
     const smtpHost = process.env.SMTP_HOST || 'smtp.turkticaret.net';
     const smtpPort = Number(process.env.SMTP_PORT) || 465;
@@ -56,6 +56,7 @@ export async function POST(request: Request) {
           ${branch ? `<p><strong>Branş:</strong> ${branch}</p>` : ''}
           <p><strong>Kaynak:</strong> ${source || 'Bilinmiyor'}</p>
           ${page ? `<p><strong>Sayfa:</strong> ${page}</p>` : ''}
+          ${language === 'en' ? `<p><strong>Dil:</strong> İngilizce (yabancı hasta olabilir)</p>` : ''}
           ${subject && isNaN(Number(subject)) ? `<p><strong>Konu:</strong> ${subject}</p>` : ''}
           <p><strong>Ad:</strong> ${name || '-'}</p>
           <p><strong>Tel:</strong> ${phone || '-'}</p>

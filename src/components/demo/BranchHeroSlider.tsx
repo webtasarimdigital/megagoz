@@ -9,14 +9,18 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import { ArrowRight, CalendarCheck } from "lucide-react";
 import { Link } from "@/i18n/navigation";
-import { BRANCHES } from "@/data/branches";
+import { useLocale } from "next-intl";
+import { getBranches } from "@/data/branches";
+import { dt } from "./demoText";
 import BranchIcon from "./BranchIcon";
 
 const DELAY = 6000;
-const MOBILE_LABEL: Record<string, string> = { goz: "Göz", "medikal-estetik": "Estetik", "sac-ekimi": "Saç Ekimi", dis: "Diş" };
 
 /** Kurum ana sayfası hero'su: dört branş arasında otomatik kayan slider */
 export default function BranchHeroSlider() {
+  const locale = useLocale();
+  const T = dt(locale);
+  const BRANCHES = getBranches(locale);
   const [swiper, setSwiper] = useState<SwiperType | null>(null);
   const [active, setActive] = useState(0);
 
@@ -54,7 +58,7 @@ export default function BranchHeroSlider() {
                 <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#0a111a]/90 to-transparent" />
 
                 {/* Metin */}
-                <div className="relative z-10 h-full max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 flex items-start pt-8 sm:pt-12 md:items-center md:pt-0 md:pb-[130px]">
+                <div className="relative z-10 h-full max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 flex items-center pt-4 pb-[calc(178px_+_env(safe-area-inset-bottom))] sm:pb-[calc(196px_+_env(safe-area-inset-bottom))] md:pt-0 md:pb-[130px]">
                   <motion.div
                     initial={false}
                     animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
@@ -78,13 +82,13 @@ export default function BranchHeroSlider() {
                         href={{ pathname: "/demo/[brans]", params: { brans: b.slug } }}
                         className="flex items-center justify-center gap-2.5 bg-[#ecbb3f] hover:bg-[#d6a529] text-[#162f5d] font-black text-[13px] tracking-widest uppercase h-[54px] px-7 rounded-lg shadow-lg shadow-[#ecbb3f]/25 transition-colors"
                       >
-                        {b.shortName} Branşını Keşfet <ArrowRight size={17} />
+                        {T.exploreBranch(b.shortName)} <ArrowRight size={17} />
                       </Link>
                       <a
                         href="#randevu"
                         className="hidden sm:flex items-center justify-center gap-2.5 border border-white/30 hover:border-white/70 bg-white/5 backdrop-blur text-white font-bold text-[13px] tracking-widest uppercase h-[54px] px-7 rounded-lg transition-colors"
                       >
-                        <CalendarCheck size={17} /> Randevu Al
+                        <CalendarCheck size={17} /> {T.bookAppointment}
                       </a>
                     </div>
                   </motion.div>
@@ -111,7 +115,7 @@ export default function BranchHeroSlider() {
                 <button
                   key={b.id}
                   onClick={() => swiper?.slideToLoop(i)}
-                  aria-label={`${b.name} slaytı`}
+                  aria-label={T.slideLabel(b.name)}
                   aria-current={on}
                   className={`group relative text-left rounded-xl sm:rounded-2xl overflow-hidden px-2.5 sm:px-5 pt-3 sm:pt-4 pb-3.5 sm:pb-5 border backdrop-blur-md transition-all duration-300 ${
                     on ? "bg-white/15 border-white/25" : "bg-white/5 border-white/10 hover:bg-white/10"
@@ -127,7 +131,7 @@ export default function BranchHeroSlider() {
                     <span className="min-w-0 text-center sm:text-left">
                       <span className="hidden sm:block text-[10px] font-black tracking-[0.2em] text-white/40">0{i + 1}</span>
                       <span className={`block font-black text-[11px] sm:text-[15px] leading-tight sm:truncate ${on ? "text-white" : "text-white/70"}`}>
-                        <span className="sm:hidden">{MOBILE_LABEL[b.id]}</span>
+                        <span className="sm:hidden">{T.mobileLabel[b.id]}</span>
                         <span className="hidden sm:inline">{b.shortName}</span>
                       </span>
                     </span>

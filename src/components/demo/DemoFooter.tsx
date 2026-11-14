@@ -1,12 +1,15 @@
 import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { MapPin, Phone, Mail, Clock, PhoneCall, MessageCircle, ArrowRight } from "lucide-react";
-import { BRANCHES } from "@/data/branches";
+import { getBranches } from "@/data/branches";
+import { dt } from "./demoText";
 import { TREATMENTS_DATA } from "@/data/treatments";
 import BranchIcon from "./BranchIcon";
 
 export default function DemoFooter() {
   const locale = useLocale() as "tr" | "en";
+  const T = dt(locale);
+  const BRANCHES = getBranches(locale);
 
   return (
     <footer className="bg-[#152d59]">
@@ -17,7 +20,7 @@ export default function DemoFooter() {
             <a href="tel:4440320" className="flex-1 py-6 px-3 md:py-10 flex items-center justify-center gap-3 md:gap-4 hover:bg-gray-50 transition-colors group">
               <PhoneCall size={26} className="text-[#162f5d] group-hover:text-[#ecbb3f] transition-colors shrink-0" />
               <div className="flex flex-col text-left">
-                <h4 className="text-[#162f5d] font-bold text-[13px] md:text-[16px] group-hover:text-[#ecbb3f] transition-colors leading-tight">Çağrı Merkezi</h4>
+                <h4 className="text-[#162f5d] font-bold text-[13px] md:text-[16px] group-hover:text-[#ecbb3f] transition-colors leading-tight">{T.callCentre}</h4>
                 <p className="text-gray-500 font-medium text-[12px] md:text-[13px] mt-1">444 0 320</p>
               </div>
             </a>
@@ -25,14 +28,14 @@ export default function DemoFooter() {
               <MessageCircle size={26} className="text-[#162f5d] group-hover:text-[#ecbb3f] transition-colors shrink-0" />
               <div className="flex flex-col text-left">
                 <h4 className="text-[#162f5d] font-bold text-[13px] md:text-[16px] group-hover:text-[#ecbb3f] transition-colors leading-tight">WhatsApp</h4>
-                <p className="text-gray-500 font-medium text-[12px] md:text-[13px] mt-1 hidden sm:block">Mesajlaşmak için tıklayın</p>
+                <p className="text-gray-500 font-medium text-[12px] md:text-[13px] mt-1 hidden sm:block">{T.clickToMessage}</p>
               </div>
             </a>
             <Link prefetch={false} href="/iletisim" className="flex-1 py-6 px-3 md:py-10 flex items-center justify-center gap-3 md:gap-4 hover:bg-gray-50 transition-colors group">
               <MapPin size={26} className="text-[#162f5d] group-hover:text-[#ecbb3f] transition-colors shrink-0" />
               <div className="flex flex-col text-left">
-                <h4 className="text-[#162f5d] font-bold text-[13px] md:text-[16px] group-hover:text-[#ecbb3f] transition-colors leading-tight">Bize Ulaşın</h4>
-                <p className="text-gray-500 font-medium text-[12px] md:text-[13px] mt-1 hidden sm:block">Konumumuz için tıklayın</p>
+                <h4 className="text-[#162f5d] font-bold text-[13px] md:text-[16px] group-hover:text-[#ecbb3f] transition-colors leading-tight">{T.reachUs}</h4>
+                <p className="text-gray-500 font-medium text-[12px] md:text-[13px] mt-1 hidden sm:block">{T.clickForLocation}</p>
               </div>
             </Link>
           </div>
@@ -47,7 +50,7 @@ export default function DemoFooter() {
               <img src="/megagoz-logo-mobil.webp" alt="MegaGöz Logo" className="absolute inset-0 w-[90%] h-[90%] my-auto object-contain object-left" />
             </Link>
             <p className="text-[13px] leading-relaxed text-gray-300 font-medium">
-              MegaGöz Tıp Merkezi; göz sağlığı, medikal estetik, saç ekimi ve ağız-diş sağlığı hizmetlerini tek kurum çatısı altında, aynı hekimlik ve hijyen standardıyla sunar.
+              {T.footerAbout}
             </p>
             <div className="flex gap-3">
               <a href="https://instagram.com/megagoz" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center text-gray-300 hover:bg-[#ecbb3f] hover:text-white hover:border-[#ecbb3f] transition-all">
@@ -81,7 +84,7 @@ export default function DemoFooter() {
                     ))}
                     <li>
                       <Link href={{ pathname: "/demo/[brans]", params: { brans: b.slug } }} className="inline-flex items-center gap-1.5 text-[12px] font-bold text-[#ecbb3f] hover:gap-2.5 transition-all">
-                        Tümü <ArrowRight size={13} />
+                        {T.all} <ArrowRight size={13} />
                       </Link>
                     </li>
                   </ul>
@@ -92,12 +95,12 @@ export default function DemoFooter() {
 
           {/* İletişim */}
           <div className="md:col-span-2 lg:col-span-3">
-            <h4 className="text-white font-black tracking-widest uppercase text-[14px] mb-3">İletişim</h4>
+            <h4 className="text-white font-black tracking-widest uppercase text-[14px] mb-3">{T.contact}</h4>
             <div className="w-[30px] h-[2px] bg-[#ecbb3f] mb-6" />
             <div className="space-y-5">
               <div className="flex items-start gap-3">
                 <MapPin size={20} className="text-[#ecbb3f] shrink-0 mt-0.5" />
-                <p className="text-[14px] text-gray-300 font-medium leading-relaxed">İstiklal, Gamsız Sk. No:3,<br />34762 Ümraniye/İstanbul</p>
+                <p className="text-[14px] text-gray-300 font-medium leading-relaxed">İstiklal, Gamsız Sk. No:3,<br />34762 Ümraniye/İstanbul{T.turkey}</p>
               </div>
               <div className="flex items-start gap-3">
                 <Phone size={20} className="text-[#ecbb3f] shrink-0" />
@@ -109,7 +112,7 @@ export default function DemoFooter() {
               </div>
               <div className="flex items-start gap-3">
                 <Clock size={20} className="text-[#ecbb3f] shrink-0 mt-0.5" />
-                <p className="text-[13px] text-gray-400 font-medium"><span className="text-gray-200 font-bold">Pazartesi – Cumartesi</span><br />09:00 – 19:00</p>
+                <p className="text-[13px] text-gray-400 font-medium"><span className="text-gray-200 font-bold">{T.workingDays}</span><br />09:00 – 19:00</p>
               </div>
             </div>
           </div>
@@ -117,13 +120,13 @@ export default function DemoFooter() {
 
         <div className="border-t border-white/10 pt-6 pb-28 md:pb-6 flex flex-col md:flex-row justify-between items-center gap-4 text-center">
           <nav className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-[13px] text-gray-400 font-medium">
-            <Link href="/hakkimizda" className="hover:text-[#ecbb3f]">Hakkımızda</Link>
+            <Link href="/hakkimizda" className="hover:text-[#ecbb3f]">{T.about}</Link>
             <Link href="/blog" className="hover:text-[#ecbb3f]">Blog</Link>
-            <Link href="/anlasmali-kurumlar" className="hover:text-[#ecbb3f]">Anlaşmalı Kurumlar</Link>
+            <Link href="/anlasmali-kurumlar" className="hover:text-[#ecbb3f]">{T.partnerInstitutions}</Link>
             <Link href="/kvkk" className="hover:text-[#ecbb3f]">KVKK</Link>
           </nav>
           <p className="text-[13px] text-gray-400 font-medium tracking-wide">
-            © 2026 <strong className="text-gray-300 font-bold">MegaGöz Tıp Merkezi.</strong> Tüm Hakları Saklıdır.
+            © 2026 <strong className="text-gray-300 font-bold">{T.centreName}.</strong> {T.rights}
           </p>
         </div>
       </div>

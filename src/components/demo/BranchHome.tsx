@@ -5,12 +5,17 @@ import { Link } from "@/i18n/navigation";
 import { ArrowRight, ArrowUpRight, CheckCircle2, Clock, MessageCircle, CalendarCheck } from "lucide-react";
 import type { Branch } from "@/data/branches";
 import BranchIcon from "./BranchIcon";
+import { useLocale } from "next-intl";
+import { dt } from "./demoText";
+
+const useT = () => dt(useLocale());
 
 const container: Variants = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.08 } } };
 const item: Variants = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } };
 
 /* ─────────── Branş hero'su: solda tipografi, sağda büyük görsel ─────────── */
 export function BranchHero({ branch: b }: { branch: Branch }) {
+  const T = useT();
   return (
     <section className="relative bg-[#0a111a] overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-[#162f5d] via-[#0f2245] to-[#0a111a]" />
@@ -29,10 +34,10 @@ export function BranchHero({ branch: b }: { branch: Branch }) {
           <p className="text-gray-300 text-[16px] md:text-lg leading-relaxed font-light max-w-xl mb-9">{b.heroText}</p>
           <div className="flex flex-col sm:flex-row gap-3">
             <a href="#randevu" className="flex items-center justify-center gap-2.5 bg-[#ecbb3f] hover:bg-[#d6a529] text-[#162f5d] font-black text-[13px] tracking-widest uppercase h-[54px] px-7 rounded-lg shadow-lg shadow-[#ecbb3f]/20 transition-colors">
-              <CalendarCheck size={18} /> Ücretsiz Ön Görüşme
+              <CalendarCheck size={18} /> {T.freeConsultation}
             </a>
             <a href="https://wa.me/905057710320" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2.5 border border-white/20 hover:border-white/50 text-white font-bold text-[13px] tracking-widest uppercase h-[54px] px-7 rounded-lg transition-colors">
-              <MessageCircle size={18} /> WhatsApp ile Sor
+              <MessageCircle size={18} /> {T.askOnWhatsapp}
             </a>
           </div>
         </motion.div>
@@ -48,8 +53,8 @@ export function BranchHero({ branch: b }: { branch: Branch }) {
               <CheckCircle2 size={24} />
             </span>
             <div>
-              <p className="text-[#162f5d] font-black text-[15px] leading-tight">Hekim muayenesiyle başlar</p>
-              <p className="text-gray-500 text-[12px] font-medium mt-0.5">Kişiye özel tedavi planı</p>
+              <p className="text-[#162f5d] font-black text-[15px] leading-tight">{T.startsWithExam}</p>
+              <p className="text-gray-500 text-[12px] font-medium mt-0.5">{T.personalPlan}</p>
             </div>
           </motion.div>
         </motion.div>
@@ -60,6 +65,7 @@ export function BranchHero({ branch: b }: { branch: Branch }) {
 
 /* ─────────── Branş tanıtımı ─────────── */
 export function BranchIntro({ branch: b }: { branch: Branch }) {
+  const T = useT();
   return (
     <section className="bg-white pt-24 lg:pt-32 overflow-hidden">
       <div className="container mx-auto px-6 max-w-[1300px] grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-14 lg:gap-24 items-center">
@@ -77,7 +83,7 @@ export function BranchIntro({ branch: b }: { branch: Branch }) {
             <p key={t} className="text-gray-500 text-[17px] leading-[1.8] font-medium mb-5">{t}</p>
           ))}
           <blockquote className="border-l-4 border-[#ecbb3f] pl-6 mt-8">
-            <p className="text-[#162f5d] font-bold italic text-[19px] leading-relaxed">&ldquo;Göz cerrahisinden gelen titizliği, {b.shortName.toLocaleLowerCase("tr-TR")} bölümümüzün her uygulamasına taşıyoruz.&rdquo;</p>
+            <p className="text-[#162f5d] font-bold italic text-[19px] leading-relaxed">{T.introQuote(b.shortName.toLocaleLowerCase(T === dt("en") ? "en-US" : "tr-TR"))}</p>
           </blockquote>
         </motion.div>
 
@@ -103,6 +109,7 @@ export function BranchIntro({ branch: b }: { branch: Branch }) {
 
 /* ─────────── Hizmetler ─────────── */
 export function BranchServices({ branch: b }: { branch: Branch }) {
+  const T = useT();
   const [first, ...rest] = b.services;
   return (
     <section className="bg-white pt-28 pb-20 lg:pt-36 lg:pb-28">
@@ -111,14 +118,14 @@ export function BranchServices({ branch: b }: { branch: Branch }) {
           <div>
             <div className="flex items-center gap-3 mb-4">
               <div className="h-[2px] w-8 bg-[#ecbb3f]" />
-              <span className="text-[#ecbb3f] font-bold tracking-widest text-sm uppercase">{b.shortName} Hizmetleri</span>
+              <span className="text-[#ecbb3f] font-bold tracking-widest text-sm uppercase">{T.branchServices(b.shortName)}</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-black text-[#162f5d] tracking-tight leading-[1.1]">
-              Size özel <span className="text-[#ecbb3f]">planlanan</span>
-              <br className="hidden md:block" /> uygulamalar
+              {T.servicesHeading[0]} <span className="text-[#ecbb3f]">{T.servicesHeading[1]}</span>
+              <br className="hidden md:block" /> {T.servicesHeading[2]}
             </h2>
           </div>
-          <p className="text-gray-500 font-medium max-w-md leading-relaxed">{b.tagline}. Her uygulama öncesinde hekim değerlendirmesi yapılır.</p>
+          <p className="text-gray-500 font-medium max-w-md leading-relaxed">{b.tagline}. {T.servicesNote}</p>
         </div>
 
         <motion.div variants={container} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
@@ -130,13 +137,13 @@ export function BranchServices({ branch: b }: { branch: Branch }) {
             >
               <img src={b.secondaryImage} alt={first.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0a111a] via-[#0a111a]/60 to-transparent" />
-              <span className="absolute top-5 left-5 px-3 py-1 rounded-full bg-[#ecbb3f] text-[#162f5d] text-[10px] font-black tracking-widest uppercase">En çok tercih edilen</span>
+              <span className="absolute top-5 left-5 px-3 py-1 rounded-full bg-[#ecbb3f] text-[#162f5d] text-[10px] font-black tracking-widest uppercase">{T.mostPreferred}</span>
               <div className="relative p-7">
                 <h3 className="text-3xl font-black text-white tracking-tight mb-2 group-hover:text-[#ecbb3f] transition-colors">{first.title}</h3>
                 <p className="text-gray-300 text-[15px] leading-relaxed mb-5">{first.excerpt}</p>
                 <div className="flex items-center gap-5 text-[12px] font-bold text-white/70 uppercase tracking-wider">
                   {first.duration && <span className="flex items-center gap-1.5"><Clock size={14} className="text-[#ecbb3f]" /> {first.duration}</span>}
-                  <span className="flex items-center gap-1.5 text-[#ecbb3f]">İncele <ArrowRight size={14} /></span>
+                  <span className="flex items-center gap-1.5 text-[#ecbb3f]">{T.review} <ArrowRight size={14} /></span>
                 </div>
               </div>
             </Link>
@@ -160,7 +167,7 @@ export function BranchServices({ branch: b }: { branch: Branch }) {
                     </div>
                     <div className="relative flex flex-wrap items-center gap-2 text-[11px] font-bold text-white/80 uppercase tracking-wider">
                       <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 border border-white/15"><Clock size={12} className="text-[#ecbb3f]" /> {s.duration}</span>
-                      <span className="px-3 py-1.5 rounded-full bg-white/10 border border-white/15">İyileşme: {s.recovery}</span>
+                      <span className="px-3 py-1.5 rounded-full bg-white/10 border border-white/15">{T.recovery}: {s.recovery}</span>
                     </div>
                     <span className="relative w-12 h-12 rounded-full bg-[#ecbb3f] text-[#162f5d] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                       <ArrowUpRight size={20} className="group-hover:rotate-45 transition-transform" />
@@ -185,7 +192,7 @@ export function BranchServices({ branch: b }: { branch: Branch }) {
                   <p className="text-gray-500 text-[14px] leading-relaxed mb-4">{s.excerpt}</p>
                   <div className="flex flex-wrap gap-2 text-[11px] font-bold text-[#162f5d]/70 uppercase tracking-wider">
                     <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white border border-gray-200"><Clock size={12} className="text-[#ecbb3f]" /> {s.duration}</span>
-                    <span className="px-2.5 py-1 rounded-full bg-white border border-gray-200">İyileşme: {s.recovery}</span>
+                    <span className="px-2.5 py-1 rounded-full bg-white border border-gray-200">{T.recovery}: {s.recovery}</span>
                   </div>
                 </div>
               </Link>
@@ -200,6 +207,7 @@ export function BranchServices({ branch: b }: { branch: Branch }) {
 
 /* ─────────── Süreç + neden biz ─────────── */
 export function BranchProcess({ branch: b }: { branch: Branch }) {
+  const T = useT();
   return (
     <section className="relative bg-[#162f5d] py-20 lg:py-28 overflow-hidden">
       <div className="absolute right-0 top-0 w-1/2 h-full bg-[#ecbb3f]/5 blur-[150px] rounded-full pointer-events-none" />
@@ -207,10 +215,10 @@ export function BranchProcess({ branch: b }: { branch: Branch }) {
         <div className="text-center mb-14">
           <div className="inline-flex items-center gap-3 mb-4">
             <div className="h-[2px] w-12 bg-[#ecbb3f]" />
-            <span className="text-[#ecbb3f] font-black tracking-widest uppercase text-sm">Tedavi Süreci</span>
+            <span className="text-[#ecbb3f] font-black tracking-widest uppercase text-sm">{T.treatmentProcess}</span>
             <div className="h-[2px] w-12 bg-[#ecbb3f]" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight">Dört adımda <span className="text-[#ecbb3f]">net bir yol.</span></h2>
+          <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight">{T.processTitle[0]} <span className="text-[#ecbb3f]">{T.processTitle[1]}</span></h2>
         </div>
         <motion.ol variants={container} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {b.process.map((p, i) => (
@@ -227,26 +235,27 @@ export function BranchProcess({ branch: b }: { branch: Branch }) {
 }
 
 export function BranchHighlights({ branch: b }: { branch: Branch }) {
+  const T = useT();
   return (
     <section className="bg-white py-24 lg:py-32 overflow-hidden">
       <div className="container mx-auto px-6 max-w-[1300px] grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-24 items-center">
         <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative h-[420px] sm:h-[520px]">
           <div className="absolute inset-0 right-10 rounded-2xl overflow-hidden shadow-2xl">
-            <img src="/images/megagoz-clinic-interior.webp" alt="MegaGöz klinik" className="w-full h-full object-cover" />
+            <img src="/images/megagoz-clinic-interior.webp" alt={T.clinicAlt} className="w-full h-full object-cover" />
           </div>
           <div className="absolute bottom-8 right-0 bg-[#162f5d] text-white p-6 rounded-2xl shadow-xl border-b-4 border-[#ecbb3f] max-w-[240px]">
-            <p className="text-[#ecbb3f] font-black text-3xl leading-none mb-2">1 kurum</p>
-            <p className="text-[13px] text-gray-300 font-medium leading-snug">Dört branş, tek çağrı merkezi ve tek hasta dosyası</p>
+            <p className="text-[#ecbb3f] font-black text-3xl leading-none mb-2">{T.oneInstitutionBig}</p>
+            <p className="text-[13px] text-gray-300 font-medium leading-snug">{T.oneInstitutionText}</p>
           </div>
         </motion.div>
         <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
           <div className="flex items-center gap-3 mb-5">
             <div className="h-[2px] w-8 bg-[#ecbb3f]" />
-            <span className="text-[#ecbb3f] font-bold tracking-widest text-sm uppercase">Neden MegaGöz {b.shortName}</span>
+            <span className="text-[#ecbb3f] font-bold tracking-widest text-sm uppercase">{T.whyBranch(b.shortName)}</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-[#162f5d] tracking-tight leading-[1.1] mb-8">
-            Bir tıp merkezinin <br />
-            <span className="text-[#ecbb3f]">güvencesiyle.</span>
+            {T.assuranceTitle[0]} <br />
+            <span className="text-[#ecbb3f]">{T.assuranceTitle[1]}</span>
           </h2>
           <ul className="space-y-4 mb-10">
             {b.highlights.map((h) => (
@@ -259,7 +268,7 @@ export function BranchHighlights({ branch: b }: { branch: Branch }) {
             <span className="w-14 h-14 bg-[#162f5d] rounded-full flex items-center justify-center text-[#ecbb3f] group-hover:scale-110 transition-transform shadow-lg">
               <ArrowRight size={24} />
             </span>
-            <span className="text-[#162f5d] font-black tracking-widest text-[15px] uppercase">Ücretsiz Ön Görüşme</span>
+            <span className="text-[#162f5d] font-black tracking-widest text-[15px] uppercase">{T.freeConsultation}</span>
           </a>
         </motion.div>
       </div>

@@ -1,11 +1,15 @@
 import { Link } from "@/i18n/navigation";
 import { ArrowUpRight } from "lucide-react";
-import { BRANCHES, type BranchId } from "@/data/branches";
+import { useLocale } from "next-intl";
+import { getBranches, type BranchId } from "@/data/branches";
+import { dt } from "./demoText";
 import BranchIcon from "./BranchIcon";
 
 /** Branş sayfalarının sonunda: aynı kurum çatısı altındaki diğer branşlar */
 export default function OtherBranches({ current }: { current: BranchId }) {
-  const others = BRANCHES.filter((b) => b.id !== current);
+  const locale = useLocale();
+  const T = dt(locale);
+  const others = getBranches(locale).filter((b) => b.id !== current);
   return (
     <section className="relative bg-[#0a111a] py-20 lg:py-24 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-[#162f5d]/40 to-transparent pointer-events-none" />
@@ -15,14 +19,14 @@ export default function OtherBranches({ current }: { current: BranchId }) {
           <div>
             <div className="inline-flex items-center gap-3 mb-4">
               <div className="h-[2px] w-10 bg-[#ecbb3f]" />
-              <span className="text-[#ecbb3f] font-black tracking-widest uppercase text-sm">Aynı Çatı Altında</span>
+              <span className="text-[#ecbb3f] font-black tracking-widest uppercase text-sm">{T.sameRoof}</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight leading-tight">
-              Diğer <span className="text-[#ecbb3f]">branşlarımız</span>
+              {T.otherBranches[0]} <span className="text-[#ecbb3f]">{T.otherBranches[1]}</span>
             </h2>
           </div>
           <Link href="/demo" className="text-white/70 hover:text-[#ecbb3f] font-bold text-sm tracking-widest uppercase transition-colors">
-            Tüm branşlar →
+            {T.allBranches}
           </Link>
         </div>
 
