@@ -183,9 +183,6 @@ export default function DemoHeader({ activeBranch }: { activeBranch?: BranchId }
                 );
               })}
 
-              <Link href="/doktorlar" onMouseEnter={() => setOpenMenu(null)} className={`${NAV_TEXT} text-[#162f5d] hover:text-[#ecbb3f] py-4`}>
-                DOKTORLARIMIZ
-              </Link>
               <Link href="/blog" onMouseEnter={() => setOpenMenu(null)} className={`${NAV_TEXT} text-[#162f5d] hover:text-[#ecbb3f] py-4`}>
                 BLOG
               </Link>
@@ -332,7 +329,6 @@ export default function DemoHeader({ activeBranch }: { activeBranch?: BranchId }
                   </MobileAccordion>
                 ))}
 
-                <MobileLink href="/doktorlar" onClick={() => setMobileOpen(false)}>Doktorlarımız</MobileLink>
                 <MobileLink href="/blog" onClick={() => setMobileOpen(false)}>Blog</MobileLink>
                 <MobileLink href="/iletisim" onClick={() => setMobileOpen(false)}>İletişim</MobileLink>
               </div>

@@ -255,12 +255,12 @@ export function BranchHighlights({ branch: b }: { branch: Branch }) {
               </li>
             ))}
           </ul>
-          <Link href="/doktorlar" className="group inline-flex items-center gap-4">
+          <a href="#randevu" className="group inline-flex items-center gap-4">
             <span className="w-14 h-14 bg-[#162f5d] rounded-full flex items-center justify-center text-[#ecbb3f] group-hover:scale-110 transition-transform shadow-lg">
               <ArrowRight size={24} />
             </span>
-            <span className="text-[#162f5d] font-black tracking-widest text-[15px] uppercase">{b.shortName} Hekimlerimiz</span>
-          </Link>
+            <span className="text-[#162f5d] font-black tracking-widest text-[15px] uppercase">Ücretsiz Ön Görüşme</span>
+          </a>
         </motion.div>
       </div>
     </section>

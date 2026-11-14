@@ -118,7 +118,6 @@ export default function DemoFooter() {
         <div className="border-t border-white/10 pt-6 pb-28 md:pb-6 flex flex-col md:flex-row justify-between items-center gap-4 text-center">
           <nav className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-[13px] text-gray-400 font-medium">
             <Link href="/hakkimizda" className="hover:text-[#ecbb3f]">Hakkımızda</Link>
-            <Link href="/doktorlar" className="hover:text-[#ecbb3f]">Hekimlerimiz</Link>
             <Link href="/blog" className="hover:text-[#ecbb3f]">Blog</Link>
             <Link href="/anlasmali-kurumlar" className="hover:text-[#ecbb3f]">Anlaşmalı Kurumlar</Link>
             <Link href="/kvkk" className="hover:text-[#ecbb3f]">KVKK</Link>

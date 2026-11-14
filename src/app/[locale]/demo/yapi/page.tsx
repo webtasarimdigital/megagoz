@@ -90,17 +90,19 @@ export default function SiteStructurePage() {
           <SectionTitle n="02" icon={<MenuIcon size={20} />} title="Menü yerleşimi" sub="Branşlar ana menünün en görünür yerinde" />
           <div className="rounded-3xl border border-gray-200 overflow-hidden">
             <div className="bg-[#162f5d] text-white/90 text-[12px] font-semibold px-6 py-3 flex flex-wrap gap-x-4 gap-y-1">
-              <span className="text-[#ecbb3f] font-black">Üst bar:</span> Hakkımızda · Hekimlerimiz · Blog · Anlaşmalı Kurumlar · Galeri · İletişim <span className="ml-auto">444 0 320 · TR/EN</span>
+              <span className="text-[#ecbb3f] font-black">Üst bar:</span> Akıllı Lensler · Göz Lazer Ameliyatı · Anlaşmalı Kurumlar <span className="ml-auto">Konum · info@megagoz.com · 444 0 320 · TR</span>
             </div>
             <div className="bg-white px-6 py-5 flex flex-wrap items-center gap-3">
               <span className="font-black text-[#162f5d] mr-4">LOGO</span>
+              <span className="px-3 font-bold text-[13px] text-[#162f5d]">ANA SAYFA</span>
+              <span className="px-3 font-bold text-[13px] text-[#162f5d]">KURUMSAL ▾</span>
               {BRANCHES.map((b) => (
                 <span key={b.id} className="flex items-center gap-2 px-4 h-[40px] rounded-lg bg-[#f4f6fa] text-[#162f5d] font-bold text-[13px]">
                   <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: b.accent }} /> {b.shortName.toLocaleUpperCase("tr-TR")} ▾
                 </span>
               ))}
-              <span className="px-3 font-bold text-[13px] text-[#162f5d]">HEKİMLERİMİZ</span>
-              <span className="ml-auto px-4 h-[40px] flex items-center rounded-lg bg-[#ecbb3f] text-[#162f5d] font-black text-[12px] tracking-widest">RANDEVU AL</span>
+              <span className="px-3 font-bold text-[13px] text-[#162f5d]">BLOG</span>
+              <span className="px-3 font-bold text-[13px] text-[#162f5d]">İLETİŞİM</span>
             </div>
           </div>
           <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
