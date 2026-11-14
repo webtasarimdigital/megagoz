@@ -18,17 +18,17 @@
     "location": "Konum"
   },
   "Hero": {
-    "title": "Göz Sağlığınız İçin\nEn İyisi",
+    "title": "Göz Sağlığınız İçin\nYanınızdayız",
     "subtitle": "Uzman kadromuz ve son teknoloji sistemlerimizle daha net bir dünya için yanınızdayız.",
     "cta": "Hemen Randevu Al",
     "slide1Title": "HEPSİ TEK ÇATI ALTINDA",
     "slide1Sub": "KİŞİYE ÖZEL PLANLAMA",
     "slide2Title": "GÖZ SAĞLIĞINIZ EMİN ELLERDE",
-    "slide2Sub": "EN YENİ TEKNOLOJİLERLE",
+    "slide2Sub": "İLERİ TANI VE TEDAVİ OLANAKLARIYLA",
     "slide3Title": "AKILLI LENS TEKNOLOJİSİ",
-    "slide3Sub": "YAKIN VE UZAK NET GÖRÜŞ",
+    "slide3Sub": "YAKIN VE UZAK MESAFE İÇİN LENS SEÇENEKLERİ",
     "slide4Title": "LAZER GÖZ AMELİYATI",
-    "slide4Sub": "GÖZLÜKLERİNİZDEN KURTULUN",
+    "slide4Sub": "KİŞİYE ÖZEL LAZER PLANLAMASI",
     "quickAppointment": "Hızlı Randevu",
     "appointmentDesc": "Lütfen bilgilerinizi bırakın, uzman ekibimiz sizi en kısa sürede arasın.",
     "fullName": "Adınız Soyadınız",
@@ -39,21 +39,21 @@
   "About": {
     "badge": "Hakkımızda",
     "title": "Megagöz ile Net Görün",
-    "description": "Megagöz Sağlığı Merkezi olarak, alanında uzman doktorlarımız ve modern teknolojimizle göz sağlığınızı en üst düzeyde korumayı ve iyileştirmeyi hedefliyoruz.",
+    "description": "Megagöz Sağlığı Merkezi olarak, alanında uzman doktorlarımız ve modern teknolojimizle göz sağlığınızı korumayı ve iyileştirmeyi hedefliyoruz.",
     "button": "Daha Fazla Bilgi"
   },
   "Services": {
     "badge": "Uzmanlık Alanlarımız",
     "title": "Sunmuş Olduğumuz Hizmetler",
-    "description": "En gelişmiş teknolojiler ve deneyimli uzman kadromuz ile göz sağlığınız için geniş kapsamlı çözümler sunuyoruz.",
+    "description": "Gelişmiş teknolojiler ve deneyimli uzman kadromuz ile göz sağlığınız için geniş kapsamlı çözümler sunuyoruz.",
     "items": {
       "cataract": {
         "title": "Katarakt Cerrahisi",
-        "description": "Fako yöntemi ve akıllı lens (göz içi mercek) uygulamaları ile net bir görüşe kavuşun."
+        "description": "Fako yöntemi ve akıllı lens (göz içi mercek) uygulamalarıyla katarakt tedavisi."
       },
       "laser": {
         "title": "Lazer Tedavisi",
-        "description": "Miyop, hipermetrop ve astigmatta No-Touch, LASIK ve PRK yöntemleriyle gözlüklere veda edin."
+        "description": "Miyop, hipermetrop ve astigmatta No-Touch, LASIK ve PRK yöntemleriyle lazer tedavisi."
       },
       "retina": {
         "title": "Retina Hastalıkları",

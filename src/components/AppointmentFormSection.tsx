@@ -54,18 +54,18 @@ export default function AppointmentFormSection() {
           >
              <div className="flex items-center gap-3 mb-4">
                 <div className="h-[2px] w-8 bg-[#ecbb3f]" />
-                <span className="text-[#ecbb3f] font-bold tracking-widest text-sm uppercase">{locale === 'tr' ? 'ÜCRETSİZ MUAYENE' : 'FREE CONSULTATION'}</span>
+                <span className="text-[#ecbb3f] font-bold tracking-widest text-sm uppercase">{locale === 'tr' ? 'RANDEVU' : 'APPOINTMENT'}</span>
              </div>
              
              <h2 className="text-4xl lg:text-[54px] font-black leading-[1.1] mb-6 tracking-tight text-[#162f5d]">
                {locale === 'tr' ? (
                  <>
-                   HEMEN ÜCRETSİZ<br />
+                   ÖN GÖRÜŞME İÇİN<br />
                    <span className="font-light">RANDEVU AL</span>
                  </>
                ) : (
                  <>
-                   BOOK YOUR FREE<br />
+                   BOOK YOUR<br />
                    <span className="font-light">APPOINTMENT NOW</span>
                  </>
                )}
@@ -73,8 +73,8 @@ export default function AppointmentFormSection() {
 
              <p className="text-gray-500 text-[16px] leading-relaxed mb-8 max-w-md font-medium">
                {locale === 'tr' ? 
-                 'Kliniklerimizden randevu alarak; lazer göz cerrahisi, katarakt, akıllı lens veya retina alanındaki tüm ihtiyaçlarınızı kontrol ettirebilir ve planlamayı tamamen ücretsiz olarak yaptırabilirsiniz.' : 
-                 'By booking an appointment at our clinics, you can have all your needs in the areas of laser eye surgery, cataracts, smart lenses, or retina checked and planned completely free of charge.'
+                 'Kliniklerimizden randevu alarak; lazer göz cerrahisi, katarakt, akıllı lens veya retina alanındaki ihtiyaçlarınızı uzman hekimlerimizle birlikte değerlendirebilir ve tedavi planınızı oluşturabilirsiniz.' : 
+                 'By booking an appointment at our clinics, you can have all your needs in the areas of laser eye surgery, cataracts, smart lenses, or retina assessed and planned together with our specialist physicians.'
                }
              </p>
 

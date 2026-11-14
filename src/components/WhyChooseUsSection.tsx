@@ -15,8 +15,8 @@ const TABS = [
     image: "/images/slide2.webp",
     heading: "Uzman Hekimler",
     headingEn: "Expert Doctors",
-    desc: "Yurt içinde ve yurt dışında başarılara imza atmış, on binlerce cerrahi vaka tecrübesi bulunan uzman hekim kadromuzla nitelikli göz sağlığı hizmetini sizlerle buluşturuyoruz.",
-    descEn: "We bring you high-quality eye health services with our expert medical staff who have achieved domestic and international success and have experience in tens of thousands of surgical cases."
+    desc: "Alanında deneyimli uzman hekim kadromuzla göz sağlığı hizmetini sizlerle buluşturuyoruz.",
+    descEn: "We bring you eye health services with our experienced specialist physicians."
   },
   {
     id: 1,
@@ -37,8 +37,8 @@ const TABS = [
     image: "/images/slide4.webp",
     heading: "Teknolojik Altyapı",
     headingEn: "Technological Infrastructure",
-    desc: "FDA onaylı, sektöre yön veren markaların en yeni jenerasyon excimer lazer cihazları ve 3 boyutlu topografi sistemleri sayesinde sıfır hata payı ile kusursuz cerrahi deneyimi sunuyoruz.",
-    descEn: "Thanks to FDA-approved, industry-leading new generation excimer laser devices and 3D topography systems, we offer a flawless surgical experience with zero margin of error."
+    desc: "FDA onaylı excimer lazer cihazları ve 3 boyutlu topografi sistemleriyle her hasta için kişiye özel cerrahi planlama yapıyoruz.",
+    descEn: "With FDA-approved excimer laser devices and 3D topography systems, we create a personalised surgical plan for every patient."
   },
   {
     id: 3,
@@ -48,8 +48,8 @@ const TABS = [
     image: "/images/slide1.webp",
     heading: "Uluslararası Hizmet",
     headingEn: "International Services",
-    desc: "Dünyanın dört bir yanından gelen hastalarımıza, VIP transferden konaklamaya ve ana dillerinde tercümanlık desteğine kadar uzanan ayrıcalıklı ve tam teşekküllü global sağlık turizmi sunuyoruz.",
-    descEn: "We offer global healthcare tourism to patients from all over the world, ranging from VIP transfers and accommodation to native-language interpretation support."
+    desc: "Yurt dışından gelen hastalarımıza transfer, konaklama ve tercümanlık konularında destek sunuyoruz.",
+    descEn: "We support international patients with transfers, accommodation and interpretation."
   },
   {
     id: 4,
@@ -59,8 +59,8 @@ const TABS = [
     image: "/images/slide3.webp",
     heading: "Birebir İlgi ve Kalite",
     headingEn: "Personalized Care",
-    desc: "Ticari kaygılardan uzak, tamamen hasta iyileşmesine ve konforuna odaklanmış, etik değerlere sıkı sıkıya bağlı butik yapımızla kendinizi özel hissedeceğiniz şeffaf süreçler kurguluyoruz.",
-    descEn: "Free from commercial concerns, fully focused on patient recovery and comfort, and strictly committed to ethical values, we build transparent processes where you will feel special."
+    desc: "Hasta konforuna odaklanan ve etik değerlere bağlı yapımızla şeffaf süreçler kurguluyoruz.",
+    descEn: "With a structure focused on patient comfort and committed to ethical values, we build transparent processes."
   }
 ];
 

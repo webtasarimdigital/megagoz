@@ -76,8 +76,8 @@ export default function Footer() {
             </Link>
             <p className="text-[13px] leading-relaxed text-gray-300 font-medium">
               {locale === 'en' 
-                ? 'MEGAGÖZ is a modern eye health center established to provide healthcare services at international standards in the diagnosis and treatment of eye diseases, bringing together technology and medicine.' 
-                : 'MEGAGÖZ, göz hastalıklarının teşhis ve tedavisinde uluslararası standartlarda sağlık hizmeti sunmak amacıyla kurulmuş, teknolojiyi ve tıbbı bir araya getiren modern bir göz sağlığı merkezidir.'}
+                ? 'MEGAGÖZ is a modern eye health center established to provide healthcare services in the diagnosis and treatment of eye diseases, bringing together technology and medicine.' 
+                : 'MEGAGÖZ, göz hastalıklarının teşhis ve tedavisinde hizmet vermek amacıyla kurulmuş, teknolojiyi ve tıbbı bir araya getiren modern bir göz sağlığı merkezidir.'}
             </p>
             
             <div className="space-y-3 pt-2">

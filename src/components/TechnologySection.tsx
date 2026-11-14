@@ -10,8 +10,8 @@ export default function TechnologySection() {
   const locale = useLocale();
 
   const leftTechs = [
-    { icon: <Zap size={28} />, title: locale === 'en' ? 'Femtosecond Laser' : 'FemtoSaniye Lazer', desc: locale === 'en' ? 'Bladeless, 100% precise and fast laser surgery technology. Applied without touching the eye.' : 'Bıçaksız, %100 hassas ve saniyeler süren lazer ameliyat teknolojisi. Göze dokunulmadan uygulanır.' },
-    { icon: <Cpu size={28} />, title: locale === 'en' ? 'Smart Lens Implantation' : 'Akıllı Lens İmplantasyonu', desc: locale === 'en' ? 'Advanced trifocal lenses providing clear vision at far, intermediate, and near distances in cataract treatments.' : 'Katarakt tedavilerinde, uzak-yakın ve ara mesafe netliği sağlayan gelişmiş trifokal lensler.' },
+    { icon: <Zap size={28} />, title: locale === 'en' ? 'Femtosecond Laser' : 'FemtoSaniye Lazer', desc: locale === 'en' ? 'Bladeless, computer-guided laser surgery technology.' : 'Bıçaksız, bilgisayar kontrollü lazer ameliyat teknolojisi.' },
+    { icon: <Cpu size={28} />, title: locale === 'en' ? 'Smart Lens Implantation' : 'Akıllı Lens İmplantasyonu', desc: locale === 'en' ? 'Trifocal lenses used in cataract treatment, aiming to support far, intermediate and near vision.' : 'Katarakt tedavisinde uzak, ara ve yakın mesafe görüşü desteklemeyi amaçlayan trifokal lensler.' },
   ];
 
   const rightTechs = [
@@ -57,8 +57,8 @@ export default function TechnologySection() {
              className="text-gray-600 mt-6 max-w-2xl text-[15px] lg:text-base leading-relaxed"
            >
              {locale === 'en' 
-               ? 'Flawless results are targeted exclusively with the laser equipment of the most advanced, FDA-approved global brands in the field.' 
-               : 'Yalnızca alanındaki en gelişmiş, FDA onaylı küresel markaların lazer donanımlarıyla kusursuz sonuçlar hedeflenir.'}
+               ? 'Personalised treatment is planned using laser equipment from FDA-approved brands.' 
+               : 'FDA onaylı markaların lazer donanımlarıyla kişiye özel tedavi planlaması yapılır.'}
            </motion.p>
         </div>
 

@@ -84,9 +84,9 @@ export default function AboutSection() {
             
             <h2 className="text-4xl md:text-5xl font-black text-[#162f5d] tracking-tight leading-[1.1] mb-8">
               {locale === 'en' ? (
-                <>Perfect Your <br /><span className="text-[#ecbb3f]">Perspective.</span></>
+                <>Clarify Your <br /><span className="text-[#ecbb3f]">Perspective.</span></>
               ) : (
-                <>Bakış Açınızı <br /><span className="text-[#ecbb3f]">Mükemmelleştirin.</span></>
+                <>Bakış Açınızı <br /><span className="text-[#ecbb3f]">Netleştirin.</span></>
               )}
             </h2>
 
@@ -99,8 +99,8 @@ export default function AboutSection() {
             <blockquote className="border-l-4 border-[#ecbb3f] pl-6 my-8">
                <p className="text-[#162f5d] font-bold italic text-[22px] md:text-[24px] leading-relaxed mb-4">
                  {locale === 'en' ? 
-                   '"There is no margin for error in eye health. We combine the peak of technology with our decades of experience."' : 
-                   '"Göz sağlığında hata payı yoktur. Teknolojinin ulaştığı en zirve noktayı, on yılların getirdiği tecrübemizle birleştiriyoruz."'}
+                   '"There is no margin for error in eye health. We combine modern technology with our decades of experience."' : 
+                   '"Göz sağlığında hata payı yoktur. Modern teknolojiyi, on yılların getirdiği tecrübemizle birleştiriyoruz."'}
                </p>
                <footer className="text-gray-400 font-bold text-sm md:text-base tracking-widest uppercase">
                  {locale === 'en' ? '— Chief Physician & Board of Directors' : '— Başhekimlik & Yönetim Kurulu'}

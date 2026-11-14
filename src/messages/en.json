@@ -18,17 +18,17 @@
     "location": "Location"
   },
   "Hero": {
-    "title": "The Best for Your\nEye Health",
-    "subtitle": "We are here for a clearer world with our expert staff and state-of-the-art systems.",
+    "title": "Here for Your\nEye Health",
+    "subtitle": "We are here for a clearer world with our expert staff and modern systems.",
     "cta": "Book Now",
     "slide1Title": "ALL UNDER ONE ROOF",
     "slide1Sub": "PERSONALIZED PLANNING",
     "slide2Title": "YOUR EYE HEALTH IS IN SAFE HANDS",
-    "slide2Sub": "WITH THE LATEST TECHNOLOGIES",
+    "slide2Sub": "WITH ADVANCED DIAGNOSTIC AND TREATMENT OPTIONS",
     "slide3Title": "SMART LENS TECHNOLOGY",
-    "slide3Sub": "CLEAR NEAR AND FAR VISION",
+    "slide3Sub": "LENS OPTIONS FOR NEAR AND FAR VISION",
     "slide4Title": "LASER EYE SURGERY",
-    "slide4Sub": "GET RID OF YOUR GLASSES",
+    "slide4Sub": "PERSONALISED LASER PLANNING",
     "quickAppointment": "Quick Appointment",
     "appointmentDesc": "Please leave your details, and our expert team will contact you shortly.",
     "fullName": "Full Name",
@@ -39,21 +39,21 @@
   "About": {
     "badge": "About Us",
     "title": "See Clearly with Megagöz",
-    "description": "As Megagöz Eye Health Center, we aim to protect and improve your eye health at the highest level with our expert doctors and modern technology.",
+    "description": "As Megagöz Eye Health Center, we aim to protect and improve your eye health with our expert doctors and modern technology.",
     "button": "Learn More"
   },
   "Services": {
     "badge": "Our Departments",
     "title": "Services We Provide",
-    "description": "We offer comprehensive solutions for your eye health with state-of-the-art technologies and our experienced expert staff.",
+    "description": "We offer comprehensive solutions for your eye health with advanced technologies and our experienced expert staff.",
     "items": {
       "cataract": {
         "title": "Cataract Surgery",
-        "description": "Achieve clear vision with Phacoemulsification and smart lens (intraocular lens) applications."
+        "description": "Cataract treatment with phacoemulsification and smart lens (intraocular lens) applications."
       },
       "laser": {
         "title": "Laser Treatment",
-        "description": "Say goodbye to glasses in myopia, hypermetropia, and astigmatism with No-Touch, LASIK, and PRK methods."
+        "description": "Laser treatment for myopia, hypermetropia and astigmatism with No-Touch, LASIK and PRK methods."
       },
       "retina": {
         "title": "Retinal Diseases",

@@ -25,8 +25,8 @@ const FAQS = [
     id: 3,
     question: "Katarakt ameliyatı zor ve ağrılı bir işlem midir?",
     questionEn: "Is cataract surgery a difficult and painful procedure?",
-    answer: "Hayır. Gelişmiş fakoemülsifikasyon (Fako) teknolojisi sayesinde damla anestezi altında (iğnesiz) yapılan, ağrısız ve sadece 10-15 dakika süren konforlu bir işlemdir. Aynı gün taburcu olabilirsiniz.",
-    answerEn: "No. Thanks to advanced phacoemulsification technology, it is a painless and comfortable procedure performed under drop anesthesia (needle-free) that takes only 10-15 minutes. You can be discharged the same day."
+    answer: "Hayır. Fakoemülsifikasyon (Fako) yöntemiyle, genellikle damla anestezi altında yapılan ve çoğunlukla 10-15 dakika süren bir işlemdir. Süreç ön görüşmede hekiminiz tarafından ayrıntılı olarak anlatılır. Aynı gün taburcu olabilirsiniz.",
+    answerEn: "No. Using phacoemulsification, it is usually performed under anaesthetic eye drops and typically takes 10–15 minutes. Your physician will explain the process in detail during the consultation. You can be discharged the same day."
   },
   {
     id: 4,
@@ -39,8 +39,8 @@ const FAQS = [
     id: 5,
     question: "Akıllı mercek (Trifokal Lens) operasyonu ömür boyu kalıcı mıdır?",
     questionEn: "Is smart lens (Trifocal Lens) surgery permanent for life?",
-    answer: "Evet, göze yerleştirilen akıllı (trifokal) lensler ömür boyu gözde kalır. Herhangi bir alerji yaratmaz ve numarası ilerleyen yıllarda değişmez. Uzak, yakın ve orta mesafede net görüş sağlar.",
-    answerEn: "Yes, smart (trifocal) lenses placed in the eye remain for a lifetime. They do not cause any allergies and the prescription does not change over the years. They provide clear vision at far, near, and intermediate distances."
+    answer: "Akıllı (trifokal) lensler, göze yerleştirildikten sonra gözde kalacak şekilde tasarlanmıştır. Uzak, orta ve yakın mesafede görüşü desteklemeyi amaçlar; uygunluk hekim muayenesiyle belirlenir.",
+    answerEn: "Smart (trifocal) lenses are designed to remain in the eye once implanted. They aim to support far, intermediate and near vision; suitability is determined during the physician's examination."
   }
 ];
 

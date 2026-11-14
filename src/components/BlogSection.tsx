@@ -16,8 +16,8 @@ const BLOG_POSTS = [
     date: "14 Ekim 2026",
     dateEn: "Oct 14, 2026",
     image: "/images/slide1.webp",
-    excerpt: "Gözlük ve lens bağımlılığından kurtaran, miyop, hipermetrop ve astigmatizmanın kalıcı olarak düzeltilmesini sağlayan modern lazer teknolojilerini inceliyoruz.",
-    excerptEn: "We examine modern laser technologies that free you from glasses and lens dependence, permanently correcting myopia, hypermetropia, and astigmatism."
+    excerpt: "Miyop, hipermetrop ve astigmatizmanın düzeltilmesinde kullanılan modern lazer yöntemlerini inceliyoruz.",
+    excerptEn: "We look at modern laser methods used to correct myopia, hypermetropia and astigmatism."
   },
   {
     id: 2,
@@ -33,15 +33,15 @@ const BLOG_POSTS = [
   },
   {
     id: 3,
-    title: "Katarakt Cerrahisinde Göz İçi Akıllı Lens Devrimi",
-    titleEn: "The Smart Lens Revolution in Cataract Surgery",
+    title: "Katarakt Cerrahisinde Göz İçi Akıllı Lensler",
+    titleEn: "Smart Intraocular Lenses in Cataract Surgery",
     category: "Göz Sağlığı",
     categoryEn: "Eye Health",
     date: "05 Eylül 2026",
     dateEn: "Sep 05, 2026",
     image: "/images/megagoz-katarakt-tedavisi.webp",
-    excerpt: "Görüş netliğini tamamen geri kazandıran ve ömür boyu kalıcı olan akıllı mercek (Trifokal Lens) teknolojisi ile hayata nasıl yeniden net bakabilirsiniz?",
-    excerptEn: "How can you see life clearly again with smart lens (Trifocal Lens) technology that fully restores vision clarity and lasts a lifetime?"
+    excerpt: "Akıllı mercek (trifokal lens) nedir, nasıl çalışır ve kimler için uygundur?",
+    excerptEn: "What is a smart (trifocal) lens, how does it work and who is it suitable for?"
   }
 ];
 
