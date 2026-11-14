@@ -26,7 +26,7 @@ export const BRANCH_TEXT_EN: Record<BranchId, BranchText> = {
       { title: "ALL UNDER ONE ROOF", sub: "PERSONALIZED PLANNING" },
       { title: "YOUR EYE HEALTH IS IN SAFE HANDS", sub: "WITH ADVANCED DIAGNOSTIC AND TREATMENT OPTIONS" },
       { title: "SMART LENS TECHNOLOGY", sub: "CLEAR NEAR AND FAR VISION" },
-      { title: "LASER EYE SURGERY", sub: "GET RID OF YOUR GLASSES" },
+      { title: "LASER EYE SURGERY", sub: "PERSONALISED LASER PLANNING" },
     ],
     intro: {
       title: ["Since day one,", "our focus is your eyes."],
